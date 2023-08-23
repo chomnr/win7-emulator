@@ -1,0 +1,61 @@
+
+:root {
+    /* Windows 7 theme */
+    --primary-background: rgba(4, 66, 139, 1);
+}
+
+.win7-emulator {
+    /* Set the default background color to black */
+    background: var(--default-background);
+
+    /* Prevent content from overflowing its container */
+    overflow: hidden;
+
+    /* Disable text selection and highlighting */
+    user-select: none;
+
+    /* Disable touch interactions */
+    touch-action: none;
+
+    /* Set the minimum height of the element to 100% of viewport height */
+    min-height: 100vh;
+}
+
+.win7-emulator--default-theme {
+    /*background: linear-gradient(to bottom, #034198, #0395EB, #059BFA);*/
+}
+
+.win7-desktop {
+    /* Set image rendering to achieve crisp and pixelated edges */
+    image-rendering: -moz-crisp-edges; /* For Mozilla Firefox */
+    image-rendering: crisp-edges; /* For most modern browsers */
+    image-rendering: pixelated; /* Fallback option */
+
+    /* Disable the ability to call up the context menu on touch */
+    -webkit-touch-callout: none; /* Disable iOS context menu */
+
+    /* Disable text selection and highlighting */
+    user-select: none;
+
+    /* Disable touch interactions */
+    touch-action: none;
+}
+
+.win7-desktop__content {
+    /* Set the minimum height of the element to 100% of viewport height */
+    min-height: 100vh;
+}
+
+.win7-desktop__content--with-bg {  
+    /* Set background image */
+    background: url("../lib/images/windows/win7-bg.jpg");
+
+    /* Center the background image */
+    background-position: center;
+
+    /* Background image covers entire screen. */
+    background-size: cover; /* Adjust as needed */
+
+    /* Prevent background image from repeating */
+    background-repeat: no-repeat;
+}

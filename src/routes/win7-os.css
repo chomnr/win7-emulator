@@ -151,7 +151,7 @@
 
 .win7-taskbar__program--startmenu {
     /* Set the icon image to Windows 7 Start Menu using the 'content' property */
-    content: url("../lib/images/windows/win7-startmenu.png");
+    content: url("../lib/images/windows/win7-startmenu.png") !important;
 
     /* Inherit the width from the parent element */
     width: inherit;
@@ -162,7 +162,7 @@
 
 .win7-taskbar__program--startmenu:hover {
     /* Change the icon image on hover */
-    content: url("../lib/images/windows/win7-startmenu-2.png"); /* Change the icon image on hover */
+    content: url("../lib/images/windows/win7-startmenu-2.png") !important; /* Change the icon image on hover */
 
     /* Change cursor to pointer on hover */
     cursor: pointer;
@@ -170,12 +170,12 @@
 
 .win7-taskbar__program--network-audio-3 {
     /* Set the icon image to Audio-03 using the 'content' property */
-    content: url("../lib/images/windows/network/audio-3.svg");
+    content: url("../lib/images/windows/network/audio-3.svg") !important;
 }
 
 .win7-taskbar__program--connection {
     /* Set the icon image to Ethernet Connection using the 'content' property */
-    content: url("../lib/images/windows/network/ethernet-connect.svg");
+    content: url("../lib/images/windows/network/ethernet-connect.svg") !important;
 }
 
 .win7-taskbar__program--list-programs::before {

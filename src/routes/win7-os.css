@@ -151,7 +151,7 @@
 
 .win7-taskbar__program--startmenu {
     /* Set the icon image to Windows 7 Start Menu using the 'content' property */
-    content: url("../lib/images/windows/win7-startmenu.png");
+    background: url("../lib/images/windows/win7-startmenu.png");
 
     /* Inherit the width from the parent element */
     width: inherit;
@@ -163,7 +163,6 @@
 .win7-taskbar__program--startmenu:hover {
     /* Change the icon image on hover */
     content: url("../lib/images/windows/win7-startmenu-2.png"); /* Change the icon image on hover */
-    
 
     /* Change cursor to pointer on hover */
     cursor: pointer;

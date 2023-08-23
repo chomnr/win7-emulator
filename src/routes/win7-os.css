@@ -174,7 +174,7 @@
 
 .win7-taskbar__program--connection {
     /* Set the icon image to Ethernet Connection using the 'content' property */
-    content: url("../lib/images/windows/network/389.ico");
+    content: url("../lib/images/windows/network/ethernet-connect.svg");
 }
 
 .win7-taskbar__program--list-programs::before {

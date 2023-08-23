@@ -201,7 +201,7 @@
 
 .win7-taskbar__program--network-audio-3 {
     /* Set the icon image to Audio-03 using the 'content' property */
-    content: url("../lib/images/windows/network/64.ico") !important;
+    content: url("../lib/images/windows/network/44.ico") !important;
 }
 
 .win7-taskbar__program--connection {
@@ -296,7 +296,6 @@
     border-radius: 5px 5px 5px 5px;
 }
 
-
 .win7-startmenu__group {
     /* Use flexbox to align items vertically and horziontally */
     display: flex;
@@ -337,8 +336,25 @@
 
 /* Singular Input */
 .win7-startmenu__group input {
-    width: 223px;
+    width: 195px;
     height: 15px;
+    border: none;
+    border-top: 1px solid #b0b0b2;
+    border-left: 1px solid #b0b0b2;
+    border-bottom: 1px solid #b0b0b2;
+    padding: 2px;
+    padding-left: 4px;
+    padding-right: 4px;
+    outline: none;
+}
+.win7-startmenu__group .input-icon {
+    content: url("../lib/images/windows/network/magnifying_glass.svg");
+    background: white;
+    border: none;
+    padding: 1.5px;
+    border-top: 1px solid #b0b0b2;
+    border-right: 1px solid #b0b0b2;
+    border-bottom: 1px solid #b0b0b2;
 }
 
 /* =====================================

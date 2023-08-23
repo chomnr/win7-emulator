@@ -1,5 +1,5 @@
 <script>
-    import TaskBar from './components/TaskBar.svelte';
+    import TaskBar from './TaskBar.svelte';
 </script>
 
 <svelte:head>

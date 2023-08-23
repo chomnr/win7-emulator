@@ -40,6 +40,7 @@
 .win7-desktop {
     /* Set image rendering to achieve crisp and pixelated edges */
     image-rendering: -moz-crisp-edges; /* For Mozilla Firefox */
+    image-rendering: -webkit-optimize-contrast; /* For Google Chrome */
     image-rendering: crisp-edges; /* For most modern browsers */
     image-rendering: pixelated; /* Fallback option */
 

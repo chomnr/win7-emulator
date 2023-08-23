@@ -103,19 +103,32 @@
 }
 
 .win7-taskbar__program {
+    /* Set the width of the program icon */
     width: 25px;
-    height: 25px;
+
+    /* Set the height of the program icon */
+    height: 25px; 
 }
 
 .win7-taskbar__program--startmenu {
+    /* Set the icon image using the 'content' property */
     content: url("../lib/images/windows/win7-startmenu.png");
+
+    /* Inherit the width from the parent element */
     width: inherit;
+
+    /* Inherit the height from the parent element */
     height: inherit;
 }
 
 .win7-taskbar__program--startmenu:hover {
-    content: url("../lib/images/windows/win7-startmenu-2.png");
+    /* Change the icon image on hover */
+    content: url("../lib/images/windows/win7-startmenu-2.png"); /* Change the icon image on hover */
+
+    /* Inherit the width from the parent element */
     width: inherit;
+
+    /* Inherit the height from the parent element */
     height: inherit;
 }
 

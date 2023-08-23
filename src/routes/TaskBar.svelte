@@ -6,6 +6,6 @@
 
 <div class="win7-taskbar win7-taskbar--aero">
 	<div class="win7-taskbar__content">
-		<div class="win7-taskbar__program win7-taskbar__program--startmenu">dsasd</div>
+		<div class="win7-taskbar__program win7-taskbar__program--startmenu"></div>
 	</div>
 </div>

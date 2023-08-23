@@ -1,10 +1,20 @@
 
+/* Windows 7 Desktop */
 :root {
     /* Windows 7 theme */
     --primary-background: rgba(4, 66, 139, 1);
 
     /* Windows 7 Aero Theme */
     --aero-background: rgba(47, 47, 47, 0.4);
+}
+
+/* Windows 7 TaskBar */
+:root {
+    --taskbar-height: 40px;
+
+    /* Addition to the Aero theme */
+    --aero-border-top-color: rgba(36, 60, 81, 1);
+    --aero-border-top-bottom-color: rgba(153, 193, 224, 1)
 }
 
 .win7-emulator {
@@ -61,3 +71,52 @@
     /* Prevent background image from repeating */
     background-repeat: no-repeat;
 }
+
+.win7-taskbar {
+    /* Fixed position at the bottom of the viewport */
+    position: fixed;
+
+    /* Positioned at the bottom */
+    bottom: 0;
+    
+    /* Inherits width from the parent */
+    width: inherit;
+}
+
+.win7-taskbar--aero {
+    /* Background color for Aero theme */
+    background: var(--aero-background);
+
+    /* Top border for Aero theme */
+    border-top: 1px solid var(--aero-border-top-color); 
+
+    /* Inset shadow color for the top of the border. */
+    box-shadow: inset 0px 7px 1px -6px var(--aero-border-top-bottom-color);
+
+    /* Blurred background effect */
+    backdrop-filter: blur(5px);
+}
+
+.win7-taskbar__content {
+    /* Set the height using the custom property */
+    height: var(--taskbar-height);    
+}
+
+.win7-taskbar__program {
+    width: 25px;
+    height: 25px;
+}
+
+.win7-taskbar__program--startmenu {
+    content: url("../lib/images/windows/win7-startmenu.png");
+    width: inherit;
+    height: inherit;
+}
+
+.win7-taskbar__program--startmenu:hover {
+    content: url("../lib/images/windows/win7-startmenu-2.png");
+    width: inherit;
+    height: inherit;
+}
+
+

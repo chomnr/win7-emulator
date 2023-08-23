@@ -6,7 +6,7 @@
 
 <div class="win7-emulator">
 	<main class="win7-desktop">
-		<div class="win7-desktop__content win7-desktop__content--with-bg">
+		<div class="win7-desktop__content win7-desktop__content--with-bg win7-taskbar__program--with-startmenu">
 			<slot />
 		</div>
 	</main>

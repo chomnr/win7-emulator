@@ -8,7 +8,7 @@
     --aero-background: rgba(47, 47, 47, 0.4);
 }
 
-/* Windows 7 TaskBar */
+/* Windows 7 Aero */
 :root {
     --taskbar-height: 40px;
     --taskbar-small-group-gap: 9px;
@@ -18,7 +18,23 @@
     --aero-border-top-color: rgba(36, 60, 81, 1);
     --aero-border-top-bottom-color: rgba(153, 193, 224, 1);
     --aero-network-icon-color: rgba(229, 231, 232, 1);
+
+    /* StartMenu */
+    --startmenu-width: 455px;
+    --startmenu-height: 525px;
+    --startmenu-starting-pos: 41px;
+
+    --startmenu-content-width: 250px;
+    --startmenu-content-height: 510px;
+
+    --startmenu-padding-left: 7px;
+    --startmenu-padding-right: 7px;
+
+    --aero-sm-background-color: rgba(255, 255, 255, 1);
+    --aero-sm-group-color: rgba(241, 245, 251, 1);
+    --aero-sm-group-border-top-color: rgba(210, 221, 237, 1);
 }
+
 
 .win7-emulator {
     /* Set the default background color to black */
@@ -73,6 +89,22 @@
     background-repeat: no-repeat;
 }
 
+/* =====================================
+   THEME
+   ===================================== */
+
+.win7--aero {
+    /* Background color for Aero theme */
+    background: var(--aero-background);
+
+    /* Blurred background effect */
+    backdrop-filter: blur(5px);
+}
+
+/* =====================================
+   TASKBAR
+   ===================================== */
+
 .win7-taskbar {
     /* Fixed position at the bottom of the viewport */
     position: fixed;
@@ -84,18 +116,12 @@
     width: inherit;
 }
 
-.win7-taskbar--aero {
-    /* Background color for Aero theme */
-    background: var(--aero-background);
-
+.win7-taskbar--aero--additives {
     /* Top border for Aero theme */
     border-top: 1px solid var(--aero-border-top-color); 
 
     /* Inset shadow color for the top of the border. */
     box-shadow: inset 0px 7px 1px -6px var(--aero-border-top-bottom-color);
-
-    /* Blurred background effect */
-    backdrop-filter: blur(5px);
 }
 
 .win7-taskbar__content {
@@ -206,9 +232,107 @@
 }
 
 .win7-taskbar__program--time--left-padding {
-    /* Use flexbox to arrange items */
+    /* Add additional padding on the left */
     padding-left: 6px;
 }
+
+/* =====================================
+   STARTMENU
+   ===================================== */
+
+.win7-startmenu {
+    /* Set the start menu to be absolutely positioned */
+    position: absolute;
+
+    /* Use flexbox to align items vertically */
+    display: flex;
+
+    /* Align the blocks not the items vertically. */
+    align-items: center;
+
+    /* Set the width of the start menu */
+    width: var(--startmenu-width);
+
+    /* Set the height of the start menu */
+    height: var(--startmenu-height);
+    
+    /* Position the element at a specific distance from the bottom */
+    bottom: var(--startmenu-starting-pos);
+
+    /* Apply padding to left and right of startmenu */
+    padding-left: var(--startmenu-padding-left);
+    padding-right: var(--startmenu-padding-right);
+}
+
+.win7-startmenu--aero--additives {
+    /* Top border for Aero theme */
+    border: 1px solid var(--aero-border-top-color); 
+
+    /* Inset shadow color for the top of the border. */
+    box-shadow: inset 0px 0px 3px var(--aero-border-top-bottom-color);
+
+    /* Apply a border radius to the element */
+    border-radius: 8px 8px 8px 0;
+}
+
+.win7-startmenu__content {
+    /* Set the width using a CSS variable */
+    width: var(--startmenu-content-width);
+    
+    /* Set the height using a CSS variable */
+    height: var(--startmenu-content-height);
+}
+
+.win7-startmenu__content--use-flex {
+    /* Use flexbox to arrange items in row */
+    display: flex;
+}
+
+.win7-startmenu__content--with-design {
+    /* Apply Aero background to div */
+    background: var(--aero-sm-background-color);
+
+    /* Apply rounded corners to the content */
+    border-radius: 5px 5px 5px 5px;
+}
+
+
+.win7-startmenu__group {
+    /* Keep the group fixed to the bottom of the viewport */
+    position: fixed;
+
+    /* Align to bottom of the parent */
+    bottom: 0;
+
+    /* Inherit width from parent */
+    width: inherit;
+}
+
+.win7-startmenu__group--small {
+    /* Set size of startmenu group */
+    height: 40px;
+}
+
+.win7-startmenu__group--default-design {
+    /* Add Aero border top to group */
+    border-top: 1px solid var(--aero-sm-group-border-top-color);
+
+    /* Change border radius keep top left and right 0. */
+    border-radius: 0px 0px 5px 5px;
+}
+
+.win7-startmenu__group--light-blue {
+    /* Apply background color to startmenu group */
+    background-color: var(--aero-sm-group-color);
+}
+
+.win7-startmenu__group input {
+    width: 200px;
+}
+
+/* =====================================
+   MISCELLANEOUS
+   ===================================== */
 
 .font-xs {
     font-size: 0.8rem;
@@ -221,5 +345,3 @@
 .white {
     color: white;
 }
-
-

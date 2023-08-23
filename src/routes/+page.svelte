@@ -1,5 +1,6 @@
 <script>
-    import TaskBar from './TaskBar.svelte';
+    import StartMenu from './StartMenu.svelte';
+	import TaskBar from './TaskBar.svelte';
 </script>
 
 <svelte:head>
@@ -10,4 +11,5 @@
 </svelte:head>
 
 
+<StartMenu></StartMenu>
 <TaskBar></TaskBar>

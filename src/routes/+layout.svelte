@@ -4,7 +4,7 @@
 	import './win7-os.css'
 </script>
 
-<div class="win7-emulator win7-emulator--default-theme">
+<div class="win7-emulator">
 	<main class="win7-desktop">
 		<div class="win7-desktop__content win7-desktop__content--with-bg">
 			<slot />

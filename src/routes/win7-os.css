@@ -21,10 +21,6 @@
     min-height: 100vh;
 }
 
-.win7-emulator--default-theme {
-    /*background: linear-gradient(to bottom, #034198, #0395EB, #059BFA);*/
-}
-
 .win7-desktop {
     /* Set image rendering to achieve crisp and pixelated edges */
     image-rendering: -moz-crisp-edges; /* For Mozilla Firefox */

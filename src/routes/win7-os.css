@@ -163,17 +163,30 @@
 .win7-taskbar__program--startmenu:hover {
     /* Change the icon image on hover */
     content: url("../lib/images/windows/win7-startmenu-2.png"); /* Change the icon image on hover */
+    
 
     /* Change cursor to pointer on hover */
     cursor: pointer;
 }
 
 .win7-taskbar__program--network-audio-3 {
+
+    image-rendering: -moz-crisp-edges; /* For Mozilla Firefox */
+    image-rendering: -webkit-optimize-contrast; /* For Google Chrome */
+    image-rendering: crisp-edges; /* For most modern browsers */
+    image-rendering: pixelated; /* Fallback option */
+
     /* Set the icon image to Audio-03 using the 'content' property */
     content: url("../lib/images/windows/network/audio-3.svg");
 }
 
 .win7-taskbar__program--connection {
+
+    image-rendering: -moz-crisp-edges; /* For Mozilla Firefox */
+    image-rendering: -webkit-optimize-contrast; /* For Google Chrome */
+    image-rendering: crisp-edges; /* For most modern browsers */
+    image-rendering: pixelated; /* Fallback option */
+    
     /* Set the icon image to Ethernet Connection using the 'content' property */
     content: url("../lib/images/windows/network/ethernet-connect.svg");
 }

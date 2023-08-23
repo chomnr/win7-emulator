@@ -298,11 +298,20 @@
 
 
 .win7-startmenu__group {
+    /* Use flexbox to align items vertically and horziontally */
+    display: flex;
+    
+    /* Align items in the center vertically */
+    align-items: center;
+
+    /* Align items horizontally */
+    justify-content: center;
+
     /* Keep the group fixed to the bottom of the viewport */
     position: fixed;
-
-    /* Align to bottom of the parent */
-    bottom: 0;
+    
+    /* Align to bottom of the parent with offset of 7. */
+    bottom: 7px;
 
     /* Inherit width from parent */
     width: inherit;
@@ -326,8 +335,10 @@
     background-color: var(--aero-sm-group-color);
 }
 
+/* Singular Input */
 .win7-startmenu__group input {
-    width: 200px;
+    width: 223px;
+    height: 15px;
 }
 
 /* =====================================
@@ -340,6 +351,14 @@
 
 .font-segou_ui {
     font-family: 'Segoe UI';
+}
+
+.font-segou_ui {
+    font-family: 'Segoe UI';
+}
+
+.font-italic {
+    font-style: italic;
 }
 
 .white {

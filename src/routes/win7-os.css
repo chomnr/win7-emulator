@@ -112,10 +112,10 @@
 
 .win7-taskbar__program {
     /* Set the width of the program icon */
-    width: 19px;
+    width: 17px;
 
     /* Set the height of the program icon */
-    height: 19px; 
+    height: 17px; 
 }
 
 .win7-taskbar__group {
@@ -169,7 +169,7 @@
 
 .win7-taskbar__program--network-audio-3 {
     /* Set the icon image to Audio-03 using the 'content' property */
-    content: url("../lib/images/windows/network/68.ico");
+    content: url("../lib/images/windows/network/audio-3.svg");
 }
 
 .win7-taskbar__program--connection {

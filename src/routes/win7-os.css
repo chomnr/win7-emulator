@@ -11,10 +11,13 @@
 /* Windows 7 TaskBar */
 :root {
     --taskbar-height: 40px;
+    --taskbar-small-group-gap: 7px;
+    --taskbar-group-padding: 9px;
 
     /* Addition to the Aero theme */
     --aero-border-top-color: rgba(36, 60, 81, 1);
-    --aero-border-top-bottom-color: rgba(153, 193, 224, 1)
+    --aero-border-top-bottom-color: rgba(153, 193, 224, 1);
+    --aero-network-icon-color: rgba(229, 231, 232, 1);
 }
 
 .win7-emulator {
@@ -102,16 +105,51 @@
     height: var(--taskbar-height);    
 }
 
+.win7-taskbar__content--use-flex {
+    /* Use flexbox to arrange items in row */
+    display: flex;
+}
+
 .win7-taskbar__program {
     /* Set the width of the program icon */
-    width: 25px;
+    width: 19px;
 
     /* Set the height of the program icon */
-    height: 25px; 
+    height: 19px; 
+}
+
+.win7-taskbar__group {
+    /* Use flexbox to arrange items in row */
+    display: flex;
+
+    /* Set the width to fit the content */
+    width: fit-content;
+
+    /* height: inherit; */
+    height: inherit;
+}
+
+.win7-taskbar__group--align-programs { 
+    /* Aligns the taskbar__program(s) with one another */
+    align-items: center;
+}
+
+.win7-taskbar__group--small-gap {
+    gap: var(--taskbar-small-group-gap);
+}
+
+.win7-taskbar__group--far-right {
+    /* Position the group to the far right of the parent */
+    margin-left: auto;
+}
+
+.taskbar__group--horizontal-padding {
+    padding-left: var(--taskbar-group-padding);
+    padding-right: var(--taskbar-group-padding);
 }
 
 .win7-taskbar__program--startmenu {
-    /* Set the icon image using the 'content' property */
+    /* Set the icon image to Windows 7 Start Menu using the 'content' property */
     content: url("../lib/images/windows/win7-startmenu.png");
 
     /* Inherit the width from the parent element */
@@ -125,11 +163,32 @@
     /* Change the icon image on hover */
     content: url("../lib/images/windows/win7-startmenu-2.png"); /* Change the icon image on hover */
 
-    /* Inherit the width from the parent element */
-    width: inherit;
+    /* Change cursor to pointer on hover */
+    cursor: pointer;
+}
 
-    /* Inherit the height from the parent element */
-    height: inherit;
+.win7-taskbar__program--network-audio-3 {
+    /* Set the icon image to Audio-03 using the 'content' property */
+    content: url("../lib/images/windows/network/68.ico");
+}
+
+.win7-taskbar__program--connection {
+    /* Set the icon image to Ethernet Connection using the 'content' property */
+    content: url("../lib/images/windows/network/389.ico");
+}
+
+.win7-taskbar__program--list-programs::before {
+    /* Set the icon image to Black Medium Up-Pointing Triangle using the 'content' property */
+    content: '⏶';
+
+    /* Set the icon color to default network icon color */
+    color: var(--aero-network-icon-color);
+}
+
+
+.font-xs {
+    /* Set the font siz */
+    font-size: 0.8rem;
 }
 
 

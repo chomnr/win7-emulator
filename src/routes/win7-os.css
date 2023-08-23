@@ -2,6 +2,9 @@
 :root {
     /* Windows 7 theme */
     --primary-background: rgba(4, 66, 139, 1);
+
+    /* Windows 7 Aero Theme */
+    --aero-background: rgba(47, 47, 47, 0.4);
 }
 
 .win7-emulator {
@@ -18,7 +21,7 @@
     touch-action: none;
 
     /* Set the minimum height of the element to 100% of viewport height */
-    min-height: 100vh;
+    min-height: inherit;
 }
 
 .win7-desktop {
@@ -40,6 +43,9 @@
 .win7-desktop__content {
     /* Set the minimum height of the element to 100% of viewport height */
     min-height: 100vh;
+
+    /* Set the width of the element to 100% of the viewport width */
+    width: 100vw;
 }
 
 .win7-desktop__content--with-bg {  

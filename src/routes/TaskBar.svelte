@@ -13,6 +13,10 @@
 			<div class="win7-taskbar__program win7-taskbar__program--list-programs font-xs"></div>
 			<div class="win7-taskbar__program win7-taskbar__program--connection"></div>
 			<div class="win7-taskbar__program win7-taskbar__program--network-audio-3"></div>
+			<div class="win7-taskbar__program win7-taskbar__program--time win7-taskbar__program--fit-content win7-taskbar__program--time--left-padding font-segou_ui font-xs white">
+				<div>11:44 AM</div>
+				<div>9/22/2018</div>
+			</div>
 		</div>
 	</div>
 </div>

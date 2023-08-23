@@ -11,8 +11,8 @@
 /* Windows 7 TaskBar */
 :root {
     --taskbar-height: 40px;
-    --taskbar-small-group-gap: 7px;
-    --taskbar-group-padding: 9px;
+    --taskbar-small-group-gap: 9px;
+    --taskbar-group-padding: 8px;
 
     /* Addition to the Aero theme */
     --aero-border-top-color: rgba(36, 60, 81, 1);
@@ -39,10 +39,7 @@
 
 .win7-desktop {
     /* Set image rendering to achieve crisp and pixelated edges */
-    image-rendering: -moz-crisp-edges; /* For Mozilla Firefox */
-    image-rendering: -webkit-optimize-contrast; /* For Google Chrome */
-    image-rendering: crisp-edges; /* For most modern browsers */
-    image-rendering: pixelated; /* Fallback option */
+    image-rendering: auto;
 
     /* Disable the ability to call up the context menu on touch */
     -webkit-touch-callout: none; /* Disable iOS context menu */
@@ -113,10 +110,10 @@
 
 .win7-taskbar__program {
     /* Set the width of the program icon */
-    width: 17px;
+    width: 16px;
 
     /* Set the height of the program icon */
-    height: 17px; 
+    height: 16px; 
 }
 
 .win7-taskbar__group {
@@ -136,6 +133,7 @@
 }
 
 .win7-taskbar__group--small-gap {
+    /* Add a gap between flex items */
     gap: var(--taskbar-small-group-gap);
 }
 
@@ -145,8 +143,15 @@
 }
 
 .taskbar__group--horizontal-padding {
+    /* Apply horizontal padding using CSS variables */
     padding-left: var(--taskbar-group-padding);
     padding-right: var(--taskbar-group-padding);
+}
+
+.win7-taskbar__program--fit-content {
+    /* Set the width of the program icon */
+    width: fit-content;
+    height: fit-content;
 }
 
 .win7-taskbar__program--startmenu {
@@ -170,12 +175,12 @@
 
 .win7-taskbar__program--network-audio-3 {
     /* Set the icon image to Audio-03 using the 'content' property */
-    content: url("../lib/images/windows/network/audio-3.svg") !important;
+    content: url("../lib/images/windows/network/64.ico") !important;
 }
 
 .win7-taskbar__program--connection {
     /* Set the icon image to Ethernet Connection using the 'content' property */
-    content: url("../lib/images/windows/network/ethernet-connect.svg") !important;
+    content: url("../lib/images/windows/network/390.ico") !important;
 }
 
 .win7-taskbar__program--list-programs::before {
@@ -186,10 +191,35 @@
     color: var(--aero-network-icon-color);
 }
 
+.win7-taskbar__program--time {
+    /* Use flexbox to arrange items */
+    display: flex;
+
+    /* Stack items vertically */
+    flex-direction: column;
+
+    /* Center items vertically */
+    justify-content: center;
+
+    /* Center items horizontally */
+    align-items: center;
+}
+
+.win7-taskbar__program--time--left-padding {
+    /* Use flexbox to arrange items */
+    padding-left: 6px;
+}
 
 .font-xs {
-    /* Set the font siz */
     font-size: 0.8rem;
+}
+
+.font-segou_ui {
+    font-family: 'Segoe UI';
+}
+
+.white {
+    color: white;
 }
 
 

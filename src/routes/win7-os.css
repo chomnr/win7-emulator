@@ -11,13 +11,14 @@
 /* Windows 7 Aero */
 :root {
     --taskbar-height: 40px;
-    --taskbar-small-group-gap: 9px;
+    --taskbar-small-group-gap: 3px;
     --taskbar-group-padding: 8px;
 
     /* Addition to the Aero theme */
     --aero-border-top-color: rgba(36, 60, 81, 1);
     --aero-border-top-bottom-color: rgba(153, 193, 224, 1);
     --aero-network-icon-color: rgba(229, 231, 232, 1);
+    --aero-taskbar-icon-hover: rgba(255, 255, 255, 0.3);
 
     /* StartMenu */
     --startmenu-width: 410px;
@@ -214,6 +215,34 @@
     content: url("https://d2hqjspxd4b0fs.cloudfront.net/win7-startmenu-2.png") !important; /* Change the icon image on hover */
 
     /* Change cursor to pointer on hover */
+    cursor: pointer;
+}
+
+.win7-taskbar__program--with-border {
+    /* Add transparent border on the left */
+    border-left: 1px solid transparent;
+    /* Add transparent border on the right */
+    border-right: 1px solid transparent;
+
+    /* Add padding on the left */
+    padding-left: 2px;
+
+    /* Add padding on the right */
+    padding-right: 2px;
+}
+
+.win7-taskbar__program--hover:hover {
+    /* Add dark border on the left */
+    border-left: 1px solid rgba(47, 47, 47, 0.4);
+
+    /* Add dark border on the right */
+    border-right: 1px solid rgba(47, 47, 47, 0.4);
+
+    /* Increase height side by using padding */
+    padding-top: 6px;
+    padding-bottom: 6px;
+
+    /* Add pointer curse on hover */
     cursor: pointer;
 }
 

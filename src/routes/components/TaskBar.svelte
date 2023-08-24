@@ -2,7 +2,7 @@
 	import { page } from '$app/stores';
 </script>
 
-<div class="win7-taskbar win7--aero win7-taskbar--aero--additives">
+<div id="win7_btn_startmenu" class="win7-taskbar win7--aero win7-taskbar--aero--additives">
 	<div class="win7-taskbar__content win7-taskbar__content--use-flex">
 		<div class="win7-taskbar__group win7-taskbar__group--use-remaining-space taskbar__group--horizontal-padding">
 			<div id="button_startmenu" class="win7-taskbar__program win7-taskbar__program--startmenu">60000</div>

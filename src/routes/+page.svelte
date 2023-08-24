@@ -1,6 +1,6 @@
 <script>
-    import StartMenu from './StartMenu.svelte';
-	import TaskBar from './TaskBar.svelte';
+    import StartMenu from './components/StartMenu.svelte';
+	import TaskBar from './components/TaskBar.svelte';
 </script>
 
 <svelte:head>

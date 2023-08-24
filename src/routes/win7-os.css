@@ -350,6 +350,77 @@
 }
 
 /* =====================================
+   Avatar
+   ===================================== */
+
+.win7-avatar-builder {
+    position: relative;
+    bottom: 14px;
+    width: 90px;
+    height: 90px;
+}
+.win7-avatar-builder img.win7-frame {
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    left: 0px;
+}
+
+.win7-avatar-builder img.win7-avatar {
+    position: absolute;
+    right: 15px;
+    bottom: -19px;
+    height: 62px;
+    width: 60px;
+}
+
+
+/* =====================================
+   Aero Button Customizer
+   ===================================== */
+
+.aero-button {
+    /* Use flexbox to vertically align items */
+    display: flex;
+
+    /* Align input in the center of the block */
+    align-items: center;
+
+    width: 150px;
+
+    padding: 4px;
+    background: transparent;
+}
+
+.aero-button button {
+    width: inherit;
+    height: 30px;
+    text-align: left;
+    background: transparent;
+    outline: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: white;
+}
+
+.aero-button button:hover {
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(47, 47, 47, 0.3) 67%, transparent);
+    box-shadow: inset 0 0.3px 1px rgba(255, 255, 255, 1);
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.aero-button button.shutdown {
+    font-size: 0.7rem;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(47, 47, 47, 0.3) 80%, transparent);
+    box-shadow: inset 0 0.3px 1px rgba(255, 255, 255, 1);
+    height: 22px;
+    width: 75px;
+    border: 1px solid black;
+}
+
+
+/* =====================================
    Aero Input Customizer
    ===================================== */
 

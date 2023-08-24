@@ -81,7 +81,7 @@
 
 .win7-desktop__content--with-bg {  
     /* Set background image */
-    background: url("../lib/images/windows/win7-bg.jpg");
+    background: url("https://d2hqjspxd4b0fs.cloudfront.net/win7-bg.jpg");
 
     /* Center the background image */
     background-position: center;
@@ -186,7 +186,7 @@
 
 .win7-taskbar__program--startmenu {
     /* Set the icon image to Windows 7 Start Menu using the 'content' property */
-    content: url("../lib/images/windows/win7-startmenu.png") !important;
+    content: url("https://d2hqjspxd4b0fs.cloudfront.net/win7-startmenu.png") !important;
 
     /* Inherit the width from the parent element */
     width: inherit;
@@ -197,7 +197,7 @@
 
 .win7-taskbar__program--startmenu:hover {
     /* Change the icon image on hover */
-    content: url("../lib/images/windows/win7-startmenu-2.png") !important; /* Change the icon image on hover */
+    content: url("https://d2hqjspxd4b0fs.cloudfront.net/win7-startmenu-2.png") !important; /* Change the icon image on hover */
 
     /* Change cursor to pointer on hover */
     cursor: pointer;
@@ -205,12 +205,12 @@
 
 .win7-taskbar__program--network-audio-3 {
     /* Set the icon image to Audio-03 using the 'content' property */
-    content: url("../lib/images/windows/network/44.ico") !important;
+    content: url("https://d2hqjspxd4b0fs.cloudfront.net/44.ico") !important;
 }
 
 .win7-taskbar__program--connection {
     /* Set the icon image to Ethernet Connection using the 'content' property */
-    content: url("../lib/images/windows/network/390.ico") !important;
+    content: url("https://d2hqjspxd4b0fs.cloudfront.net/390.ico") !important;
 }
 
 .win7-taskbar__program--list-programs::before {
@@ -464,7 +464,7 @@
 
 .aero-input .icon.magnify {
     /* Set content as a magnifying glass icon */
-    content: url("../lib/images/windows/network/magnifying_glass.svg");
+    content: url("https://d2hqjspxd4b0fs.cloudfront.net/magnifying_glass.svg");
     margin-right: 3px;
 }
 

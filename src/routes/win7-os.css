@@ -349,6 +349,15 @@
     height: inherit;
 }
 
+.win7-startmenu__group--divider {
+    /* Set size of startmenu group */
+    content: "";
+    border-top: 2px solid rgba(47, 47, 47, 0.1);
+    box-shadow: inset 0px 7px 1px -6px var(--aero-border-top-bottom-color);
+    width: 158px;
+    height: 1px;
+}
+
 .win7-startmenu__group--default-design {
     /* Add Aero border top to group */
     border-top: 1px solid var(--aero-sm-group-border-top-color);

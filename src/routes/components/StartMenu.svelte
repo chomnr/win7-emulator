@@ -22,7 +22,7 @@
             <img class="win7-avatar" src="https://d2hqjspxd4b0fs.cloudfront.net/avatar.png" alt="avatar" />
             <img class="win7-frame" src="https://d2hqjspxd4b0fs.cloudfront.net/frame.png" alt="frame" />
         </div>
-        <div class="win7-startmenu__group win7-startmenu__group--column justify-left x-fit y-fit font-small" style="margin:5px;height: 700px;position:relative;top:11px;">
+        <div class="win7-startmenu__group win7-startmenu__group--column justify-left x-fit y-fit font-small" style="margin:5px;height: 700px;position:relative;top:0px;">
 
             <div class="aero-button">
                 <button>Zeljko</button>
@@ -36,12 +36,14 @@
             <div class="aero-button">
                 <button>Music</button>
             </div>
+            <div class="win7-startmenu__group--divider"></div>
             <div class="aero-button">
                 <button>Games</button>
             </div>
             <div class="aero-button">
                 <button>Computer</button>
             </div>
+            <div class="win7-startmenu__group--divider"></div>
             <div class="aero-button">
                 <button>Control Panel</button>
             </div>

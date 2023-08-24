@@ -33,6 +33,10 @@
     --aero-sm-background-color: rgba(255, 255, 255, 1);
     --aero-sm-group-color: rgba(241, 245, 251, 1);
     --aero-sm-group-border-top-color: rgba(210, 221, 237, 1);
+
+    /* Aero Input Designer */
+    --aero-input-default-bg: rgba(255, 255, 255, 1);
+    --aero-input-default-border: rgba(196, 198, 201, 1);
 }
 
 
@@ -311,10 +315,6 @@
     /* Use flexbox to align items vertically and horziontally */
     display: flex;
     
-    /* Align items in the center vertically 
-    align-items: center;
-    */
-
     /* Align items horizontally */
     justify-content: center;
 
@@ -326,14 +326,8 @@
 
 }
 
-.win7-startmenu__group--reset-position {
-    top: 0;
-    bottom: 0px;
-    margin-left: 7px;
-    width: fit-content;
-}
-
 .win7-startmenu__group--column {
+    /* Switch FlexBox direction to column */
     flex-direction: column;
 }
 
@@ -355,52 +349,59 @@
     background-color: var(--aero-sm-group-color);
 }
 
-
-/* Singular Input */
-
-/*
-.win7-startmenu__group input {
-    width: 195px;
-    height: 15px;
-    border: none;
-    border-top: 1px solid #b0b0b2;
-    border-left: 1px solid #b0b0b2;
-    border-bottom: 1px solid #b0b0b2;
-    padding: 2px;
-    padding-left: 4px;
-    padding-right: 4px;
-    outline: none;
-}
-.win7-startmenu__group .input-icon {
-    content: url("../lib/images/windows/network/magnifying_glass.svg");
-    background: white;
-    border: none;
-    padding: 1.5px;
-    border-top: 1px solid #b0b0b2;
-    border-right: 1px solid #b0b0b2;
-    border-bottom: 1px solid #b0b0b2;
-}
-
-.win7-startmenu__avatarborder {
-    content: url("../lib/images/windows/network/frame.png");
-    width: 120px;
-    z-index: 2;
-}
-.win7-startmenu__avatar {
-    content: url("../lib/images/windows/network/user.png");
-    width: 100px;
-    z-index: 1;
-}
-*/
-
 /* =====================================
    Aero Input Customizer
    ===================================== */
 
-   .aero-input {
+.aero-input {
+    /* Use flexbox to vertically align items */
+    display: flex;
+
+    /* Align input in the center of the block */
+    align-items: center;
+
     width: fit-content;
-    height: 20px;
-   }
+}
+
+.aero-input.default {
+    /* Set background color to default(aero) */
+    background-color: white;
+
+    /* Set border color to default(aero) */
+    border: 1px solid var(--aero-input-default-border);
+}
+
+.aero-input input {
+    /* Make the input inherit from parent */
+    width: inherit;
+
+    /* Remove outline */
+    outline: none;
+
+    /* Remove border */
+    border: none;
+}
+
+.aero-input input.icon-format {
+    /* Add a transparent border on the left */
+    border-left: 1px solid transparent;
+}
+
+.aero-input .icon {
+    /* Inherit height from parent */
+    height: inherit;
+}
+
+.aero-input .icon.magnify {
+    /* Set content as a magnifying glass icon */
+    content: url("../lib/images/windows/network/magnifying_glass.svg");
+    margin-right: 3px;
+}
+
+.aero-input input.small {
+    height: 18px;
+    width: 200px;
+}
 
 /* =====================================
    MISCELLANEOUS
@@ -462,6 +463,11 @@
 }
 
 /* Font */
+
+.font-xxs {
+    font-size: 0.7rem;
+}
+
 .font-xs {
     font-size: 0.8rem;
 }

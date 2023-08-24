@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { onMount } from "svelte";
 		import { TogglableStartMenu } from "../stores";
 
 		var whitelist: string[] = ["win7-startmenu__content", "win7-startmenu__group"];
@@ -10,8 +11,31 @@
 				TogglableStartMenu.set(false);
 			}
 		}
+		function checkForOutsideClick(e: any) {
+  			const clickedOnWhitelist = whitelist.some(item =>
+    			e.target.className.includes(item) || e.target?.id === "startmenu_input"
+  			);
 
-		/*Close immediately when click out....*/
+  			if (clickedOnWhitelist) {
+    			return;
+  			}
+
+  			if (e.target.id === "button_startmenu") {
+    			return;
+  			}
+
+  			if ($TogglableStartMenu) {
+    			TogglableStartMenu.set(false);
+  			}
+		}
+
+		function setupClickListeners() {
+  			document.addEventListener("click", checkForOutsideClick);
+		}
+
+		onMount(() => {
+  			setupClickListeners();
+		});
 </script>
 
 <div class="win7-taskbar win7--aero win7-taskbar--aero--additives">

@@ -12,7 +12,7 @@
         
         <div class="win7-startmenu__group win7-startmenu__group--default-design align-center win7-startmenu__group--light-blue y-medium">
             <div class="aero-input default">
-                <input class="icon-format font-xxs font-italic small" placeholder="Search programs and files"/>
+                <input id="startmenu_input" class="icon-format font-xxs font-italic small" placeholder="Search programs and files"/>
                 <div class="icon magnify"></div>
             </div>
         </div>

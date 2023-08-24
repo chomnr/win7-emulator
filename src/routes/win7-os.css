@@ -195,6 +195,20 @@
     height: inherit;
 }
 
+.win7-taskbar__program--startmenu--glow {
+    /* Change the icon image on hover */
+    content: url("https://d2hqjspxd4b0fs.cloudfront.net/win7-startmenu-2.png") !important; /* Change the icon image on hover */
+
+    /* Inherit the width from the parent element */
+    width: inherit;
+
+    /* Inherit the height from the parent element */
+    height: inherit;
+
+    /* Change cursor to pointer on hover */
+    cursor: pointer;
+}
+
 .win7-taskbar__program--startmenu:hover {
     /* Change the icon image on hover */
     content: url("https://d2hqjspxd4b0fs.cloudfront.net/win7-startmenu-2.png") !important; /* Change the icon image on hover */

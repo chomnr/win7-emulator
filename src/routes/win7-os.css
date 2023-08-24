@@ -20,7 +20,7 @@
     --aero-network-icon-color: rgba(229, 231, 232, 1);
 
     /* StartMenu */
-    --startmenu-width: 455px;
+    --startmenu-width: 410px;
     --startmenu-height: 525px;
     --startmenu-starting-pos: 41px;
 
@@ -276,6 +276,14 @@
 }
 
 .win7-startmenu__content {
+    /* Use FlexBox to align items vertically and horziontally */
+    display: flex;
+
+    /* Align FlexBox items in column format */
+    flex-direction: column;
+
+    align-items: center;
+
     /* Set the width using a CSS variable */
     width: var(--startmenu-content-width);
     
@@ -297,28 +305,42 @@
 }
 
 .win7-startmenu__group {
+    /* Keep the group fixed to the bottom of the viewport */
+    position: relative;
+
     /* Use flexbox to align items vertically and horziontally */
     display: flex;
     
-    /* Align items in the center vertically */
+    /* Align items in the center vertically 
     align-items: center;
+    */
 
-    /* Align items horizontally */
+    /* Align items horizontally 
     justify-content: center;
-
-    /* Keep the group fixed to the bottom of the viewport */
-    position: fixed;
-    
-    /* Align to bottom of the parent with offset of 7. */
-    bottom: 7px;
+    */
 
     /* Inherit width from parent */
     width: inherit;
+
+    /* Enable ScrollBar when content overflows (y should only ever overflow */
+    overflow-y: auto;
+
 }
 
-.win7-startmenu__group--small {
+.win7-startmenu__group--reset-position {
+    top: 0;
+    bottom: 0px;
+    margin-left: 7px;
+    width: fit-content;
+}
+
+.win7-startmenu__group--column {
+    flex-direction: column;
+}
+
+.win7-startmenu__group--fit {
     /* Set size of startmenu group */
-    height: 40px;
+    height: inherit;
 }
 
 .win7-startmenu__group--default-design {
@@ -334,7 +356,10 @@
     background-color: var(--aero-sm-group-color);
 }
 
+
 /* Singular Input */
+
+/*
 .win7-startmenu__group input {
     width: 195px;
     height: 15px;
@@ -357,12 +382,84 @@
     border-bottom: 1px solid #b0b0b2;
 }
 
+.win7-startmenu__avatarborder {
+    content: url("../lib/images/windows/network/frame.png");
+    width: 120px;
+    z-index: 2;
+}
+.win7-startmenu__avatar {
+    content: url("../lib/images/windows/network/user.png");
+    width: 100px;
+    z-index: 1;
+}
+*/
+
 /* =====================================
    MISCELLANEOUS
    ===================================== */
 
+/* SIZING  */
+.y-inherit {
+    height: inherit;
+}
+
+.y-fit {
+    height: fit-content;
+}
+
+.y-xsmall {
+    height: 30px;
+}
+
+.y-small {
+    height: 35px;
+}
+
+.y-medium {
+    height: 40px;
+}
+
+.x-inherit {
+    width: inherit;
+}
+
+.x-fit {
+    width: fit-content;
+}
+
+.x-xsmall {
+    width: 30px;
+}
+
+.x-small {
+    width: 40px;
+}
+
+.x-semi-large {
+    width: 240px;
+}
+
+
+/* FlexBox */
+.justify-left {
+    justify-content: left;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+/* Font */
 .font-xs {
     font-size: 0.8rem;
+}
+
+.font-small {
+    font-size: 0.9rem;
 }
 
 .font-segou_ui {

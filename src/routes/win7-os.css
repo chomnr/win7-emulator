@@ -323,7 +323,6 @@
 
     /* Enable ScrollBar when content overflows (y should only ever overflow */
     overflow-y: auto;
-
 }
 
 .win7-startmenu__group--column {

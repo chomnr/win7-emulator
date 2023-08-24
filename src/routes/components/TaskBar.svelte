@@ -2,7 +2,7 @@
     import { onMount } from "svelte";
 		import { TogglableStartMenu } from "../stores";
 
-		var whitelist: string[] = ["win7-startmenu__content", "win7-startmenu__group"];
+		var whitelist: string[] = ["win7-startmenu__content", "win7-startmenu__group", "win7-avatar", "win7-frame", "win7-startmenu__group--divider"];
 
 		function toggleStartMenu(){
 			if ($TogglableStartMenu == false) {

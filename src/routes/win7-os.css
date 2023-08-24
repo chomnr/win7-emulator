@@ -315,9 +315,8 @@
     align-items: center;
     */
 
-    /* Align items horizontally 
+    /* Align items horizontally */
     justify-content: center;
-    */
 
     /* Inherit width from parent */
     width: inherit;
@@ -393,6 +392,15 @@
     z-index: 1;
 }
 */
+
+/* =====================================
+   Aero Input Customizer
+   ===================================== */
+
+   .aero-input {
+    width: fit-content;
+    height: 20px;
+   }
 
 /* =====================================
    MISCELLANEOUS

@@ -490,10 +490,17 @@
 
         /* Set padding of the program */
         padding: 3px;
+
+        /* Set Transparent border */
+        border: 1px solid transparent;
    }
 
    .win7-desktop-grid__program:hover {
-        background-color: rebeccapurple;
+        background-color: rgba(112, 151, 218, 0.7);
+        border: 1px solid rgba(135,171,240, 0.6);
+        box-shadow: inset 0 0.3px 1px rgba(140, 175, 239, 1);
+
+        cursor: pointer;
    }
 
    .win7-desktop-grid__program--icon {
@@ -543,6 +550,10 @@
 
    .win7-desktop-grid__program--icon--explorer {
         content: url("https://d2hqjspxd4b0fs.cloudfront.net/internet-explorer.svg")
+    }
+
+    .win7-desktop-grid__program--icon--test {
+        content: url("https://d2hqjspxd4b0fs.cloudfront.net/magnifying_glass.svg");
     }
 
 /* =====================================

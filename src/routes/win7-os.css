@@ -481,10 +481,19 @@
 
         /* Set width of the program */
         width: 70px;
-        height: 80px;
+
+        /* Set height of the program */
+        height: fit-content;
+
+        /* Max height of program */
+        max-height: 80px;
 
         /* Set padding of the program */
         padding: 3px;
+   }
+
+   .win7-desktop-grid__program:hover {
+        background-color: rebeccapurple;
    }
 
    .win7-desktop-grid__program--icon {

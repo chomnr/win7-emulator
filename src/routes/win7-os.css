@@ -42,6 +42,9 @@
     --aero-dg-program-hover: rgba(112, 151, 218, 0.7);
     --aero-dg-program-hover-border: rgba(135, 171,240, 0.6);
     --aero-dg-program-hover-shadow: rgba(140, 175, 239, 1);
+    --aero-dg-program-active: rgba(112, 151, 218, 0.7);
+    --aero-dg-program-active-border: rgba(135, 171,240, 0.6);
+    --aero-dg-program-active-shadow: rgba(140, 175, 239, 1);
 
     /* Aero Input Designer */
     --aero-input-default-bg: rgba(255, 255, 255, 1);
@@ -50,6 +53,8 @@
 
 
 .win7-emulator {
+    z-index: auto;
+
     /* Set the default background color to black */
     background: var(--default-background);
 
@@ -393,7 +398,7 @@
     content: "";
     border-top: 2px solid rgba(47, 47, 47, 0.1);
     box-shadow: inset 0px 7px 1px -6px var(--aero-border-top-bottom-color);
-    width: 158px;
+    width: 142px;
     height: 1px;
 }
 
@@ -467,7 +472,7 @@
         padding: 5px;
    }
 
-   .win7-desktop-grid__program {
+   .win7-desktop-grid__program {   
         /* Set display to FlexBox */
         display: flex;
 
@@ -478,13 +483,13 @@
         align-items: center;
 
         /* Set width of the program */
-        width: 80px;
+        width: 85px;
 
         /* Set height of the program */
         height: fit-content;
 
-        /* Max height of program */
-        max-height: 85px;
+        /* Max height of program 
+        max-height: 85px;*/
 
         /* Set padding of the program */
         padding: 3px;
@@ -507,6 +512,18 @@
         cursor: pointer;
    }
 
+   .win7-desktop-grid__program.active {
+        /* Change the background color on active (desktop program) */
+        background-color: var(--aero-dg-program-active);
+
+        /* Change the border color on active (desktop program) */
+        border: 1px solid var(--aero-dg-program-active-border);
+
+        /* Change the box shadow on active (desktop program) */
+        box-shadow: inset 0 0.3px 1px var(--aero-dg-program-active-shadow);
+    }
+
+
    .win7-desktop-grid__program--icon {
         /* Width of icon in program */
         width: 48px;
@@ -521,7 +538,7 @@
 
         /* Max width for title */
         max-width: 75px;
-        max-height: 80px;
+        max-height: fit-content;
 
         /* Break word when title exceeds parent */
         word-break: break-word;
@@ -547,8 +564,9 @@
         /* Hide overflow content */
         overflow: hidden;
 
+
         /* When title exceeds change to ellipisis */
-        text-overflow: ellipsis " [..]";
+        text-overflow: ellipsis;
         
    }
 

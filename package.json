@@ -23,6 +23,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"7.css": "^0.14.0",
 		"modern-normalize": "^2.0.0"
 	}
 }

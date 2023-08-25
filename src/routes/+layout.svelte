@@ -3,6 +3,10 @@
 	import './styles.css';
 	import './win7-os.css'
 	import '../../node_modules/modern-normalize/modern-normalize.css';
+
+	/*
+	import '../../node_modules/7.css/dist/7.css'
+	*/
 </script>
 
 <div class="win7-emulator">

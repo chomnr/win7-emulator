@@ -520,7 +520,7 @@
         display: -webkit-box;
 
         /* Max width for title */
-        max-width: 70px;
+        max-width: 75px;
         max-height: 80px;
 
         /* Break word when title exceeds parent */

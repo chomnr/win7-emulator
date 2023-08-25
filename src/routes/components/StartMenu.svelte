@@ -18,7 +18,7 @@
         </div>
     </div>
     <div class="win7-startmenu__content win7-startmenu__group--column">
-        <div class="win7-avatar-builder" style="top:-50px;left:0px;" >
+        <div class="win7-avatar-builder" style="top:-50px;left:-7px;" >
             <img class="win7-avatar" src="https://d2hqjspxd4b0fs.cloudfront.net/avatar.png" alt="avatar" />
             <img class="win7-frame" src="https://d2hqjspxd4b0fs.cloudfront.net/frame.png" alt="frame" />
         </div>

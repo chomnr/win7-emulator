@@ -460,7 +460,7 @@
         justify-content: left;
 
         /* Height of the desktop grid */
-        height: calc(100vh - 39px);
+        height: calc(100vh - 50px);
 
         /* Set gap between grid items */
         gap: 8px;

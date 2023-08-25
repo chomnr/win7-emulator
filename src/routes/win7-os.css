@@ -154,11 +154,7 @@
 }
 
 .win7-taskbar__program {
-    /* Set the width of the program icon */
-    width: 16px;
-
-    /* Set the height of the program icon */
-    height: 16px; 
+    /* empty */
 }
 
 .win7-taskbar__group {
@@ -482,13 +478,13 @@
         align-items: center;
 
         /* Set width of the program */
-        width: 70px;
+        width: 80px;
 
         /* Set height of the program */
         height: fit-content;
 
         /* Max height of program */
-        max-height: 80px;
+        max-height: 85px;
 
         /* Set padding of the program */
         padding: 3px;

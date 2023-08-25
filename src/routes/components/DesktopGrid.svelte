@@ -56,7 +56,7 @@
         return null;
     }
 
-    function Update(target: HTMLElement) {
+    function update(target: HTMLElement) {
         if (_current == null) {
             _current = target;
             _last = target;
@@ -66,7 +66,7 @@
         }
     }
 
-    function ChangeToActive(current: HTMLElement | null, last: HTMLElement | null) {
+    function changeToActive(current: HTMLElement | null, last: HTMLElement | null) {
         var rootC = findRoot(current?.id);
         var rootL = findRoot(last?.id);
             
@@ -103,8 +103,8 @@
             if (e.target != null) {
                 var result: HTMLElement | null = findTitle(e.target.id);
                 if (result != null) {
-                    Update(result);
-                    ChangeToActive(_current, _last);
+                    update(result);
+                    changeToActive(_current, _last);
                     return;
                 } else {
                     reset();

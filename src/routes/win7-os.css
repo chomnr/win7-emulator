@@ -53,6 +53,7 @@
 
 
 .win7-emulator {
+    /* Automate the z-index */
     z-index: auto;
 
     /* Set the default background color to black */
@@ -263,7 +264,7 @@
 
 .win7-taskbar__program--network-audio-3 {
     /* Set the icon image to Audio-03 using the 'content' property */
-    content: url("https://d2hqjspxd4b0fs.cloudfront.net/44.ico") !important;
+    content: url("https://d2hqjspxd4b0fs.cloudfront.net/68.ico") !important;
 }
 
 .win7-taskbar__program--connection {
@@ -303,6 +304,9 @@
    ===================================== */
 
 .win7-startmenu {
+    /* Ensures startmenu is over grid */
+    z-index: 3;
+
     /* Set the start menu to be absolutely positioned */
     position: absolute;
 
@@ -444,6 +448,9 @@
    Desktop Grid
    ===================================== */
    .win7-desktop-grid {
+        /* Setting z-index */
+        z-index: 2;
+
         /* Use CSS Grid for layout */
         display: grid;
 

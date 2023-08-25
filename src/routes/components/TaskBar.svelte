@@ -1,6 +1,6 @@
 <script lang="ts">
     	import { onMount } from "svelte";
-		import { TogglableStartMenu } from "../stores";
+		import { TogglableStartMenu, CurrentTime, CurrentDate } from "../stores";
 
 		var whitelist: string[] = ["win7-startmenu__content", "win7-startmenu__group", "win7-avatar", "win7-frame", "win7-startmenu__group--divider", "magnify"];
 
@@ -11,6 +11,7 @@
 				TogglableStartMenu.set(false);
 			}
 		}
+
 		function checkForOutsideClick(e: any) {
   			const clickedOnWhitelist = whitelist.some(item =>
     			e.target.className.includes(item) || e.target?.id === "startmenu_input"
@@ -53,8 +54,8 @@
 			<div class="win7-taskbar__program win7-taskbar__program--with-border win7-taskbar__program--hover win7-taskbar__program--connection"></div>
 			<div class="win7-taskbar__program win7-taskbar__program--with-border win7-taskbar__program--hover win7-taskbar__program--network-audio-3"></div>
 			<div class="win7-taskbar__program win7-taskbar__program--time win7-taskbar__program--fit-content win7-taskbar__program--time--left-padding font-segou_ui font-xs white">
-				<div>11:44 AM</div>
-				<div>9/22/2018</div>
+				<div>{$CurrentTime}</div>
+				<div>{$CurrentDate}</div>
 			</div>
 		</div>
 	</div>

@@ -17,73 +17,85 @@
     var _current: HTMLElement | null = null;
 
     function findTitle(programId: string): HTMLElement | null {
-            //self explanatory
-            if (programId.endsWith(title_suffix)) {
-                return document.getElementById(programId)
-            }
-
-            // self explanatory
-            if (whitelist.includes(programId)) {
-                return document.getElementById(programId + title_suffix)
-            }
-
-            // If the programId equals to the icon variant of programId_(icon_suffix)
-            // then return programId_(title_suffix).
-            if (programId.endsWith(icon_suffix)) {
-                var regex = new RegExp(icon_suffix, "g")
-                return document.getElementById(programId.replace(regex, title_suffix))
-            }
-            // nothing found so return null
-            return null;
+         //self explanatory
+        if (programId.endsWith(title_suffix)) {
+            return document.getElementById(programId)
         }
 
-        function findRoot(programId: string) : HTMLElement | null {
-            var m_programid = programId;
-
-            if (programId.endsWith(title_suffix)) {
-                var regex = new RegExp(title_suffix, "g")
-                m_programid = m_programid.replace(regex, "");
-            }
-
-            if (programId.endsWith(icon_suffix)) {
-                var regex = new RegExp(icon_suffix, "g")
-                m_programid = m_programid.replace(regex, "");
-            }
-
-            if (whitelist.includes(m_programid)) {
-                return document.getElementById(m_programid);
-            }
-            return null;
+        // self explanatory
+        if (whitelist.includes(programId)) {
+            return document.getElementById(programId + title_suffix)
         }
 
-        function Update(target: HTMLElement) {
-             if (_current == null) {
-                _current = target;
-                _last = target;
-             } else {
-                _last = _current;
-                _current = target;
-             }
+        // If the programId equals to the icon variant of programId_(icon_suffix)
+        // then return programId_(title_suffix).
+        if (programId.endsWith(icon_suffix)) {
+            var regex = new RegExp(icon_suffix, "g")
+            return document.getElementById(programId.replace(regex, title_suffix))
+        }
+        // nothing found so return null
+        return null;
+    }
+
+    function findRoot(programId: string) : HTMLElement | null {
+        var m_programid = programId;
+
+        if (programId.endsWith(title_suffix)) {
+            var regex = new RegExp(title_suffix, "g")
+            m_programid = m_programid.replace(regex, "");
         }
 
-        function ChangeToActive(current: HTMLElement | null, last: HTMLElement | null) {
-            var rootC = findRoot(current?.id);
-            var rootL = findRoot(last?.id);
+        if (programId.endsWith(icon_suffix)) {
+            var regex = new RegExp(icon_suffix, "g")
+            m_programid = m_programid.replace(regex, "");
+        }
+
+        if (whitelist.includes(m_programid)) {
+            return document.getElementById(m_programid);
+        }
+        return null;
+    }
+
+    function Update(target: HTMLElement) {
+        if (_current == null) {
+            _current = target;
+            _last = target;
+        } else {
+            _last = _current;
+            _current = target;
+        }
+    }
+
+    function ChangeToActive(current: HTMLElement | null, last: HTMLElement | null) {
+        var rootC = findRoot(current?.id);
+        var rootL = findRoot(last?.id);
             
-            if (rootC == rootL) {
-                if (!rootC?.classList.contains("active")) {
-                    rootC?.classList.add("active");
-                    current.style.display = "block";
-                }
-                return;
-            } else {
+        if (rootC == rootL) {
+            if (!rootC?.classList.contains("active")) {
                 rootC?.classList.add("active");
-                rootL?.classList.remove("active");
                 current.style.display = "block";
-                last.style.display = "-webkit-box";
-
             }
+            return;
+        } else {
+            rootC?.classList.add("active");
+            rootL?.classList.remove("active");
+            current.style.display = "block";
+            last.style.display = "-webkit-box";
+
         }
+    }
+
+    // Reset all programs to default;
+    function reset() {
+        if (_current != null) {
+            var rootC = findRoot(_current?.id);
+            var rootL = findRoot(_last?.id);
+            rootC?.classList.remove("active");
+            rootL?.classList.remove("active");
+            _current.style.display = "-webkit-box";
+            _last.style.display = "-webkit-box";
+        }
+    }
 
     onMount(() => {
         document.addEventListener("click", (e) => {
@@ -93,6 +105,8 @@
                     Update(result);
                     ChangeToActive(_current, _last);
                     return;
+                } else {
+                    reset();
                 }
             }
         })
@@ -106,29 +120,5 @@
     <div id="program_test" class="win7-desktop-grid__program" style="z-index: 1;">
         <div id="program_test-icon" class="win7-desktop-grid__program--icon win7-desktop-grid__program--icon--test"></div>
         <div id="program_test-title" class="win7-desktop-grid__program--title">Recycle  adsasdadsdasadsas</div>
-    </div>
-    <div class="win7-desktop-grid__program">
-        <div class="win7-desktop-grid__program--icon win7-desktop-grid__program--icon--explorer"></div>
-        <div class="win7-desktop-grid__program--title">Recycle Bin</div>
-    </div>
-    <div class="win7-desktop-grid__program">
-        <div class="win7-desktop-grid__program--icon win7-desktop-grid__program--icon--explorer"></div>
-        <div class="win7-desktop-grid__program--title">Recycle Bin</div>
-    </div>
-    <div class="win7-desktop-grid__program">
-        <div class="win7-desktop-grid__program--icon win7-desktop-grid__program--icon--explorer"></div>
-        <div class="win7-desktop-grid__program--title">Recycle Bindasadssasdsdd</div>
-    </div>
-    <div class="win7-desktop-grid__program">
-        <div class="win7-desktop-grid__program--icon win7-desktop-grid__program--icon--explorer"></div>
-        <div class="win7-desktop-grid__program--title">Recycle Bin</div>
-    </div>
-    <div class="win7-desktop-grid__program">
-        <div class="win7-desktop-grid__program--icon win7-desktop-grid__program--icon--explorer"></div>
-        <div class="win7-desktop-grid__program--title">Recycle Bin</div>
-    </div>
-    <div class="win7-desktop-grid__program">
-        <div class="win7-desktop-grid__program--icon win7-desktop-grid__program--icon--test"></div>
-        <div class="win7-desktop-grid__program--title">Recycle Bin</div>
     </div>
 </div>

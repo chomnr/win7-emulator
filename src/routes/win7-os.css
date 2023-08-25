@@ -498,9 +498,16 @@
    }
 
    .win7-desktop-grid__program:hover {
+        /* Change the background color on hover (desktop program) */
         background-color: var(--aero-dg-program-hover);
+
+        /* Change the border color on hover (desktop program) */
         border: 1px solid var(--aero-dg-program-hover-border);
+
+        /* Change the box shadow on hover (desktop program) */
         box-shadow: inset 0 0.3px 1px var(--aero-dg-program-hover-shadow);
+
+        /* Change cursor to pointer on hover */
         cursor: pointer;
    }
 

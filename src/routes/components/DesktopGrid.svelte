@@ -94,6 +94,7 @@
             rootL?.classList.remove("active");
             _current.style.display = "-webkit-box";
             _last.style.display = "-webkit-box";
+            _current = null;
         }
     }
 

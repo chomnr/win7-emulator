@@ -451,9 +451,7 @@
         display: -moz-grid;
         
         /* Track the rows and see if it exceeds the parent and automatically adjusts */
-        grid-template-rows: repeat(auto-fill, minmax(80px, 1fr));
-
-        column-gap: 30px;
+        grid-template-rows: repeat(auto-fill, minmax(85px, 1fr));
 
         /* Set auto-flow to Column */
         grid-auto-flow: column;
@@ -465,7 +463,7 @@
         height: calc(100vh - 39px);
 
         /* Set gap between grid items */
-        gap: 5px;
+        gap: 8px;
 
         /* Set padding for box */
         padding: 5px;
@@ -483,6 +481,7 @@
 
         /* Set width of the program */
         width: 70px;
+        height: 80px;
 
         /* Set padding of the program */
         padding: 3px;
@@ -502,6 +501,7 @@
 
         /* Max width for title */
         max-width: 70px;
+        max-height: 80px;
 
         /* Break word when title exceeds parent */
         word-break: break-word;

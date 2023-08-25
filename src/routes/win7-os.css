@@ -35,6 +35,12 @@
     --aero-sm-group-color: rgba(241, 245, 251, 1);
     --aero-sm-group-border-top-color: rgba(210, 221, 237, 1);
 
+    /* Desktop Grid */
+    --aero-dg-program-title-color: rgba(255, 255, 255, 1);
+    --aero-dg-program-title-shadow-color: rgba(0, 0, 0, 1);
+    --aero-dg-program-title-font-size: 0.8rem;
+
+
     /* Aero Input Designer */
     --aero-input-default-bg: rgba(255, 255, 255, 1);
     --aero-input-default-border: rgba(196, 198, 201, 1);
@@ -73,6 +79,12 @@
 }
 
 .win7-desktop__content {
+    /* Set display to FlexBox */
+    display: flex;
+
+    /* Set FlexBox direction to column */
+    flex-direction: column;
+
     /* Set the minimum height of the element to 100% of viewport height */
     min-height: 100vh;
 
@@ -425,20 +437,102 @@
     width: 60px;
 }
 
+/* =====================================
+   Desktop Grid
+   ===================================== */
+   .win7-desktop-grid {
+        /* Use CSS Grid for layout */
+        display: grid;
+
+        /* Internet Explorer-specific: Use the old -ms-grid for layout */
+        display: -ms-grid;
+
+        /* Mozilla Firefox-specific: Use the old -moz-grid for layout */
+        display: -moz-grid;
+
+        /* Height of the desktop grid */
+        height: calc(100vh - 39px);
+
+        /* Set gap between grid items */
+        gap: 5px;
+
+        /* Set padding for box */
+        padding: 5px;
+   }
+
+   .win7-desktop-grid__program {
+        /* Set display to FlexBox */
+        display: flex;
+
+        /* Set FlexBox to direction */
+        flex-direction: column;
+
+        /* Align icon and program name to the center */
+        align-items: center;
+
+        /* Set width of the program */
+        width: 70px;
+
+        /* Set padding of the program */
+        padding: 3px;
+   }
+
+   .win7-desktop-grid__program--icon {
+        /* Width of icon in program */
+        width: 48px;
+
+        /* Height of icon in program */
+        height: 48px;
+   }
+   
+   .win7-desktop-grid__program--title {
+        /* Set title to Old FlexBox */
+        display: -webkit-box;
+
+        /* Max width for title */
+        max-width: 70px;
+
+        /* Break word when title exceeds parent */
+        word-break: break-word;
+
+        /* Align title in the center */
+        text-align: center;
+
+        /* Color of program title */
+        color: var(--aero-dg-program-title-color);
+
+        /* Color of text shadow of program title */
+        text-shadow: 1px 3px 5px var(--aero-dg-program-title-shadow-color);
+
+        /* Font size of title */
+        font-size: var(--aero-dg-program-title-font-size);
+
+        /* Allows limiting of the contents of a block container */
+        -webkit-line-clamp: 2;
+
+        /* Whether a box lays out its contents horizontally or vertically */
+        -webkit-box-orient: vertical;
+
+        /* Hide overflow content */
+        overflow: hidden;
+
+        /* When title exceeds change to ellipisis */
+        text-overflow: ellipsis " [..]";
+        
+   }
+
+   .win7-desktop-grid__program--icon--explorer {
+        content: url("https://d2hqjspxd4b0fs.cloudfront.net/internet-explorer.svg")
+    }
 
 /* =====================================
    Aero Button Customizer
    ===================================== */
 
 .aero-button {
-    /* Use flexbox to vertically align items */
     display: flex;
-
-    /* Align input in the center of the block */
     align-items: center;
-
     width: 150px;
-
     padding: 4px;
     background: transparent;
 }

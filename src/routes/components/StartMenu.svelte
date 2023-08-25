@@ -56,7 +56,6 @@
             <div class="aero-button">
                 <button>Help and Support</button>
             </div>
-
             <!--
             <div class="aero-button" style="position:relative;top: 25px;width:fit-content;">
                 <button class="shutdown">NOPE</button>

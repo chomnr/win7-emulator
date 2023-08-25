@@ -449,6 +449,17 @@
 
         /* Mozilla Firefox-specific: Use the old -moz-grid for layout */
         display: -moz-grid;
+        
+        /* Track the rows and see if it exceeds the parent and automatically adjusts */
+        grid-template-rows: repeat(auto-fill, minmax(80px, 1fr));
+
+        column-gap: 30px;
+
+        /* Set auto-flow to Column */
+        grid-auto-flow: column;
+
+        /* Ensures that there is no huge gaps between items */
+        justify-content: left;
 
         /* Height of the desktop grid */
         height: calc(100vh - 39px);

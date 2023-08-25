@@ -2,7 +2,7 @@
 	/*import Header from './Header.svelte';*/
 	import './styles.css';
 	import './win7-os.css'
-	import 'node_modules/modern-normalize/modern-normalize.css';
+	import '../../node_modules/modern-normalize/modern-normalize.css';
 </script>
 
 <div class="win7-emulator">

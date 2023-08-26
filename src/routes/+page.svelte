@@ -4,6 +4,7 @@
 	import StartMenu from './components/StartMenu.svelte';
 	import TaskBar from './components/TaskBar.svelte';
 	import { TogglableStartMenu, CurrentTime, CurrentDate } from './stores';
+    import Explorer from './Programs/Explorer.svelte';
 
 	onMount(() => {
 		
@@ -28,7 +29,9 @@
 </svelte:head>
 
 
+
 <DesktopGrid></DesktopGrid>
+<Explorer></Explorer>
 {#if $TogglableStartMenu}
 <StartMenu></StartMenu>
 {/if}

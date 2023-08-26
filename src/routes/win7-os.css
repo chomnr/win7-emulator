@@ -203,7 +203,7 @@
 
 .win7-taskbar__program--startmenu {
     /* Set the icon image to Windows 7 Start Menu using the 'content' property */
-    content: url("http://d2hqjspxd4b0fs.cloudfront.net/win7/orb-default.png") !important;
+    content: url("http://d2hqjspxd4b0fs.cloudfront.net/win7/orb-default.png");
 
     /* Inherit the width from the parent element */
     width: inherit;
@@ -214,7 +214,7 @@
 
 .win7-taskbar__program--startmenu--glow {
     /* Change the icon image on hover */
-    content: url("http://d2hqjspxd4b0fs.cloudfront.net/win7/orb-pressed.png") !important; /* Change the icon image on hover */
+    content: url("http://d2hqjspxd4b0fs.cloudfront.net/win7/orb-pressed.png"); /* Change the icon image on hover */
 
     /* Inherit the width from the parent element */
     width: inherit;
@@ -223,12 +223,16 @@
     height: inherit;
 }
 
+
 .win7-taskbar__program--startmenu:hover {
     /* Change the icon image on hover */
-    content: url("http://d2hqjspxd4b0fs.cloudfront.net/win7/orb-hover.png") !important; /* Change the icon image on hover */
+    content: url("http://d2hqjspxd4b0fs.cloudfront.net/win7/orb-hover.png"); /* Change the icon image on hover */
 
     /* Change cursor to pointer on hover */
     cursor: pointer;
+
+    transition: content 2s;
+
 }
 
 .win7-taskbar__program--with-border {
@@ -575,12 +579,25 @@
    }
 
    .win7-desktop-grid__program--icon--explorer {
+        /* Desktop Explorer Icon */
         content: url("https://d2hqjspxd4b0fs.cloudfront.net/internet-explorer.svg")
     }
 
     .win7-desktop-grid__program--icon--test {
+        /* TEST */
         content: url("https://d2hqjspxd4b0fs.cloudfront.net/magnifying_glass.svg");
     }
+
+
+/* =====================================
+   DESKTOP PROGRAM (INTERNET EXPLORER)
+   ===================================== */
+
+   .win7-program__explorer {
+        z-index: 4;
+        /*  */
+        position: absolute;
+   }
 
 /* =====================================
    Aero Button Customizer
@@ -672,8 +689,8 @@
 }
 
 .aero-input input.small {
-    height: 18px;
-    width: 200px;
+    height: 22px;
+    width: 210px;
 }
 
 /* =====================================

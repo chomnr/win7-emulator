@@ -1,9 +1,7 @@
 <div id="win7_startmenu" class="win7-startmenu win7--aero win7-startmenu--aero--additives">
     <div class="win7-startmenu__content win7-startmenu__content--with-design">
         <div class="win7-startmenu__group win7-startmenu__group--default-design justify-left win7-startmenu__group--column y-inherit">
-            <!--
-            <div>adsdas</div>
-            <div>adsdas</div>-->
+            <!-- Startmenu items here. -->
         </div>
 
         <div class="win7-startmenu__group win7-startmenu__group--default-design align-center justify-left x-semi-large y-small font-small">

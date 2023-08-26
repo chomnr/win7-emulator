@@ -1,4 +1,3 @@
-
 /* Windows 7 Desktop */
 :root {
     /* Windows 7 theme */
@@ -40,11 +39,21 @@
     --aero-dg-program-title-shadow-color: rgba(0, 0, 0, 1);
     --aero-dg-program-title-font-size: 0.8rem;
     --aero-dg-program-hover: rgba(112, 151, 218, 0.7);
-    --aero-dg-program-hover-border: rgba(135, 171,240, 0.6);
+    --aero-dg-program-hover-border: rgba(135, 171, 240, 0.6);
     --aero-dg-program-hover-shadow: rgba(140, 175, 239, 1);
     --aero-dg-program-active: rgba(112, 151, 218, 0.7);
-    --aero-dg-program-active-border: rgba(135, 171,240, 0.6);
+    --aero-dg-program-active-border: rgba(135, 171, 240, 0.6);
     --aero-dg-program-active-shadow: rgba(140, 175, 239, 1);
+
+    /* IE9 Program */
+    --aero-ie9-program-width: 1200px;
+    --aero-ie9-program-height: 700px;
+    --aero-ie9-program-border-radius: 6px;
+    --aero-ie9-program-blur: 1px;
+    --aero-ie9-program-opacity: 3px;
+
+    --aero-ie9-program-border-color: rgba(17, 53, 126, 1);
+
 
     /* Aero Input Designer */
     --aero-input-default-bg: rgba(255, 255, 255, 1);
@@ -77,7 +86,7 @@
     image-rendering: auto;
 
     /* Disable the ability to call up the context menu on touch */
-    -webkit-touch-callout: none; /* Disable iOS context menu */
+    -webkit-touch-callout: none;
 
     /* Disable text selection and highlighting */
     user-select: none;
@@ -100,7 +109,7 @@
     width: 100vw;
 }
 
-.win7-desktop__content--with-bg {  
+.win7-desktop__content--with-bg {
     /* Set background image */
     background: url("https://d2hqjspxd4b0fs.cloudfront.net/win7-bg.jpg");
 
@@ -108,7 +117,8 @@
     background-position: center;
 
     /* Background image covers entire screen. */
-    background-size: cover; /* Adjust as needed */
+    background-size: cover;
+    /* Adjust as needed */
 
     /* Prevent background image from repeating */
     background-repeat: no-repeat;
@@ -131,19 +141,22 @@
    ===================================== */
 
 .win7-taskbar {
+    /* Applying z-index */
+    z-index: 2;
+
     /* Fixed position at the bottom of the viewport */
     position: fixed;
 
     /* Positioned at the bottom */
     bottom: 0;
-    
+
     /* Inherits width from the parent */
     width: inherit;
 }
 
 .win7-taskbar--aero--additives {
     /* Top border for Aero theme */
-    border-top: 1px solid var(--aero-border-top-color); 
+    border-top: 1px solid var(--aero-border-top-color);
 
     /* Inset shadow color for the top of the border. */
     box-shadow: inset 0px 7px 1px -6px var(--aero-border-top-bottom-color);
@@ -151,7 +164,7 @@
 
 .win7-taskbar__content {
     /* Set the height using the custom property */
-    height: var(--taskbar-height);    
+    height: var(--taskbar-height);
 }
 
 .win7-taskbar__content--use-flex {
@@ -174,7 +187,7 @@
     height: inherit;
 }
 
-.win7-taskbar__group--align-programs { 
+.win7-taskbar__group--align-programs {
     /* Aligns the taskbar__program(s) with one another */
     align-items: center;
 }
@@ -214,7 +227,8 @@
 
 .win7-taskbar__program--startmenu--glow {
     /* Change the icon image on hover */
-    content: url("http://d2hqjspxd4b0fs.cloudfront.net/win7/orb-pressed.png"); /* Change the icon image on hover */
+    content: url("http://d2hqjspxd4b0fs.cloudfront.net/win7/orb-pressed.png");
+    /* Change the icon image on hover */
 
     /* Inherit the width from the parent element */
     width: inherit;
@@ -226,7 +240,8 @@
 
 .win7-taskbar__program--startmenu:hover {
     /* Change the icon image on hover */
-    content: url("http://d2hqjspxd4b0fs.cloudfront.net/win7/orb-hover.png"); /* Change the icon image on hover */
+    content: url("http://d2hqjspxd4b0fs.cloudfront.net/win7/orb-hover.png");
+    /* Change the icon image on hover */
 
     /* Change cursor to pointer on hover */
     cursor: pointer;
@@ -322,7 +337,7 @@
 
     /* Set the height of the start menu */
     height: var(--startmenu-height);
-    
+
     /* Position the element at a specific distance from the bottom */
     bottom: var(--startmenu-starting-pos);
 
@@ -333,7 +348,7 @@
 
 .win7-startmenu--aero--additives {
     /* Top border for Aero theme */
-    border: 1px solid var(--aero-border-top-color); 
+    border: 1px solid var(--aero-border-top-color);
 
     /* Inset shadow color for the top of the border. */
     box-shadow: inset 0px 0px 3px var(--aero-border-top-bottom-color);
@@ -353,7 +368,7 @@
 
     /* Set the width using a CSS variable */
     width: var(--startmenu-content-width);
-    
+
     /* Set the height using a CSS variable */
     height: var(--startmenu-content-height);
 }
@@ -377,7 +392,7 @@
 
     /* Use flexbox to align items vertically and horziontally */
     display: flex;
-    
+
     /* Align items horizontally */
     justify-content: center;
 
@@ -430,6 +445,7 @@
     width: 90px;
     height: 90px;
 }
+
 .win7-avatar-builder img.win7-frame {
     position: absolute;
     width: inherit;
@@ -448,156 +464,217 @@
 /* =====================================
    Desktop Grid
    ===================================== */
-   .win7-desktop-grid {
-        /* Setting z-index */
-        z-index: 2;
+.win7-desktop-grid {
+    /* Setting z-index */
+    z-index: 2;
 
-        /* Use CSS Grid for layout */
-        display: grid;
+    /* Use CSS Grid for layout */
+    display: grid;
 
-        /* Internet Explorer-specific: Use the old -ms-grid for layout */
-        display: -ms-grid;
+    /* Internet Explorer-specific: Use the old -ms-grid for layout */
+    display: -ms-grid;
 
-        /* Mozilla Firefox-specific: Use the old -moz-grid for layout */
-        display: -moz-grid;
-        
-        /* Track the rows and see if it exceeds the parent and automatically adjusts */
-        grid-template-rows: repeat(auto-fill, minmax(85px, 1fr));
+    /* Mozilla Firefox-specific: Use the old -moz-grid for layout */
+    display: -moz-grid;
 
-        /* Set auto-flow to Column */
-        grid-auto-flow: column;
+    /* Track the rows and see if it exceeds the parent and automatically adjusts */
+    grid-template-rows: repeat(auto-fill, minmax(85px, 1fr));
 
-        /* Ensures that there is no huge gaps between items */
-        justify-content: left;
+    /* Set auto-flow to Column */
+    grid-auto-flow: column;
 
-        /* Height of the desktop grid */
-        height: calc(100vh - 50px);
+    /* Ensures that there is no huge gaps between items */
+    justify-content: left;
 
-        /* Set gap between grid items */
-        gap: 8px;
+    /* Height of the desktop grid */
+    height: calc(100vh - 50px);
 
-        /* Set padding for box */
-        padding: 5px;
-   }
+    /* Set gap between grid items */
+    gap: 8px;
 
-   .win7-desktop-grid__program {   
-        /* Set display to FlexBox */
-        display: flex;
+    /* Set padding for box */
+    padding: 5px;
+}
 
-        /* Set FlexBox to direction */
-        flex-direction: column;
+.win7-desktop-grid__program {
+    /* Set display to FlexBox */
+    display: flex;
 
-        /* Align icon and program name to the center */
-        align-items: center;
+    /* Set FlexBox to direction */
+    flex-direction: column;
 
-        /* Set width of the program */
-        width: 85px;
+    /* Align icon and program name to the center */
+    align-items: center;
 
-        /* Set height of the program */
-        height: fit-content;
+    /* Set width of the program */
+    width: 85px;
 
-        /* Max height of program 
+    /* Set height of the program */
+    height: fit-content;
+
+    /* Max height of program 
         max-height: 85px;*/
 
-        /* Set padding of the program */
-        padding: 3px;
+    /* Set padding of the program */
+    padding: 3px;
 
-        /* Set Transparent border */
-        border: 1px solid transparent;
-   }
+    /* Set Transparent border */
+    border: 1px solid transparent;
+}
 
-   .win7-desktop-grid__program:hover {
-        /* Change the background color on hover (desktop program) */
-        background-color: var(--aero-dg-program-hover);
+.win7-desktop-grid__program:hover {
+    /* Change the background color on hover (desktop program) */
+    background-color: var(--aero-dg-program-hover);
 
-        /* Change the border color on hover (desktop program) */
-        border: 1px solid var(--aero-dg-program-hover-border);
+    /* Change the border color on hover (desktop program) */
+    border: 1px solid var(--aero-dg-program-hover-border);
 
-        /* Change the box shadow on hover (desktop program) */
-        box-shadow: inset 0 0.3px 1px var(--aero-dg-program-hover-shadow);
+    /* Change the box shadow on hover (desktop program) */
+    box-shadow: inset 0 0.3px 1px var(--aero-dg-program-hover-shadow);
 
-        /* Change cursor to pointer on hover */
-        cursor: pointer;
-   }
+    /* Change cursor to pointer on hover */
+    cursor: pointer;
+}
 
-   .win7-desktop-grid__program.active {
-        /* Change the background color on active (desktop program) */
-        background-color: var(--aero-dg-program-active);
+.win7-desktop-grid__program.active {
+    /* Change the background color on active (desktop program) */
+    background-color: var(--aero-dg-program-active);
 
-        /* Change the border color on active (desktop program) */
-        border: 1px solid var(--aero-dg-program-active-border);
+    /* Change the border color on active (desktop program) */
+    border: 1px solid var(--aero-dg-program-active-border);
 
-        /* Change the box shadow on active (desktop program) */
-        box-shadow: inset 0 0.3px 1px var(--aero-dg-program-active-shadow);
-    }
-
-
-   .win7-desktop-grid__program--icon {
-        /* Width of icon in program */
-        width: 48px;
-
-        /* Height of icon in program */
-        height: 48px;
-   }
-   
-   .win7-desktop-grid__program--title {
-        /* Set title to Old FlexBox */
-        display: -webkit-box;
-
-        /* Max width for title */
-        max-width: 75px;
-        max-height: fit-content;
-
-        /* Break word when title exceeds parent */
-        word-break: break-word;
-
-        /* Align title in the center */
-        text-align: center;
-
-        /* Color of program title */
-        color: var(--aero-dg-program-title-color);
-
-        /* Color of text shadow of program title */
-        text-shadow: 1px 3px 5px var(--aero-dg-program-title-shadow-color);
-
-        /* Font size of title */
-        font-size: var(--aero-dg-program-title-font-size);
-
-        /* Allows limiting of the contents of a block container */
-        -webkit-line-clamp: 2;
-
-        /* Whether a box lays out its contents horizontally or vertically */
-        -webkit-box-orient: vertical;
-
-        /* Hide overflow content */
-        overflow: hidden;
+    /* Change the box shadow on active (desktop program) */
+    box-shadow: inset 0 0.3px 1px var(--aero-dg-program-active-shadow);
+}
 
 
-        /* When title exceeds change to ellipisis */
-        text-overflow: ellipsis;
-        
-   }
+.win7-desktop-grid__program--icon {
+    /* Width of icon in program */
+    width: 48px;
 
-   .win7-desktop-grid__program--icon--explorer {
-        /* Desktop Explorer Icon */
-        content: url("https://d2hqjspxd4b0fs.cloudfront.net/internet-explorer.svg")
-    }
+    /* Height of icon in program */
+    height: 48px;
+}
 
-    .win7-desktop-grid__program--icon--test {
-        /* TEST */
-        content: url("https://d2hqjspxd4b0fs.cloudfront.net/magnifying_glass.svg");
-    }
+.win7-desktop-grid__program--title {
+    /* Set title to Old FlexBox */
+    display: -webkit-box;
+
+    /* Max width for title */
+    max-width: 75px;
+    max-height: fit-content;
+
+    /* Break word when title exceeds parent */
+    word-break: break-word;
+
+    /* Align title in the center */
+    text-align: center;
+
+    /* Color of program title */
+    color: var(--aero-dg-program-title-color);
+
+    /* Color of text shadow of program title */
+    text-shadow: 1px 3px 5px var(--aero-dg-program-title-shadow-color);
+
+    /* Font size of title */
+    font-size: var(--aero-dg-program-title-font-size);
+
+    /* Allows limiting of the contents of a block container */
+    -webkit-line-clamp: 2;
+
+    /* Whether a box lays out its contents horizontally or vertically */
+    -webkit-box-orient: vertical;
+
+    /* Hide overflow content */
+    overflow: hidden;
+
+
+    /* When title exceeds change to ellipisis */
+    text-overflow: ellipsis;
+
+}
+
+.win7-desktop-grid__program--icon--explorer {
+    /* Desktop Explorer Icon */
+    content: url("https://d2hqjspxd4b0fs.cloudfront.net/internet-explorer.svg")
+}
+
+.win7-desktop-grid__program--icon--test {
+    /* TEST */
+    content: url("https://d2hqjspxd4b0fs.cloudfront.net/magnifying_glass.svg");
+}
 
 
 /* =====================================
    DESKTOP PROGRAM (INTERNET EXPLORER)
    ===================================== */
 
-   .win7-program__explorer {
-        z-index: 4;
-        /*  */
-        position: absolute;
-   }
+.win7-program__explorer {
+    /* Ensure that the desktop program icons get overlapped */
+    z-index: 4;
+    
+    /* Relative positioning */
+    position: absolute;
+
+    /* Center horizontally */
+    left: 0;
+    right: 0;
+    margin: auto;
+
+    /* Tries to center.. */
+    top: 10%;
+
+    /* Default IE9 width */
+    width: var(--aero-ie9-program-width);
+
+    /* Default IE9 height */
+    height: var(--aero-ie9-program-height);
+}
+
+.win7-program__explorer {
+    /* Set border-radius for Internet Explorer 9 */
+    border-radius: var(--aero-ie9-program-border-radius);
+
+    /* Set border for Internet Explorer 9 */
+    border: 1px solid var(--aero-ie9-program-border-color);
+}
+
+.win7-program__explorer::before {
+    /* Apply a background image to the pseudo-element */
+    content: "";
+    background: url("../lib/images/windows/textures/aero_glass_texture.jpg");
+    background-size: cover;
+
+    /* Set a lower z-index for layering */
+    z-index: -1;
+
+    /* Set opacity for transparency */
+    opacity: 0.3;
+
+    /* Set dimensions and position */
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    /* Set background blur */
+    filter: blur(var(--aero-ie9-program-blur));
+
+    /* Set border-radius for Internet Explorer 9 */
+    border-radius: var(--aero-ie9-program-border-radius);
+}
+
+.win7-program__explorer__controls {
+    /* Use FlexBox */
+    display: flex;
+
+    /* Start direction from the end */
+    flex-direction: row-reverse;
+
+    /* Inherit width from parent */
+    width: inherit;
+}
 
 /* =====================================
    Aero Button Customizer
@@ -678,14 +755,37 @@
 }
 
 .aero-input .icon {
+    /* Default icon size */
+    width: 15px;
+
     /* Inherit height from parent */
     height: inherit;
+
+    margin-right: 3px;
 }
 
 .aero-input .icon.magnify {
     /* Set content as a magnifying glass icon */
     content: url("https://d2hqjspxd4b0fs.cloudfront.net/magnifying_glass.svg");
-    margin-right: 3px;
+}
+
+.aero-input .icon.magnify-2 {
+    /* Set content to magnifying glass icon */
+    content: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDI0IDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPg0KICAgIDxwYXRoIGZpbGw9IiM2Nzg0OWEiIGQ9Ik05LjUgM0E2LjUgNi41IDAgMCAxIDE2IDkuNWMwIDEuNjEtLjU5IDMuMDktMS41NiA0LjIzbC4yNy4yN2guNzlsNSA1bC0xLjUgMS41bC01LTV2LS43OWwtLjI3LS4yN0E2LjUxNiA2LjUxNiAwIDAgMSA5LjUgMTZBNi41IDYuNSAwIDAgMSAzIDkuNUE2LjUgNi41IDAgMCAxIDkuNSAzbTAgMkM3IDUgNSA3IDUgOS41UzcgMTQgOS41IDE0UzE0IDEyIDE0IDkuNVMxMiA1IDkuNSA1WiIvPg0KPC9zdmc+);
+}
+
+.aero-input .icon.refresh {
+    /* Set content to refresh icon */
+    content: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjc4NDlhIiBzdHJva2UtbGluZWNhcD0ic3F1YXJlIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIHN0cm9rZS13aWR0aD0iMzIiIGQ9Ik0zMjAgMTQ2czI0LjM2LTEyLTY0LTEyYTE2MCAxNjAgMCAxIDAgMTYwIDE2MCIvPjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzY3ODQ5YSIgc3Ryb2tlLWxpbmVjYXA9InNxdWFyZSIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBzdHJva2Utd2lkdGg9IjMyIiBkPSJtMjU2IDU4bDgwIDgwbC04MCA4MCIvPjwvc3ZnPg==);
+}
+
+.aero-input .icon.close {
+    /* Set content to close icon */
+    content: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDI0IDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzY3ODQ5YSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2Utd2lkdGg9IjIiIGQ9Ik0xMiAxMkw3IDdtNSA1bDUgNW0tNS01bDUtNW0tNSA1bC01IDUiLz48L3N2Zz4=);
+}
+
+.aero-input .icon.down-arrow {
+    content: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDI0IDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGZpbGw9IiM2Nzg0OWEiIGQ9Im03IDEwbDUgNWw1LTVIN1oiLz48L3N2Zz4=);
 }
 
 .aero-input input.small {
@@ -693,9 +793,25 @@
     width: 210px;
 }
 
+.aero-input input.xsmall {
+    height: 20px;
+    width: 210px;
+}
+
+.aero-input input.medium {
+    height: 21px;
+    width: 230px;
+}
+
+.aero-input input.medium-big-w {
+    height: 21px;
+    width: 300px;
+}
+
 /* =====================================
    MISCELLANEOUS
    ===================================== */
+
 
 /* SIZING  */
 .y-inherit {
@@ -780,4 +896,9 @@
 
 .white {
     color: white;
+}
+
+/* Transforms */
+.transform-flip {
+    transform: scaleX(-1);
 }

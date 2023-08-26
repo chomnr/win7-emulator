@@ -58,7 +58,13 @@
     /* Aero Input Designer */
     --aero-input-default-bg: rgba(255, 255, 255, 1);
     --aero-input-default-border: rgba(196, 198, 201, 1);
+    --aero-input-disabled-color: rgba(230, 230, 231, 1);
+    --aero-input-disabled-border-color: rgba(149, 170, 186);
+
+    --aero-ie9-disabled-cursor: normal;
+
 }
+
 
 
 .win7-emulator {
@@ -111,7 +117,7 @@
 
 .win7-desktop__content--with-bg {
     /* Set background image */
-    background: url("https://d2hqjspxd4b0fs.cloudfront.net/win7-bg.jpg");
+    background: url("https://d2hqjspxd4b0fs.cloudfront.net/win7/desktop.jpg");
 
     /* Center the background image */
     background-position: center;
@@ -280,12 +286,12 @@
 
 .win7-taskbar__program--network-audio-3 {
     /* Set the icon image to Audio-03 using the 'content' property */
-    content: url("https://d2hqjspxd4b0fs.cloudfront.net/68.ico") !important;
+    content: url("https://d2hqjspxd4b0fs.cloudfront.net/win7/audio/68.ico") !important;
 }
 
 .win7-taskbar__program--connection {
     /* Set the icon image to Ethernet Connection using the 'content' property */
-    content: url("https://d2hqjspxd4b0fs.cloudfront.net/390.ico") !important;
+    content: url("https://d2hqjspxd4b0fs.cloudfront.net/win7/network/390.ico") !important;
 }
 
 .win7-taskbar__program--list-programs::before {
@@ -596,13 +602,14 @@
 
 .win7-desktop-grid__program--icon--explorer {
     /* Desktop Explorer Icon */
-    content: url("https://d2hqjspxd4b0fs.cloudfront.net/internet-explorer.svg")
+    content: url("https://d2hqjspxd4b0fs.cloudfront.net/win7/internet-explorer.svg")
 }
 
+/*
 .win7-desktop-grid__program--icon--test {
-    /* TEST */
     content: url("https://d2hqjspxd4b0fs.cloudfront.net/magnifying_glass.svg");
 }
+*/
 
 
 /* =====================================
@@ -727,7 +734,14 @@
     /* Align input in the center of the block */
     align-items: center;
 
+    /* Width tries to fit content */
     width: fit-content;
+
+    /* Set padding so box-shadow will show */
+    padding: 1px;
+
+    /* The box shadow */
+    box-shadow: inset 0px 0px 2px var(--aero-border-top-bottom-color);
 }
 
 .aero-input.default {
@@ -735,7 +749,19 @@
     background-color: white;
 
     /* Set border color to default(aero) */
-    border: 1px solid var(--aero-input-default-border);
+    border: 1px solid var(--aero-input-default-border);    
+}
+
+.aero-input.disabled {
+    background: var(--aero-input-disabled-color);
+    cursor: var(--aero-ie9-disabled-cursor);
+    border: 1px solid var(--aero-input-disabled-border-color);
+    color: black;
+}
+
+.aero-input input:disabled {
+    background: var(--aero-input-disabled-color);
+    cursor: var(--aero-ie9-disabled-cursor);
 }
 
 .aero-input input {
@@ -762,6 +788,12 @@
     height: inherit;
 
     margin-right: 3px;
+}
+
+.aero-input .icon.favicon-portfolio {
+    content: url("../lib/images/windows/favicon-stroke-and-fill.svg");
+    width: 20px;
+    height: 20px;
 }
 
 .aero-input .icon.magnify {

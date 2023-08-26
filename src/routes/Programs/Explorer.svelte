@@ -25,8 +25,9 @@
     </div>
     <!-- IE9 Main Controls -->
     <div class="win7">
-        <div class="aero-input default">
-            <input id="startmenu_input" class="icon-format font-xxs font-italic medium-big-w" placeholder="Search programs and files"/>
+        <div class="aero-input disabled">
+            <div class="icon favicon-portfolio"></div>
+            <input id="startmenu_input" class="icon-format font-xxs font-italic medium-big-w" placeholder="https://zeljko.me/portfolio" disabled/>
             <div class="icon magnify-2 transform-flip"></div>
             <div class="icon down-arrow"></div>
             <div class="icon refresh"></div>

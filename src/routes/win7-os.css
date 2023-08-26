@@ -203,7 +203,7 @@
 
 .win7-taskbar__program--startmenu {
     /* Set the icon image to Windows 7 Start Menu using the 'content' property */
-    content: url("https://d2hqjspxd4b0fs.cloudfront.net/win7-startmenu.png") !important;
+    content: url("http://d2hqjspxd4b0fs.cloudfront.net/win7/orb-default.png") !important;
 
     /* Inherit the width from the parent element */
     width: inherit;
@@ -214,21 +214,18 @@
 
 .win7-taskbar__program--startmenu--glow {
     /* Change the icon image on hover */
-    content: url("https://d2hqjspxd4b0fs.cloudfront.net/win7-startmenu-2.png") !important; /* Change the icon image on hover */
+    content: url("http://d2hqjspxd4b0fs.cloudfront.net/win7/orb-pressed.png") !important; /* Change the icon image on hover */
 
     /* Inherit the width from the parent element */
     width: inherit;
 
     /* Inherit the height from the parent element */
     height: inherit;
-
-    /* Change cursor to pointer on hover */
-    cursor: pointer;
 }
 
 .win7-taskbar__program--startmenu:hover {
     /* Change the icon image on hover */
-    content: url("https://d2hqjspxd4b0fs.cloudfront.net/win7-startmenu-2.png") !important; /* Change the icon image on hover */
+    content: url("http://d2hqjspxd4b0fs.cloudfront.net/win7/orb-hover.png") !important; /* Change the icon image on hover */
 
     /* Change cursor to pointer on hover */
     cursor: pointer;

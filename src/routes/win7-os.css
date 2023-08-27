@@ -58,7 +58,7 @@
     /* Aero Input Designer */
     --aero-input-default-bg: rgba(255, 255, 255, 1);
     --aero-input-default-border: rgba(196, 198, 201, 1);
-    --aero-input-disabled-color: rgba(230, 230, 231, 1);
+    --aero-input-disabled-color: rgba(255, 255, 255, 1);
     --aero-input-disabled-border-color: rgba(149, 170, 186);
 
     --aero-ie9-disabled-cursor: normal;
@@ -688,6 +688,43 @@
     width: inherit;
 }
 
+.win7-program__explorer__tabgroup {
+    display: flex;
+    
+    /* Set position to relative */
+    position: relative;
+
+    /* Ensures the baseline is aligned with the searchbox */
+    top: 3px;
+
+    /* Mimicks IE9 tab */
+    height: 30px;
+
+}
+
+.win7-program__explorer__tabgroup__tab {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: white;
+    font-size: 0.8rem;
+    height: inherit;
+    width: 190px;
+    padding: 4px;
+    border-right: 1px solid rgba(0, 0, 0, 0.4);
+    opacity: 0.7;
+}
+
+.win7-program__explorer__tabgroup__tab.active {
+    opacity: 1;
+}
+
+.win7-program__explorer--tab-icon {
+    width: 17px;
+    height: 17px;
+}
+
+
 /* =====================================
    Aero Button Customizer
    ===================================== */
@@ -742,7 +779,7 @@
     border: 1px solid rgba(152, 159, 166, 0.4);
 }
 
-.aero-button__circular--transparent {
+.aero-button__circular--disabled {
     background: linear-gradient(to bottom, rgba(255, 255, 255, 0.4) 10%, rgba(0, 255, 255, 0));
 }
 
@@ -824,6 +861,7 @@
 .aero-input input:disabled {
     background: var(--aero-input-disabled-color);
     cursor: var(--aero-ie9-disabled-cursor);
+    color: black;
 }
 
 .aero-input input {
@@ -850,13 +888,11 @@
     height: inherit;
 
     margin-right: 3px;
-}
 
-.aero-input .icon.favicon-portfolio {
-    content: url("../lib/images/windows/favicon-stroke-and-fill.svg");
     width: 20px;
     height: 20px;
 }
+
 
 .aero-input .icon.magnify {
     /* Set content as a magnifying glass icon */
@@ -900,6 +936,11 @@
 .aero-input input.medium-big-w {
     height: 21px;
     width: 300px;
+}
+
+/* Images */
+.favicon-portfolio {
+    content: url("../lib/images/windows/favicon-stroke-and-fill.svg");
 }
 
 /* =====================================

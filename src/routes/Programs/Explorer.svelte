@@ -28,7 +28,7 @@
         </div>
     </div>
     <!-- IE9 Main Controls -->
-    <div class="win7-program__explorer__group" style="gap:3px;padding-left:5px;">
+    <div class="win7-program__explorer__group" style="gap:3px;padding-left:5px;position:relative;top:7px;">
         <!-- Navigator  -->
         <button class="aero-button__circular aero-button__circular--medium aero-button__circular--disabled">
             <i class="aero-button__circular--left-icon"></i>
@@ -60,6 +60,10 @@
             </div>
             <div class="win7-program__explorer__tabgroup__tab">my cool resume dude.</div>
         </div>
+    </div>
+    <div class="win7-program__explorer__group win7-program__explorer__group--fill" style="padding: 5px;padding-top:0px;">
+        <!-- Webpage -->
+        <div class="win7-program__explorer__webpage">dadsadsssad</div>
     </div>
 </div>
 

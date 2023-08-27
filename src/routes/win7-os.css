@@ -619,6 +619,9 @@
 .win7-program__explorer {
     /* Ensure that the desktop program icons get overlapped */
     z-index: 4;
+
+    display: flex;
+    flex-direction: column;
     
     /* Relative positioning */
     position: absolute;
@@ -649,6 +652,11 @@
 .win7-program__explorer__group {
     display: flex;
     align-items: center;
+}
+
+.win7-program__explorer__group--fill {
+    align-items: normal;
+    flex: 1;
 }
 
 .win7-program__explorer::before {
@@ -722,6 +730,12 @@
 .win7-program__explorer--tab-icon {
     width: 17px;
     height: 17px;
+}
+
+.win7-program__explorer__webpage {
+    flex: 1;
+    background: white;
+    border: 1px solid #b7b7b7;
 }
 
 
@@ -889,8 +903,8 @@
 
     margin-right: 3px;
 
-    width: 20px;
-    height: 20px;
+    width: 17px;
+    height: 17px;
 }
 
 

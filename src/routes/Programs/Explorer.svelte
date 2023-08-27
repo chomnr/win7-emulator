@@ -14,7 +14,11 @@
     <!-- IE9 Browser Controls -->
     <div class="win7 win7-program__explorer__controls">
         <div class="win7">
-            <div id="windowtesting_title" class="title-bar active" style="background: none;border: none;box-shadow: none;">
+            <div
+                id="windowtesting_title"
+                class="title-bar active"
+                style="background: none;border: none;box-shadow: none;"
+            >
                 <div class="title-bar-controls active">
                     <button aria-label="Minimize" />
                     <button aria-label="Maximize" />
@@ -24,14 +28,33 @@
         </div>
     </div>
     <!-- IE9 Main Controls -->
-    <div class="win7">
-        <div class="aero-input disabled">
-            <div class="icon favicon-portfolio"></div>
-            <input id="startmenu_input" class="icon-format font-xxs font-italic medium-big-w" placeholder="https://zeljko.me/portfolio" disabled/>
-            <div class="icon magnify-2 transform-flip"></div>
-            <div class="icon down-arrow"></div>
-            <div class="icon refresh"></div>
-            <div class="icon close"></div>
+    <div class="win7-program__explorer__group" style="gap:3px;">
+        <!--
+        <div class="aero-button circular">
+            <button></button>
+        </div>-->
+        <button class="aero-button__circular aero-button__circular--medium aero-button__circular--transparent">
+            <i class="aero-button__circular--left-icon"></i>
+        </button>
+        <button class="aero-button__circular aero-button__circular--small aero-button__circular--transparent ">
+            <i class="aero-button__circular--right-icon transform-right"></i>
+        </button>
+
+        <div class="win7">
+            <div class="aero-input disabled">
+                <div class="icon favicon-portfolio" />
+                <input
+                    id="startmenu_input"
+                    class="icon-format font-xxs medium-big-w"
+                    style="color:black;"
+                    placeholder="https://zeljko.me/portfolio"
+                    disabled
+                />
+                <div class="icon magnify-2 transform-flip" />
+                <div class="icon down-arrow" />
+                <div class="icon refresh" />
+                <div class="icon close" />
+            </div>
         </div>
     </div>
 </div>

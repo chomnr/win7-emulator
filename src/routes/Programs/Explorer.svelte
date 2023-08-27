@@ -28,25 +28,21 @@
         </div>
     </div>
     <!-- IE9 Main Controls -->
-    <div class="win7-program__explorer__group" style="gap:3px;">
-        <!--
-        <div class="aero-button circular">
-            <button></button>
-        </div>-->
-        <button class="aero-button__circular aero-button__circular--medium aero-button__circular--transparent">
+    <div class="win7-program__explorer__group" style="gap:3px;padding-left:5px;">
+        <!-- Navigator  -->
+        <button class="aero-button__circular aero-button__circular--medium aero-button__circular--disabled">
             <i class="aero-button__circular--left-icon"></i>
         </button>
-        <button class="aero-button__circular aero-button__circular--small aero-button__circular--transparent ">
+        <button class="aero-button__circular aero-button__circular--small aero-button__circular--disabled ">
             <i class="aero-button__circular--right-icon transform-right"></i>
         </button>
-
+        <!-- Search Box -->
         <div class="win7">
             <div class="aero-input disabled">
                 <div class="icon favicon-portfolio" />
                 <input
                     id="startmenu_input"
                     class="icon-format font-xxs medium-big-w"
-                    style="color:black;"
                     placeholder="https://zeljko.me/portfolio"
                     disabled
                 />
@@ -55,6 +51,14 @@
                 <div class="icon refresh" />
                 <div class="icon close" />
             </div>
+        </div>
+        <!-- Tab -->
+        <div class="win7-program__explorer__tabgroup">
+            <div class="win7-program__explorer__tabgroup__tab active">
+                <div class="favicon-portfolio" style="width:20px;height:20px;"></div>
+                 Zeljko Portfolio site
+            </div>
+            <div class="win7-program__explorer__tabgroup__tab">my cool resume dude.</div>
         </div>
     </div>
 </div>

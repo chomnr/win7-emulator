@@ -118,8 +118,10 @@
         <div id="program_ie9-icon" class="win7-desktop-grid__program--icon win7-desktop-grid__program--icon--explorer"></div>
         <div id="program_ie9-title" class="win7-desktop-grid__program--title">Internet<br>Explorer</div>
     </div>
+    <!--
     <div id="program_test" class="win7-desktop-grid__program" style="z-index: 1;">
         <div id="program_test-icon" class="win7-desktop-grid__program--icon win7-desktop-grid__program--icon--test"></div>
         <div id="program_test-title" class="win7-desktop-grid__program--title">Recycle  adsasdadsdasadsas</div>
     </div>
+    -->
 </div>

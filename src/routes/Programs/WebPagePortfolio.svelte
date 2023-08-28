@@ -4,21 +4,24 @@
     import {CurrentDate} from "../stores"
     import { LEET } from "../effects"
 
-    var leet_title: LEET;
-    var leet_position: LEET;
     var leet_is_solved: Boolean = false;
     onMount(() => {
+        function ApplyLeetEffect() {
+            let leet_title: LEET;
+            let leet_position: LEET;
 
-        /* LEET HACKER TEXT EFFECT */
-        leet_title = new LEET("branding_title", 50, 50); // 50,50 perfect sync with 100,30
-        leet_title.ApplyEffect();
+            leet_title = new LEET("branding_title", 50, 50); // 50,50 perfect sync with 100,30
+            leet_title.ApplyEffect();
 
-        leet_position = new LEET("branding_position", 100, 30); //100, 30 perfect sync with 50 /50
-        leet_position.ApplyEffect();
+            leet_position = new LEET("branding_position", 100, 30); //100, 30 perfect sync with 50 /50
+            leet_position.ApplyEffect();
+            
+            setTimeout(() => {
+                leet_is_solved = true;
+            }, 3000);
+        }
 
-        setTimeout(() => {
-           leet_is_solved = true;
-        }, 3000);
+        ApplyLeetEffect();
     })
 </script>
 

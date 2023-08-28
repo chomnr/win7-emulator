@@ -1,20 +1,20 @@
 <script lang="ts">
     import { onMount } from 'svelte';
     import '../webpage.css';
+    import {CurrentDate} from "../stores"
 
     /* LEET HACKER RANDOMIZATION EFFECT */
     
     class LEET {
+            private target: HTMLElement | null;
+            private max_loop: number; // amount of times to loop before decryption
+            private delay: number;
+            private target_array: string[] | null;
 
-            target: HTMLElement | null;
-            max_loop: number; // amount of times to loop before decryption
-
-            target_array: string[] | null;
-
-            constructor(target: string, max_loop: number = 50) {
+            constructor(target: string, max_loop: number = 50, delay: number = 10) {
                 this.target = document.getElementById(target);
                 this.max_loop = max_loop;
-
+                this.delay = delay;
                 this.target_array = this.LoadTargetArray();
             }
             
@@ -24,63 +24,32 @@
                         var hacker_array = [...this.target_array];
                         let loop_cnt = 0;
                         let solved_index = 0;
-                        setInterval(() => {
+                        let matrix = setInterval(() => {
                             loop_cnt++;
-
                             if (loop_cnt < this.max_loop) {
                                 for (const [id, _] of hacker_array.entries()) {
                                     hacker_array[id] = this.GetRandomLetter();
                                     this.UpdateLetter(hacker_array)
                                 }
                             } else {
+                                if (this.arraysEqual(this.target_array, hacker_array)) {
+                                    clearInterval(matrix);
+                                }
                                 hacker_array[solved_index] = this.target_array[solved_index]
                                 this.UpdateLetter(hacker_array);
                                 solved_index++;
                             }
-                        }, 50)
-
-                         /* Randomizer */
-                            /*
-                            for (const [id, _] of hacker_array.entries()) {
-                                if (loop_cnt > this.max_loop) {
-                                    break;
-                                }
-                                hacker_array[id] = this.GetRandomLetter();
-                                this.UpdateLetter(hacker_array)
-                            }
-
-                            if (loop_cnt > this.max_loop) {
-                                this.UpdateLetter(hacker_array);
-                            }*/
-                        /*
-                        let loop_cnt = 0;
-                        let solver_cnt = 0;
-                        let random = setInterval(() => {
-                            loop_cnt++;
-                            for (const [id, _] of hacker_array.entries()) {
-                                if (loop_cnt > this.max_loop) {
-                                    break;
-                                }
-                                hacker_array[id] = this.GetRandomLetter();
-                                this.UpdateLetter(hacker_array)
-                            }
-
-                            if (loop_cnt > this.max_loop) {
-                                console.log(this.target_array);
-                                this.UpdateLetter(hacker_array);
-                                solver_cnt++;
-                                if (this.AreArraysIdentical(this.target_array, hacker_array)) {
-                                    clearInterval(random)
-                                }
-                            }
-
-                        }, 1000)
-                        */
+                        }, this.delay)
                     }
                 }
             }
 
-            public UpdateLetter(hacker_array: string[]) {
+            /* https://stackoverflow.com/questions/3115982/how-to-check-if-two-arrays-are-equal-with-javascript */
+            private arraysEqual(a1: string[], a2: string[]) {
+                return JSON.stringify(a1)==JSON.stringify(a2);
+            }
+
+            private UpdateLetter(hacker_array: string[]) {
                 if (this.target != null) {
                     this.target.innerText = hacker_array.join('')
                 }
@@ -105,18 +74,11 @@
         
     onMount(() => {
         /* LEET HACKER TEXT EFFECT */
-        var leet = new LEET("branding_title");
+        var leet = new LEET("branding_title", 30, 50);
         leet.ApplyEffect();
 
-        var leet2 = new LEET("branding_position");
+        var leet2 = new LEET("branding_position", 100, 30);
         leet2.ApplyEffect();
-        /*
-        setInterval(() => {
-            leet.ApplyEffect();
-            leet2.ApplyEffect();
-        }, 20)
-        */
-
     })
 </script>
 
@@ -126,32 +88,4 @@
         <div id="branding_title" class="title">ZELJKO</div>
         <div id="branding_position" class="position">FULL STACK ENGINEER</div>
     </div>
-    <!--
-    <div class="navigation">
-        <div class="link">
-            <div class="name lightbulb"></div>
-            <div class="title">ABOUT ME</div>
-        </div>
-        <div class="link">
-            <div class="name lightbulb"></div>
-            <div class="title">TESTING THIS SHIT</div>
-        </div>
-        <div class="link">
-            <div class="name lightbulb"></div>
-            <div class="title">tiny boi</div>
-        </div>
-    </div>
--->
-    <!--
-    <div class="navigation">
-        <div class="branding">
-            <div class="brand">ŽELJKO VRANJES</div>
-            <div class="position">
-                <div class="sub-position">SOFTWARE ENGINEER</div>
-                <div class="sub-position">FRONTEND DEVELOPER</div>
-                <div class="sub-position">BACKEND DEVELOPER</div>
-            </div>
-        </div>
-    </div>
--->
 </div>

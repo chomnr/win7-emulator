@@ -1,0 +1,225 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+@import url('https://fonts.cdnfonts.com/css/droid-sans-mono-2');
+
+:root {
+    --portfolio-background: rgba(4, 5, 19, 255);
+
+    /* Branding */
+    --portfolio-branding-text-color: #FCFCFC;
+    --portfolio-branding-tower-color: black;
+    --portfolio-branding-gap: 5px;
+
+    /* Navigation */
+    --portfolio-navigation-gap: 30px;
+
+}
+
+.webpage {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--portfolio-background);
+    height: 100%;
+    padding: 30px;
+    padding-left: 60px;
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+    font-size: 16px;
+}
+
+/* =====================================
+   BRANDING
+   ===================================== */
+.webpage .branding {
+    /* Ensure divs are in rows and are aligned in the center */
+    display: flex;
+    flex-direction: column;
+
+    /* Space between child elements */
+    gap: var(--portfolio-branding-gap);
+
+    /* Make sure width is 100% of the parent width */
+    width: 100%;
+
+    /* Fit to content. */
+    height: fit-content;
+
+    /* Default font color */
+    color: var(--portfolio-branding-text-color);  
+    
+}
+
+.webpage .branding .title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    padding: 4px;
+    border-radius: 10px;
+}
+
+.webpage .branding .position {
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+
+/* =====================================
+   Navigation
+   ===================================== */
+
+.webpage .navigation {
+    /* Put items into a flex */
+    display: flex;
+
+    /* Have the items go in column format */
+    flex-direction: column;
+
+    /* Align them in the center of the navigation bar */
+    justify-content: center;
+
+    gap: var(--portfolio-navigation-gap);
+
+    /* Make sure height is 100% of the parent height */
+    height: 100%;
+
+    width: fit-content;
+    /* The width of the navigation bar */
+}
+
+/*
+.webpage .navigation .link {
+    display: flex;
+    font-size: 1.4rem;
+    font-weight: bold;
+    align-items: center;
+    color: black;
+    transition: 0.5s all;
+    width: fit-content;
+    max-width: 0;
+    border-radius: 10px;
+    padding: 5px;
+    gap: 15px;
+}
+
+.webpage .navigation .link:hover {
+    display: flex;
+    font-weight: bold;
+    align-items: center;
+    width: fit-content;
+    max-width: 200px;
+    color: white;
+    background: #D8973C;
+}
+
+.webpage .navigation .link .name {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    padding: 4px;
+    border-radius: 50%;
+    text-align: center;
+    background: radial-gradient(#FCFCFC, #F5F5DC);
+    border: 2px solid rgb(178, 190, 181, 0.5);
+    color: black;
+}
+
+.webpage .navigation .link .name.me { 
+    content: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkyIiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDE5MiA1MTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbD0iIzAwMDAwMCIgZD0iTTE3NiA0MzJjMCA0NC4xMTItMzUuODg4IDgwLTgwIDgwcy04MC0zNS44ODgtODAtODBzMzUuODg4LTgwIDgwLTgwczgwIDM1Ljg4OCA4MCA4MHpNMjUuMjYgMjUuMTk5bDEzLjYgMjcyQzM5LjQ5OSAzMDkuOTcyIDUwLjA0MSAzMjAgNjIuODMgMzIwaDY2LjM0YzEyLjc4OSAwIDIzLjMzMS0xMC4wMjggMjMuOTctMjIuODAxbDEzLjYtMjcyQzE2Ny40MjUgMTEuNDkgMTU2LjQ5NiAwIDE0Mi43NyAwSDQ5LjIzQzM1LjUwNCAwIDI0LjU3NSAxMS40OSAyNS4yNiAyNS4xOTl6Ii8+PC9zdmc+);
+}
+.webpage .navigation .link .name.name.me:hover {
+    content: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkyIiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDE5MiA1MTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbD0iI2ZmZmZmZiIgZD0iTTE3NiA0MzJjMCA0NC4xMTItMzUuODg4IDgwLTgwIDgwcy04MC0zNS44ODgtODAtODBzMzUuODg4LTgwIDgwLTgwczgwIDM1Ljg4OCA4MCA4MHpNMjUuMjYgMjUuMTk5bDEzLjYgMjcyQzM5LjQ5OSAzMDkuOTcyIDUwLjA0MSAzMjAgNjIuODMgMzIwaDY2LjM0YzEyLjc4OSAwIDIzLjMzMS0xMC4wMjggMjMuOTctMjIuODAxbDEzLjYtMjcyQzE2Ny40MjUgMTEuNDkgMTU2LjQ5NiAwIDE0Mi43NyAwSDQ5LjIzQzM1LjUwNCAwIDI0LjU3NSAxMS40OSAyNS4yNiAyNS4xOTl6Ii8+PC9zdmc+);
+    color: blue;
+}
+
+.webpage .navigation .link .name.lightbulb { 
+    content: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDI0IDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxnIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIyIj48cGF0aCBkPSJNMCAwaDI0djI0SDB6Ii8+PHBhdGggZmlsbD0iIzAwMDAwMCIgZD0iTTQgMTFhMSAxIDAgMCAxIC4xMTcgMS45OTNMNCAxM0gzYTEgMSAwIDAgMS0uMTE3LTEuOTkzTDMgMTFoMXptOC05YTEgMSAwIDAgMSAuOTkzLjg4M0wxMyAzdjFhMSAxIDAgMCAxLTEuOTkzLjExN0wxMSA0VjNhMSAxIDAgMCAxIDEtMXptOSA5YTEgMSAwIDAgMSAuMTE3IDEuOTkzTDIxIDEzaC0xYTEgMSAwIDAgMS0uMTE3LTEuOTkzTDIwIDExaDF6TTQuODkzIDQuODkzYTEgMSAwIDAgMSAxLjMyLS4wODNsLjA5NC4wODNsLjcuN2ExIDEgMCAwIDEtMS4zMiAxLjQ5N2wtLjA5NC0uMDgzbC0uNy0uN2ExIDEgMCAwIDEgMC0xLjQxNHptMTIuOCAwYTEgMSAwIDAgMSAxLjQ5NyAxLjMybC0uMDgzLjA5NGwtLjcuN2ExIDEgMCAwIDEtMS40OTctMS4zMmwuMDgzLS4wOTRsLjctLjd6TTE0IDE4YTEgMSAwIDAgMSAxIDFhMyAzIDAgMCAxLTYgMGExIDEgMCAwIDEgLjg4My0uOTkzTDEwIDE4aDR6TTEyIDZhNiA2IDAgMCAxIDMuNiAxMC44YTEgMSAwIDAgMS0uNDcxLjE5MkwxNSAxN0g5YTEgMSAwIDAgMS0uNi0uMkE2IDYgMCAwIDEgMTIgNnoiLz48L2c+PC9zdmc+);
+}
+.webpage .navigation .link .name.name.lightbulb:hover {
+    content: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDI0IDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxnIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIyIj48cGF0aCBkPSJNMCAwaDI0djI0SDB6Ii8+PHBhdGggZmlsbD0iI2VhYjMwOCIgZD0iTTQgMTFhMSAxIDAgMCAxIC4xMTcgMS45OTNMNCAxM0gzYTEgMSAwIDAgMS0uMTE3LTEuOTkzTDMgMTFoMXptOC05YTEgMSAwIDAgMSAuOTkzLjg4M0wxMyAzdjFhMSAxIDAgMCAxLTEuOTkzLjExN0wxMSA0VjNhMSAxIDAgMCAxIDEtMXptOSA5YTEgMSAwIDAgMSAuMTE3IDEuOTkzTDIxIDEzaC0xYTEgMSAwIDAgMS0uMTE3LTEuOTkzTDIwIDExaDF6TTQuODkzIDQuODkzYTEgMSAwIDAgMSAxLjMyLS4wODNsLjA5NC4wODNsLjcuN2ExIDEgMCAwIDEtMS4zMiAxLjQ5N2wtLjA5NC0uMDgzbC0uNy0uN2ExIDEgMCAwIDEgMC0xLjQxNHptMTIuOCAwYTEgMSAwIDAgMSAxLjQ5NyAxLjMybC0uMDgzLjA5NGwtLjcuN2ExIDEgMCAwIDEtMS40OTctMS4zMmwuMDgzLS4wOTRsLjctLjd6TTE0IDE4YTEgMSAwIDAgMSAxIDFhMyAzIDAgMCAxLTYgMGExIDEgMCAwIDEgLjg4My0uOTkzTDEwIDE4aDR6TTEyIDZhNiA2IDAgMCAxIDMuNiAxMC44YTEgMSAwIDAgMS0uNDcxLjE5MkwxNSAxN0g5YTEgMSAwIDAgMS0uNi0uMkE2IDYgMCAwIDEgMTIgNnoiLz48L2c+PC9zdmc+);
+}
+/*
+.webpage .navigation .link:hover {
+    display: flex;
+    font-weight: bold;
+    width: fit-content;
+    align-items: center;
+    color: black;
+    background: white;
+    width: fit-content;
+}
+
+.webpage .navigation .link .name {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    text-align: center;
+    background: white;
+    color: black;
+}
+
+*/
+
+.webpage .navigation .link:hover {
+    cursor: pointer;
+}
+
+.webpage .navigation .link .title {
+    font-size: 1rem;
+}
+
+/*
+.webpage .navigation {
+    width: 100%;
+}
+
+.webpage .navigation .branding {
+    display: flex;
+    align-items: center;
+    gap: var(--portfolio-branding-gap);
+}
+
+.webpage .navigation .branding {
+    height: 44.15px;
+}
+
+.webpage .navigation .branding {
+    color: var(--portfolio-branding-text-color);
+    font-weight: bold;
+}
+
+.webpage .navigation .branding .brand {
+    font-size: 1rem;
+    animation-name: fadeInOpacity;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: 3s;
+}
+
+.webpage .navigation .branding .position {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.8rem;
+    font-family: monospace;
+}
+
+.webpage .navigation .branding .position .sub-position {
+    font-family: monospace;
+    animation-name: fadeInOpacity;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: 6s;
+}
+
+
+@keyframes fadeInOpacity {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+*/

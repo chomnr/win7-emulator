@@ -1,21 +1,36 @@
 <script lang="ts">
     import { onMount } from "svelte";
+    import WebPagePortfolio from "./WebPagePortfolio.svelte";
 
+    
     onMount(() => {
-        jQuery(function () {
-            jQuery("#windowtesting").draggable({
-                handle: "#windowtesting_title",
+        /* Window Resize */
+        function resizeWindow(){
+            var ie_window: HTMLElement | null = document.getElementById("ie_window");
+            if (ie_window != null) {
+                ie_window.style.width = (window.innerWidth - 300) + "px";
+                ie_window.style.height = (window.innerHeight - 200) + "px";
+            }
+        }
+
+        resizeWindow();
+
+        jQuery(function() {
+            jQuery("#ie_window").draggable({
+                handle: "#ie_window_handle"
             });
         });
     });
 </script>
 
-<div id="windowtesting" class="win7-program__explorer">
+
+
+<div id="ie_window" class="win7-program__explorer">
+    <div id="ie_window_handle" class="win7-program__explorer__handle"></div>
     <!-- IE9 Browser Controls -->
     <div class="win7 win7-program__explorer__controls">
         <div class="win7">
             <div
-                id="windowtesting_title"
                 class="title-bar active"
                 style="background: none;border: none;box-shadow: none;"
             >
@@ -28,7 +43,7 @@
         </div>
     </div>
     <!-- IE9 Main Controls -->
-    <div class="win7-program__explorer__group" style="gap:3px;padding-left:5px;position:relative;top:7px;">
+    <div class="win7-program__explorer__group" style="gap:3px;padding-left:5px;position:relative;top:7px;width:fit-content;">
         <!-- Navigator  -->
         <button class="aero-button__circular aero-button__circular--medium aero-button__circular--disabled">
             <i class="aero-button__circular--left-icon"></i>
@@ -55,33 +70,18 @@
         <!-- Tab -->
         <div class="win7-program__explorer__tabgroup">
             <div class="win7-program__explorer__tabgroup__tab active">
-                <div class="favicon-portfolio" style="width:20px;height:20px;"></div>
+                <div id="ie9_tab-portfolio" class="favicon-portfolio" style="width:20px;height:20px;"></div>
                  Zeljko Portfolio site
             </div>
-            <div class="win7-program__explorer__tabgroup__tab">my cool resume dude.</div>
+            <!--
+            <div id="ie9_tab-resume" class="win7-program__explorer__tabgroup__tab">my cool resume dude.</div>\
+            -->
         </div>
     </div>
-    <div class="win7-program__explorer__group win7-program__explorer__group--fill" style="padding: 5px;padding-top:0px;">
+    <div class="win7-program__explorer__group win7-program__explorer__group--fill" style="padding: 5px;padding-top:0px;" >
         <!-- Webpage -->
-        <div class="win7-program__explorer__webpage">dadsadsssad</div>
+        <div class="win7-program__explorer__webpage">
+            <WebPagePortfolio></WebPagePortfolio>
+        </div>
     </div>
 </div>
-
-<!--
-<div id="windowtesting" class="win7" style="position:absolute;z-index:5;">
-<div class="window active" style="max-width: 300px;min-width:800px">X
-    <div id="windowtesting_title" class="title-bar">
-      <div class="title-bar-text">&nbsp;</div>
-      <div class="title-bar-controls">
-        <button aria-label="Minimize"></button>
-        <button aria-label="Maximize"></button>
-        <button aria-label="Close"></button>
-      </div>
-    </div>
-    <input type="search" placeholder="Search" />
-    <div class="window-body has-space">
-      <p>There's so much room for activities!</p>
-    </div>
-  </div>
-</div>
--->

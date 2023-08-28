@@ -65,8 +65,6 @@
 
 }
 
-
-
 .win7-emulator {
     /* Automate the z-index */
     z-index: auto;
@@ -327,7 +325,7 @@
 
 .win7-startmenu {
     /* Ensures startmenu is over grid */
-    z-index: 3;
+    z-index: 9;
 
     /* Set the start menu to be absolutely positioned */
     position: absolute;
@@ -744,7 +742,6 @@
     background: white;
     border: 1px solid #b7b7b7;
 }
-
 
 /* =====================================
    Aero Button Customizer

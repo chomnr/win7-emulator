@@ -93,7 +93,7 @@
 
 <div class="webpage">
     <div class="branding">
-        <div id="branding_title" class="title">ZELJKO</div>
+        <div id="branding_title" class="title">ZELJKO VRANJES</div>
         <div id="branding_position" class="position">FULL STACK ENGINEER</div>
     </div>
     {#if leet_is_solved}

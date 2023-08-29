@@ -5,7 +5,7 @@
     --portfolio-background: rgba(4, 5, 19, 255);
 
     /* Branding */
-    --portfolio-branding-text-color: #FCFCFC;
+    --portfolio-branding-text-color: rgba(250, 249, 246, 1);
     --portfolio-branding-tower-color: black;
     --portfolio-branding-gap: 5px;
 
@@ -33,7 +33,7 @@
 .webpage .branding {
     /* Ensure divs are in rows and are aligned in the center */
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 
     /* Space between child elements */
     gap: var(--portfolio-branding-gap);
@@ -55,11 +55,31 @@
     border-radius: 10px;
 }
 
+.webpage .branding .group {
+    display: flex;
+}
+
+.webpage .branding .group.column {
+    flex-direction: column;
+}
+
+.webpage .branding .group.flex-1 {
+    flex: 1;
+}
+
 .webpage .branding .position {
     font-size: 0.9rem;
     font-weight: bold;
 }
 
+/* =====================================
+   Code Executor (Visual)
+   ===================================== */
+#div_command, 
+#div_command_input {
+    font-family: monospace;
+    transition: opacity 0.3s ease-in-out;
+}
 
 /* =====================================
    Navigation
@@ -161,4 +181,11 @@
 	100% {
 		opacity: 1;
 	}
+}
+
+/* =====================================
+   Fonts
+   ===================================== */
+.code-font {
+    font-family: monospace;
 }

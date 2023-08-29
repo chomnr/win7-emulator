@@ -10,7 +10,6 @@
     onMount(() => {
         div_command = document.getElementById("div_command");
         //@ts-ignore
-        div_command.innerText = "execute_command";
         div_command_input = document.getElementById("div_command_input");
 
         function ChangeCommandInput(input: string) {
@@ -32,11 +31,11 @@
 
             leet_title.ApplyEffect();
             leet_position.ApplyEffect();
-
+            
             setTimeout(() => {
                 leet_is_solved = true;
-                ChangeCommandInput("unlock_virtual_terminal");
-            }, 4050);
+                setTimeout(() => { ChangeCommandInput("portfolio.exe"); }, 2600)
+            }, 5000);
         }
 
         function ApplyInitalWhite() {}
@@ -57,9 +56,9 @@
         <div class="group float-right flex-1">
             <div style="margin-left: auto;">
                 <div class="code-font" style="display:flex;">
-                    <div id="div_command">execute_command</div>
+                    <div id="div_command">execute_program</div>
                     (<span style="color: #00FF00;">'</span><span id="div_command_input" style="color: #00FF00;"
-                        >decrypt_credentials</span
+                        >bruteforce.exe</span
                     ><span style="color: #00FF00;">'</span>)
                 </div>
             </div>

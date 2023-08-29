@@ -37,6 +37,7 @@ export class LEET {
                     } else {
                         if (this.arraysEqual(this.target_array, hacker_array)) {
                             clearInterval(matrix);
+                            return;
                         }
                         hacker_array[solved_index] = this.target_array[solved_index]
                         this.UpdateLetter(hacker_array);

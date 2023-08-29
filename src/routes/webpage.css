@@ -61,7 +61,6 @@
 }
 
 
-
 /* =====================================
    Navigation
    ===================================== */
@@ -91,7 +90,31 @@
     gap: 3px;
 }
 
+/* =====================================
+   Begin Process
+   ===================================== */
+.webpage .begin-screen {
+    display: flex;
+    height: inherit;
+    align-items: center;
+    justify-content: center;
+}
 
+/* =====================================
+   Content
+   ===================================== */
+.webpage .body {
+    display: none;
+    transition: all 2s;
+    width: 5px;
+    height: 5px;
+    background: yellow;
+}
+
+.webpage .body:hover {
+    background: white;
+    height: 100%;
+}
 
 /* =====================================
    Social Icons

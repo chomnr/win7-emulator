@@ -24,7 +24,7 @@
     --startmenu-height: 525px;
     --startmenu-starting-pos: 41px;
 
-    --startmenu-content-width: 250px;
+    --startmenu-content-width: 245px;
     --startmenu-content-height: 510px;
 
     --startmenu-padding-left: 7px;
@@ -431,12 +431,21 @@
     border-top: 1px solid var(--aero-sm-group-border-top-color);
 
     /* Change border radius keep top left and right 0. */
-    border-radius: 0px 0px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
 }
 
 .win7-startmenu__group--light-blue {
     /* Apply background color to startmenu group */
     background-color: var(--aero-sm-group-color);
+}
+
+
+/* Transitions */
+#startmenu_main_content,
+#startmenu_side_content,
+#all_programs {
+    transition: opacity 0.1s ease-in;
+
 }
 
 /* =====================================

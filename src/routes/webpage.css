@@ -75,8 +75,7 @@
 /* =====================================
    Code Executor (Visual)
    ===================================== */
-#div_command, 
-#div_command_input {
+#div_command, #div_command_input {
     font-family: monospace;
     transition: opacity 0.3s ease-in-out;
 }

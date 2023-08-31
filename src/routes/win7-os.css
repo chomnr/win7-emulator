@@ -607,16 +607,14 @@
 
 }
 
-.win7-desktop-grid__program--icon--explorer {
+#program_ie9-icon {
     /* Desktop Explorer Icon */
     content: url("https://d2hqjspxd4b0fs.cloudfront.net/win7/internet-explorer.svg")
 }
 
-/*
-.win7-desktop-grid__program--icon--test {
+#program_ie9-test {
     content: url("https://d2hqjspxd4b0fs.cloudfront.net/magnifying_glass.svg");
 }
-*/
 
 
 /* =====================================

@@ -1,7 +1,7 @@
 <script lang="ts">
     import { onMount } from "svelte";
-    import WebPagePortfolio from "./WebPagePortfolio.svelte";
     import { TogglableStartMenu } from "../stores";
+    import WebPagePortfolio from "../components/WebPagePortfolio.svelte";
 
     
     onMount(() => {

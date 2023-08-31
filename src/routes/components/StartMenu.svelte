@@ -40,17 +40,17 @@
 </script>
 
 <div id="win7_startmenu" class="win7-startmenu win7--aero win7-startmenu--aero--additives">
-    <div id="startmenu_main_content" class="win7-startmenu__content win7-startmenu__content--with-design" style="background: white;">
-        <div class="win7-startmenu__group win7-startmenu__group--default-design justify-left win7-startmenu__group--column y-inherit" style="background: white;">
+    <div id="startmenu_main_content" class="win7-startmenu__content win7-startmenu__content--with-design">
+        <div class="win7-startmenu__group win7-startmenu__group--default-design justify-left win7-startmenu__group--column y-inherit">
             <!-- Startmenu items here. -->
-            <div class="item">dasasd</div>
+            <div class="item"></div>
         </div>
 
-        <div id="all_programs" class="win7-startmenu__group win7-startmenu__group--default-design align-center justify-left x-semi-large y-small font-small">
+        <div id="all_programs" class="win7-startmenu__group win7-startmenu__group--default-design align-center justify-left x-semi-large y-small font-small" style="border-radius: 0;">
             ⏵&nbsp;&nbsp;&nbsp; All Program
         </div>
         
-        <div class="win7-startmenu__group win7-startmenu__group--default-design justify-left win7-startmenu__group--light-blue y-medium">
+        <div class="win7-startmenu__group win7-startmenu__group--default-design justify-left win7-startmenu__group--light-blue y-medium" style="border-radius: 0 0 8px 8px;">
             <div class="aero-input default" style="margin: 5px;">
                 <input id="startmenu_input" class="icon-format font-xxs font-italic small" placeholder="Search programs and files"/>
                 <div class="icon magnify-2 transform-flip"></div>

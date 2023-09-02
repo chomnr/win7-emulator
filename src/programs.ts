@@ -37,6 +37,7 @@ export class ComputerProgram {
     private icon: string;
     private title: string;
     private category: ComputerCategories;
+    private window: string;
 
     /**
      * Instantiate/Create a ComputerProgram
@@ -52,6 +53,7 @@ export class ComputerProgram {
         this.icon = this.fullIdentifier + icon_suffix;
         this.title = this.fullIdentifier + title_suffix;
         this.category = category;
+        this.window = this.fullIdentifier + window_suffix;
     }
 
     /**
@@ -76,11 +78,17 @@ export class ComputerProgram {
     GetFullIdentifier(): ComputerProgramExtra { return new ComputerProgramExtra(this.fullIdentifier) }
 
     /**
-     * The icon of the program which is a HTMLElement
+     * The icon of the program which is a HTMLElement.
      * 
      * @returns {string}
      */
     GetIcon(): ComputerProgramExtra { return new ComputerProgramExtra(this.icon); }
+
+    /**
+     *  The window of the program.
+     * @returns 
+     */
+    GetWindow(): ComputerProgramExtra { return new ComputerProgramExtra(this.window); }
 
     /**
      * A misleading name but it returns the Title element that contains the this.name.
@@ -157,12 +165,24 @@ export class ProgramFilter {
     }
 }
 
+export class ProgramHelper {
+    /**
+     * Opens the window of the desired programk
+     * @param program the window you want to open
+     */
+    static OpenWindow(program: ComputerProgram) {
+        program.GetWindow().html().style.display = "flex";
+    }
+}
+
 /* Program Prefix */
 export const program_prefix = "program_";
 
 /* Desktop */
 export const title_suffix = "-title"
 export const icon_suffix = "-icon";
+export const window_suffix = "-window";
+
 
 // all the programs.
 const programs: ComputerProgram[] = [

@@ -1,3 +1,3 @@
 <script lang="ts">
-    // it provides the basic functionality, minimize, maximize and close.
+    // it provides the basic functionality, minimize, maximize and close
 </script>

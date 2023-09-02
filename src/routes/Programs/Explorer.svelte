@@ -1,9 +1,8 @@
 <script lang="ts">
     import { onMount } from "svelte";
     import { TogglableStartMenu } from "../stores";
-    import WebPagePortfolio from "../components/WebPagePortfolio.svelte";
+    import WebPagePortfolio from "../Components/WebPagePortfolio.svelte";
 
-    //whether page is maximized or not.
     var isMaximized = false;
     
     function CloseWindow(event: MouseEvent) {

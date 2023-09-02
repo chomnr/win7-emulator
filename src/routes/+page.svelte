@@ -4,6 +4,7 @@
     import DesktopGrid from './components/DesktopGrid.svelte';
     import StartMenu from './components/StartMenu.svelte';
     import TaskBar from './components/TaskBar.svelte';
+    import InternetExplorer from './programs/InternetExplorer.svelte';
 
 	onMount(() => {
 		
@@ -30,6 +31,7 @@
 
 
 <DesktopGrid></DesktopGrid>
+<InternetExplorer></InternetExplorer>
 {#if $TogglableStartMenu}
 <StartMenu></StartMenu>
 {/if}

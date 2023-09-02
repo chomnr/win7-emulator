@@ -1,11 +1,10 @@
 <script>
     import { onMount } from 'svelte'; 
 	import { TogglableStartMenu, CurrentTime, CurrentDate } from './stores';
-    import Explorer from './Programs/Explorer.svelte';
+    import Explorer from './programs/Explorer.svelte';
     import DesktopGrid from './components/DesktopGrid.svelte';
     import StartMenu from './components/StartMenu.svelte';
     import TaskBar from './components/TaskBar.svelte';
-
 
 	onMount(() => {
 		

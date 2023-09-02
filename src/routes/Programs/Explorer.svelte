@@ -1,7 +1,7 @@
 <script lang="ts">
     import { onMount } from "svelte";
     import { TogglableStartMenu } from "../stores";
-    import WebPagePortfolio from "../Components/WebPagePortfolio.svelte";
+    import WebPagePortfolio from "../components/WebPagePortfolio.svelte";
 
     var isMaximized = false;
     
@@ -29,7 +29,7 @@
     onMount(() => {
         /* Window Resize  */
         function initialResizeWindow(){
-            var ie_window: HTMLElement | null = document.getElementById("ie_window");
+            var ie_window: HTMLElement | null = document.getElementById("program_ie9-window");
             if (ie_window != null) {
                 ie_window.style.width = (window.innerWidth - 300) + "px";
                 ie_window.style.height = (window.innerHeight - 200) + "px";

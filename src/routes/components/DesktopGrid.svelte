@@ -61,6 +61,7 @@
     
     onMount(() => {
         // TODO: clean up & find alternativ e
+        /*
         document.addEventListener('click', (e) => {
             if (e.target != null)
             if (!filter.Exist(e.target.id)) {
@@ -71,6 +72,7 @@
                 return;
             }
         });
+        */
     })
 </script>
 <div id="desktop_grid" class="win7-desktop-grid">

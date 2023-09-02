@@ -164,6 +164,7 @@ export const program_prefix = "program_";
 export const title_suffix = "-title"
 export const icon_suffix = "-icon";
 
+// all the programs.
 const programs: ComputerProgram[] = [
     new ComputerProgram("ie9", "Internet Explorer"),
     new ComputerProgram("test", "Testing this stupid fkng banter")

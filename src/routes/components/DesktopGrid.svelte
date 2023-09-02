@@ -1,18 +1,19 @@
 <script lang="ts">
     import { onMount } from "svelte";
     import { ProgramFilter, ComputerProgram } from "../../programs"
-    import { ChangeDisplay, RemoveRuleFrom } from "../../helper";
+    import { RemoveRuleFrom, AddAndRemoveRule, ChangeDisplay } from "../../helper";
+    import { CurrentDate } from "../stores";
 
     /* Program Filter */
     var filter: ProgramFilter = new ProgramFilter();
 
-    /* The last program */
-    var _last: HTMLElement | null = null;
+    /* The last program that was clicked */
+    var _last: ComputerProgram | undefined = undefined;
 
     /* The program that was clicked */
-    var _current: HTMLElement | null = null;
+    var _current: ComputerProgram | undefined = undefined;
 
-    function update(target: HTMLElement) {
+    function Update(target: ComputerProgram) {
         if (_current == null) {
             _current = target;
             _last = target;
@@ -22,60 +23,41 @@
         }
     }
 
-    function ChangeToActive(current: HTMLElement | null, last: HTMLElement | null) {
-        var rootC = filter.Find(current?.id!)?.GetFullIdentifier().html();
-        var rootL = filter.Find(last?.id!)?.GetFullIdentifier().html();
-            
-        if (rootC == rootL) {
-            if (!rootC?.classList.contains("active")) {
-                if (current != null ) {
-                    rootC?.classList.add("active");
-                    current.style.display = "block";
-                }
-            }
-            return;
-        } else {
-            rootC?.classList.add("active");
-            rootL?.classList.remove("active");
-            if (current != null && last != null ) {
-                current.style.display = "block";
-                last.style.display = "-webkit-box";
-            }
+    /**
+     * Toggles whether or not a item is active.
+     * @param event
+     */
+    function ToggleActivity(event: MouseEvent) {
+        var rule = "active"; // the rule of the active class.
+
+        //@ts-ignore
+        var target: HTMLElement = event.target as HTMLElement;
+        var result: ComputerProgram = filter.Find(target.id)!;
+
+        const UpdateVisualization = () => {
+            var x1: HTMLElement;
+            var x2: HTMLElement | undefined; 
+            if (_current != undefined && _last != undefined) {
+                x1 = _current.GetFullIdentifier().html();
+                x2 = _last.GetFullIdentifier().html();
+
+                AddAndRemoveRule(x1, x2, rule);
+
+                ChangeDisplay(_current.GetTitle().html()!, "block");
+                ChangeDisplay(_last.GetTitle().html()!, "-webkit-box");
+            }            
+        }
+
+        if (result != null) {
+            Update(result);
+            UpdateVisualization();
         }
     }
-
-    // Reset all programs to default
-    function reset() {
-        if (_current != null) {
-            var rootC = filter.Find(_current?.id)?.GetFullIdentifier().html();
-            if (_current != null && _last != null) {
-                var rootL = filter.Find(_last?.id)?.GetFullIdentifier().html();
-            }
-            RemoveRuleFrom([rootC!, rootL!], "active");
-            ChangeDisplay([_current!, _last!], "-webkit-box");
-            _current = null;
-        }
-    }
-
-    onMount(() => {
-        document.addEventListener("click", (e) => {
-            if (e.target != null) {
-                var result: HTMLElement | undefined = filter.Find(e.target.id)?.GetTitle().html();
-                console.log(result);
-                if (result != null) {
-                    update(result);
-                    ChangeToActive(_current, _last);
-                    return;
-                } else {
-                    reset();
-                }
-            }
-        })
-	});
 </script>
 <div id="desktop_grid" class="win7-desktop-grid">
     {#each filter.GetPrograms() as program}
-        <div id="{program.GetFullIdentifier().string()}" class="win7-desktop-grid__program">
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
+        <div on:click={ToggleActivity} role="button" tabindex=0 id="{program.GetFullIdentifier().string()}" class="win7-desktop-grid__program">
             <div id="{program.GetIcon().string()}" class="win7-desktop-grid__program--icon win7-desktop-grid__program--icon--explorer"></div>
             <div id="{program.GetTitle().string()}" class="win7-desktop-grid__program--title">{program.GetName()}</div>
         </div>

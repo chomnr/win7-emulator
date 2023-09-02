@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { onMount } from "svelte";
     import type { ComputerProgram } from "../../programs";
     import { ProgramFilter, ProgramHelper } from "../../programs";
     import { ActiveWindows } from "../stores";
@@ -44,6 +45,12 @@
             isWindowOpen = false;
         }
         if (openOnVisit) { isWindowOpen = true; openOnVisit = false; }
+    })
+
+    onMount(() => {
+        jQuery( "#" + program.GetWindow().string()  ).draggable({
+            handle: "#" + program.GetWindow().string() + "-handle"
+        });
     })
 </script>
 

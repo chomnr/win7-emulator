@@ -3,6 +3,7 @@
     import { TogglableStartMenu } from "../stores";
     import WebPagePortfolio from "../components/WebPagePortfolio.svelte";
 
+    //whether page is maximized or not.
     var isMaximized = false;
     
     function CloseWindow(event: MouseEvent) {

@@ -8,8 +8,8 @@
     export let showTitle: Boolean = true;
     export let isWebSite = false;
 
-    export let width = 600;
-    export let height = 400;
+    export let width = 1200;
+    export let height = 700;
 
     var isMaximized = false;
     var isWindowOpen = false;
@@ -23,13 +23,13 @@
         if (isWebSite && !isMaximized) {
             p_window.style.width = "100vw";
             p_window.style.height = "96vh";
-            p_window.style.position = "absolute";
             p_window.style.top = "0";
             p_window.style.left = "0";
             isMaximized = true;
         } else {
-            //p_window.style.width = width + "px";
-            //p_window.style.height = height - 200 + "px";
+            p_window.style.width = width + "px";
+            p_window.style.height = height + "px";
+            p_window.style.top = "10%";
             isMaximized = false;
         }
     }

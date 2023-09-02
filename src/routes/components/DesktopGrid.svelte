@@ -60,11 +60,10 @@
         document.addEventListener('click', (e) => {
             if (e.target != null)
             if (!ProgramFilter.Exist(e.target.id)) {
-                if (_current != undefined || _last != undefined) {
+                if (_current != undefined) {
                     RemoveRuleFrom([_last?.GetFullIdentifier().html()!, _current?.GetFullIdentifier().html()!], "active");
                     ChangeDisplays([_current?.GetTitle().html(), _last?.GetTitle().html()], "-webkit-box");
                     _current = undefined;
-                    _last = undefined;
                 }
                 return;
             }

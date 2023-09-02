@@ -12,6 +12,6 @@
     
 </script>
 
-<WindowBase program={program} isWebSite={true} showTitle={false}>
+<WindowBase program={program} isWebSite={true} showTitle={false} openOnVisit={true}>
     <WebPagePortfolio/>
 </WindowBase>

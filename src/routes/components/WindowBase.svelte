@@ -7,6 +7,8 @@
     export let program: ComputerProgram;
     export let showTitle: Boolean = true;
     export let isWebSite = false;
+    
+    export let openOnVisit = false;
 
     export let width = 1200;
     export let height = 700;
@@ -41,6 +43,7 @@
         } else {
             isWindowOpen = false;
         }
+        if (openOnVisit) { isWindowOpen = true; openOnVisit = false; }
     })
 </script>
 

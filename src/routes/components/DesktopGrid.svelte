@@ -1,8 +1,7 @@
 <script lang="ts">
     import { onMount } from "svelte";
     import { ProgramFilter, ComputerProgram } from "../../programs"
-    import { RemoveRuleFrom, AddAndRemoveRule, ChangeDisplay } from "../../helper";
-    import { CurrentDate } from "../stores";
+    import { AddAndRemoveRule, ChangeDisplay, ChangeDisplays, RemoveRuleFrom } from "../../helper";
 
     /* Program Filter */
     var filter: ProgramFilter = new ProgramFilter();
@@ -34,17 +33,23 @@
         var target: HTMLElement = event.target as HTMLElement;
         var result: ComputerProgram = filter.Find(target.id)!;
 
+        if (_current == result) { return; }
+
         const UpdateVisualization = () => {
             var x1: HTMLElement;
-            var x2: HTMLElement | undefined; 
+            var x2: HTMLElement; 
             if (_current != undefined && _last != undefined) {
                 x1 = _current.GetFullIdentifier().html();
                 x2 = _last.GetFullIdentifier().html();
 
                 AddAndRemoveRule(x1, x2, rule);
-
-                ChangeDisplay(_current.GetTitle().html()!, "block");
-                ChangeDisplay(_last.GetTitle().html()!, "-webkit-box");
+                
+                if (x1 == x2) {
+                    ChangeDisplay(_current.GetTitle().html()!, "block");
+                } else {
+                    ChangeDisplay(_current.GetTitle().html()!, "block");
+                    ChangeDisplay(_last.GetTitle().html()!, "-webkit-box");
+                }
             }            
         }
 
@@ -53,6 +58,20 @@
             UpdateVisualization();
         }
     }
+    
+    onMount(() => {
+        // TODO: clean up & find alternativ e
+        document.addEventListener('click', (e) => {
+            if (e.target != null)
+            if (!filter.Exist(e.target.id)) {
+                if (_current != undefined || _last != undefined) {
+                    RemoveRuleFrom([_last?.GetFullIdentifier().html()!, _current?.GetFullIdentifier().html()!], "active");
+                    ChangeDisplays([_current?.GetTitle().html(), _last?.GetTitle().html()], "-webkit-box");
+                }
+                return;
+            }
+        });
+    })
 </script>
 <div id="desktop_grid" class="win7-desktop-grid">
     {#each filter.GetPrograms() as program}

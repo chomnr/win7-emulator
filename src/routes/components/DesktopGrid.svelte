@@ -60,19 +60,17 @@
     }
     
     onMount(() => {
-        // TODO: clean up & find alternativ e
-        /*
         document.addEventListener('click', (e) => {
             if (e.target != null)
             if (!filter.Exist(e.target.id)) {
                 if (_current != undefined || _last != undefined) {
                     RemoveRuleFrom([_last?.GetFullIdentifier().html()!, _current?.GetFullIdentifier().html()!], "active");
                     ChangeDisplays([_current?.GetTitle().html(), _last?.GetTitle().html()], "-webkit-box");
+                    _current = undefined;
                 }
                 return;
             }
         });
-        */
     })
 </script>
 <div id="desktop_grid" class="win7-desktop-grid">

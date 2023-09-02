@@ -77,7 +77,7 @@
     {#each filter.GetPrograms() as program}
         <!-- svelte-ignore a11y-click-events-have-key-events -->
         <div on:click={ToggleActivity} role="button" tabindex=0 id="{program.GetFullIdentifier().string()}" class="win7-desktop-grid__program">
-            <div id="{program.GetIcon().string()}" class="win7-desktop-grid__program--icon win7-desktop-grid__program--icon--explorer"></div>
+            <div id="{program.GetIcon().string()}" class="win7-desktop-grid__program--icon win7-desktop-grid__program--icon--explorer {program.GetIcon().string()}"></div>
             <div id="{program.GetTitle().string()}" class="win7-desktop-grid__program--title">{program.GetName()}</div>
         </div>
     {/each}

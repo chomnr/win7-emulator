@@ -1,5 +1,9 @@
 <script lang="ts">
     import { onMount } from "svelte";
+    import { ProgramFilter } from "../../programs";
+
+    /* Program Filter */
+    var filter: ProgramFilter = new ProgramFilter();
 
     onMount(()=> {
         var startmenu_input: HTMLElement = document.getElementById("startmenu_input");
@@ -43,7 +47,12 @@
     <div id="startmenu_main_content" class="win7-startmenu__content win7-startmenu__content--with-design">
         <div class="win7-startmenu__group win7-startmenu__group--default-design justify-left win7-startmenu__group--column y-inherit">
             <!-- Startmenu items here. -->
-            <div class="item"></div>
+            {#each filter.GetPrograms() as program}
+                <div class="win7-startmenu__group__item">
+                    <div class="win7-startmenu__group__item--icon {program.GetIcon().string()}"></div> 
+                    {program.GetName()}
+                </div> 
+            {/each}
         </div>
 
         <div id="all_programs" class="win7-startmenu__group win7-startmenu__group--default-design align-center justify-left x-semi-large y-small font-small" style="border-radius: 0;">
@@ -52,7 +61,7 @@
         
         <div class="win7-startmenu__group win7-startmenu__group--default-design justify-left win7-startmenu__group--light-blue y-medium" style="border-radius: 0 0 8px 8px;">
             <div class="aero-input default" style="margin: 5px;">
-                <input id="startmenu_input" class="icon-format font-xxs font-italic small" placeholder="Search programs and files"/>
+                <input id="startmenu_input" class="icon-format font-xxs font-italic xsmall" placeholder="Search programs and files" disabled/>
                 <div class="icon magnify-2 transform-flip"></div>
             </div>
         </div>

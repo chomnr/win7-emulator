@@ -3,9 +3,6 @@
     import { ProgramFilter, ComputerProgram, ProgramHelper } from "../../programs"
     import { AddAndRemoveRule, ChangeDisplay, ChangeDisplays, RemoveRuleFrom } from "../../helper";
 
-    /* Program Filter */
-    var filter: ProgramFilter = new ProgramFilter();
-
     /* The last program that was clicked */
     var _last: ComputerProgram | undefined = undefined;
 
@@ -31,7 +28,7 @@
 
         //@ts-ignore
         var target: HTMLElement = event.target as HTMLElement;
-        var result: ComputerProgram = filter.Find(target.id)!;
+        var result: ComputerProgram = ProgramFilter.Find(target.id)!;
 
         if (_current == result) { return; }
 
@@ -62,11 +59,12 @@
     onMount(() => {
         document.addEventListener('click', (e) => {
             if (e.target != null)
-            if (!filter.Exist(e.target.id)) {
+            if (!ProgramFilter.Exist(e.target.id)) {
                 if (_current != undefined || _last != undefined) {
                     RemoveRuleFrom([_last?.GetFullIdentifier().html()!, _current?.GetFullIdentifier().html()!], "active");
                     ChangeDisplays([_current?.GetTitle().html(), _last?.GetTitle().html()], "-webkit-box");
                     _current = undefined;
+                    _last = undefined;
                 }
                 return;
             }
@@ -74,7 +72,7 @@
     })
 </script>
 <div id="desktop_grid" class="win7-desktop-grid">
-    {#each filter.GetPrograms() as program}
+    {#each ProgramFilter.GetPrograms() as program}
         <!-- svelte-ignore a11y-click-events-have-key-events -->
         <div on:dblclick={ProgramHelper.OpenWindow(_current)} on:click={ToggleActivity} role="button" tabindex=0 id="{program.GetFullIdentifier().string()}" class="win7-desktop-grid__program">
             <div id="{program.GetIcon().string()}" class="win7-desktop-grid__program--icon win7-desktop-grid__program--icon--explorer {program.GetIcon().string()}"></div>

@@ -14,7 +14,9 @@ export function RemoveRule(element: HTMLElement, rule: string) {
  */
 export function RemoveRuleFrom(elements: HTMLElement[], rule: string) {
     for (let i = 0; i < elements.length; i++) {
-        elements[i].classList.remove(rule);
+        if (elements[i].classList != undefined && elements[i].classList.contains(rule)) {
+            elements[i].classList.remove(rule);
+        }
     }
 }
 

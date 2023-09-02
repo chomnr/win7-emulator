@@ -4,6 +4,8 @@
 // every other element where a ComputerProgram might be ex: startmenu, desktop 
 // and taskbar.
 
+import { ActiveWindows } from "./routes/stores";
+
 // Computer Categories (used just for the same StartMenu search).
 export enum ComputerCategories {
     PROGRAMS = "Programs",
@@ -138,7 +140,7 @@ export class ProgramFilter {
      * @param fullIdentifier the class you want to look for
      * @returns true or false whether not the program exists or not.
      */
-    Exist(fullIdentifier: string): Boolean {
+    static Exist(fullIdentifier: string): Boolean {
         fullIdentifier = ProgramFilterHelper.ConvertToFullIdentifier(fullIdentifier);
         return programs.some(x => x.GetFullIdentifier().string() == fullIdentifier);
     }
@@ -150,7 +152,7 @@ export class ProgramFilter {
      * @param someIdentifier A identifer that can represent the class.
      * @returns {ComputerProgram}
      */
-    Find(someIdentifier: string): ComputerProgram | undefined {
+    static Find(someIdentifier: string): ComputerProgram | undefined {
         someIdentifier = ProgramFilterHelper.ConvertToFullIdentifier(someIdentifier);
         return programs.find(x => x.GetFullIdentifier().string().toLowerCase() == someIdentifier.toLowerCase())
     }
@@ -160,18 +162,44 @@ export class ProgramFilter {
      * 
      * @returns {ComputerProgram[]}
      */
-    GetPrograms(): ComputerProgram[] {
+    static GetPrograms(): ComputerProgram[] {
         return programs;
     }
 }
 
 export class ProgramHelper {
     /**
-     * Opens the window of the desired programk
+     * Opens the window of the desired program and adds it to ActiveWindows.
      * @param program the window you want to open
      */
     static OpenWindow(program: ComputerProgram) {
-        program.GetWindow().html().style.display = "flex";
+        ActiveWindows.update((current) => {
+            if (current.includes(program)) { return [...current]; }
+            return [...current, program]
+        })
+    }
+
+    /**
+     * Close the selected window of the desired program and remove it 
+     * from ActiveWindows.
+     * @param program the window you would like to close
+     */
+    static CloseWindow(program: ComputerProgram) {
+        ActiveWindows.update((current) => {
+            return current.filter((remove) => remove !== program)
+        })
+    }
+
+    /**
+     * Check to see if the given program has an active window.
+     * @param program the program you want to see if the window is open or not.
+     */
+    static IsWindowActive(program: ComputerProgram): Boolean {
+        let isActive = false;
+        ActiveWindows.subscribe((current) => {
+            isActive = current.includes(program);
+        })
+        return isActive;
     }
 }
 

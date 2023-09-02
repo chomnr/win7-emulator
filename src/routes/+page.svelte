@@ -1,13 +1,13 @@
 <script>
     import { onMount } from 'svelte'; 
-	import { TogglableStartMenu, CurrentTime, CurrentDate } from './stores';
+	import { TogglableStartMenu, CurrentTime, CurrentDate, ActiveWindows } from './stores';
     import DesktopGrid from './components/DesktopGrid.svelte';
     import StartMenu from './components/StartMenu.svelte';
     import TaskBar from './components/TaskBar.svelte';
     import InternetExplorer from './programs/InternetExplorer.svelte';
+    import { ProgramFilter, ProgramHelper } from '../programs';
 
 	onMount(() => {
-		
 		const timeUpdater = setInterval(() => {
 			var date = new Date();
 			CurrentTime.set(date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}).replace(/^0(?=\d)/, ''))
@@ -28,10 +28,13 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 </svelte:head>
 
-
-
 <DesktopGrid></DesktopGrid>
 <InternetExplorer></InternetExplorer>
+<!--
+{#if ProgramHelper.IsWindowActive(ProgramFilter.GetPrograms()[0])}
+	<InternetExplorer></InternetExplorer>
+{/if}
+-->
 {#if $TogglableStartMenu}
 <StartMenu></StartMenu>
 {/if}

@@ -1,10 +1,7 @@
 <script lang="ts">
     import { onMount } from "svelte";
     import { ProgramFilter } from "../../programs";
-
-    /* Program Filter */
-    var filter: ProgramFilter = new ProgramFilter();
-
+    
     onMount(()=> {
         var startmenu_input: HTMLElement = document.getElementById("startmenu_input");
         var startmenu_main_content: HTMLElement = document.getElementById("startmenu_main_content");
@@ -47,7 +44,7 @@
     <div id="startmenu_main_content" class="win7-startmenu__content win7-startmenu__content--with-design">
         <div class="win7-startmenu__group win7-startmenu__group--default-design justify-left win7-startmenu__group--column y-inherit">
             <!-- Startmenu items here. -->
-            {#each filter.GetPrograms() as program}
+            {#each ProgramFilter.GetPrograms() as program}
                 <div class="win7-startmenu__group__item">
                     <div class="win7-startmenu__group__item--icon {program.GetIcon().string()}"></div> 
                     {program.GetName()}

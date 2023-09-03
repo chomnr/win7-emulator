@@ -9,7 +9,6 @@
     //
 
     var program: ComputerProgram = ProgramFilter.Find("be_app")!;
-    console.log(program);
 </script>
 
 <WindowBase program={program} isWebSite={false} showTitle={true} openOnVisit={false}>

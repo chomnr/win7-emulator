@@ -49,14 +49,9 @@
         if (openOnVisit) {
             isWindowOpen = true;
             openOnVisit = false;
+            ProgramHelper.OpenWindow(program);
         }
-    });
-
-    /*
-    jQuery( "#" + program.GetWindow().string()  ).draggable({
-        });
-
-    */
+    });     
 </script>
 
 {#if isWindowOpen}
@@ -156,7 +151,7 @@
         <div id={program.GetWindow().string()} class="win7 win7-program__application">
             <div class="window active">
                 <div class="title-bar active">
-                  <div class="title-bar-text">A window with contents</div>
+                  <div class="title-bar-text">{program.GetName()}</div>
                   <div class="title-bar-controls">
                     <button aria-label="Minimize"></button>
                     <button on:click={MaximizeWindow} aria-label="Maximize"></button>
@@ -164,7 +159,7 @@
                   </div>
                 </div>
                 <div class="window-body has-space">
-                  <p>There's so much room for activities!</p>
+                  <slot/>
                 </div>
               </div>
         </div>

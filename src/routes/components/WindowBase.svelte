@@ -32,13 +32,15 @@
      */
     function AutoAdjustDimensionOnVisit() {
         var target: HTMLElement = program.GetWindow().html();
-        if (window.innerWidth < 996 && isWindowOpen) {
+        if (window.innerWidth < 1203 && isWindowOpen) {
             target.style.width = "95%";
             isInResponsiveMode = true;
         } else {
             isInResponsiveMode = false;
-            target.style.width = width.toString() + "px";
-            target.style.margin = "auto";
+            if (target != null) {
+                target.style.width = width.toString() + "px";
+                target.style.margin = "auto";
+            }
         }
     }
 

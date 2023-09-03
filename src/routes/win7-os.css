@@ -718,7 +718,6 @@
 .win7-program__explorer__group {
     z-index: 6;
     display: flex;
-    align-items: center;
 }
 
 .win7-program__explorer__group--fill {
@@ -801,6 +800,7 @@
 
 .win7-program__explorer__webpage {
     flex: 1;
+    width: 100%;
     background: white;
     border: 1px solid #b7b7b7;
 }

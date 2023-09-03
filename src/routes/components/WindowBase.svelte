@@ -1,28 +1,60 @@
 <script lang="ts">
     import { onMount } from "svelte";
     import type { ComputerProgram } from "../../programs";
-    import { ProgramFilter, ProgramHelper } from "../../programs";
+    import { ProgramHelper } from "../../programs";
     import { ActiveWindows } from "../stores";
-    import DesktopGrid from "./DesktopGrid.svelte";
 
-    //todo resize it according to screen
-    // it provides the basic functionality, minimize, maximize and close <windowbase> <windowbase program="InternetExplorer", isWebsite=true, showtitle = false></windowbase>
     export let program: ComputerProgram;
     export let showTitle: Boolean = true;
     export let isWebSite = false;
 
+    // whether the program should open when the person
+    // initially visits the website.
     export let openOnVisit = false;
 
+    // width and height of window
     export let width = 1200;
     export let height = 700;
 
+    // check if window is maximized or not
     var isMaximized = false;
+
+    // check if window is open or not
     var isWindowOpen = false;
 
+    // check if application should be in
+    // responsive mode or not.
+    var isInResponsiveMode = false;
+
+    /**
+     * Automatically adjust the dimensions of the program when
+     * the user visits the website.
+     */
+    function AutoAdjustDimensionOnVisit() {
+        var target: HTMLElement = program.GetWindow().html();
+        var target_page: HTMLElement = program.GetWebPage().html();
+
+        if (window.innerWidth < 996 && isWindowOpen) {
+            target.style.width = "95%";
+            isInResponsiveMode = true;
+        } else {
+            isInResponsiveMode = false;
+            target.style.width = width.toString() + "px";
+            target.style.margin = "auto";
+        }
+    }
+
+    /**
+     * This function closes the program's window.
+     */
     function CloseWindow() {
         ProgramHelper.CloseWindow(program);
     }
 
+    /**
+     * This function maximize's the program's window that
+     * clicked to maximize.
+     */
     function MaximizeWindow() {
         let p_window = program.GetWindow().html();
         if (isWebSite && !isMaximized) {
@@ -39,7 +71,11 @@
         }
     }
 
-    // Open and Close Subscriber
+    /**
+     * Subscribes to 'ActiveWindows'; this helps keep track
+     * of whether the current program window should be open
+     * or closed.
+     */
     ActiveWindows.subscribe((current) => {
         if (current.includes(program)) {
             isWindowOpen = true;
@@ -51,7 +87,20 @@
             openOnVisit = false;
             ProgramHelper.OpenWindow(program);
         }
-    });     
+    });
+
+    /**
+     * What we want to do when the website gets mounted.
+     */
+    onMount(() => {
+        // Set the dimension of the window when the website
+        // gets mounted.
+        AutoAdjustDimensionOnVisit();
+        // Listen to when the client resize their window.
+        window.addEventListener("resize", (e) => {
+            AutoAdjustDimensionOnVisit();
+        });
+    });
 </script>
 
 {#if isWindowOpen}
@@ -85,14 +134,17 @@
                             style="width: 17px;height:17px;"
                             class={program.GetIcon().string()}
                         />
-                        <div class="title-bar-text" style="font-size: 0.7rem;opacity:0.5;">
+                        <div
+                            class="title-bar-text"
+                            style="font-size: 0.7rem;opacity:0.5;"
+                        >
                             {program.GetName()}
                         </div>
                     </div>
                 {/if}
             </div>
 
-            {#if isWebSite}
+            {#if !isInResponsiveMode}
                 <div
                     class="win7-program__explorer__group"
                     style="gap:3px;padding-left:5px;position:relative;top:7px;width:fit-content;"
@@ -129,39 +181,34 @@
                 </div>
             {/if}
 
-            {#if isWebSite}
-                <div
-                    class="win7-program__explorer__group win7-program__explorer__group--fill"
-                    style="padding: 5px;padding-top:0px;"
-                >
-                    <div class="win7-program__explorer__webpage">
-                        <slot />
-                    </div>
-                </div>
-            {:else}
-                <div
-                    class="win7-program__explorer__group win7-program__explorer__group--fill"
-                    style="padding: 5px;padding-top:0px;"
-                >
+            <div
+                class="win7-program__explorer__group win7-program__explorer__group--fill">
+                <div id="{program.GetWebPage().string()}" class="win7-program__explorer__webpage">
                     <slot />
                 </div>
-            {/if}
+            </div>
         </div>
     {:else}
-        <div id={program.GetWindow().string()} class="win7 win7-program__application">
+        <div
+            id={program.GetWindow().string()}
+            class="win7 win7-program__application"
+        >
             <div class="window active">
                 <div class="title-bar active">
-                  <div class="title-bar-text">{program.GetName()}</div>
-                  <div class="title-bar-controls">
-                    <button aria-label="Minimize"></button>
-                    <button on:click={MaximizeWindow} aria-label="Maximize"></button>
-                    <button on:click={CloseWindow} aria-label="Close"></button>
-                  </div>
+                    <div class="title-bar-text">{program.GetName()}</div>
+                    <div class="title-bar-controls">
+                        <button aria-label="Minimize" />
+                        <button
+                            on:click={MaximizeWindow}
+                            aria-label="Maximize"
+                        />
+                        <button on:click={CloseWindow} aria-label="Close" />
+                    </div>
                 </div>
                 <div class="window-body has-space">
-                  <slot/>
+                    <slot />
                 </div>
-              </div>
+            </div>
         </div>
     {/if}
 {/if}

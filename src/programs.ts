@@ -40,6 +40,7 @@ export class ComputerProgram {
     private title: string;
     private category: ComputerCategories;
     private window: string;
+    private webpage: string;
 
     /**
      * Instantiate/Create a ComputerProgram
@@ -56,6 +57,7 @@ export class ComputerProgram {
         this.title = this.fullIdentifier + title_suffix;
         this.category = category;
         this.window = this.fullIdentifier + window_suffix;
+        this.webpage = this.fullIdentifier + webpage_suffix;
     }
 
     /**
@@ -75,22 +77,28 @@ export class ComputerProgram {
     /**
      * Returns the FullIdentifier which is the ID of the HTMLElement.
      * 
-     * @returns {string}
+     * @returns {ComputerProgramExtra}
      */
     GetFullIdentifier(): ComputerProgramExtra { return new ComputerProgramExtra(this.fullIdentifier) }
 
     /**
      * The icon of the program which is a HTMLElement.
      * 
-     * @returns {string}
+     * @returns {ComputerProgramExtra}
      */
     GetIcon(): ComputerProgramExtra { return new ComputerProgramExtra(this.icon); }
 
     /**
      *  The window of the program.
-     * @returns 
+     * @returns {ComputerProgramExtra}
      */
     GetWindow(): ComputerProgramExtra { return new ComputerProgramExtra(this.window); }
+
+    /**
+     * The webpage of the program.
+     * @returns {ComputerProgramExtra}
+     */
+    GetWebPage(): ComputerProgramExtra { return new ComputerProgramExtra(this.webpage); }
 
     /**
      * A misleading name but it returns the Title element that contains the this.name.
@@ -210,6 +218,8 @@ export const program_prefix = "program_";
 export const title_suffix = "-title"
 export const icon_suffix = "-icon";
 export const window_suffix = "-window";
+export const webpage_suffix = "-webpage";
+
 
 
 // all the programs.

@@ -215,4 +215,5 @@ export const window_suffix = "-window";
 // all the programs.
 const programs: ComputerProgram[] = [
     new ComputerProgram("ie9", "Internet Explorer"),
+    new ComputerProgram("be_app", "BruteExpose"),
 ]

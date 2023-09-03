@@ -46,8 +46,12 @@
     --aero-dg-program-active-shadow: rgba(140, 175, 239, 1);
 
     /* IE9 Program */
+    /* IE9 */
     --aero-ie9-program-width: 1200px;
     --aero-ie9-program-height: 700px;
+    /* REGULAR */
+    --aero-program-width: 400px;
+    --aero-program-height: 600px;
     --aero-ie9-program-border-radius: 6px;
     --aero-ie9-program-blur: 1px;
     --aero-ie9-program-opacity: 3px;
@@ -633,10 +637,40 @@
     content: url("https://d2hqjspxd4b0fs.cloudfront.net/win7/internet-explorer.svg")
 }
 
-.program_ie9-test {
-    content: url("https://d2hqjspxd4b0fs.cloudfront.net/magnifying_glass.svg");
+.program_be_app-icon {
+    /* BruteExpose Icon */
+    content: url("http://d2hqjspxd4b0fs.cloudfront.net/win7/orb-default.png");
+    margin-bottom: 5px;
 }
 
+
+/* =====================================
+   DESKTOP PROGRAM (REGULAR)
+   ===================================== */
+.win7-program__application {
+    /* Ensure that the desktop program icons get overlapped */
+    z-index: 4;
+
+    display: flex;
+    flex-direction: column;
+
+    /* Relative positioning */
+    position: absolute;
+
+    /* Center horizontally */
+    left: 0;
+    right: 0;
+    margin: auto;
+
+    /* Tries to center.. */
+    top: 10%;
+
+    /* Default PROGRAM width */
+    width: var(--aero-program-width);
+
+    /* Default PROGRAM height */
+    height: var(--aero-program-height);
+}
 
 /* =====================================
    DESKTOP PROGRAM (INTERNET EXPLORER)
@@ -648,7 +682,7 @@
 
     display: flex;
     flex-direction: column;
-    
+
     /* Relative positioning */
     position: absolute;
 
@@ -731,7 +765,7 @@
 
 .win7-program__explorer__tabgroup {
     display: flex;
-    
+
     /* Set position to relative */
     position: relative;
 
@@ -791,7 +825,7 @@
     outline: none;
     border: 1px solid transparent;
     border-radius: 4px;
-        color: white;
+    color: white;
 }
 
 .aero-button button:hover {

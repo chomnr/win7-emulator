@@ -5,13 +5,13 @@
     import { ActiveWindows } from "../stores";
 
     //
-    // Internet Explorer
+    // BruteExpose
     //
 
-    var program: ComputerProgram = ProgramFilter.Find("ie9")!;
-    
+    var program: ComputerProgram = ProgramFilter.Find("be_app")!;
+    console.log(program);
 </script>
 
-<WindowBase program={program} isWebSite={true} showTitle={true} openOnVisit={false}>
-    <WebPagePortfolio/>
+<WindowBase program={program} isWebSite={false} showTitle={true} openOnVisit={false}>
+    <div>hello this is a test o.</div>
 </WindowBase>

@@ -93,14 +93,14 @@
     /* Set image rendering to achieve crisp and pixelated edges */
     image-rendering: auto;
 
-    /* Disable the ability to call up the context menu on touch */
-    -webkit-touch-callout: none;
+    /* Disable the ability to call up the context menu on touch 
+    -webkit-touch-callout: none;*/
 
     /* Disable text selection and highlighting */
     user-select: none;
 
-    /* Disable touch interactions */
-    touch-action: none;
+    /* Disable touch interactions 
+    touch-action: none;*/
 }
 
 .win7-desktop__content {

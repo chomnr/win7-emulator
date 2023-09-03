@@ -32,8 +32,6 @@
      */
     function AutoAdjustDimensionOnVisit() {
         var target: HTMLElement = program.GetWindow().html();
-        var target_page: HTMLElement = program.GetWebPage().html();
-
         if (window.innerWidth < 996 && isWindowOpen) {
             target.style.width = "95%";
             isInResponsiveMode = true;

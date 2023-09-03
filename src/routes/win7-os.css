@@ -82,8 +82,8 @@
     /* Disable text selection and highlighting */
     user-select: none;
 
-    /* Disable touch interactions */
-    touch-action: none;
+    /* Disable touch interactions
+    touch-action: none; */
 
     /* Set the minimum height of the element to 100% of viewport height */
     min-height: inherit;

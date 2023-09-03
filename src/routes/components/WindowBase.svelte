@@ -3,6 +3,7 @@
     import type { ComputerProgram } from "../../programs";
     import { ProgramHelper } from "../../programs";
     import { ActiveWindows } from "../stores";
+    import { browser } from "$app/environment";
 
     export let program: ComputerProgram;
     export let showTitle: Boolean = true;
@@ -79,6 +80,13 @@
     ActiveWindows.subscribe((current) => {
         if (current.includes(program)) {
             isWindowOpen = true;
+            if (browser) {
+                // delay ensures that the Window gets 
+                // loaded before execution.
+                setTimeout(() => {
+                    AutoAdjustDimensionOnVisit();
+                }, 10)
+            }
         } else {
             isWindowOpen = false;
         }
@@ -99,6 +107,9 @@
         // Listen to when the client resize their window.
         window.addEventListener("resize", (e) => {
             AutoAdjustDimensionOnVisit();
+        });
+        window.addEventListener("DOMContentLoaded", (e) => {
+            console.log("i do this yes..")
         });
     });
 </script>

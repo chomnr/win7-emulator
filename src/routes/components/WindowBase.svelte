@@ -33,14 +33,17 @@
      */
     function AutoAdjustDimensionOnVisit() {
         var target: HTMLElement = program.GetWindow().html();
-        if (window.innerWidth < 1203 && isWindowOpen) {
+        if (window.innerWidth < 1203 && isWindowOpen && isWebSite) {
+            target.style.transition = "width 0.1s"
             target.style.width = "95%";
+
             isInResponsiveMode = true;
         } else {
-            isInResponsiveMode = false;
             if (target != null) {
                 target.style.width = width.toString() + "px";
                 target.style.margin = "auto";
+
+                isInResponsiveMode = false;
             }
         }
     }
@@ -59,15 +62,15 @@
     function MaximizeWindow() {
         let p_window = program.GetWindow().html();
         if (isWebSite && !isMaximized) {
+            p_window.style.position = "absolute";
+            p_window.style.top = "0"
             p_window.style.width = "100vw";
-            p_window.style.height = "96vh";
-            p_window.style.top = "0";
-            p_window.style.left = "0";
+            p_window.style.height = "95vh";
             isMaximized = true;
         } else {
+            p_window.style.top = "10%"
             p_window.style.width = width + "px";
             p_window.style.height = height + "px";
-            p_window.style.top = "10%";
             isMaximized = false;
         }
     }
@@ -83,9 +86,13 @@
             if (browser) {
                 // delay ensures that the Window gets 
                 // loaded before execution.
-                setTimeout(() => {
+               setTimeout(() => {
                     AutoAdjustDimensionOnVisit();
-                }, 10)
+                    jQuery("#" + program.GetWindow().string()).draggable({
+                        handle: "#" + program.GetWindow().string() + "-handle",
+                        scroll: false,
+                    });
+                }, 10) 
             }
         } else {
             isWindowOpen = false;
@@ -102,14 +109,11 @@
      */
     onMount(() => {
         // Set the dimension of the window when the website
-        // gets mounted.
+        // gets mounted. 
         AutoAdjustDimensionOnVisit();
         // Listen to when the client resize their window.
         window.addEventListener("resize", (e) => {
             AutoAdjustDimensionOnVisit();
-        });
-        window.addEventListener("DOMContentLoaded", (e) => {
-            console.log("i do this yes..")
         });
     });
 </script>
@@ -205,7 +209,7 @@
             class="win7 win7-program__application"
         >
             <div class="window active">
-                <div class="title-bar active">
+                <div id={program.GetWindow().string() + "-handle"} class="title-bar active">
                     <div class="title-bar-text">{program.GetName()}</div>
                     <div class="title-bar-controls">
                         <button aria-label="Minimize" />

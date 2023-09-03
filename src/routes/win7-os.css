@@ -82,9 +82,6 @@
     /* Disable text selection and highlighting */
     user-select: none;
 
-    /* Disable touch interactions
-    touch-action: none; */
-
     /* Set the minimum height of the element to 100% of viewport height */
     min-height: inherit;
 }
@@ -93,14 +90,11 @@
     /* Set image rendering to achieve crisp and pixelated edges */
     image-rendering: auto;
 
-    /* Disable the ability to call up the context menu on touch 
-    -webkit-touch-callout: none;*/
+    /* Disable the ability to call up the context menu on touch */
+    -webkit-touch-callout: none;
 
     /* Disable text selection and highlighting */
     user-select: none;
-
-    /* Disable touch interactions 
-    touch-action: none;*/
 }
 
 .win7-desktop__content {
@@ -718,6 +712,7 @@
 .win7-program__explorer__group {
     z-index: 6;
     display: flex;
+    align-items: center;
 }
 
 .win7-program__explorer__group--fill {

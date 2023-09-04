@@ -1,11 +1,12 @@
 <script>
     import { onMount } from 'svelte'; 
-	import { TogglableStartMenu, CurrentTime, CurrentDate, ActiveWindows } from './stores';
+	import { TogglableStartMenu, CurrentTime, CurrentDate, ActiveWindows, CurrentWindow } from './stores';
     import DesktopGrid from './components/DesktopGrid.svelte';
     import StartMenu from './components/StartMenu.svelte';
     import TaskBar from './components/TaskBar.svelte';
     import InternetExplorer from './programs/InternetExplorer.svelte';
     import Cmd from './programs/Cmd.svelte';
+    import Draggable from './components/Draggable.svelte';
 
 	onMount(() => {
 		const timeUpdater = setInterval(() => {

@@ -3,6 +3,7 @@
     import WindowBase from "../components/WindowBase.svelte";
     import WebPagePortfolio from "../components/WebPagePortfolio.svelte"
     import { ActiveWindows } from "../stores";
+    import Draggable from "../components/Draggable.svelte";
 
     //
     // Internet Explorer

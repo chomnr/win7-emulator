@@ -41,6 +41,7 @@ export class ComputerProgram {
     private category: ComputerCategories;
     private window: string;
     private webpage: string;
+    private handle: string;
 
     /**
      * Instantiate/Create a ComputerProgram
@@ -58,6 +59,7 @@ export class ComputerProgram {
         this.category = category;
         this.window = this.fullIdentifier + window_suffix;
         this.webpage = this.fullIdentifier + webpage_suffix;
+        this.handle = this.window + handle_suffix;
     }
 
     /**
@@ -94,6 +96,13 @@ export class ComputerProgram {
      * @returns {ComputerProgramExtra}
      */
     GetWindow(): ComputerProgramExtra { return new ComputerProgramExtra(this.window); }
+
+    /**
+     * The window of the program.
+     * 
+     * @returns {ComputerProgramExtra}
+     */
+    GetHandle(): ComputerProgramExtra { return new ComputerProgramExtra(this.handle); }
 
     /**
      * The webpage of the program.
@@ -221,8 +230,7 @@ export const title_suffix = "-title"
 export const icon_suffix = "-icon";
 export const window_suffix = "-window";
 export const webpage_suffix = "-webpage";
-
-
+export const handle_suffix = "-handle";
 
 // all the programs.
 const programs: ComputerProgram[] = [

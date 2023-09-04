@@ -4,7 +4,8 @@
     import { ProgramFilter, ProgramHelper } from "../../programs";
     import { ActiveWindows, CurrentWindow, TogglableStartMenu } from "../stores";
     import { browser } from "$app/environment";
-
+    import Draggable from "./Draggable.svelte";
+    
     export let program: ComputerProgram;
     export let showTitle: Boolean = true;
     export let isWebSite = false;
@@ -93,16 +94,8 @@
                 setTimeout(() => {
                     AutoAdjustDimensionOnVisit();
                     /* Change window priority on click. */
-                    program.GetWindow().html().addEventListener('click', (e) => {
-                        if ($CurrentWindow == program) { return; }
-                        if ($CurrentWindow != null) {
-                            $CurrentWindow.GetWindow().html().style.zIndex = "4";
-                        }
-                        CurrentWindow.set(program);
-                        program.GetWindow().html().style.zIndex = "5";
-                    })
-
-                    /* Handles draggable. */
+                    
+                    /* Handles draggable.
                     jQuery("#" + program.GetWindow().string()).draggable({
                         handle: "#" + program.GetWindow().string() + "-handle",
                         scroll: false,
@@ -122,6 +115,7 @@
                             }
                         }
                     });
+                     */
                 }, 10);
             }
         } else {
@@ -147,7 +141,7 @@
         });
     });
 </script>
-
+<Draggable program={program}>
 {#if isWindowOpen}
     {#if isWebSite}
         <div id={program.GetWindow().string()} class="win7-program__explorer">
@@ -307,3 +301,4 @@
         </div>
     {/if}
 {/if}
+</Draggable>

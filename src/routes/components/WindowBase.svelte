@@ -9,6 +9,9 @@
     export let showTitle: Boolean = true;
     export let isWebSite = false;
 
+    // custom title for the program.
+    export let title: string | undefined = undefined;
+
     // whether the program should open when the person
     // initially visits the website.
     export let openOnVisit = false;
@@ -34,7 +37,7 @@
     function AutoAdjustDimensionOnVisit() {
         var target: HTMLElement = program.GetWindow().html();
         if (window.innerWidth < 1203 && isWindowOpen && isWebSite) {
-            target.style.transition = "width 0.1s"
+            target.style.transition = "width 0.1s";
             target.style.width = "95%";
 
             isInResponsiveMode = true;
@@ -63,12 +66,12 @@
         let p_window = program.GetWindow().html();
         if (isWebSite && !isMaximized) {
             p_window.style.position = "absolute";
-            p_window.style.top = "0"
+            p_window.style.top = "0";
             p_window.style.width = "100vw";
             p_window.style.height = "95vh";
             isMaximized = true;
         } else {
-            p_window.style.top = "10%"
+            p_window.style.top = "10%";
             p_window.style.width = width + "px";
             p_window.style.height = height + "px";
             isMaximized = false;
@@ -84,15 +87,15 @@
         if (current.includes(program)) {
             isWindowOpen = true;
             if (browser) {
-                // delay ensures that the Window gets 
+                // delay ensures that the Window gets
                 // loaded before execution.
-               setTimeout(() => {
+                setTimeout(() => {
                     AutoAdjustDimensionOnVisit();
                     jQuery("#" + program.GetWindow().string()).draggable({
                         handle: "#" + program.GetWindow().string() + "-handle",
                         scroll: false,
                     });
-                }, 10) 
+                }, 10);
             }
         } else {
             isWindowOpen = false;
@@ -109,7 +112,7 @@
      */
     onMount(() => {
         // Set the dimension of the window when the website
-        // gets mounted. 
+        // gets mounted.
         AutoAdjustDimensionOnVisit();
         // Listen to when the client resize their window.
         window.addEventListener("resize", (e) => {
@@ -145,16 +148,29 @@
                     <div
                         style="display:flex;gap:5px;;flex: 1;align-items:center;margin-left: 3px;"
                     >
-                        <div
-                            style="width: 17px;height:17px;"
-                            class={program.GetIcon().string()}
-                        />
-                        <div
-                            class="title-bar-text"
-                            style="font-size: 0.7rem;opacity:0.5;"
-                        >
-                            {program.GetName()}
-                        </div>
+                        {#if title === undefined}
+                            <div
+                                style="width: 17px;height:17px;"
+                                class={program.GetIcon().string()}
+                            />
+                            <div
+                                class="title-bar-text"
+                                style="font-size: 0.7rem;opacity:0.5;"
+                            >
+                                {program.GetName()}
+                            </div>
+                        {:else}
+                            <div
+                                style="width: 17px;height:17px;"
+                                class={program.GetIcon().string()}
+                            />
+                            <div
+                                class="title-bar-text"
+                                style="font-size: 0.7rem;opacity:0.5;"
+                            >
+                                {title}
+                            </div>
+                        {/if}
                     </div>
                 {/if}
             </div>
@@ -197,8 +213,12 @@
             {/if}
 
             <div
-                class="win7-program__explorer__group win7-program__explorer__group--fill">
-                <div id="{program.GetWebPage().string()}" class="win7-program__explorer__webpage">
+                class="win7-program__explorer__group win7-program__explorer__group--fill"
+            >
+                <div
+                    id={program.GetWebPage().string()}
+                    class="win7-program__explorer__webpage"
+                >
                     <slot />
                 </div>
             </div>
@@ -209,8 +229,41 @@
             class="win7 win7-program__application"
         >
             <div class="window active">
-                <div id={program.GetWindow().string() + "-handle"} class="title-bar active">
-                    <div class="title-bar-text">{program.GetName()}</div>
+                <div
+                    id={program.GetWindow().string() + "-handle"}
+                    class="title-bar active"
+                >
+                    {#if showTitle}
+                        {#if title == undefined}
+                            <div
+                                class="title-bar-text"
+                                style="display:flex; gap: 3px;align-items:center;"
+                            >
+                                <div
+                                    style="width: 17px;height:17px;"
+                                    class={program.GetIcon().string()}
+                                />
+                                {program.GetName()}
+                            </div>
+                        {:else}
+                            <div
+                                class="title-bar-text"
+                                style="display:flex; gap: 3px;align-items:center;"
+                            >
+                                <div
+                                    style="width: 17px;height:17px;"
+                                    class={program.GetIcon().string()}
+                                />
+                                {title}
+                            </div>
+                        {/if}
+                    {:else}
+                        <div
+                            class="title-bar-text"
+                            style="display:flex; gap: 3px;align-items:center;"
+                        />
+                    {/if}
+
                     <div class="title-bar-controls">
                         <button aria-label="Minimize" />
                         <button
@@ -220,7 +273,7 @@
                         <button on:click={CloseWindow} aria-label="Close" />
                     </div>
                 </div>
-                <div class="window-body has-space">
+                <div class="window-body">
                     <slot />
                 </div>
             </div>

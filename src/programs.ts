@@ -226,4 +226,6 @@ export const webpage_suffix = "-webpage";
 const programs: ComputerProgram[] = [
     new ComputerProgram("ie9", "Internet Explorer"),
     new ComputerProgram("be_app", "BruteExpose"),
+    new ComputerProgram("cmd", "cmd"),
+
 ]

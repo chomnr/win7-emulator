@@ -7,6 +7,7 @@
     import InternetExplorer from './programs/InternetExplorer.svelte';
     import { ProgramFilter, ProgramHelper } from '../programs';
     import BruteExpose from './programs/BruteExpose.svelte';
+    import Cmd from './programs/Cmd.svelte';
 
 	onMount(() => {
 		const timeUpdater = setInterval(() => {
@@ -31,6 +32,7 @@
 
 <DesktopGrid></DesktopGrid>
 <InternetExplorer/>
+<Cmd/>
 <BruteExpose/>
 <!--
 {#if ProgramHelper.IsWindowActive(ProgramFilter.GetPrograms()[0])}

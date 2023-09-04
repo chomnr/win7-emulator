@@ -633,8 +633,12 @@
 
 .program_be_app-icon {
     /* BruteExpose Icon */
-    content: url("http://d2hqjspxd4b0fs.cloudfront.net/win7/orb-default.png");
-    margin-bottom: 5px;
+    content: url("https://d2hqjspxd4b0fs.cloudfront.net/win7/internet-explorer.svg");
+}
+
+.program_cmd-icon {
+    /* BruteExpose Icon */
+    content: url("../lib/images/windows/cmd-icon.svg");
 }
 
 

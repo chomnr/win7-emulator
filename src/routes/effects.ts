@@ -74,3 +74,8 @@ export class LEET {
         return null;
     }
 }
+
+
+export class SuperLEET {
+    
+}

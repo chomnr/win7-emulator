@@ -35,7 +35,6 @@
         if (e.target != null) {
             // get id of mousedown component
             var id = e.target.id;
-            console.log(id);
             // check if it is a handle.
             var isHandle = id == program.GetHandle().string();
             // if it is a handle make it move and adjust the priority.

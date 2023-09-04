@@ -38,15 +38,14 @@
     function AutoAdjustDimensionOnVisit() {
         var target: HTMLElement = program.GetWindow().html();
         if (window.innerWidth < 1203 && isWindowOpen && isWebSite) {
-            target.style.transition = "width 0.1s";
-            target.style.width = "95%";
+            // do adjustments
             isInResponsiveMode = true;
         } else {
             if (target != null) {
-                target.style.width = width.toString() + "px";
-                target.style.height = height.toString() + "px";
+               // target.style.width = width.toString() + "px";
+                //target.style.height = height.toString() + "px";
 
-                target.style.margin = "auto";
+                //target.style.margin = "auto";
 
                 isInResponsiveMode = false;
             }
@@ -91,6 +90,8 @@
             if (browser) {
                 // delay ensures that the Window gets
                 // loaded before execution.
+                AutoAdjustDimensionOnVisit();
+
                 setTimeout(() => {
                     AutoAdjustDimensionOnVisit();
                     /* Change window priority on click. */

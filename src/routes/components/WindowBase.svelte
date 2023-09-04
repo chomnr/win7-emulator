@@ -243,15 +243,8 @@
                     </div>
                 {/if}
 
-                <div
-                    class="win7-program__explorer__group win7-program__explorer__group--fill"
-                >
-                    <div
-                        id={program.GetWebPage().string()}
-                        class="win7-program__explorer__webpage"
-                    >
-                        <slot />
-                    </div>
+                <div class="win7-program__explorer__group win7-program__explorer__group--fill">
+                    <slot/>
                 </div>
             </div>
         {:else}

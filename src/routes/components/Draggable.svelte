@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { ComputerProgram } from "../../programs";
+    import { ProgramFilter, type ComputerProgram, ProgramHelper } from "../../programs";
     import { ActiveWindows, CurrentWindow, TogglableStartMenu } from "../stores";
 
     export let left = 370;
@@ -19,9 +19,9 @@
             TogglableStartMenu.set(false);
         }
 
-        program.GetWindow().html().style.zIndex = "6";
+        program.GetWindow().html().style.zIndex = "5";
       
-        if ($CurrentWindow != program) {
+        if ($CurrentWindow != program && $ActiveWindows.length > 1) {
             $CurrentWindow.GetWindow().html().style.zIndex = "4";
         }
     }
@@ -44,11 +44,10 @@
             }
             program.GetControls().html().classList.add("active");
             AdjustPriority();
+
             // if it is a handle make it move and adjust the priority.
             if (isHandle) {
                 moving = true;
-                CurrentWindow.set(program);
-                console.log($CurrentWindow);
                 return;
             }
         }
@@ -64,7 +63,10 @@
     function onMouseUp(e: MouseEvent) {
         moving = false;
         if (e.target != null) {
-            CurrentWindow.set(program);
+            var targetProgram: ComputerProgram | undefined = ProgramFilter.Find(e.target.id);
+            if (targetProgram != undefined && program == targetProgram) {
+                CurrentWindow.set(targetProgram);
+            }
         }
     }
 </script>

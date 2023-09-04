@@ -88,7 +88,7 @@
 </script>
 
 <WindowBase program={program} isWebSite={false} showTitle={true} title="C:\Windows\system32\cmd.exe" openOnVisit={false} width={700} height={800}>
-    <div class="program_cmd">
+    <div id="{program.GetWebPage().string()}" class="program_cmd">
         <div>Microsoft Windows [Version 6.1.7601]</div>
         <div>Copyright (c) 2009 Microsoft Corporation. All rights reserved.</div>
         <div>&nbsp;</div>

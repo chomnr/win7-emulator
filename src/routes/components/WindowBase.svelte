@@ -1,7 +1,7 @@
 <script lang="ts">
     import { onMount } from "svelte";
     import type { ComputerProgram } from "../../programs";
-    import { ProgramHelper } from "../../programs";
+    import { ProgramFilter, ProgramHelper } from "../../programs";
     import { ActiveWindows } from "../stores";
     import { browser } from "$app/environment";
 
@@ -95,6 +95,21 @@
                     jQuery("#" + program.GetWindow().string()).draggable({
                         handle: "#" + program.GetWindow().string() + "-handle",
                         scroll: false,
+                        // Window priority to avoid weird overlapping issues
+                        drag: function() {
+                            program.GetWindow().html().style.zIndex = "999"
+                            console.log("999 index")
+                        },
+                        // make the current dragged program index to 5 and rest to 4.
+                        stop: function() {
+                            for (let i = 0; i < current.length; i++) {
+                                if (current[i] == program) {
+                                    current[i].GetWindow().html().style.zIndex = "5";
+                                } else {
+                                    current[i].GetWindow().html().style.zIndex = "4";
+                                }
+                            }
+                        }
                     });
                 }, 10);
             }

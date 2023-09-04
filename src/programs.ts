@@ -89,13 +89,15 @@ export class ComputerProgram {
     GetIcon(): ComputerProgramExtra { return new ComputerProgramExtra(this.icon); }
 
     /**
-     *  The window of the program.
+     * The window of the program.
+     * 
      * @returns {ComputerProgramExtra}
      */
     GetWindow(): ComputerProgramExtra { return new ComputerProgramExtra(this.window); }
 
     /**
      * The webpage of the program.
+     * 
      * @returns {ComputerProgramExtra}
      */
     GetWebPage(): ComputerProgramExtra { return new ComputerProgramExtra(this.webpage); }
@@ -225,7 +227,6 @@ export const webpage_suffix = "-webpage";
 // all the programs.
 const programs: ComputerProgram[] = [
     new ComputerProgram("ie9", "Internet Explorer"),
-    new ComputerProgram("be_app", "BruteExpose"),
     new ComputerProgram("cmd", "Command Prompt"),
 
 ]

@@ -5,8 +5,6 @@
     import StartMenu from './components/StartMenu.svelte';
     import TaskBar from './components/TaskBar.svelte';
     import InternetExplorer from './programs/InternetExplorer.svelte';
-    import { ProgramFilter, ProgramHelper } from '../programs';
-    import BruteExpose from './programs/BruteExpose.svelte';
     import Cmd from './programs/Cmd.svelte';
 
 	onMount(() => {
@@ -33,7 +31,6 @@
 <DesktopGrid></DesktopGrid>
 <InternetExplorer/>
 <Cmd/>
-<BruteExpose/>
 <!--
 {#if ProgramHelper.IsWindowActive(ProgramFilter.GetPrograms()[0])}
 	<InternetExplorer></InternetExplorer>

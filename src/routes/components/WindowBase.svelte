@@ -39,11 +39,12 @@
         if (window.innerWidth < 1203 && isWindowOpen && isWebSite) {
             target.style.transition = "width 0.1s";
             target.style.width = "95%";
-
             isInResponsiveMode = true;
         } else {
             if (target != null) {
                 target.style.width = width.toString() + "px";
+                target.style.height = height.toString() + "px";
+
                 target.style.margin = "auto";
 
                 isInResponsiveMode = false;
@@ -226,7 +227,7 @@
     {:else}
         <div
             id={program.GetWindow().string()}
-            class="win7 win7-program__application"
+            class="win7 win7-program__application" style="width:{width}px;" 
         >
             <div class="window active">
                 <div

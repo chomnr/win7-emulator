@@ -94,6 +94,7 @@
                     AutoAdjustDimensionOnVisit();
                     /* Change window priority on click. */
                     program.GetWindow().html().addEventListener('click', (e) => {
+                        if ($CurrentWindow == program) { return; }
                         if ($CurrentWindow != null) {
                             $CurrentWindow.GetWindow().html().style.zIndex = "4";
                         }

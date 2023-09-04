@@ -2,8 +2,8 @@
     import type { ComputerProgram } from "../../programs";
     import { ActiveWindows, CurrentWindow } from "../stores";
 
-    export let left = 100;
-    export let top = 100;
+    export let left = 370;
+    export let top = 150;
 
     export let program: ComputerProgram;
 
@@ -13,14 +13,16 @@
      * Automatically adjust the z-index of the selected
      * window.
      */
-    function AdjustPriority() {
+    function AdjustPriority() {  
+        program.GetWindow().html().style.zIndex = "5";
+      
         if ($CurrentWindow != program && $ActiveWindows.length > 1) {
             $CurrentWindow.GetWindow().html().style.zIndex = "4";
         }
-
+        /*
         if ($CurrentWindow == program) {
             $CurrentWindow.GetWindow().html().style.zIndex = "5";
-        }
+        }*/
     }
 
     function onMouseDown(e: MouseEvent) {
@@ -33,6 +35,7 @@
         if (e.target != null) {
             // get id of mousedown component
             var id = e.target.id;
+            console.log(id);
             // check if it is a handle.
             var isHandle = id == program.GetHandle().string();
             // if it is a handle make it move and adjust the priority.

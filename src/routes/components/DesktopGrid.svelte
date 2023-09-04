@@ -1,21 +1,34 @@
+<!--   
+    This file manage's ONLY the desktop environment. It is simply an
+    intermediator between the process and program.
+-->
 <script lang="ts">
     import { onMount } from 'svelte';
-    import { ProgramFilter, ComputerProgram, ProgramHelper } from '../../programs';
+    import { ProgramFilter, ComputerProgram, icon_suffix, title_suffix } from '../../programs';
     import { AddAndRemoveRule, ChangeDisplay, ChangeDisplays, RemoveRuleFrom } from '../../helper';
+    import { TaskManager } from '../stores';
 
-    /* The last program that was clicked */
-    var _last: ComputerProgram | undefined = undefined;
+    interface DesktopClickTracker {
+        current: ComputerProgram | undefined;
+        last: ComputerProgram | undefined;
+    }
 
-    /* The program that was clicked */
-    var _current: ComputerProgram | undefined = undefined;
+    const tracker: DesktopClickTracker = {
+        current: undefined,
+        last: undefined,
+    };
 
+    /**
+     * Update the current and last click dynamically.
+     * @param target the program you want to update
+     */
     function Update(target: ComputerProgram) {
-        if (_current == null) {
-            _current = target;
-            _last = target;
+        if (tracker.current == null) {
+            tracker.current = target;
+            tracker.last = target;
         } else {
-            _last = _current;
-            _current = target;
+            tracker.last = tracker.current;
+            tracker.current = target;
         }
     }
 
@@ -30,24 +43,31 @@
         var target: HTMLElement = event.target as HTMLElement;
         var result: ComputerProgram = ProgramFilter.Find(target.id)!;
 
-        if (_current == result) {
+        if (tracker.current == result) {
             return;
         }
 
         const UpdateVisualization = () => {
-            var x1: HTMLElement;
-            var x2: HTMLElement;
-            if (_current != undefined && _last != undefined) {
-                x1 = _current.GetFullIdentifier().html();
-                x2 = _last.GetFullIdentifier().html();
+            let a: HTMLElement;
+            let b: HTMLElement;
 
-                AddAndRemoveRule(x1, x2, rule);
+            let c: HTMLElement;
+            let d: HTMLElement;
 
-                if (x1 == x2) {
-                    ChangeDisplay(_current.GetTitle().html()!, 'block');
+            if (tracker.current != undefined && tracker.last != undefined) {
+                a = tracker.current.GetFullIdentifier().html();
+                b = tracker.last.GetFullIdentifier().html();
+
+                c = tracker.current.GetTitle().html()!;
+                d = tracker.last.GetTitle().html()!;
+
+                AddAndRemoveRule(a, b, rule);
+
+                if (a == b) {
+                    ChangeDisplay(c, 'block');
                 } else {
-                    ChangeDisplay(_current.GetTitle().html()!, 'block');
-                    ChangeDisplay(_last.GetTitle().html()!, '-webkit-box');
+                    ChangeDisplay(c, 'block');
+                    ChangeDisplay(d, '-webkit-box');
                 }
             }
         };
@@ -58,21 +78,45 @@
         }
     }
 
+    /**
+     * Detects whenever the selected item is not a ComputerProgram.
+     *
+     * Method:
+     * Checks if the clicked element contains a icon or title if
+     * it does that mean it's not opening a program because
+     * those two suffixes are unique to a desktop program
+     */
+    function InvalidClickDetection(me: MouseEvent) {
+        if (me.target != null) {
+            let id: string = me.target.id;
+            // check if it contains either a icon_suffix or title_suffix
+            let x1: Boolean = ProgramFilter.IsTypeOf(icon_suffix, id)!;
+            let x2: Boolean = ProgramFilter.IsTypeOf(title_suffix, id)!;
+            if (!x1 && !x2 && tracker.current != undefined) {
+                let b1 = tracker.current?.GetFullIdentifier().html()!;
+                let b2 = tracker.last?.GetFullIdentifier().html()!;
+
+                let c1 = tracker.current?.GetTitle().html()!;
+                let c2 = tracker.last?.GetTitle().html()!;
+
+                RemoveRuleFrom([b1, b2], 'active');
+                ChangeDisplays([c1, c2], '-webkit-box');
+
+                tracker.current = undefined;
+            }
+        }
+    }
+
+    function AddProcess(event: MouseEvent) {
+        var target = event.target;
+        if (target != null) {
+            let program = ProgramFilter.Find(target.id);
+            TaskManager.AddProcess(program!);
+        }
+    }
+
     onMount(() => {
-        document.addEventListener('click', (e) => {
-            if (e.target != null)
-                if (!ProgramFilter.Exist(e.target.id)) {
-                    if (_current != undefined) {
-                        RemoveRuleFrom(
-                            [_last?.GetFullIdentifier().html()!, _current?.GetFullIdentifier().html()!],
-                            'active',
-                        );
-                        ChangeDisplays([_current?.GetTitle().html(), _last?.GetTitle().html()], '-webkit-box');
-                        _current = undefined;
-                    }
-                    return;
-                }
-        });
+        document.addEventListener('click', InvalidClickDetection);
     });
 </script>
 
@@ -80,7 +124,7 @@
     {#each ProgramFilter.GetPrograms() as program}
         <!-- svelte-ignore a11y-click-events-have-key-events -->
         <div
-            on:dblclick={ProgramHelper.OpenWindow(_current)}
+            on:dblclick={AddProcess}
             on:click={ToggleActivity}
             role="button"
             tabindex="0"

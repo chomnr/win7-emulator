@@ -1,18 +1,18 @@
-<script>
-    import { onMount } from 'svelte';
-    import { TogglableStartMenu, CurrentTime, CurrentDate, ActiveWindows, CurrentWindow } from './stores';
+<script lang="ts">
+    import { TogglableStartMenu, CurrentTime, CurrentDate, TaskManager } from './stores';
     import DesktopGrid from './components/DesktopGrid.svelte';
     import StartMenu from './components/StartMenu.svelte';
     import TaskBar from './components/TaskBar.svelte';
     import InternetExplorer from './programs/InternetExplorer.svelte';
     import Cmd from './programs/Cmd.svelte';
-    import Draggable from './components/Draggable.svelte';
     import { browser } from '$app/environment';
 
-    // Whenever the focused window gets chanaged.
-    CurrentWindow.subscribe((e) => {});
-
+    /*
     onMount(() => {
+
+        setTimeout(() => {
+            TaskManager.setUsing(ProgramFilter.GetPrograms()[0]);
+        }, 5000)
         // Manage the
         const timeUpdater = setInterval(() => {
             var date = new Date();
@@ -26,10 +26,16 @@
             );
             CurrentDate.set(date.toLocaleDateString());
         }, 1000);
-
         return () => {
             clearInterval(timeUpdater);
         };
+    });
+    */
+
+    // Adjust Visuals.
+    TaskManager.subscribe((event) => {
+        if (event.processes.length != 0) {
+        }
     });
 </script>
 
@@ -43,11 +49,7 @@
 <DesktopGrid />
 <InternetExplorer />
 <Cmd />
-<!--
-{#if ProgramHelper.IsWindowActive(ProgramFilter.GetPrograms()[0])}
-	<InternetExplorer></InternetExplorer>
-{/if}
--->
+<!--<Cmd />-->
 {#if $TogglableStartMenu}
     <StartMenu />
 {/if}

@@ -1,8 +1,8 @@
 <script lang="ts">
     import { onMount } from 'svelte';
     import type { ComputerProgram } from '../../programs';
-    import { ProgramFilter, ProgramHelper } from '../../programs';
-    import { ActiveWindows, CurrentWindow, TogglableStartMenu } from '../stores';
+    import { ProgramHelper } from '../../programs';
+    import { ActiveWindows, TaskManager, type IProgramManager } from '../stores';
     import { browser } from '$app/environment';
     import Draggable from './Draggable.svelte';
 
@@ -33,9 +33,11 @@
 
     // ensures that a currentwindow is set when a window
     // opens on a visit.
+    /*
     if (openOnVisit && $CurrentWindow == null) {
         $CurrentWindow = program;
     }
+    */
 
     /**
      * Automatically adjust the dimensions of the program when
@@ -62,7 +64,7 @@
      * This function closes the program's window.
      */
     function CloseWindow() {
-        ProgramHelper.CloseWindow(program);
+        TaskManager.CloseProcess(program);
     }
 
     /**
@@ -86,10 +88,27 @@
     }
 
     /**
-     * Subscribes to 'ActiveWindows'; this helps keep track
+     * Subscribes to 'TaskManager'; this helps keep track
      * of whether the current program window should be open
      * or closed & adjusts the position of the div.
      */
+    TaskManager.subscribe((event: IProgramManager) => {
+        if (event.processes.includes(program) && !isWindowOpen) {
+            isWindowOpen = true;
+        }
+
+        if (!event.processes.includes(program) && isWindowOpen) {
+            isWindowOpen = false;
+        }
+
+        if (openOnVisit) {
+            isWindowOpen = true;
+            openOnVisit = false;
+            TaskManager.AddProcess(program);
+        }
+    });
+
+    /*
     ActiveWindows.subscribe((current) => {
         if (current.includes(program)) {
             isWindowOpen = true;
@@ -105,6 +124,7 @@
             ProgramHelper.OpenWindow(program);
         }
     });
+    */
 
     /**
      * What we want to do when the website gets mounted.
@@ -129,7 +149,7 @@
                 <div class="win7 win7-program__explorer__controls">
                     <div
                         id={program.GetControls().string()}
-                        class="title-bar"
+                        class="title-bar active"
                         style="background: none;border: none;box-shadow: none;"
                     >
                         <div class="title-bar-controls">

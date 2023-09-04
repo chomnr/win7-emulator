@@ -1,9 +1,7 @@
 <script lang="ts">
     import { onMount } from 'svelte';
     import type { ComputerProgram } from '../../programs';
-    import { ProgramHelper } from '../../programs';
-    import { ActiveWindows, TaskManager, type IProgramManager } from '../stores';
-    import { browser } from '$app/environment';
+    import { TaskManager, type IProgramManager } from '../stores';
     import Draggable from './Draggable.svelte';
 
     export let program: ComputerProgram;
@@ -31,14 +29,6 @@
     // responsive mode or not.
     var isInResponsiveMode = false;
 
-    // ensures that a currentwindow is set when a window
-    // opens on a visit.
-    /*
-    if (openOnVisit && $CurrentWindow == null) {
-        $CurrentWindow = program;
-    }
-    */
-
     /**
      * Automatically adjust the dimensions of the program when
      * the user visits the website.
@@ -65,6 +55,7 @@
      */
     function CloseWindow() {
         TaskManager.CloseProcess(program);
+        TaskManager.SetUsing(undefined);
     }
 
     /**
@@ -95,10 +86,12 @@
     TaskManager.subscribe((event: IProgramManager) => {
         if (event.processes.includes(program) && !isWindowOpen) {
             isWindowOpen = true;
+            TaskManager.SetUsing(program);
         }
 
         if (!event.processes.includes(program) && isWindowOpen) {
             isWindowOpen = false;
+            TaskManager.SetLast(program);
         }
 
         if (openOnVisit) {

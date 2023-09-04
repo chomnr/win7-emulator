@@ -26,12 +26,12 @@ const ProgramStore = () => {
 
     return {
         subscribe,
-        SetUsing: (program: ComputerProgram) =>
+        SetUsing: (program: ComputerProgram | undefined) =>
             update(({ using, ...updater }) => ({
                 ...updater,
                 using: program,
             })),
-        SetLast: (lastProgram: ComputerProgram) =>
+        SetLast: (lastProgram: ComputerProgram | undefined) =>
             update(({ last, ...updater }) => ({
                 ...updater,
                 last: lastProgram,

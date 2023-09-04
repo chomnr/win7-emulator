@@ -103,6 +103,8 @@
                 ChangeDisplays([c1, c2], '-webkit-box');
 
                 tracker.current = undefined;
+
+                TaskManager.SetUsing(undefined);
             }
         }
     }

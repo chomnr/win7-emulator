@@ -5,14 +5,16 @@
     import TaskBar from './components/TaskBar.svelte';
     import InternetExplorer from './programs/InternetExplorer.svelte';
     import Cmd from './programs/Cmd.svelte';
-    import { browser } from '$app/environment';
+    import { onMount } from 'svelte';
 
-    /*
+    // Adjust Visuals.
+    TaskManager.subscribe((event) => {
+        console.log(event);
+        if (event.processes.length != 0) {
+        }
+    });
+
     onMount(() => {
-
-        setTimeout(() => {
-            TaskManager.setUsing(ProgramFilter.GetPrograms()[0]);
-        }, 5000)
         // Manage the
         const timeUpdater = setInterval(() => {
             var date = new Date();
@@ -29,13 +31,6 @@
         return () => {
             clearInterval(timeUpdater);
         };
-    });
-    */
-
-    // Adjust Visuals.
-    TaskManager.subscribe((event) => {
-        if (event.processes.length != 0) {
-        }
     });
 </script>
 

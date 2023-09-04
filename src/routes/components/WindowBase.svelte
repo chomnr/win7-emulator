@@ -97,7 +97,7 @@
                         scroll: false,
                         // Window priority to avoid weird overlapping issues
                         drag: function() {
-                            program.GetWindow().html().style.zIndex = "5"
+                            program.GetWindow().html().style.zIndex = "7"
                         },
                         // make the current dragged program index to 5 and rest to 4.
                         stop: function() {

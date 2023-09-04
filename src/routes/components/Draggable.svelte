@@ -1,6 +1,6 @@
 <script lang="ts">
     import type { ComputerProgram } from "../../programs";
-    import { ActiveWindows, CurrentWindow } from "../stores";
+    import { ActiveWindows, CurrentWindow, TogglableStartMenu } from "../stores";
 
     export let left = 370;
     export let top = 150;
@@ -14,15 +14,16 @@
      * window.
      */
     function AdjustPriority() {  
+        // if the startmenu is open close it.
+        if ($TogglableStartMenu) {
+            TogglableStartMenu.set(false);
+        }
+
         program.GetWindow().html().style.zIndex = "5";
       
         if ($CurrentWindow != program && $ActiveWindows.length > 1) {
             $CurrentWindow.GetWindow().html().style.zIndex = "4";
         }
-        /*
-        if ($CurrentWindow == program) {
-            $CurrentWindow.GetWindow().html().style.zIndex = "5";
-        }*/
     }
 
     function onMouseDown(e: MouseEvent) {
@@ -37,10 +38,16 @@
             var id = e.target.id;
             // check if it is a handle.
             var isHandle = id == program.GetHandle().string();
+            AdjustPriority();
+            // ensures that only one window has an active class.
+            if ($CurrentWindow != program) {
+                $CurrentWindow.GetControls().html().classList.remove("active");
+            }
+            program.GetControls().html().classList.add("active");
             // if it is a handle make it move and adjust the priority.
             if (isHandle) {
                 moving = true;
-                AdjustPriority();
+                return;
             }
         }
     }
@@ -52,9 +59,14 @@
         }
     }
 
-    function onMouseUp() {
+    function onMouseUp(e: MouseEvent) {
         moving = false;
-        CurrentWindow.set(program);
+        if (e.target != null) {
+            var id = e.target.id;
+            if (program.GetHandle().string() == id) {
+                CurrentWindow.set(program);
+            }
+        }
     }
 </script>
 

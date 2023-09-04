@@ -42,6 +42,7 @@ export class ComputerProgram {
     private window: string;
     private webpage: string;
     private handle: string;
+    private controls: string;
 
     /**
      * Instantiate/Create a ComputerProgram
@@ -60,6 +61,7 @@ export class ComputerProgram {
         this.window = this.fullIdentifier + window_suffix;
         this.webpage = this.fullIdentifier + webpage_suffix;
         this.handle = this.window + handle_suffix;
+        this.controls = this.window + controls_suffix;
     }
 
     /**
@@ -105,6 +107,13 @@ export class ComputerProgram {
     GetHandle(): ComputerProgramExtra { return new ComputerProgramExtra(this.handle); }
 
     /**
+     * The controls of the program ex: min, max, and close.
+     * 
+     * @returns {ComputerProgramExtra}
+     */
+    GetControls(): ComputerProgramExtra { return new ComputerProgramExtra(this.controls); }
+
+    /**
      * The webpage of the program.
      * 
      * @returns {ComputerProgramExtra}
@@ -142,6 +151,22 @@ class ProgramFilterHelper {
 
         if (input.includes(icon_suffix)) {
             input = input.replace(icon_suffix, "");
+        }
+
+        if (input.includes(window_suffix)) {
+            input = input.replace(window_suffix, "");
+        }
+
+        if (input.includes(webpage_suffix)) {
+            input = input.replace(webpage_suffix, "");
+        }
+
+        if (input.includes(handle_suffix)) {
+            input = input.replace(handle_suffix, "");
+        }
+
+        if (input.includes(controls_suffix)) {
+            input = input.replace(controls_suffix, "");
         }
 
         if (!input.includes(program_prefix)) {
@@ -231,6 +256,8 @@ export const icon_suffix = "-icon";
 export const window_suffix = "-window";
 export const webpage_suffix = "-webpage";
 export const handle_suffix = "-handle";
+export const controls_suffix = "-controls";
+
 
 // all the programs.
 const programs: ComputerProgram[] = [

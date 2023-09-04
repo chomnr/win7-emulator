@@ -2,7 +2,7 @@
     import { onMount } from "svelte";
     import type { ComputerProgram } from "../../programs";
     import { ProgramFilter, ProgramHelper } from "../../programs";
-    import { ActiveWindows } from "../stores";
+    import { ActiveWindows, CurrentWindow } from "../stores";
     import { browser } from "$app/environment";
 
     export let program: ComputerProgram;
@@ -96,7 +96,7 @@
                         handle: "#" + program.GetWindow().string() + "-handle",
                         scroll: false,
                         // Window priority to avoid weird overlapping issues
-                        drag: function() {
+                        start: function() {
                             program.GetWindow().html().style.zIndex = "7"
                         },
                         // make the current dragged program index to 5 and rest to 4.

@@ -7,3 +7,5 @@ export const CurrentTime = writable("")
 export const CurrentDate = writable("");
 
 export const ActiveWindows = writable<ComputerProgram[]>([]);
+
+export const CurrentWindow = writable<ComputerProgram>();

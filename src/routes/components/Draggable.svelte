@@ -19,9 +19,9 @@
             TogglableStartMenu.set(false);
         }
 
-        program.GetWindow().html().style.zIndex = "5";
+        program.GetWindow().html().style.zIndex = "6";
       
-        if ($CurrentWindow != program && $ActiveWindows.length > 1) {
+        if ($CurrentWindow != program) {
             $CurrentWindow.GetWindow().html().style.zIndex = "4";
         }
     }
@@ -38,15 +38,17 @@
             var id = e.target.id;
             // check if it is a handle.
             var isHandle = id == program.GetHandle().string();
-            AdjustPriority();
             // ensures that only one window has an active class.
             if ($CurrentWindow != program) {
                 $CurrentWindow.GetControls().html().classList.remove("active");
             }
             program.GetControls().html().classList.add("active");
+            AdjustPriority();
             // if it is a handle make it move and adjust the priority.
             if (isHandle) {
                 moving = true;
+                CurrentWindow.set(program);
+                console.log($CurrentWindow);
                 return;
             }
         }
@@ -62,10 +64,7 @@
     function onMouseUp(e: MouseEvent) {
         moving = false;
         if (e.target != null) {
-            var id = e.target.id;
-            if (program.GetHandle().string() == id) {
-                CurrentWindow.set(program);
-            }
+            CurrentWindow.set(program);
         }
     }
 </script>

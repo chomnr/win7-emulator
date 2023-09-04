@@ -100,7 +100,6 @@
             isWindowOpen = true;
             if (browser) {
                 AutoAdjustDimensionOnVisit();
-                
             }
         } else {
             isWindowOpen = false;

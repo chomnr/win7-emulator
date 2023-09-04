@@ -43,6 +43,7 @@ export class ComputerProgram {
     private webpage: string;
     private handle: string;
     private controls: string;
+    private searchcontrols :string;
 
     /**
      * Instantiate/Create a ComputerProgram
@@ -62,6 +63,7 @@ export class ComputerProgram {
         this.webpage = this.fullIdentifier + webpage_suffix;
         this.handle = this.window + handle_suffix;
         this.controls = this.window + controls_suffix;
+        this.searchcontrols = this.window + search_controls_suffix;
     }
 
     /**
@@ -112,6 +114,13 @@ export class ComputerProgram {
      * @returns {ComputerProgramExtra}
      */
     GetControls(): ComputerProgramExtra { return new ComputerProgramExtra(this.controls); }
+
+    /**
+     * The search controls of the webpage (not applications). can return null.
+     * 
+     * @returns {ComputerProgramExtra}
+     */
+    GetSearchControls(): ComputerProgramExtra { return new ComputerProgramExtra(this.searchcontrols);  }
 
     /**
      * The webpage of the program.
@@ -167,6 +176,10 @@ class ProgramFilterHelper {
 
         if (input.includes(controls_suffix)) {
             input = input.replace(controls_suffix, "");
+        }
+
+        if (input.includes(search_controls_suffix)) {
+            input = input.replace(search_controls_suffix, "");
         }
 
         if (!input.includes(program_prefix)) {
@@ -257,6 +270,8 @@ export const window_suffix = "-window";
 export const webpage_suffix = "-webpage";
 export const handle_suffix = "-handle";
 export const controls_suffix = "-controls";
+export const search_controls_suffix = "-search_controls";
+
 
 
 // all the programs.

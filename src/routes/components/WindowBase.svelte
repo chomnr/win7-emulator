@@ -1,14 +1,10 @@
 <script lang="ts">
-    import { onMount } from "svelte";
-    import type { ComputerProgram } from "../../programs";
-    import { ProgramFilter, ProgramHelper } from "../../programs";
-    import {
-        ActiveWindows,
-        CurrentWindow,
-        TogglableStartMenu,
-    } from "../stores";
-    import { browser } from "$app/environment";
-    import Draggable from "./Draggable.svelte";
+    import { onMount } from 'svelte';
+    import type { ComputerProgram } from '../../programs';
+    import { ProgramFilter, ProgramHelper } from '../../programs';
+    import { ActiveWindows, CurrentWindow, TogglableStartMenu } from '../stores';
+    import { browser } from '$app/environment';
+    import Draggable from './Draggable.svelte';
 
     export let program: ComputerProgram;
     export let showTitle: Boolean = true;
@@ -35,12 +31,11 @@
     // responsive mode or not.
     var isInResponsiveMode = false;
 
-
     // ensures that a currentwindow is set when a window
     // opens on a visit.
     if (openOnVisit && $CurrentWindow == null) {
         $CurrentWindow = program;
-    } 
+    }
 
     /**
      * Automatically adjust the dimensions of the program when
@@ -77,15 +72,15 @@
     function MaximizeWindow() {
         let p_window = program.GetWindow().html();
         if (isWebSite && !isMaximized) {
-            p_window.style.position = "absolute";
-            p_window.style.top = "0";
-            p_window.style.width = "100vw";
-            p_window.style.height = "95vh";
+            p_window.style.position = 'absolute';
+            p_window.style.top = '0';
+            p_window.style.width = '100vw';
+            p_window.style.height = '95vh';
             isMaximized = true;
         } else {
-            p_window.style.top = "10%";
-            p_window.style.width = width + "px";
-            p_window.style.height = height + "px";
+            p_window.style.top = '10%';
+            p_window.style.width = width + 'px';
+            p_window.style.height = height + 'px';
             isMaximized = false;
         }
     }
@@ -110,27 +105,6 @@
             ProgramHelper.OpenWindow(program);
         }
     });
-    
-    /**
-     * Subscribe to the CurrentWindow store to ensure
-     * the activity of controls are kept up to date.
-     
-    CurrentWindow.subscribe((current) => {
-        if (program == current) {
-            if (browser) {
-                program.GetControls().html().classList.add("active");
-            }
-            return;
-        }
-
-        if (program != current && program != null) {
-            if (browser) {
-                console.log(current);
-            }
-            return;
-        }
-    });
-    */
 
     /**
      * What we want to do when the website gets mounted.
@@ -140,7 +114,7 @@
         // gets mounted.
         AutoAdjustDimensionOnVisit();
         // Listen to when the client resize their window.
-        window.addEventListener("resize", (e) => {
+        window.addEventListener('resize', (e) => {
             AutoAdjustDimensionOnVisit();
         });
     });
@@ -149,16 +123,9 @@
 <Draggable {program}>
     {#if isWindowOpen}
         {#if isWebSite}
-            <div
-                id={program.GetWindow().string()}
-                class="win7-program__explorer"
-            >
-                <div
-                    id={program.GetHandle().string()}
-                    class="win7 win7-program__explorer__handle"
-                />
+            <div id={program.GetWindow().string()} class="win7-program__explorer">
+                <div id={program.GetHandle().string()} class="win7 win7-program__explorer__handle" />
 
-                
                 <div class="win7 win7-program__explorer__controls">
                     <div
                         id={program.GetControls().string()}
@@ -167,38 +134,21 @@
                     >
                         <div class="title-bar-controls">
                             <button aria-label="Minimize" />
-                            <button
-                                on:click={MaximizeWindow}
-                                aria-label="Maximize"
-                            />
+                            <button on:click={MaximizeWindow} aria-label="Maximize" />
                             <button on:click={CloseWindow} aria-label="Close" />
                         </div>
                     </div>
 
                     {#if showTitle}
-                        <div
-                            style="display:flex;gap:5px;;flex: 1;align-items:center;margin-left: 3px;"
-                        >
+                        <div style="display:flex;gap:5px;;flex: 1;align-items:center;margin-left: 3px;">
                             {#if title === undefined}
-                                <div
-                                    style="width: 17px;height:17px;"
-                                    class={program.GetIcon().string()}
-                                />
-                                <div
-                                    class="title-bar-text"
-                                    style="font-size: 0.7rem;opacity:0.5;"
-                                >
+                                <div style="width: 17px;height:17px;" class={program.GetIcon().string()} />
+                                <div class="title-bar-text" style="font-size: 0.7rem;opacity:0.5;">
                                     {program.GetName()}
                                 </div>
                             {:else}
-                                <div
-                                    style="width: 17px;height:17px;"
-                                    class={program.GetIcon().string()}
-                                />
-                                <div
-                                    class="title-bar-text"
-                                    style="font-size: 0.7rem;opacity:0.5;"
-                                >
+                                <div style="width: 17px;height:17px;" class={program.GetIcon().string()} />
+                                <div class="title-bar-text" style="font-size: 0.7rem;opacity:0.5;">
                                     {title}
                                 </div>
                             {/if}
@@ -221,12 +171,10 @@
                             id="ie9_forward_btn"
                             class="aero-button__circular aero-button__circular--small aero-button__circular--disabled"
                         >
-                            <i
-                                class="aero-button__circular--right-icon transform-right"
-                            />
+                            <i class="aero-button__circular--right-icon transform-right" />
                         </button>
 
-                        <div id="ie9_search_controls" class="win7">
+                        <div id={program.GetSearchControls().string()} class="win7">
                             <div class="aero-input disabled">
                                 <div class="icon favicon-portfolio" />
                                 <input
@@ -244,63 +192,38 @@
                 {/if}
 
                 <div class="win7-program__explorer__group win7-program__explorer__group--fill">
-                    <slot/>
+                    <slot />
                 </div>
             </div>
         {:else}
-            <div
-                id={program.GetWindow().string()}
-                class="win7 win7-program__application"
-                style="width:{width}px;"
-            >
+            <div id={program.GetWindow().string()} class="win7 win7-program__application" style="width:{width}px;">
                 <div class="window">
-
                     <div
                         id={program.GetHandle().string()}
-                        class="win7 win7-program__explorer__handle" style="height:28px;"
+                        class="win7 win7-program__explorer__handle"
+                        style="height:28px;"
                     />
 
-                    <div
-                        id={program.GetControls().string()}
-                        class="title-bar"
-                    >
+                    <div id={program.GetControls().string()} class="title-bar">
                         {#if showTitle}
                             {#if title == undefined}
-                                <div
-                                    class="title-bar-text"
-                                    style="display:flex; gap: 3px;align-items:center;"
-                                >
-                                    <div
-                                        style="width: 17px;height:17px;"
-                                        class={program.GetIcon().string()}
-                                    />
+                                <div class="title-bar-text" style="display:flex; gap: 3px;align-items:center;">
+                                    <div style="width: 17px;height:17px;" class={program.GetIcon().string()} />
                                     {program.GetName()}
                                 </div>
                             {:else}
-                                <div
-                                    class="title-bar-text"
-                                    style="display:flex; gap: 3px;align-items:center;"
-                                >
-                                    <div
-                                        style="width: 17px;height:17px;"
-                                        class={program.GetIcon().string()}
-                                    />
+                                <div class="title-bar-text" style="display:flex; gap: 3px;align-items:center;">
+                                    <div style="width: 17px;height:17px;" class={program.GetIcon().string()} />
                                     {title}
                                 </div>
                             {/if}
                         {:else}
-                            <div
-                                class="title-bar-text"
-                                style="display:flex; gap: 3px;align-items:center;"
-                            />
+                            <div class="title-bar-text" style="display:flex; gap: 3px;align-items:center;" />
                         {/if}
 
                         <div class="title-bar-controls">
-                            <button aria-label="Minimize"/>
-                            <button
-                                on:click={MaximizeWindow}
-                                aria-label="Maximize"
-                            />
+                            <button aria-label="Minimize" />
+                            <button on:click={MaximizeWindow} aria-label="Maximize" />
                             <button on:click={CloseWindow} aria-label="Close" />
                         </div>
                     </div>

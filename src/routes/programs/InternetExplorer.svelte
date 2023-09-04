@@ -14,7 +14,7 @@
 
 <WindowBase program={program} isWebSite={true} showTitle={false} openOnVisit={true}>
     <div id={program.GetWebPage().string()} class="win7-program__explorer__webpage">
-        hmmm
+        asasdasdds
     </div>
 </WindowBase>
 

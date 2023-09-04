@@ -1,6 +1,6 @@
 <script lang="ts">
-    import { ProgramFilter, type ComputerProgram, ProgramHelper } from "../../programs";
-    import { ActiveWindows, CurrentWindow, TogglableStartMenu } from "../stores";
+    import { ProgramFilter, type ComputerProgram, ProgramHelper } from '../../programs';
+    import { ActiveWindows, CurrentWindow, TogglableStartMenu } from '../stores';
 
     export let left = 370;
     export let top = 150;
@@ -13,16 +13,16 @@
      * Automatically adjust the z-index of the selected
      * window.
      */
-    function AdjustPriority() {  
+    function AdjustPriority() {
         // if the startmenu is open close it.
         if ($TogglableStartMenu) {
             TogglableStartMenu.set(false);
         }
 
-        program.GetWindow().html().style.zIndex = "5";
-      
+        program.GetWindow().html().style.zIndex = '5';
+
         if ($CurrentWindow != program && $ActiveWindows.length > 1) {
-            $CurrentWindow.GetWindow().html().style.zIndex = "4";
+            $CurrentWindow.GetWindow().html().style.zIndex = '4';
         }
     }
 
@@ -39,13 +39,14 @@
             // check if it is a handle.
             var isHandle = id == program.GetHandle().string();
             // ensures that only one window has an active class.
-            if ($CurrentWindow != program) {
-                $CurrentWindow.GetControls().html().classList.remove("active");
-            }
-            program.GetControls().html().classList.add("active");
-            AdjustPriority();
+            //if ($CurrentWindow != program) {
+            //  $CurrentWindow.GetControls().html().classList.remove("active");
+            //}
+            //program.GetControls().html().classList.add("active");
 
             // if it is a handle make it move and adjust the priority.
+            AdjustPriority();
+            CurrentWindow.set(program);
             if (isHandle) {
                 moving = true;
                 return;
@@ -64,19 +65,13 @@
         moving = false;
         if (e.target != null) {
             var targetProgram: ComputerProgram | undefined = ProgramFilter.Find(e.target.id);
-            if (targetProgram != undefined && program == targetProgram) {
-                CurrentWindow.set(targetProgram);
-            }
+            CurrentWindow.set(targetProgram);
         }
     }
 </script>
 
 <!-- svelte-ignore a11y-no-static-element-interactions -->
-<section
-    on:mousedown={onMouseDown}
-    style="left: {left}px; top: {top}px;"
-    class="draggable"
->
+<section on:mousedown={onMouseDown} style="left: {left}px; top: {top}px;" class="draggable">
     <slot />
 </section>
 

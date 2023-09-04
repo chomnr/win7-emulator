@@ -2,7 +2,7 @@
     import { onMount } from "svelte";
     import type { ComputerProgram } from "../../programs";
     import { ProgramFilter, ProgramHelper } from "../../programs";
-    import { ActiveWindows, CurrentWindow } from "../stores";
+    import { ActiveWindows, CurrentWindow, TogglableStartMenu } from "../stores";
     import { browser } from "$app/environment";
 
     export let program: ComputerProgram;
@@ -98,6 +98,7 @@
                         // Window priority to avoid weird overlapping issues
                         start: function() {
                             program.GetWindow().html().style.zIndex = "7"
+                            TogglableStartMenu.set(false);
                         },
                         // make the current dragged program index to 5 and rest to 4.
                         stop: function() {

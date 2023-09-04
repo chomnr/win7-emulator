@@ -92,6 +92,16 @@
                 // loaded before execution.
                 setTimeout(() => {
                     AutoAdjustDimensionOnVisit();
+                    /* Change window priority on click. */
+                    program.GetWindow().html().addEventListener('click', (e) => {
+                        if ($CurrentWindow != null) {
+                            $CurrentWindow.GetWindow().html().style.zIndex = "4";
+                        }
+                        CurrentWindow.set(program);
+                        program.GetWindow().html().style.zIndex = "5";
+                    })
+
+                    /* Handles draggable. */
                     jQuery("#" + program.GetWindow().string()).draggable({
                         handle: "#" + program.GetWindow().string() + "-handle",
                         scroll: false,

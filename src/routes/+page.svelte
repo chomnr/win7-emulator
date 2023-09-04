@@ -17,7 +17,6 @@
 		return () => {
 			clearInterval(timeUpdater)
 		}
-		
 	})
 </script>
 

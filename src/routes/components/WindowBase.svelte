@@ -93,7 +93,6 @@
         for (let i = 0; i < filter_processes.length; i++) {
             var html = filter_processes[i].GetControls().html();
             html.classList.remove('active');
-            console.log('test');
         }
     }
 

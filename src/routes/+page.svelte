@@ -8,12 +8,6 @@
     import { onMount } from 'svelte';
     import { browser } from '$app/environment';
 
-    // Adjust Visuals.
-    // we have it here because we dont want to make a ton of subscribers.
-    TaskManager.subscribe((event) => {
-        console.log(event);
-    });
-
     onMount(() => {
         // Manage the
         const timeUpdater = setInterval(() => {

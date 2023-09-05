@@ -256,45 +256,6 @@ export class ProgramFilter {
     }
 }
 
-export class ProgramHelper {
-    /**
-     * Opens the window of the desired program and adds it to ActiveWindows.
-     * @param program the window you want to open
-     */
-    static OpenWindow(program: ComputerProgram) {
-        ActiveWindows.update((current) => {
-            if (current.includes(program)) {
-                return [...current];
-            }
-            return [...current, program];
-        });
-    }
-
-    /**
-     * Close the selected window of the desired program and remove it
-     * from ActiveWindows.
-     * @param program the window you would like to close
-     */
-    static CloseWindow(program: ComputerProgram) {
-        ActiveWindows.update((current) => {
-            return current.filter((remove) => remove !== program);
-        });
-    }
-
-    /**
-     * Check to see if the given program has an active window.
-     * @param program the program you want to see if the window is open or not.
-     
-    static IsWindowActive(program: ComputerProgram): Boolean {
-        let isActive = false;
-        ActiveWindows.subscribe((current) => {
-            isActive = current.includes(program);
-        })
-        return isActive;
-    }
-    */
-}
-
 /* Program Prefix */
 export const program_prefix = 'program_';
 

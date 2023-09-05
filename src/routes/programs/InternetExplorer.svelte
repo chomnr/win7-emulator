@@ -11,6 +11,6 @@
     var program: ComputerProgram = ProgramFilter.Find('ie9')!;
 </script>
 
-<WindowBase {program} isWebSite={true} showTitle={false} openOnVisit={false}>
+<WindowBase {program} isWebSite={true} showTitle={false}>
     <div id={program.GetWebPage().string()} class="win7-program__explorer__webpage">asasdasdds</div>
 </WindowBase>

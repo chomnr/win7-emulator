@@ -12,9 +12,6 @@
     // we have it here because we dont want to make a ton of subscribers.
     TaskManager.subscribe((event) => {
         console.log(event);
-        if (event.last == undefined && event.using == undefined && event.processes.length == 0) {
-            return;
-        }
     });
 
     onMount(() => {

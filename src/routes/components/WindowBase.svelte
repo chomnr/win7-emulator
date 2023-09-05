@@ -15,7 +15,6 @@
 
     // whether the program should open when the person
     // initially visits the website.
-    export let openOnVisit = false;
 
     // width and height of window
     export let width = 1200;
@@ -104,6 +103,13 @@
      * or closed & adjusts the position of the div.
      */
     TaskManager.subscribe((event: IProgramManager) => {
+        if (event.using == undefined) {
+            if (browser) {
+                setTimeout(() => {
+                    ResetActiveControls(event.processes, event.using!);
+                }, 10);
+            }
+        }
         if (program == event.using) {
             if (browser) {
                 setTimeout(() => {
@@ -117,6 +123,16 @@
         }
         if (event.processes.includes(program) && !isWindowOpen) {
             isWindowOpen = true;
+            if (browser) {
+                setTimeout(() => {
+                    if (program == event.using) {
+                        program.GetControls().html().classList.add('active');
+                    }
+                    if (event.last != null && event.last.GetWindow().html() != undefined && event.last != program) {
+                        event.last.GetControls().html().classList.remove('active');
+                    }
+                }, 10);
+            }
         }
 
         if (!event.processes.includes(program) && isWindowOpen) {

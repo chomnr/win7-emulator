@@ -1,6 +1,6 @@
 <script lang="ts">
     import { ProgramFilter, type ComputerProgram, ProgramHelper } from '../../programs';
-    import { ActiveWindows, CurrentWindow, TogglableStartMenu } from '../stores';
+    import { ActiveWindows, CurrentWindow, TaskManager, TogglableStartMenu } from '../stores';
 
     export let left = 370;
     export let top = 150;
@@ -19,17 +19,13 @@
             TogglableStartMenu.set(false);
         }
 
-        program.GetWindow().html().style.zIndex = '5';
-
-        if ($CurrentWindow != program && $ActiveWindows.length > 1) {
-            $CurrentWindow.GetWindow().html().style.zIndex = '4';
-        }
+        //program.GetWindow().html().style.zIndex = '10';
     }
 
     function onMouseDown(e: MouseEvent) {
         // initial
         if ($CurrentWindow == undefined) {
-            CurrentWindow.set(program);
+            //CurrentWindow.set(program);
         }
 
         // null check
@@ -42,11 +38,10 @@
             //if ($CurrentWindow != program) {
             //  $CurrentWindow.GetControls().html().classList.remove("active");
             //}
-            //program.GetControls().html().classList.add("active");
 
+            program.GetControls().html().classList.add('active');
             // if it is a handle make it move and adjust the priority.
-            AdjustPriority();
-            CurrentWindow.set(program);
+            TaskManager.SetUsing(program);
             if (isHandle) {
                 moving = true;
                 return;
@@ -65,7 +60,7 @@
         moving = false;
         if (e.target != null) {
             var targetProgram: ComputerProgram | undefined = ProgramFilter.Find(e.target.id);
-            CurrentWindow.set(targetProgram);
+            //CurrentWindow.set(targetProgram);
         }
     }
 </script>

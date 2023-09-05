@@ -3,6 +3,8 @@
     import type { ComputerProgram } from '../../programs';
     import { TaskManager, type IProgramManager } from '../stores';
     import Draggable from './Draggable.svelte';
+    import { browser } from '$app/environment';
+    import TaskBar from './TaskBar.svelte';
 
     export let program: ComputerProgram;
     export let showTitle: Boolean = true;
@@ -78,46 +80,50 @@
         }
     }
 
+    function ResetZIndex(processes: ComputerProgram[], exclude: ComputerProgram) {
+        var filter_processes = processes.filter((remove) => remove !== exclude);
+
+        for (let i = 0; i < filter_processes.length; i++) {
+            filter_processes[i].GetWindow().html().style.zIndex = '4';
+        }
+    }
+
+    function ResetActiveControls(processes: ComputerProgram[], exclude: ComputerProgram) {
+        var filter_processes = processes.filter((remove) => remove !== exclude);
+
+        for (let i = 0; i < filter_processes.length; i++) {
+            var html = filter_processes[i].GetControls().html();
+            html.classList.remove('active');
+            console.log('test');
+        }
+    }
+
     /**
      * Subscribes to 'TaskManager'; this helps keep track
      * of whether the current program window should be open
      * or closed & adjusts the position of the div.
      */
     TaskManager.subscribe((event: IProgramManager) => {
+        if (program == event.using) {
+            if (browser) {
+                setTimeout(() => {
+                    ResetZIndex(event.processes, event.using!);
+                    ResetActiveControls(event.processes, event.using!);
+                    if (program.GetWindow().html() != null) {
+                        program.GetWindow().html().style.zIndex = '5';
+                    }
+                }, 10);
+            }
+        }
         if (event.processes.includes(program) && !isWindowOpen) {
             isWindowOpen = true;
-            TaskManager.SetUsing(program);
         }
 
         if (!event.processes.includes(program) && isWindowOpen) {
             isWindowOpen = false;
             TaskManager.SetLast(program);
         }
-
-        if (openOnVisit) {
-            isWindowOpen = true;
-            openOnVisit = false;
-            TaskManager.AddProcess(program);
-        }
     });
-
-    /*
-    ActiveWindows.subscribe((current) => {
-        if (current.includes(program)) {
-            isWindowOpen = true;
-            if (browser) {
-                AutoAdjustDimensionOnVisit();
-            }
-        } else {
-            isWindowOpen = false;
-        }
-        if (openOnVisit) {
-            isWindowOpen = true;
-            openOnVisit = false;
-            ProgramHelper.OpenWindow(program);
-        }
-    });
-    */
 
     /**
      * What we want to do when the website gets mounted.
@@ -142,7 +148,7 @@
                 <div class="win7 win7-program__explorer__controls">
                     <div
                         id={program.GetControls().string()}
-                        class="title-bar active"
+                        class="title-bar"
                         style="background: none;border: none;box-shadow: none;"
                     >
                         <div class="title-bar-controls">

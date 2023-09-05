@@ -104,7 +104,7 @@
 
                 tracker.current = undefined;
 
-                TaskManager.SetUsing(undefined);
+                //TaskManager.SetUsing(undefined);
             }
         }
     }

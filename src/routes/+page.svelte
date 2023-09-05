@@ -6,11 +6,14 @@
     import InternetExplorer from './programs/InternetExplorer.svelte';
     import Cmd from './programs/Cmd.svelte';
     import { onMount } from 'svelte';
+    import { browser } from '$app/environment';
 
     // Adjust Visuals.
+    // we have it here because we dont want to make a ton of subscribers.
     TaskManager.subscribe((event) => {
         console.log(event);
-        if (event.processes.length != 0) {
+        if (event.last == undefined && event.using == undefined && event.processes.length == 0) {
+            return;
         }
     });
 

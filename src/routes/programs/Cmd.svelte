@@ -89,7 +89,7 @@
     });
 </script>
 
-<WindowBase {program} isWebSite={false} showTitle={true} title="C:\Windows\system32\cmd.exe" width={700} height={800}>
+<WindowBase {program} isWebSite={false} showTitle={true} title="C:\Windows\system32\cmd.exe" width={700} height={400}>
     <div id={program.GetWebPage().string()} class="program_cmd">
         <div>Microsoft Windows [Version 6.1.7601]</div>
         <div>Copyright (c) 2009 Microsoft Corporation. All rights reserved.</div>
@@ -119,7 +119,7 @@
         color: var(--win7-cmd-color);
         font-size: var(--win7-cmd-font-size);
         user-select: text;
-        height: 400px;
+        height: inherit;
     }
 
     .program_cmd *::selection {

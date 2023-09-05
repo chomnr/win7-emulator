@@ -672,7 +672,7 @@
     width: var(--aero-program-width);
 
     /* Default PROGRAM height */
-    height: fit-content;
+    height: var(--aero-program-height);
 }
 
 /* =====================================

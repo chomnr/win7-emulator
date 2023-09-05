@@ -233,7 +233,7 @@
             <div
                 id={program.GetWindow().string()}
                 class="win7 win7-program__application"
-                style="width:{width}px;background: yellow;"
+                style="width:{width}px;height: {height}px"
             >
                 <div class="window">
                     <div
@@ -265,7 +265,7 @@
                             <button on:click={CloseWindow} aria-label="Close" />
                         </div>
                     </div>
-                    <div class="window-body">
+                    <div class="window-body" style="height: {height}px;">
                         <slot />
                     </div>
                 </div>

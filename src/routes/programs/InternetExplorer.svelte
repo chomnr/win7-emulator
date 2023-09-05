@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { ProgramFilter, type ComputerProgram, ProgramHelper } from '../../programs';
+    import { ProgramFilter, type ComputerProgram } from '../../programs';
     import WindowBase from '../components/WindowBase.svelte';
     import WebPagePortfolio from '../components/WebPagePortfolio.svelte';
     import { ActiveWindows } from '../stores';

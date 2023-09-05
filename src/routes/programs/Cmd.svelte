@@ -1,21 +1,21 @@
 <script lang="ts">
-    import { ProgramFilter, type ComputerProgram, ProgramHelper } from "../../programs";
-    import WindowBase from "../components/WindowBase.svelte";
-    import WebPagePortfolio from "../components/WebPagePortfolio.svelte"
-    import { ActiveWindows } from "../stores";
-    import { onMount } from "svelte";
-    import { browser } from "$app/environment";
+    import { ProgramFilter, type ComputerProgram } from '../../programs';
+    import WindowBase from '../components/WindowBase.svelte';
+    import WebPagePortfolio from '../components/WebPagePortfolio.svelte';
+    import { ActiveWindows } from '../stores';
+    import { onMount } from 'svelte';
+    import { browser } from '$app/environment';
 
     //
     // BruteExpose
     //
 
-    var program: ComputerProgram = ProgramFilter.Find("cmd")!;
+    var program: ComputerProgram = ProgramFilter.Find('cmd')!;
 
     class ConsoleCommand {
         command: string;
         result: string;
-        
+
         constructor(command: string, result: string) {
             this.command = command;
             this.result = result;
@@ -23,18 +23,18 @@
 
         /**
          * Return the name of the command.
-         * 
+         *
          * @returns {string}
-        */
+         */
         GetCommand(): string {
             return this.command;
         }
-        
+
         /**
          * Return the result of the command.
-         * 
+         *
          * @returns {string}
-        */
+         */
         GetResult(): string {
             return this.result;
         }
@@ -46,15 +46,15 @@
          * @param command the desired command to check for
          */
         static Exist(command: string): Boolean {
-            return commands.some(x => x.GetCommand() == command);
+            return commands.some((x) => x.GetCommand() == command);
         }
-        
+
         /**
          * Finds a command if found returns ConsoleCommand
          * @param command the command you want to find.
          */
         static Find(command: string): ConsoleCommand | undefined {
-            return commands.find(x => x.GetCommand().toLowerCase() == command.toLowerCase())
+            return commands.find((x) => x.GetCommand().toLowerCase() == command.toLowerCase());
         }
     }
 
@@ -67,13 +67,15 @@
             if (ConsoleCommandFilter.Exist(command)) {
                 return ConsoleCommandFilter.Find(command)?.GetResult()!;
             }
-            return "'" + command + "' is not recognized as an internal or external command, operable program or batch file."
+            return (
+                "'" +
+                command +
+                "' is not recognized as an internal or external command, operable program or batch file."
+            );
         }
     }
 
-    var commands: ConsoleCommand[] = [
-        new ConsoleCommand("ping", "pong")
-    ]
+    var commands: ConsoleCommand[] = [new ConsoleCommand('ping', 'pong')];
 
     ActiveWindows.subscribe((current) => {
         if (current.includes(program)) {
@@ -84,25 +86,23 @@
                 }, 10);
             }
         }
-    })
+    });
 </script>
 
-<WindowBase program={program} isWebSite={false} showTitle={true} title="C:\Windows\system32\cmd.exe" openOnVisit={false} width={700} height={800}>
-    <div id="{program.GetWebPage().string()}" class="program_cmd">
+<WindowBase {program} isWebSite={false} showTitle={true} title="C:\Windows\system32\cmd.exe" width={700} height={800}>
+    <div id={program.GetWebPage().string()} class="program_cmd">
         <div>Microsoft Windows [Version 6.1.7601]</div>
         <div>Copyright (c) 2009 Microsoft Corporation. All rights reserved.</div>
         <div>&nbsp;</div>
 
         <div class="program_cmd__input__box">
-            C:\Users\zeljko><input id="command_input" class="program_cmd__input"/>
+            C:\Users\zeljko><input id="command_input" class="program_cmd__input" />
         </div>
-        <div id="command_results"></div>
+        <div id="command_results" />
     </div>
 </WindowBase>
 
-
 <style>
-
     :root {
         --win7-cmd-background: black;
         --win7-cmd-color: lightgray;
@@ -145,5 +145,4 @@
     .program_cmd__input::selection {
         background: rgba(211, 211, 211, 0.5);
     }
-
 </style>

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { ProgramFilter, type ComputerProgram, ProgramHelper } from '../../programs';
+    import { ProgramFilter, type ComputerProgram } from '../../programs';
     import { ActiveWindows, CurrentWindow, TaskManager, TogglableStartMenu } from '../stores';
 
     export let left = 370;

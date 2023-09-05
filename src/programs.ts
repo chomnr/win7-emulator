@@ -272,4 +272,5 @@ export const search_controls_suffix = '-search_controls';
 const programs: ComputerProgram[] = [
     new ComputerProgram('ie9', 'Internet Explorer'),
     new ComputerProgram('cmd', 'Command Prompt'),
+    new ComputerProgram('resume', 'My Resume'),
 ];

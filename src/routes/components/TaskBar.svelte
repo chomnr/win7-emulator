@@ -73,6 +73,9 @@
         >
             <div class="win7-taskbar__program win7-taskbar__program--list-programs font-xs" />
             <div
+                class="win7-taskbar__program win7-taskbar__program--with-border win7-taskbar__program--hover win7-taskbar__program--battery"
+            />
+            <div
                 class="win7-taskbar__program win7-taskbar__program--with-border win7-taskbar__program--hover win7-taskbar__program--connection"
             />
             <div

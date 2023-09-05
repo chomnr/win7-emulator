@@ -286,8 +286,13 @@
 }
 
 .win7-taskbar__program--connection {
-    /* Set the icon image to Ethernet Connection using the 'content' property */
-    content: url("https://d2hqjspxd4b0fs.cloudfront.net/win7/network/390.ico") !important;
+    /* Set the icon image to wireless Connection using the 'content' property */
+    content: url("https://d2hqjspxd4b0fs.cloudfront.net/win7/network/358.ico") !important;
+}
+
+.win7-taskbar__program--battery {
+    /* Set the icon image to wireless Connection using the 'content' property */
+    content: url("https://d2hqjspxd4b0fs.cloudfront.net/win7/network/battery.png") !important;
 }
 
 .win7-taskbar__program--list-programs::before {
@@ -631,14 +636,14 @@
     content: url("https://d2hqjspxd4b0fs.cloudfront.net/win7/internet-explorer.svg")
 }
 
-.program_be_app-icon {
+.program_resume-icon {
     /* BruteExpose Icon */
-    content: url("http://d2hqjspxd4b0fs.cloudfront.net/win7/orb-default.png");
+    content: url("https://zeljko-me-s3.s3.amazonaws.com/win7/program_icons/resume-icon.svg");
 }
 
 .program_cmd-icon {
     /* BruteExpose Icon */
-    content: url("../lib/images/windows/cmd-icon.svg");
+    content: url("https://d2hqjspxd4b0fs.cloudfront.net/win7/program_icons/cmd-icon.svg");
 }
 
 

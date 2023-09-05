@@ -7,6 +7,7 @@
     import Cmd from './programs/Cmd.svelte';
     import { onMount } from 'svelte';
     import { browser } from '$app/environment';
+    import Resume from './programs/Resume.svelte';
 
     onMount(() => {
         // Manage the
@@ -38,6 +39,7 @@
 <DesktopGrid />
 <InternetExplorer />
 <Cmd />
+<Resume />
 <!--<Cmd />-->
 {#if $TogglableStartMenu}
     <StartMenu />

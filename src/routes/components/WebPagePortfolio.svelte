@@ -1,7 +1,8 @@
+<!--
 <script lang="ts">
     import { onMount } from 'svelte';
     import '../webpage.css';
-    import { LEET } from '../effects';
+    import { LEET } from '../../effects';
 
     var div_command: HTMLElement | null;
     var div_command_input: HTMLElement | null;
@@ -73,9 +74,8 @@
     {/if}
 
     <div class="begin-screen" />
-    <!--
     <div class="body">
         asddsa
     </div>
--->
 </div>
+-->

@@ -230,7 +230,11 @@
                 </div>
             </div>
         {:else}
-            <div id={program.GetWindow().string()} class="win7 win7-program__application" style="width:{width}px;">
+            <div
+                id={program.GetWindow().string()}
+                class="win7 win7-program__application"
+                style="width:{width}px;background: yellow;"
+            >
                 <div class="window">
                     <div
                         id={program.GetHandle().string()}

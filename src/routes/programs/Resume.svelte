@@ -11,6 +11,6 @@
     var program: ComputerProgram = ProgramFilter.Find('resume')!;
 </script>
 
-<WindowBase {program} isWebSite={false} showTitle={true} width={400} height={500}>
+<WindowBase {program} isWebSite={false} showTitle={true} width={700} height={500}>
     <div>fug</div>
 </WindowBase>

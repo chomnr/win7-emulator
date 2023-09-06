@@ -76,17 +76,6 @@
     }
 
     var commands: ConsoleCommand[] = [new ConsoleCommand('ping', 'pong')];
-
-    ActiveWindows.subscribe((current) => {
-        if (current.includes(program)) {
-            // do stuff here.
-            if (browser) {
-                setTimeout(() => {
-                    /// here we are...
-                }, 10);
-            }
-        }
-    });
 </script>
 
 <WindowBase {program} isWebSite={false} showTitle={true} title="C:\Windows\system32\cmd.exe" width={700} height={400}>

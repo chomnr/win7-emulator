@@ -15,6 +15,7 @@ export interface IProgramManager {
     last: ComputerProgram | undefined;
 }
 
+/// Program Store
 const ProgramStore = () => {
     const ProgramManger: IProgramManager = {
         processes: [],

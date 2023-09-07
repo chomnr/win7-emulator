@@ -85,7 +85,6 @@
         <!-- svelte-ignore a11y-no-noninteractive-element-to-interactive-role -->
         <article role="tabpanel" id="tab-A" style="display: {manager.GetTab(1)?.active === true ? 'flex' : 'none'}">
             Tab A is actdasdsive
-            {manager.GetTab(1)?.active === true ? 'yes' : 'no'}
         </article>
         <article role="tabpanel" id="tab-B" style="display: {manager.GetTab(2)?.active === true ? 'flex' : 'none'}">
             Tab B is active

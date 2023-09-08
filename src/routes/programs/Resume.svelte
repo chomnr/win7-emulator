@@ -160,13 +160,81 @@
                 </div>
             </div>
         </article>
+        <!-- svelte-ignore a11y-no-noninteractive-element-to-interactive-role -->
         <article
             class="resume-article"
             role="tabpanel"
             id="tab-D"
             style="display: {manager.GetTab(4)?.active === true ? 'flex' : 'none'}"
         >
-            Tab D is inactive
+            <div class="item">
+                <div style="width:100%;">
+                    <b>Software Licensing System&nbsp;</b><a href="https://github.com/chomnr/Licensing.NET">source</a
+                    ><span style="float:right">Summer 2023</span>
+                </div>
+                <ul>
+                    <li>Engaged in developing a versatile C# software licensing system with ASP.NET Core.</li>
+                    <li>mented the Event-driven architecture for real-time event processing capabilities.</li>
+                    <li>
+                        Integrated Microsoft SQL Server and the Entity Framework to seamlessly integrate with the
+                        Microsoft Ecosystem and allow ORM.
+                    </li>
+                    <li>Integrated Stripe for enhanced insights and efficient subscription management.</li>
+                    <li>
+                        Designed a modular Authority system to ensure data integrity through predefined rules for each
+                        individual endpoint.
+                    </li>
+                </ul>
+            </div>
+            <div class="item">
+                <div style="width:100%;">
+                    <b>Linux Security Logger&nbsp;</b><a href="https://github.com/chomnr/BruteExpose">source</a><span
+                        style="float:right">Summer 2023</span
+                    >
+                </div>
+                <ul>
+                    <li>
+                        Engineered a Java and C-based Linux security solution to provide more detailed insights on
+                        attackers.
+                    </li>
+                    <li>
+                        Designed and developed a modular analytics system to capture and analyze a wide variety of
+                        metrics.
+                    </li>
+                    <li>Integrated WebSocket support to gain real-time insights on recent attacks.</li>
+                    <li>Forked OpenSSH to ensure compatibility with Linux(Ubuntu and Debian).</li>
+                    <li>
+                        Created an intuitive front end using Vue.js, Javascript and Chart.js to easily access data in a
+                        web-based environment
+                    </li>
+                </ul>
+            </div>
+            <div class="item">
+                <div style="width:100%;">
+                    <b>Blogging System&nbsp;</b><a href="https://github.com/chomnr/SimpleBlog">source</a><span
+                        style="float:right">Spring 2023</span
+                    >
+                </div>
+                <ul>
+                    <li>
+                        Developed a functional REST API backend utilizing C#, PostgreSQL, Entity Framework (EF), and
+                        ASP.NET Core, to ensure perfect compatibility within the Microsoft ecosystem.
+                    </li>
+                    <li>
+                        Implemented the Vertical Slice architecture to ensure minimal code coupling, enriched external
+                        interactions and command and query responsibility segregation.
+                    </li>
+                    <li>
+                        Thoroughly performed unit testing with NUnit to verify regex patterns for usernames, passwords,
+                        and emails, yielding a 100% accuracy rate in input validation.
+                    </li>
+                    <li>
+                        Designed and constructed an intuitive and responsive frontend (UI/UX) using Blazor, HTML5, and
+                        CSS3.
+                    </li>
+                    <li>Enriched blog post discovery with comprehensive filtering for user convenience.</li>
+                </ul>
+            </div>
         </article>
     </section>
 </WindowBase>

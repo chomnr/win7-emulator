@@ -30,10 +30,6 @@
         }
 
         Activate(tabId: number) {
-            if (!this.Tabs.includes(this.Tabs[tabId])) {
-                console.log('[TabManager] Unable to locate tab for resume.');
-                return;
-            }
             this.Tabs = this.Tabs.map((tab) => {
                 if (tab.id == tabId) {
                     console.log(this.Tabs);
@@ -83,11 +79,36 @@
             {/each}
         </menu>
         <!-- svelte-ignore a11y-no-noninteractive-element-to-interactive-role -->
-        <article role="tabpanel" id="tab-A" style="display: {manager.GetTab(1)?.active === true ? 'flex' : 'none'}">
-            Tab A is actdasdsive
+        <article
+            class="resume-article"
+            role="tabpanel"
+            id="tab-A"
+            style="display: {manager.GetTab(1)?.active === true ? 'flex' : 'none'}"
+        >
+            <div><b>Not applicable</b></div>
         </article>
-        <article role="tabpanel" id="tab-B" style="display: {manager.GetTab(2)?.active === true ? 'flex' : 'none'}">
-            Tab B is active
+        <!-- svelte-ignore a11y-no-noninteractive-element-to-interactive-role -->
+        <article
+            class="resume-article"
+            role="tabpanel"
+            id="tab-B"
+            style="display: {manager.GetTab(2)?.active === true ? 'flex' : 'none'}"
+        >
+            <!-- Spigot Experience -->
+            <div class="item">
+                <div style="width:100%;">SpigotMC<span style="float:right">2016-2018</span></div>
+                <div><b>Freelance Programmer</b> (Java)</div>
+                <ul>
+                    <li>
+                        Developed a wide variety of plugins, spanning from low to mid-level complexity, to cater to a
+                        diverse range of community servers.
+                    </li>
+                    <li>Tailored existing plugins to ensure compatibility and meet the needs of the server owners.</li>
+                    <li>
+                        Independently authored three plugins, which collectively have garnered over 1,000 downloads.
+                    </li>
+                </ul>
+            </div>
         </article>
         <!-- svelte-ignore a11y-no-noninteractive-element-to-interactive-role -->
         <article role="tabpanel" id="tab-C" style="display: {manager.GetTab(3)?.active === true ? 'flex' : 'none'}">
@@ -107,3 +128,16 @@
             {/each}
         </menu>
 -->
+
+<style>
+    .resume-article {
+        flex-direction: column;
+        align-items: left;
+    }
+
+    .resume-article .item {
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+    }
+</style>

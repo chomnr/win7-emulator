@@ -265,7 +265,7 @@
                             <button on:click={CloseWindow} aria-label="Close" />
                         </div>
                     </div>
-                    <div class="window-body" style="height: {height}px;overflow-y: auto;">
+                    <div class="window-body" style="height: {height}px;">
                         <slot />
                     </div>
                 </div>

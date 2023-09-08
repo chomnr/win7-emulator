@@ -165,7 +165,7 @@
             class="resume-article"
             role="tabpanel"
             id="tab-D"
-            style="display: {manager.GetTab(4)?.active === true ? 'flex' : 'none'}"
+            style="display: {manager.GetTab(4)?.active === true ? 'flex' : 'none'};"
         >
             <div class="item">
                 <div style="width:100%;">
@@ -183,6 +183,29 @@
                     <li>
                         Designed a modular Authority system to ensure data integrity through predefined rules for each
                         individual endpoint.
+                    </li>
+                </ul>
+            </div>
+            <div class="item">
+                <div style="width:100%;">
+                    <b>Linux Security Logger&nbsp;</b><a href="https://github.com/chomnr/BruteExpose">source</a><span
+                        style="float:right">Summer 2023</span
+                    >
+                </div>
+                <ul>
+                    <li>
+                        Engineered a Java and C-based Linux security solution to provide more detailed insights on
+                        attackers.
+                    </li>
+                    <li>
+                        Designed and developed a modular analytics system to capture and analyze a wide variety of
+                        metrics.
+                    </li>
+                    <li>Integrated WebSocket support to gain real-time insights on recent attacks.</li>
+                    <li>Forked OpenSSH to ensure compatibility with Linux(Ubuntu and Debian).</li>
+                    <li>
+                        Created an intuitive front end using Vue.js, Javascript and Chart.js to easily access data in a
+                        web-based environment
                     </li>
                 </ul>
             </div>
@@ -251,6 +274,9 @@
 <style>
     .resume-article {
         flex-direction: column;
+        min-height: fit-content;
+        max-height: calc(500px - 23px);
+        overflow-y: auto;
     }
 
     .resume-article .item {

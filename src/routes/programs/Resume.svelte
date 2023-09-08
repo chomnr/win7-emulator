@@ -110,10 +110,62 @@
             </div>
         </article>
         <!-- svelte-ignore a11y-no-noninteractive-element-to-interactive-role -->
-        <article role="tabpanel" id="tab-C" style="display: {manager.GetTab(3)?.active === true ? 'flex' : 'none'}">
-            Tab C is active
+        <article
+            class="resume-article"
+            role="tabpanel"
+            id="tab-C"
+            style="display: {manager.GetTab(3)?.active === true ? 'flex' : 'none'}"
+        >
+            <div>
+                Anything marked with a <span class="addy-icon wizard" /> means I can navigate through it quite well.
+            </div>
+            <div class="item">
+                <div class="group abnormal">
+                    <div class="item">
+                        <b style="align-items: center;">Languages</b>
+                        <div>C# <span class="addy-icon wizard" /></div>
+                        <div>Java <span class="addy-icon wizard" /></div>
+                        <div>Rust</div>
+                        <div>TypeScript<span class="addy-icon wizard" /></div>
+                        <div>JavaScript<span class="addy-icon wizard" /></div>
+                    </div>
+                    <div class="item">
+                        <b>Frameworks and Libraries</b>
+                        <div>Node.js</div>
+                        <div>Vue.js</div>
+                        <div>SvelteKit <span class="addy-icon wizard" /></div>
+                        <div>React</div>
+                        <div>.NET 7</div>
+                        <div>ASP.NET Core</div>
+                    </div>
+
+                    <div class="item">
+                        <b>Databases</b>
+                        <div>PostgresSQL <span class="addy-icon wizard" /></div>
+                        <div>MySQL <span class="addy-icon wizard" /></div>
+                        <div>Microsoft SQL Server</div>
+                        <div>MongoDB</div>
+                        <div>Firebase</div>
+                        <div>Redis <span class="addy-icon wizard" /></div>
+                    </div>
+
+                    <div class="item">
+                        <b>Tools</b>
+                        <div>Git <span class="addy-icon wizard" /></div>
+                        <div>Postman</div>
+                        <div>Docker</div>
+                        <div>Putty</div>
+                        <div>AWS (Elastic BeanStalk, S3, RDS)</div>
+                    </div>
+                </div>
+            </div>
         </article>
-        <article role="tabpanel" id="tab-D" style="display: {manager.GetTab(4)?.active === true ? 'flex' : 'none'}">
+        <article
+            class="resume-article"
+            role="tabpanel"
+            id="tab-D"
+            style="display: {manager.GetTab(4)?.active === true ? 'flex' : 'none'}"
+        >
             Tab D is inactive
         </article>
     </section>
@@ -131,12 +183,20 @@
 <style>
     .resume-article {
         flex-direction: column;
-        align-items: left;
     }
 
     .resume-article .item {
         display: flex;
         flex-direction: column;
-        align-items: left;
+    }
+
+    .resume-article .item .group {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        margin: 0 auto;
+    }
+
+    .resume-article .item .group.abnormal {
+        gap: 5px;
     }
 </style>

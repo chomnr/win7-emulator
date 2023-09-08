@@ -646,7 +646,6 @@
     content: url("https://d2hqjspxd4b0fs.cloudfront.net/win7/program_icons/cmd-icon.svg");
 }
 
-
 /* =====================================
    DESKTOP PROGRAM (REGULAR)
    ===================================== */
@@ -1032,6 +1031,14 @@
    MISCELLANEOUS
    ===================================== */
 
+/* Cosmetic Icons */
+.addy-icon {
+    width: 15px;
+    height: 15px;
+}
+.addy-icon.wizard {
+    content: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDI0IDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGZpbGw9IiM2MzY2ZjEiIGQ9Ik0yMSAyMkgzdi0yaDE4djJtLTItM0g1bDYuMS0xNi40Yy4yLS40LjUtLjYuOS0uNmw2IDNoLTQuMUwxOSAxOU0xMCA3LjVsMS4wNC40N0wxMS41IDlsLjQ3LTEuMDNMMTMgNy41bC0xLjAzLS40N0wxMS41IDZsLS40NiAxLjAzTDEwIDcuNW0zIDcuNWwtMi4wNi0uOTNMMTAgMTJsLS45MyAyLjA3TDcgMTVsMi4wNy45M0wxMCAxOGwuOTQtMi4wN0wxMyAxNW0uOTctMy4wM0wxNSAxMS41bC0xLjAzLS40N0wxMy41IDEwbC0uNDYgMS4wM2wtMS4wNC40N2wxLjA0LjQ3bC40NiAxLjAzbC40Ny0xLjAzbTIgNEwxNyAxNS41bC0xLjAzLS40N0wxNS41IDE0bC0uNDYgMS4wM2wtMS4wNC40N2wxLjA0LjQ3bC40NiAxLjAzbC40Ny0xLjAzWiIvPjwvc3ZnPg==)
+}
 
 /* SIZING  */
 .y-inherit {

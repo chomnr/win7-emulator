@@ -32,7 +32,6 @@
         Activate(tabId: number) {
             this.Tabs = this.Tabs.map((tab) => {
                 if (tab.id == tabId) {
-                    console.log(this.Tabs);
                     tab.active = true;
                 } else {
                     tab.active = false;

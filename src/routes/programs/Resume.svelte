@@ -49,10 +49,11 @@
     }
 
     var manager = new ResumeTabManager([
-        new ResumeTab(1, 'Education', true),
-        new ResumeTab(2, 'Experience', false),
-        new ResumeTab(3, 'Technical Skills', false),
-        new ResumeTab(4, 'Projects', false),
+        new ResumeTab(1, 'Objective', false),
+        new ResumeTab(2, 'Education', true),
+        new ResumeTab(3, 'Experience', false),
+        new ResumeTab(4, 'Technical Skills', false),
+        new ResumeTab(5, 'Projects', false),
     ]);
 </script>
 
@@ -83,14 +84,28 @@
             id="tab-A"
             style="display: {manager.GetTab(1)?.active === true ? 'flex' : 'none'}"
         >
-            <div><b>Not applicable</b></div>
+            <div>
+                Results-oriented early career software developer with a versatile software engineering background and
+                adept tool integration skills applicable to diverse sectors. Proficient in end-to-end development, from
+                solution design to testing and debugging. Skilled in scoping projects, issue resolution, and
+                collaborative troubleshooting, with strong communication and teamwork abilities.
+            </div>
+        </article>
+        <!-- svelte-ignore a11y-no-noninteractive-element-to-interactive-role -->
+        <article
+            class="resume-article"
+            role="tabpanel"
+            id="tab-A"
+            style="display: {manager.GetTab(2)?.active === true ? 'flex' : 'none'}"
+        >
+            <div><b>Not Applicable</b></div>
         </article>
         <!-- svelte-ignore a11y-no-noninteractive-element-to-interactive-role -->
         <article
             class="resume-article"
             role="tabpanel"
             id="tab-B"
-            style="display: {manager.GetTab(2)?.active === true ? 'flex' : 'none'}"
+            style="display: {manager.GetTab(3)?.active === true ? 'flex' : 'none'}"
         >
             <!-- Spigot Experience -->
             <div class="item">
@@ -99,7 +114,7 @@
                 <ul>
                     <li>
                         Developed a wide variety of plugins, spanning from low to mid-level complexity, to cater to a
-                        diverse range of community servers.
+                        diverse range of Minecraft community servers.
                     </li>
                     <li>Tailored existing plugins to ensure compatibility and meet the needs of the server owners.</li>
                     <li>
@@ -113,45 +128,50 @@
             class="resume-article"
             role="tabpanel"
             id="tab-C"
-            style="display: {manager.GetTab(3)?.active === true ? 'flex' : 'none'}"
+            style="display: {manager.GetTab(4)?.active === true ? 'flex' : 'none'}"
         >
             <div class="item">
+                <b>
+                    My skill with the item is rated on a scale of 1 to 5, where 1 means I've used it once and 5 means
+                    I'm a master.
+                </b>
+                <div>&nbsp;</div>
                 <div class="group abnormal">
                     <div class="item">
                         <b style="align-items: center;">Languages</b>
-                        <div>C#</div>
-                        <div>Java</div>
-                        <div>Rust</div>
-                        <div>TypeScript</div>
-                        <div>JavaScript</div>
+                        <div>C# (4)</div>
+                        <div>Java (4)</div>
+                        <div>Rust (2)</div>
+                        <div>TypeScript (3)</div>
+                        <div>JavaScript (3)</div>
                     </div>
                     <div class="item">
                         <b>Frameworks and Libraries</b>
-                        <div>Node.js</div>
-                        <div>Vue.js</div>
-                        <div>SvelteKit</div>
-                        <div>React</div>
-                        <div>.NET 7</div>
-                        <div>ASP.NET Core</div>
+                        <div>Node.js (3)</div>
+                        <div>Vue.js (2)</div>
+                        <div>SvelteKit (3)</div>
+                        <div>React (3)</div>
+                        <div>.NET 7 (4)</div>
+                        <div>ASP.NET Core (4)</div>
                     </div>
 
                     <div class="item">
                         <b>Databases</b>
-                        <div>PostgresSQL</div>
-                        <div>MySQL</div>
-                        <div>Microsoft SQL Server</div>
-                        <div>MongoDB</div>
-                        <div>Firebase</div>
-                        <div>Redis</div>
+                        <div>PostgresSQL (4)</div>
+                        <div>MySQL (4)</div>
+                        <div>Microsoft SQL Server (2)</div>
+                        <div>MongoDB (3)</div>
+                        <div>Firebase (2)</div>
+                        <div>Redis (3)</div>
                     </div>
 
                     <div class="item">
                         <b>Tools</b>
-                        <div>Git</div>
-                        <div>Postman</div>
-                        <div>Docker</div>
-                        <div>Putty</div>
-                        <div>AWS (Elastic BeanStalk, S3, RDS)</div>
+                        <div>Git (4)</div>
+                        <div>Postman (4)</div>
+                        <div>Docker (1)</div>
+                        <div>Putty (4)</div>
+                        <div>AWS (Elastic BeanStalk (1), S3, RDS)</div>
                     </div>
                 </div>
             </div>
@@ -161,7 +181,7 @@
             class="resume-article"
             role="tabpanel"
             id="tab-D"
-            style="display: {manager.GetTab(4)?.active === true ? 'flex' : 'none'};"
+            style="display: {manager.GetTab(5)?.active === true ? 'flex' : 'none'};"
         >
             <div class="item">
                 <div style="width:100%;">
@@ -205,6 +225,7 @@
                     </li>
                 </ul>
             </div>
+
             <div class="item">
                 <div style="width:100%;">
                     <b>Blogging System&nbsp;</b><a href="https://github.com/chomnr/SimpleBlog">source</a><span
@@ -234,15 +255,6 @@
         </article>
     </section>
 </WindowBase>
-
-<!--
-
-    <menu role="tablist" aria-label="Tabs Template">
-            {#each manager.GetTabs() as tab}
-                <button role="tab" aria-controls="tab-{tab.id}" aria-selected="true">{tab.name}</button>
-            {/each}
-        </menu>
--->
 
 <style>
     .resume-article {

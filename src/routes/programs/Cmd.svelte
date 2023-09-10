@@ -103,7 +103,7 @@
         if (event.key == desiredKey) {
             cmd_input.disabled = true;
             CmdContentTracker.set($CmdContentTracker + 1);
-            cmd_input?.focus();
+            cmd_input.focus();
             var result = ConsoleCommandHelper.RunCommand(cmd_input.value);
             cmd_results.innerHTML += result;
             /*
@@ -169,6 +169,7 @@
                     C:\Users\zeljko><input
                         on:keydown={OnCommandEnter}
                         maxlength="64"
+                        tabindex="0"
                         id="cmd_input_{i}"
                         class="program_cmd__input"
                     />
@@ -197,7 +198,9 @@
         font-size: var(--win7-cmd-font-size);
         user-select: text;
         height: inherit;
+        overflow-y: auto;
         padding-left: 5px;
+        padding-right: 5px;
     }
 
     .program_cmd *::selection {

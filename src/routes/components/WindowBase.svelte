@@ -1,7 +1,7 @@
 <script lang="ts">
     import { onMount } from 'svelte';
     import type { ComputerProgram } from '../../programs';
-    import { TaskManager, type IProgramManager } from '../stores';
+    import { TaskManager, type IProgramManager, CmdContentTracker } from '../stores';
     import Draggable from './Draggable.svelte';
     import { browser } from '$app/environment';
     import TaskBar from './TaskBar.svelte';
@@ -57,6 +57,7 @@
     function CloseWindow() {
         TaskManager.CloseProcess(program);
         TaskManager.SetUsing(undefined);
+        CmdContentTracker.set(1);
     }
 
     /**

@@ -2,7 +2,6 @@
     import { ProgramFilter, type ComputerProgram } from '../../programs';
     import WindowBase from '../components/WindowBase.svelte';
     import WebPagePortfolio from '../components/WebPagePortfolio.svelte';
-    import { ActiveWindows } from '../stores';
 
     //
     // Internet Explorer

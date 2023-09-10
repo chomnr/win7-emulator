@@ -1,6 +1,6 @@
 <script lang="ts">
-    import { ProgramFilter, type ComputerProgram } from '../../programs';
-    import { ActiveWindows, CurrentWindow, TaskManager, TogglableStartMenu } from '../stores';
+    import type { ComputerProgram } from '../../programs';
+    import { TaskManager, TogglableStartMenu } from '../stores';
 
     export let left = 370;
     export let top = 150;
@@ -23,11 +23,6 @@
     }
 
     function onMouseDown(e: MouseEvent) {
-        // initial
-        if ($CurrentWindow == undefined) {
-            //CurrentWindow.set(program);
-        }
-
         // null check
         if (e.target != null) {
             // get id of mousedown component
@@ -59,7 +54,7 @@
     function onMouseUp(e: MouseEvent) {
         moving = false;
         if (e.target != null) {
-            var targetProgram: ComputerProgram | undefined = ProgramFilter.Find(e.target.id);
+            //var targetProgram: ComputerProgram | undefined = ProgramFilter.Find(e.target.id);
             //CurrentWindow.set(targetProgram);
         }
     }

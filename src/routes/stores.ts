@@ -6,8 +6,8 @@ export const TogglableStartMenu = writable(false);
 export const CurrentTime = writable('');
 export const CurrentDate = writable('');
 
-export const ActiveWindows = writable<ComputerProgram[]>([]);
-export const CurrentWindow = writable<ComputerProgram>();
+// Keeps track of the CMD content quantity.
+export const CmdContentTracker = writable(1);
 
 export interface IProgramManager {
     processes: ComputerProgram[];

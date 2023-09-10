@@ -2,8 +2,8 @@
     import { ProgramFilter, type ComputerProgram } from '../../programs';
     import WindowBase from '../components/WindowBase.svelte';
     import WebPagePortfolio from '../components/WebPagePortfolio.svelte';
-    import { ActiveWindows } from '../stores';
-    import { afterUpdate, onMount } from 'svelte';
+    import { CmdContentTracker } from '../stores';
+    import { afterUpdate, onDestroy, onMount } from 'svelte';
     import { browser } from '$app/environment';
 
     //
@@ -91,20 +91,19 @@
     ];
 
     // CMD Content Tracker
-    var content_tracker = 1;
-
     /**
      * Manage the enter of command
      * @param event
      */
     function OnCommandEnter(event: KeyboardEvent) {
         var desiredKey = 'Enter';
-        var cmd_input = document.getElementById('cmd_input_' + (content_tracker - 1));
-        var cmd_results = document.getElementById('cmd_results_' + (content_tracker - 1));
+        var cmd_input = document.getElementById('cmd_input_' + ($CmdContentTracker - 1));
+        var cmd_results = document.getElementById('cmd_results_' + ($CmdContentTracker - 1));
 
         if (event.key == desiredKey) {
             cmd_input.disabled = true;
-            content_tracker += 1;
+            CmdContentTracker.set($CmdContentTracker + 1);
+            cmd_input?.focus();
             var result = ConsoleCommandHelper.RunCommand(cmd_input.value);
             cmd_results.innerHTML += result;
             /*
@@ -129,25 +128,6 @@
         */
     }
 
-    function CreateTerminalInput(appendTo: HTMLElement | null) {
-        var input_box = document.getElementById('cmd_input_box');
-        var inputt = document.getElementById('cmd_input');
-
-        input_box?.append(inputt as Node);
-        /*
-        var parent = document.createElement('div');
-        parent.innerText = 'C:\\Users\\zeljko>';
-        parent.className = 'program_cmd__input__box';
-
-        var input = document.createElement('input');
-        input.id = curr_input_id.toString();
-        input.maxLength = 64;
-        input.className = 'program_cmd__input';
-
-        if (appendTo != null) appendTo.appendChild(parent);
-        parent.appendChild(input);
-        */
-    }
     /*
     function ResetTerminal() {
         var parent = document.getElementById('cmd_manager');
@@ -177,14 +157,14 @@
     */
 </script>
 
-<WindowBase {program} isWebSite={false} showTitle={true} title="C:\Windows\system32\cmd.exe" width={900} height={400}>
+<WindowBase {program} isWebSite={false} showTitle={true} title="C:\Windows\system32\cmd.exe" width={800} height={400}>
     <div id={program.GetWebPage().string()} class="program_cmd">
         <div>Microsoft Windows [Version 6.1.7601]</div>
         <div>Copyright (c) 2009 Microsoft Corporation. All rights reserved.</div>
         <div>&nbsp;</div>
 
         <div id="cmd_manager">
-            {#each { length: content_tracker } as _, i}
+            {#each { length: $CmdContentTracker } as _, i}
                 <div id="cmd_input_box" class="program_cmd__input__box">
                     C:\Users\zeljko><input
                         on:keydown={OnCommandEnter}

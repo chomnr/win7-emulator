@@ -4,8 +4,6 @@
 // every other element where a ComputerProgram might be ex: startmenu, desktop
 // and taskbar.
 
-import { ActiveWindows } from './routes/stores';
-
 // Computer Categories (used just for the same StartMenu search).
 export enum ComputerCategories {
     PROGRAMS = 'Programs',

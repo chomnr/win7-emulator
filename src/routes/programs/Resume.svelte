@@ -116,24 +116,21 @@
             id="tab-C"
             style="display: {manager.GetTab(3)?.active === true ? 'flex' : 'none'}"
         >
-            <div>
-                Anything marked with a <span class="addy-icon wizard" /> means I can navigate through it quite well.
-            </div>
             <div class="item">
                 <div class="group abnormal">
                     <div class="item">
                         <b style="align-items: center;">Languages</b>
-                        <div>C# <span class="addy-icon wizard" /></div>
-                        <div>Java <span class="addy-icon wizard" /></div>
+                        <div>C#</div>
+                        <div>Java</div>
                         <div>Rust</div>
-                        <div>TypeScript<span class="addy-icon wizard" /></div>
-                        <div>JavaScript<span class="addy-icon wizard" /></div>
+                        <div>TypeScript</div>
+                        <div>JavaScript</div>
                     </div>
                     <div class="item">
                         <b>Frameworks and Libraries</b>
                         <div>Node.js</div>
                         <div>Vue.js</div>
-                        <div>SvelteKit <span class="addy-icon wizard" /></div>
+                        <div>SvelteKit</div>
                         <div>React</div>
                         <div>.NET 7</div>
                         <div>ASP.NET Core</div>
@@ -141,17 +138,17 @@
 
                     <div class="item">
                         <b>Databases</b>
-                        <div>PostgresSQL <span class="addy-icon wizard" /></div>
-                        <div>MySQL <span class="addy-icon wizard" /></div>
+                        <div>PostgresSQL</div>
+                        <div>MySQL</div>
                         <div>Microsoft SQL Server</div>
                         <div>MongoDB</div>
                         <div>Firebase</div>
-                        <div>Redis <span class="addy-icon wizard" /></div>
+                        <div>Redis</div>
                     </div>
 
                     <div class="item">
                         <b>Tools</b>
-                        <div>Git <span class="addy-icon wizard" /></div>
+                        <div>Git</div>
                         <div>Postman</div>
                         <div>Docker</div>
                         <div>Putty</div>
@@ -183,29 +180,6 @@
                     <li>
                         Designed a modular Authority system to ensure data integrity through predefined rules for each
                         individual endpoint.
-                    </li>
-                </ul>
-            </div>
-            <div class="item">
-                <div style="width:100%;">
-                    <b>Linux Security Logger&nbsp;</b><a href="https://github.com/chomnr/BruteExpose">source</a><span
-                        style="float:right">Summer 2023</span
-                    >
-                </div>
-                <ul>
-                    <li>
-                        Engineered a Java and C-based Linux security solution to provide more detailed insights on
-                        attackers.
-                    </li>
-                    <li>
-                        Designed and developed a modular analytics system to capture and analyze a wide variety of
-                        metrics.
-                    </li>
-                    <li>Integrated WebSocket support to gain real-time insights on recent attacks.</li>
-                    <li>Forked OpenSSH to ensure compatibility with Linux(Ubuntu and Debian).</li>
-                    <li>
-                        Created an intuitive front end using Vue.js, Javascript and Chart.js to easily access data in a
-                        web-based environment
                     </li>
                 </ul>
             </div>
@@ -288,9 +262,5 @@
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         margin: 0 auto;
-    }
-
-    .resume-article .item .group.abnormal {
-        gap: 5px;
     }
 </style>

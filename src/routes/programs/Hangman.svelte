@@ -26,6 +26,7 @@
             <div class="right-leg" />
         </div>
     </div>
+    <div class="letter-choices" />
 </WindowBase>
 
 <style>
@@ -36,18 +37,16 @@
     .hangman {
         display: flex;
         align-items: center;
-        justify-content: center;
         background: var(--hangman-bg);
         height: inherit;
+        padding: 5px;
     }
 
     .hangman-environment {
         display: flex;
         flex-direction: column;
-        align-items: center;
         width: fit-content;
         height: fit-content;
-        right: 10px;
         position: relative;
         top: -80px;
     }
@@ -58,7 +57,6 @@
         height: 10px;
         width: 120px;
         position: relative;
-        left: 55px;
     }
 
     .hangman-environment .hanging-board {
@@ -67,7 +65,7 @@
         height: 50px;
         width: 10px;
         position: absolute;
-        left: 180px;
+        left: 115px;
     }
 
     .hangman-environment .pole {
@@ -80,7 +78,7 @@
         background: black;
         width: inherit;
         height: 10px;
-        width: 150px;
+        width: 220px;
     }
 
     .hangman-body {
@@ -90,7 +88,7 @@
         position: relative;
         width: fit-content;
         top: 25px;
-        right: 2px;
+        right: 128px;
     }
 
     .hangman-body .head {
@@ -145,5 +143,9 @@
         width: 10px;
         height: 80px;
         transform: rotate(-30deg);
+    }
+
+    .letter-choices {
+        color: red;
     }
 </style>

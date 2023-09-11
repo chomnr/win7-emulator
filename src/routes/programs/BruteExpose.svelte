@@ -7,7 +7,7 @@
     // BruteExpose
     //
 
-    var program: ComputerProgram = ProgramFilter.Find('be_app')!;
+    var program: ComputerProgram = ProgramFilter.Find('bruteexpose')!;
 </script>
 
 <WindowBase {program} isWebSite={false} showTitle={true} width={400} height={500}>

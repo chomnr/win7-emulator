@@ -32,6 +32,10 @@
             return this.currentWord;
         }
 
+        GetAlphabet(): string[] {
+            return 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').sort();
+        }
+
         GetMaxTries(): number {
             return this.maxTries;
         }
@@ -59,6 +63,8 @@
         UseAttempt(attemptWord: string) {
             if (this.currentAttempts < game.GetMaxTries()) {
                 this.answer = attemptWord;
+                console.log('hmmm');
+                this.AddAttempt();
             }
         }
 
@@ -66,16 +72,12 @@
             return this.answer;
         }
 
-        GetAlphabet(): string {
-            return 'ABDEFGHIJKLMNOPQRSTUVWXYZ';
-        }
-
         GetAttempts(): number {
             return this.currentAttempts;
         }
 
-        private AddAttempt() {
-            this.currentAttempts + 1;
+        AddAttempt() {
+            this.currentAttempts += 1;
         }
     }
 
@@ -87,9 +89,12 @@
 
 <WindowBase {program} isWebSite={false} showTitle={true} width={600} height={500}>
     <div class="game">
-        <div class="letter-choices" style="grid-template-columns: repeat({game.GetAnswer().length}, auto);">
+        <div class="controls">
+            <button>RESET</button>
+        </div>
+        <div class="word-choices" style="grid-template-columns: repeat({game.GetAnswer().length}, auto);">
             {#each { length: game.GetAnswer().length } as _, i}
-                <div class="letter" />
+                <div class="word" />
             {/each}
         </div>
         <div class="hangman">
@@ -100,28 +105,62 @@
                 <div class="bottom-board" />
             </div>
             <div class="hangman-person">
+                {#if player.GetAttempts() >= 1}
+                    <div class="head" />
+                {/if}
+
+                {#if player.GetAttempts() >= 2}
+                    <div class="body" />
+                {/if}
+
+                {#if player.GetAttempts() >= 3}
+                    <div class="left-arm" />
+                {/if}
+
+                {#if player.GetAttempts() >= 4}
+                    <div class="right-arm" />
+                {/if}
+
+                {#if player.GetAttempts() >= 5}
+                    <div class="left-leg" />
+                {/if}
+
+                {#if player.GetAttempts() >= 6}
+                    <div class="right-leg" />
+                {/if}
+                <!-- <div class="head" /> -->
+                <!--
                 <div class="head" />
                 <div class="body" />
                 <div class="left-arm" />
                 <div class="right-arm" />
                 <div class="left-leg" />
                 <div class="right-leg" />
+                <-->
             </div>
+        </div>
+        <div class="letter-choices">
+            {#each { length: game.GetAlphabet().length } as _, i}
+                <div class="letter" data-value={game.GetAlphabet()[i]}>{game.GetAlphabet()[i]}</div>
+            {/each}
         </div>
     </div>
 </WindowBase>
 
 <style>
     :root {
-        --hangman-bg: rgba(243, 156, 18, 1);
+        --hangman-bg: #f1c40f;
     }
 
     .game {
         display: flex;
         flex-direction: column;
         height: inherit;
-        background: var(--hangman-bg);
         padding: 5px;
+    }
+
+    .controls {
+        display: flex;
     }
 
     .hangman {
@@ -175,7 +214,7 @@
         width: fit-content;
         height: fit-content;
         position: absolute;
-        top: 115px;
+        top: 140px;
         left: 307px;
     }
 
@@ -234,125 +273,33 @@
         transform: rotate(-30deg);
     }
 
-    /*
-    .hangman-person .left-arm {
-        background: black;
-        position: absolute;
-        width: 10px;
-        height: 60px;
-        top: 0px;
-        left: 390px;
-        transform: rotate(30deg);
-    }
-    /*
-    .hangman-person .right-arm {
-        background: black;
-        position: absolute;
-        width: 10px;
-        height: 60px;
-        top: 135px;
-        right: 170px;
-        transform: rotate(-30deg);
-    }
-
-    .hangman-person .left-leg {
-        background: black;
-        position: absolute;
-        width: 10px;
-        height: 85px;
-        top: 190px;
-        right: 163px;
-        transform: rotate(-30deg);
-    }
-
-    .hangman-person .right-leg {
-        background: black;
-        position: absolute;
-        width: 10px;
-        height: 85px;
-        top: 190px;
-        right: 205px;
-        transform: rotate(30deg);
-    }
-
-    /*
-    .hangman-body {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        position: relative;
-        width: fit-content;
-        height: fit-content
-        top: 55px;
-        right: 128px;
-        background: red;
-    }
-
-    .hangman-body .head {
-        background: black;
-        width: 55px;
-        height: 55px;
-        border-radius: 50%;
-    }
-
-    .hangman-body .body {
-        position: relative;
-        background: black;
-        width: 10px;
-        height: 100px;
-    }
-
-    .hangman-body .left-arm {
-        position: relative;
-        top: -95px;
-        right: 15px;
-        background: black;
-        width: 10px;
-        height: 60px;
-        transform: rotate(30deg);
-    }
-
-    .hangman-body .right-arm {
-        position: relative;
-        top: -155px;
-        right: -15px;
-        background: black;
-        width: 10px;
-        height: 60px;
-        transform: rotate(-30deg);
-    }
-
-    .hangman-body .left-leg {
-        position: relative;
-        top: -140px;
-        right: 20px;
-        background: black;
-        width: 10px;
-        height: 80px;
-        transform: rotate(30deg);
-    }
-
-    .hangman-body .right-leg {
-        position: relative;
-        top: -220px;
-        right: -20px;
-        background: black;
-        width: 10px;
-        height: 80px;
-        transform: rotate(-30deg);
-    }
-    */
-
-    .letter-choices {
+    .word-choices {
         display: grid;
         grid-template-columns: repeat(5, auto);
         grid-gap: 10px 12px;
         justify-content: center;
     }
 
-    .letter-choices .letter {
+    .word-choices .word {
         border-bottom: 2px solid black;
         width: 40px;
         height: 40px;
+    }
+
+    .letter-choices {
+        display: inline-grid;
+        grid-template-columns: repeat(9, 1fr);
+        justify-items: center;
+        grid-gap: 3px;
+        margin-top: 30px;
+    }
+
+    .letter-choices .letter {
+        font-size: 1.5rem;
+    }
+
+    .letter-choices .letter:hover {
+        cursor: pointer;
+        opacity: 0.5;
     }
 </style>

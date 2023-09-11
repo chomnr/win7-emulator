@@ -128,20 +128,11 @@
                 {#if player.GetAttempts() >= 6}
                     <div class="right-leg" />
                 {/if}
-                <!-- <div class="head" /> -->
-                <!--
-                <div class="head" />
-                <div class="body" />
-                <div class="left-arm" />
-                <div class="right-arm" />
-                <div class="left-leg" />
-                <div class="right-leg" />
-                <-->
             </div>
         </div>
         <div class="letter-choices">
             {#each { length: game.GetAlphabet().length } as _, i}
-                <div class="letter" data-value={game.GetAlphabet()[i]}>{game.GetAlphabet()[i]}</div>
+                <button class="letter" data-value={game.GetAlphabet()[i]}>{game.GetAlphabet()[i]}</button>
             {/each}
         </div>
     </div>
@@ -288,14 +279,14 @@
 
     .letter-choices {
         display: inline-grid;
-        grid-template-columns: repeat(9, 1fr);
+        grid-template-columns: repeat(7, 1fr);
         justify-items: center;
         grid-gap: 3px;
         margin-top: 30px;
     }
 
     .letter-choices .letter {
-        font-size: 1.5rem;
+        font-size: 1rem;
     }
 
     .letter-choices .letter:hover {

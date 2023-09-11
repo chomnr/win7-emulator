@@ -34,6 +34,9 @@
     }
 
     .hangman {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         background: var(--hangman-bg);
         height: inherit;
     }
@@ -43,9 +46,10 @@
         flex-direction: column;
         align-items: center;
         width: fit-content;
+        height: fit-content;
+        right: 10px;
         position: relative;
-        left: 55px;
-        top: 50px;
+        top: -80px;
     }
 
     .hangman-environment .top-board {
@@ -84,9 +88,9 @@
         flex-direction: column;
         align-items: center;
         position: relative;
-        top: -180px;
         width: fit-content;
-        left: 212px;
+        top: 25px;
+        right: 2px;
     }
 
     .hangman-body .head {

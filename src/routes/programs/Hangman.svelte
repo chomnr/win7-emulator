@@ -142,7 +142,7 @@
     var player: HangmanPlayer = new HangmanPlayer(game);
 </script>
 
-<WindowBase {program} isWebSite={false} showTitle={true} width={600} height={500}>
+<WindowBase {program} isWebSite={false} showTitle={true} responsive={false} width={600} height={500}>
     <div class="game">
         {#if game.GameStatus == GAME_STATUS.PROGRESS}
             <div class="controls">
@@ -223,7 +223,7 @@
 
         {#if game.GameStatus == GAME_STATUS.WON}
             <div class="status">
-                <b>YOU HAVE WON!</b>
+                <b>YOU WON!</b>
                 <br />
                 <button
                     on:click={() => {
@@ -236,7 +236,7 @@
 
         {#if game.GameStatus == GAME_STATUS.LOST}
             <div class="status">
-                <b>YOU HAVE LOST!</b>
+                <b>YOU LOST!</b>
                 <b style="font-size: 1.5rem;">THE WORD WAS: {game.GetAnswer()}</b>
                 <button
                     on:click={() => {

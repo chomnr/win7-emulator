@@ -125,7 +125,7 @@
         </article>
         <!-- svelte-ignore a11y-no-noninteractive-element-to-interactive-role -->
         <article
-            class="resume-article"
+            class="resume-article has-scrollbar"
             role="tabpanel"
             id="tab-C"
             style="display: {manager.GetTab(4)?.active === true ? 'flex' : 'none'}"

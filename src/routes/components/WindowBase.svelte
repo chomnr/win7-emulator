@@ -1,7 +1,7 @@
 <script lang="ts">
     import { onMount } from 'svelte';
     import type { ComputerProgram } from '../../programs';
-    import { TaskManager, type IProgramManager, CmdContentTracker } from '../stores';
+    import { TaskManager, type IProgramManager, CmdContentTracker, IsConnectedToBruteExpose } from '../stores';
     import Draggable from './Draggable.svelte';
     import { browser } from '$app/environment';
     import TaskBar from './TaskBar.svelte';
@@ -9,6 +9,8 @@
     export let program: ComputerProgram;
     export let showTitle: Boolean = true;
     export let isWebSite = false;
+
+    export let responsive = true;
 
     // custom title for the program.
     export let title: string | undefined = undefined;
@@ -57,7 +59,13 @@
     function CloseWindow() {
         TaskManager.CloseProcess(program);
         TaskManager.SetUsing(undefined);
-        CmdContentTracker.set(1);
+        if (program.GetId() == 'cmd') {
+            CmdContentTracker.set(1);
+        }
+
+        if (program.GetId() == 'bruteexpose') {
+            $IsConnectedToBruteExpose = false;
+        }
     }
 
     /**

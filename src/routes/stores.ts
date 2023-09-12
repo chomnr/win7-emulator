@@ -9,6 +9,9 @@ export const CurrentDate = writable('');
 // Keeps track of the CMD content quantity.
 export const CmdContentTracker = writable(1);
 
+// Keep track of websocket connection for BruteExpoe Application
+export const IsConnectedToBruteExpose = writable(false);
+
 export interface IProgramManager {
     processes: ComputerProgram[];
     using: ComputerProgram | undefined;

@@ -48,7 +48,9 @@
 
                         if (div != null)
                             div.innerHTML +=
-                                "<div> [ <span style='color: red'>FAILED</span> ]<span> Origin: " +
+                                "<div> [ <span style='color: red'>FAILED</span> ]<span> " +
+                                credentials.country +
+                                '  => ' +
                                 credentials.hostname +
                                 ' </span></div>';
                     }

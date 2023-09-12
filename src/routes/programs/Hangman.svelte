@@ -89,7 +89,10 @@
                 } else {
                     console.log(this.game.GetAnswer());
                     console.log(this.GetCorrectChoices().join(''));
-                    if (this.game.GetAnswer() == this.GetCorrectChoices().join('')) {
+                    if (
+                        this.game.GetAnswer().length == this.GetCorrectChoices().join('').length &&
+                        this.currentAttempts != this.game.GetMaxTries()
+                    ) {
                         game.GameStatus = GAME_STATUS.WON;
                         console.log('YOU HAVE WON!');
                     }
@@ -120,7 +123,20 @@
         }
     }
 
-    var words = ['csharp', 'javascript', 'programmer', 'software', 'postgres', 'react', 'redis'];
+    var words = [
+        'csharp',
+        'javascript',
+        'programmer',
+        'software',
+        'postgres',
+        'react',
+        'redis',
+        'encryption',
+        'hacker',
+        'developer',
+        'bun',
+        'wizard',
+    ];
 
     var game: HangmanGame = new HangmanGame();
     var player: HangmanPlayer = new HangmanPlayer(game);
@@ -217,6 +233,7 @@
                 >
             </div>
         {/if}
+
         {#if game.GameStatus == GAME_STATUS.LOST}
             <div class="status">
                 <b>YOU HAVE LOST!</b>

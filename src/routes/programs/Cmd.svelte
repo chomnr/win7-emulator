@@ -101,55 +101,8 @@
             cmd_input.focus();
             var result = ConsoleCommandHelper.RunCommand(cmd_input.value);
             cmd_results.innerHTML += result;
-            /*
-            if (ConsoleCommandFilter.Exist(cmd_input.value)) {
-                console.log(cmd_input);
-            }
-            */
-        }
-        /*
-        var cmd_input = document.getElementById('cmd_input');
-
-        if (event.key == desiredKey) {
-            if (ConsoleCommandFilter.Exist(cmd_input.value)) {
-                //var a = cmd_manager?.cloneNode(true);
-                //console.log(cmd_results);
-                //CreateTerminalInput();
-                CreateTerminalInput(cmd_manager);
-                content_tracker += 1;
-                cmd_input.innerHTML = 'help';
-            }
-        }
-        */
-    }
-
-    /*
-    function ResetTerminal() {
-        var parent = document.getElementById('cmd_manager');
-        var input_box = document.getElementById('cmd_input_box');
-        var cmd_result = document.getElementById('cmd_results');
-
-        var a = input_box?.cloneNode(true);
-        var b = cmd_result?.cloneNode(true);
-
-        console.log(a);
-        console.log(b);
-        if (input_box != undefined && cmd_result != undefined && a != undefined && b != undefined) {
-            curr_input_id++;
-            curr_result_id++;
-
-            input_box.id = curr_input_id.toString();
-            cmd_result.id = curr_result_id.toString();
-            //input_box.remove();
-            //cmd_result.remove();
-
-            //console.log(a);
-            parent?.appendChild(a);
-            parent?.appendChild(b);
-            console.log('BOOM!');
         }
     }
-    */
 </script>
 
 <WindowBase {program} isWebSite={false} showTitle={true} title="C:\Windows\system32\cmd.exe" width={800} height={400}>

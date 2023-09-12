@@ -144,6 +144,8 @@
                         <div>Rust (2)</div>
                         <div>TypeScript (3)</div>
                         <div>JavaScript (3)</div>
+                        <div>HTML (5)</div>
+                        <div>CSS (4)</div>
                     </div>
                     <div class="item">
                         <b>Frameworks and Libraries</b>
@@ -273,5 +275,6 @@
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         margin: 0 auto;
+        gap: 7px;
     }
 </style>

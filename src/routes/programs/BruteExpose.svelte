@@ -58,7 +58,7 @@
     }
 </script>
 
-<WindowBase {program} isWebSite={false} showTitle={true} width={800} height={400}>
+<WindowBase {program} isWebSite={false} showTitle={true} title={'BruteExpose'} width={800} height={400}>
     <div id={program.GetWebPage().string()} class="program_bruteexpose">
         <div id="cmd_manager">
             <br />

@@ -190,7 +190,7 @@
                 </div>
                 <ul>
                     <li>Engaged in developing a versatile C# software licensing system with ASP.NET Core.</li>
-                    <li>mented the Event-driven architecture for real-time event processing capabilities.</li>
+                    <li>Implemented the Event-driven architecture for real-time event processing capabilities.</li>
                     <li>
                         Integrated Microsoft SQL Server and the Entity Framework to seamlessly integrate with the
                         Microsoft Ecosystem and allow ORM.

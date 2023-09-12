@@ -26,13 +26,10 @@
 
         IsConnectedToBruteExpose.subscribe((e) => {
             if (e == false) {
+                IsConnectedToBruteExpose.set(true);
                 if (socket == undefined) {
                     socket = new WebSocket('wss://be-feed.zeljko.me:8443/');
                 }
-
-                socket.onopen = function () {
-                    IsConnectedToBruteExpose.set(true);
-                };
 
                 socket.onerror = function () {
                     IsConnectedToBruteExpose.set(false);

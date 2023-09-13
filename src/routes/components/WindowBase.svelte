@@ -22,12 +22,12 @@
     export let width = 1200;
     export let height = 700;
 
+    const c_width = width;
+    const c_height = height;
+
     // position of window
     let pos_x = 0;
     let pos_y = 0;
-
-    const c_width = width;
-    const c_height = height;
 
     // check if window is maximized or not
     let isMaximized = false;
@@ -43,7 +43,7 @@
      * Automatically adjust the dimensions of the program when
      * the user visits the website.
      */
-    function AutoAdjustDimensionOnVisit() {
+    function AutoAdjustDimension() {
         var target: HTMLElement = program.GetWindow().html();
 
         if (window.innerWidth < 1203 && isWindowOpen && isWebSite) {
@@ -52,8 +52,8 @@
             width = window.innerWidth - 100;
         } else {
             if (target != null) {
-                target.style.width = c_width + 'px';
-                target.style.height = c_height + 'px';
+                width = c_width;
+                height = c_height;
 
                 isInResponsiveMode = false;
             }
@@ -141,7 +141,8 @@
             isWindowOpen = true;
             if (browser) {
                 if (responsive) {
-                    AutoAdjustDimensionOnVisit();
+                    AutoAdjustDimension();
+                    console.log(c_width);
                 }
                 setTimeout(() => {
                     if (program == event.using) {
@@ -157,6 +158,7 @@
         if (!event.processes.includes(program) && isWindowOpen) {
             isWindowOpen = false;
             TaskManager.SetLast(program);
+            AutoAdjustDimension();
         }
     });
 
@@ -167,10 +169,9 @@
         // Set the dimension of the window when the website
         // gets mounted.
         if (responsive) {
-            AutoAdjustDimensionOnVisit();
             // Listen to when the client resize their window.
             window.addEventListener('resize', (e) => {
-                AutoAdjustDimensionOnVisit();
+                AutoAdjustDimension();
             });
         }
     });

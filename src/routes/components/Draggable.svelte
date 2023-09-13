@@ -1,26 +1,15 @@
 <script lang="ts">
+    import { browser } from '$app/environment';
     import type { ComputerProgram } from '../../programs';
     import { TaskManager, TogglableStartMenu } from '../stores';
 
-    export let left = 370;
-    export let top = 150;
+    export let left = 0;
+    export let top = 0;
 
     export let program: ComputerProgram;
 
     let moving = false;
-
-    /**
-     * Automatically adjust the z-index of the selected
-     * window.
-     */
-    function AdjustPriority() {
-        // if the startmenu is open close it.
-        if ($TogglableStartMenu) {
-            TogglableStartMenu.set(false);
-        }
-
-        //program.GetWindow().html().style.zIndex = '10';
-    }
+    let initial = true;
 
     function onMouseDown(e: MouseEvent) {
         // null check
@@ -48,6 +37,7 @@
         if (moving) {
             left += e.movementX;
             top += e.movementY;
+            initial = false;
         }
     }
 
@@ -70,6 +60,6 @@
 <style>
     .draggable {
         user-select: none;
-        position: absolute;
+        position: relative;
     }
 </style>

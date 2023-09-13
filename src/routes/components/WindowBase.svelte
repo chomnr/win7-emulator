@@ -22,15 +22,22 @@
     export let width = 1200;
     export let height = 700;
 
+    // position of window
+    let pos_x = 0;
+    let pos_y = 0;
+
+    const c_width = width;
+    const c_height = height;
+
     // check if window is maximized or not
-    var isMaximized = false;
+    let isMaximized = false;
 
     // check if window is open or not
-    var isWindowOpen = false;
+    let isWindowOpen = false;
 
     // check if application should be in
     // responsive mode or not.
-    var isInResponsiveMode = false;
+    let isInResponsiveMode = false;
 
     /**
      * Automatically adjust the dimensions of the program when
@@ -38,15 +45,15 @@
      */
     function AutoAdjustDimensionOnVisit() {
         var target: HTMLElement = program.GetWindow().html();
+
         if (window.innerWidth < 1203 && isWindowOpen && isWebSite) {
             // do adjustments
             isInResponsiveMode = true;
+            width = window.innerWidth - 100;
         } else {
             if (target != null) {
-                // target.style.width = width.toString() + "px";
-                //target.style.height = height.toString() + "px";
-
-                //target.style.margin = "auto";
+                target.style.width = c_width + 'px';
+                target.style.height = c_height + 'px';
 
                 isInResponsiveMode = false;
             }
@@ -119,6 +126,7 @@
             }
         }
         if (program == event.using) {
+            pos_y = (window.innerHeight / 1.1) * -1;
             if (browser) {
                 setTimeout(() => {
                     ResetZIndex(event.processes, event.using!);
@@ -132,6 +140,9 @@
         if (event.processes.includes(program) && !isWindowOpen) {
             isWindowOpen = true;
             if (browser) {
+                if (responsive) {
+                    AutoAdjustDimensionOnVisit();
+                }
                 setTimeout(() => {
                     if (program == event.using) {
                         program.GetControls().html().classList.add('active');
@@ -155,18 +166,24 @@
     onMount(() => {
         // Set the dimension of the window when the website
         // gets mounted.
-        AutoAdjustDimensionOnVisit();
-        // Listen to when the client resize their window.
-        window.addEventListener('resize', (e) => {
+        if (responsive) {
             AutoAdjustDimensionOnVisit();
-        });
+            // Listen to when the client resize their window.
+            window.addEventListener('resize', (e) => {
+                AutoAdjustDimensionOnVisit();
+            });
+        }
     });
 </script>
 
-<Draggable {program}>
-    {#if isWindowOpen}
+{#if isWindowOpen}
+    <Draggable left={pos_x} top={pos_y} {program}>
         {#if isWebSite}
-            <div id={program.GetWindow().string()} class="win7-program__explorer">
+            <div
+                id={program.GetWindow().string()}
+                class="win7-program__explorer"
+                style="width: {width}px;height: {height}px;"
+            >
                 <div id={program.GetHandle().string()} class="win7 win7-program__explorer__handle" />
 
                 <div class="win7 win7-program__explorer__controls">
@@ -280,5 +297,5 @@
                 </div>
             </div>
         {/if}
-    {/if}
-</Draggable>
+    </Draggable>
+{/if}

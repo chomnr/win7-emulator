@@ -6,7 +6,6 @@
     import InternetExplorer from './programs/InternetExplorer.svelte';
     import Cmd from './programs/Cmd.svelte';
     import { onMount } from 'svelte';
-    import { browser } from '$app/environment';
     import Resume from './programs/Resume.svelte';
     import BruteExpose from './programs/BruteExpose.svelte';
     import Hangman from './programs/Hangman.svelte';

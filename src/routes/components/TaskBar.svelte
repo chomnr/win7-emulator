@@ -15,6 +15,7 @@
     let processes: ComputerProgram[];
 
     let ie9 = ProgramFilter.FindById('ie9');
+    let cmd = ProgramFilter.FindById('cmd');
 
     function toggleStartMenu() {
         if ($TogglableStartMenu == false) {
@@ -60,42 +61,70 @@
         <div class="win7-taskbar__group win7-taskbar__group--use-remaining-space taskbar__group--horizontal-padding">
             <!-- svelte-ignore a11y-click-events-have-key-events -->
             {#if $TogglableStartMenu}
+                <div
+                    role="button"
+                    tabindex="0"
+                    on:click={toggleStartMenu}
+                    id="button_startmenu"
+                    class="win7-taskbar__program win7-taskbar__program--startmenu--glow"
+                />
+            {:else}
+                <div
+                    role="button"
+                    tabindex="0"
+                    on:click={toggleStartMenu}
+                    id="button_startmenu"
+                    class="win7-taskbar__program win7-taskbar__program--startmenu"
+                />
+            {/if}
+
+            {#if !processes.includes(ie9)}
                 <div class="win7-taskbar__program--test">
                     <div
                         role="button"
                         tabindex="0"
-                        on:click={toggleStartMenu}
                         id="button_startmenu"
-                        class="win7-taskbar__program win7-taskbar__program--startmenu--glow"
-                        style="margin-right: 10px;"
+                        style="width: 30px;height:30px;"
+                        class={ie9?.GetIcon().string()}
                     />
                 </div>
             {:else}
-                <div class="win7-taskbar__program--test">
+                <div class="win7-taskbar__program--test active">
                     <div
                         role="button"
                         tabindex="0"
-                        on:click={toggleStartMenu}
                         id="button_startmenu"
-                        class="win7-taskbar__program win7-taskbar__program--startmenu"
-                        style="margin-right: 10px;"
+                        style="width: 32px;height:32px;"
+                        class={ie9?.GetIcon().string()}
                     />
                 </div>
             {/if}
 
-            <div class="win7-taskbar__program--test">
-                <div
-                    role="button"
-                    tabindex="0"
-                    id="button_startmenu"
-                    style="width: 30px;height:30px;"
-                    class={ie9?.GetIcon().string()}
-                />
-            </div>
+            {#if !processes.includes(cmd)}
+                <div class="win7-taskbar__program--test">
+                    <div
+                        role="button"
+                        tabindex="0"
+                        id="button_startmenu"
+                        style="width: 30px;height:30px;"
+                        class={cmd?.GetIcon().string()}
+                    />
+                </div>
+            {:else}
+                <div class="win7-taskbar__program--test active">
+                    <div
+                        role="button"
+                        tabindex="0"
+                        id="button_startmenu"
+                        style="width: 32px;height:32px;"
+                        class={cmd?.GetIcon().string()}
+                    />
+                </div>
+            {/if}
 
             {#each processes as program}
-                {#if program.GetId() != 'ie9'}
-                    <div class="win7-taskbar__program--test">
+                {#if program.GetId() != 'ie9' && program.GetId() != 'cmd'}
+                    <div class="win7-taskbar__program--test active">
                         <div
                             role="button"
                             tabindex="0"

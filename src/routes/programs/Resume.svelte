@@ -49,8 +49,8 @@
     }
 
     var manager = new ResumeTabManager([
-        new ResumeTab(1, 'Objective', false),
-        new ResumeTab(2, 'Education', true),
+        new ResumeTab(1, 'Objective', true),
+        new ResumeTab(2, 'Education', false),
         new ResumeTab(3, 'Experience', false),
         new ResumeTab(4, 'Technical Skills', false),
         new ResumeTab(5, 'Projects', false),

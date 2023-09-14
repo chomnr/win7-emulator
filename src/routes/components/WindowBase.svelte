@@ -85,7 +85,7 @@
             p_window.style.position = 'absolute';
             p_window.style.top = '0';
             p_window.style.width = '100vw';
-            p_window.style.height = '95vh';
+            p_window.style.height = '96vh';
             isMaximized = true;
         } else {
             p_window.style.top = '10%';
@@ -142,7 +142,6 @@
             if (browser) {
                 if (responsive) {
                     AutoAdjustDimension();
-                    console.log(c_width);
                 }
                 setTimeout(() => {
                     if (program == event.using) {

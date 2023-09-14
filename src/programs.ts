@@ -245,6 +245,17 @@ export class ProgramFilter {
     }
 
     /**
+     * Finds the desired program and if it exists it returns a ComputerProgram
+     * if not returns undefined.
+     *
+     * @param id The id of the program.
+     * @returns
+     */
+    static FindById(id: string): ComputerProgram | undefined {
+        return programs.find((x) => x.GetId().toLowerCase() == id.toLowerCase());
+    }
+
+    /**
      * Returns all the ComputerPrograms that currently exist.
      *
      * @returns {ComputerProgram[]}

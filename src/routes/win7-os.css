@@ -187,6 +187,8 @@
 
     /* height: inherit; */
     height: inherit;
+
+    align-items: center;
 }
 
 .win7-taskbar__group--align-programs {
@@ -221,10 +223,10 @@
     content: url("http://d2hqjspxd4b0fs.cloudfront.net/win7/orb-default.png");
 
     /* Inherit the width from the parent element */
-    width: inherit;
+    width: 39px;
 
     /* Inherit the height from the parent element */
-    height: inherit;
+    height: 39px;
 }
 
 .win7-taskbar__program--startmenu--glow {
@@ -233,10 +235,10 @@
     /* Change the icon image on hover */
 
     /* Inherit the width from the parent element */
-    width: inherit;
+    width: 39px;
 
     /* Inherit the height from the parent element */
-    height: inherit;
+    height: 39px;
 }
 
 
@@ -250,6 +252,21 @@
 
     transition: content 2s;
 
+}
+
+.win7-taskbar__program--test {
+    display: flex;
+    justify-content: center;
+    width: 55px;
+    /*
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 100%);
+    padding-left: 9px;
+    padding-right: 9px;
+    width: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(5px);
+    border-radius: 5px;
+    */
 }
 
 .win7-taskbar__program--with-border {

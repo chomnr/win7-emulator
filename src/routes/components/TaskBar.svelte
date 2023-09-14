@@ -128,7 +128,10 @@
 
             {#each processes as program}
                 {#if program.GetId() != 'ie9' && program.GetId() != 'cmd'}
-                    <div class="win7-taskbar__program--additional-item active">
+                    <div
+                        class="win7-taskbar__program--additional-item active"
+                        on:click={() => ToggleMinimization(program)}
+                    >
                         <div
                             role="button"
                             tabindex="0"

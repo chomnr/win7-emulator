@@ -5,6 +5,7 @@
     import Draggable from './Draggable.svelte';
     import { browser } from '$app/environment';
     import TaskBar from './TaskBar.svelte';
+    import { ToggleMinimization } from '../../helper';
 
     export let program: ComputerProgram;
     export let showTitle: Boolean = true;
@@ -193,7 +194,7 @@
                         style="background: none;border: none;box-shadow: none;"
                     >
                         <div class="title-bar-controls">
-                            <button aria-label="Minimize" />
+                            <button on:click={() => ToggleMinimization(program)} aria-label="Minimize" />
                             <button on:click={MaximizeWindow} aria-label="Maximize" />
                             <button on:click={CloseWindow} aria-label="Close" />
                         </div>
@@ -286,7 +287,7 @@
                         {/if}
 
                         <div class="title-bar-controls">
-                            <button aria-label="Minimize" />
+                            <button on:click={() => ToggleMinimization(program)} aria-label="Minimize" />
                             <button on:click={MaximizeWindow} aria-label="Maximize" />
                             <button on:click={CloseWindow} aria-label="Close" />
                         </div>

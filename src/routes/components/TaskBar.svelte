@@ -2,6 +2,7 @@
     import { onMount } from 'svelte';
     import { TogglableStartMenu, CurrentTime, CurrentDate, TaskManager, type IProgramManager } from '../stores';
     import { ProgramFilter, type ComputerProgram } from '../../programs';
+    import { ToggleMinimization } from '../../helper';
 
     let whitelist: string[] = [
         'win7-startmenu__content',
@@ -92,7 +93,7 @@
                     />
                 </div>
             {:else}
-                <div class="win7-taskbar__program--additional-item active">
+                <div class="win7-taskbar__program--additional-item active" on:click={() => ToggleMinimization(ie9)}>
                     <div
                         role="button"
                         tabindex="0"
@@ -114,7 +115,7 @@
                     />
                 </div>
             {:else}
-                <div class="win7-taskbar__program--additional-item active">
+                <div class="win7-taskbar__program--additional-item active" on:click={() => ToggleMinimization(cmd)}>
                     <div
                         role="button"
                         tabindex="0"

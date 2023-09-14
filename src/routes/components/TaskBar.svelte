@@ -81,7 +81,7 @@
             {/if}
 
             {#if !processes.includes(ie9)}
-                <div class="win7-taskbar__program--additional-item">
+                <div class="win7-taskbar__program--additional-item" on:click={() => TaskManager.AddProcess(ie9)}>
                     <!-- svelte-ignore a11y-click-events-have-key-events -->
                     <div
                         role="button"
@@ -89,7 +89,6 @@
                         id="button_startmenu"
                         style="width: 32px;height:32px;"
                         class={ie9?.GetIcon().string()}
-                        on:click={() => TaskManager.AddProcess(ie9)}
                     />
                 </div>
             {:else}
@@ -105,14 +104,13 @@
             {/if}
 
             {#if !processes.includes(cmd)}
-                <div class="win7-taskbar__program--additional-item">
+                <div class="win7-taskbar__program--additional-item" on:click={() => TaskManager.AddProcess(cmd)}>
                     <div
                         role="button"
                         tabindex="0"
                         id="button_startmenu"
-                        style="width: 30px;height:30px;"
+                        style="width: 32px;height:32px;"
                         class={cmd?.GetIcon().string()}
-                        on:click={() => TaskManager.AddProcess(cmd)}
                     />
                 </div>
             {:else}

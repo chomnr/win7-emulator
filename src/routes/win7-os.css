@@ -255,15 +255,24 @@
     transition: content 2s;
 }
 
-.win7-taskbar__program--test {
+.win7-taskbar__program--additional-item {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 60px;
+    width: 55px;
     height: 100%;
 }
 
-.win7-taskbar__program--test.active {
+.win7-taskbar__program--additional-item:hover {
+    box-shadow: 0 0 1px black;
+    background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.4) 5%, transparent 100%);
+    border: 1px solid var(--aero-border-top-bottom-color);
+    border-top: transparent;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.win7-taskbar__program--additional-item.active {
     box-shadow: 0 0 1px black;
     background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.4) 5%, transparent 100%);
     border: 1px solid var(--aero-border-top-bottom-color);
@@ -272,7 +281,7 @@
 
 }
 
-.win7-taskbar__program--test.active:hover {
+.win7-taskbar__program--additional-item.active:hover {
     background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.6) 5%, transparent 100%);
     cursor: pointer;
 }

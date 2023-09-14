@@ -67,6 +67,7 @@
                     on:click={toggleStartMenu}
                     id="button_startmenu"
                     class="win7-taskbar__program win7-taskbar__program--startmenu--glow"
+                    style="margin-right: 10px;"
                 />
             {:else}
                 <div
@@ -75,21 +76,24 @@
                     on:click={toggleStartMenu}
                     id="button_startmenu"
                     class="win7-taskbar__program win7-taskbar__program--startmenu"
+                    style="margin-right: 10px;"
                 />
             {/if}
 
             {#if !processes.includes(ie9)}
-                <div class="win7-taskbar__program--test">
+                <div class="win7-taskbar__program--additional-item">
+                    <!-- svelte-ignore a11y-click-events-have-key-events -->
                     <div
                         role="button"
                         tabindex="0"
                         id="button_startmenu"
-                        style="width: 30px;height:30px;"
+                        style="width: 32px;height:32px;"
                         class={ie9?.GetIcon().string()}
+                        on:click={() => TaskManager.AddProcess(ie9)}
                     />
                 </div>
             {:else}
-                <div class="win7-taskbar__program--test active">
+                <div class="win7-taskbar__program--additional-item active">
                     <div
                         role="button"
                         tabindex="0"
@@ -101,17 +105,18 @@
             {/if}
 
             {#if !processes.includes(cmd)}
-                <div class="win7-taskbar__program--test">
+                <div class="win7-taskbar__program--additional-item">
                     <div
                         role="button"
                         tabindex="0"
                         id="button_startmenu"
                         style="width: 30px;height:30px;"
                         class={cmd?.GetIcon().string()}
+                        on:click={() => TaskManager.AddProcess(cmd)}
                     />
                 </div>
             {:else}
-                <div class="win7-taskbar__program--test active">
+                <div class="win7-taskbar__program--additional-item active">
                     <div
                         role="button"
                         tabindex="0"
@@ -124,12 +129,12 @@
 
             {#each processes as program}
                 {#if program.GetId() != 'ie9' && program.GetId() != 'cmd'}
-                    <div class="win7-taskbar__program--test active">
+                    <div class="win7-taskbar__program--additional-item active">
                         <div
                             role="button"
                             tabindex="0"
                             id="button_startmenu"
-                            style="width: 30px;height:30px;"
+                            style="width: 32px;height:32px;"
                             class={program.GetIcon().string()}
                         />
                     </div>

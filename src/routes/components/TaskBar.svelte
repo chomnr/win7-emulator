@@ -82,8 +82,9 @@
             {/if}
 
             {#if !processes.includes(ie9)}
+                <!-- svelte-ignore a11y-click-events-have-key-events -->
+                <!-- svelte-ignore a11y-no-static-element-interactions -->
                 <div class="win7-taskbar__program--additional-item" on:click={() => TaskManager.AddProcess(ie9)}>
-                    <!-- svelte-ignore a11y-click-events-have-key-events -->
                     <div
                         role="button"
                         tabindex="0"
@@ -93,6 +94,8 @@
                     />
                 </div>
             {:else}
+                <!-- svelte-ignore a11y-click-events-have-key-events -->
+                <!-- svelte-ignore a11y-no-static-element-interactions -->
                 <div class="win7-taskbar__program--additional-item active" on:click={() => ToggleMinimization(ie9)}>
                     <div
                         role="button"
@@ -105,6 +108,8 @@
             {/if}
 
             {#if !processes.includes(cmd)}
+                <!-- svelte-ignore a11y-click-events-have-key-events -->
+                <!-- svelte-ignore a11y-no-static-element-interactions -->
                 <div class="win7-taskbar__program--additional-item" on:click={() => TaskManager.AddProcess(cmd)}>
                     <div
                         role="button"
@@ -115,6 +120,8 @@
                     />
                 </div>
             {:else}
+                <!-- svelte-ignore a11y-click-events-have-key-events -->
+                <!-- svelte-ignore a11y-no-static-element-interactions -->
                 <div class="win7-taskbar__program--additional-item active" on:click={() => ToggleMinimization(cmd)}>
                     <div
                         role="button"
@@ -128,6 +135,8 @@
 
             {#each processes as program}
                 {#if program.GetId() != 'ie9' && program.GetId() != 'cmd'}
+                    <!-- svelte-ignore a11y-click-events-have-key-events -->
+                    <!-- svelte-ignore a11y-no-static-element-interactions -->
                     <div
                         class="win7-taskbar__program--additional-item active"
                         on:click={() => ToggleMinimization(program)}

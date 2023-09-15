@@ -31,6 +31,10 @@
                     socket = new WebSocket('wss://be-feed.zeljko.me:8443/');
                 }
 
+                socket.onopen = function () {
+                    IsConnectedToBruteExpose.set(true);
+                };
+
                 socket.onerror = function () {
                     IsConnectedToBruteExpose.set(false);
                 };

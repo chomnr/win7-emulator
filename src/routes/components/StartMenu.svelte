@@ -71,7 +71,6 @@
                     id="startmenu_input"
                     class="icon-format font-xxs font-italic xsmall"
                     placeholder="Search programs and files"
-                    disabled
                 />
                 <div class="icon magnify-2 transform-flip" />
             </div>

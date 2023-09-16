@@ -114,13 +114,11 @@
             TaskManager.AddProcess(program!);
         }
     }
-
-    onMount(() => {
-        document.addEventListener('click', InvalidClickDetection);
-    });
 </script>
 
-<div id="desktop_grid" class="win7-desktop-grid">
+<!-- svelte-ignore a11y-click-events-have-key-events -->
+<!-- svelte-ignore a11y-no-static-element-interactions -->
+<div on:click={InvalidClickDetection} id="desktop_grid" class="win7-desktop-grid">
     {#each ProgramFilter.GetPrograms() as program}
         <!-- svelte-ignore a11y-click-events-have-key-events -->
         <div

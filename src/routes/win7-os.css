@@ -39,6 +39,7 @@
     --aero-dg-program-title-shadow-color: rgba(0, 0, 0, 1);
     --aero-dg-program-title-font-size: 0.8rem;
     --aero-dg-program-hover: rgba(112, 151, 218, 0.7);
+    --aero-dg-program-2-hover: rgba(112, 151, 218, 0.4);
     --aero-dg-program-hover-border: rgba(135, 171, 240, 0.6);
     --aero-dg-program-hover-shadow: rgba(140, 175, 239, 1);
     --aero-dg-program-active: rgba(112, 151, 218, 0.7);
@@ -488,7 +489,7 @@
 }
 
 .win7-startmenu__group__item:hover {
-    background-image: linear-gradient(to bottom, white, var(--aero-dg-program-hover));
+    background: var(--aero-dg-program-2-hover);
     border: 1px solid var(--aero-dg-program-hover-border);
     cursor: pointer;
 }
@@ -1111,6 +1112,10 @@
 
 .x-fit {
     width: fit-content;
+}
+
+.x-xxsmall {
+    width: 20px;
 }
 
 .x-xsmall {

@@ -68,3 +68,24 @@ export function ToggleMinimization(program: ComputerProgram) {
         wind.style.display = 'none';
     }
 }
+
+export function SequentialSearch(sequential: string, againstList: any[]): any[] {
+    let maxIndex = againstList.length;
+    let result: any[] = [];
+    let seqLength = sequential.length;
+
+    for (let i = 0; i < maxIndex; i++) {
+        for (let x = 0; x < seqLength; x++) {
+            if (sequential.toLowerCase() != againstList[i].GetName().toLowerCase().substring(0, seqLength)) {
+                if (sequential.toLowerCase() != againstList[i].GetId().toLowerCase().substring(0, seqLength)) {
+                    result.splice(i, 1);
+                    break;
+                }
+            }
+            if (!result.includes(againstList[i])) {
+                result.push(againstList[i]);
+            }
+        }
+    }
+    return result;
+}

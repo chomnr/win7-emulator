@@ -1,14 +1,38 @@
 <script lang="ts">
     import { onMount } from 'svelte';
-    import { ProgramFilter } from '../../programs';
+    import { ComputerProgram, ProgramFilter, program_prefix } from '../../programs';
+    import { SequentialSearch } from '../../helper';
+    import { TaskManager } from '../stores';
+
+    // Elements
+    let startmenu_input: HTMLElement;
+
+    let startmenu_main_content: HTMLElement;
+    let startmenu_side_content: HTMLElement;
+
+    let avatar: HTMLElement;
+
+    let startmenu_all_programs: HTMLElement;
+
+    // Filtration (ComputerPrograms)
+
+    let programs_f = ProgramFilter.GetPrograms();
+    let program_f_count: number = 0;
+
+    function FilterOnInput() {
+        let input = startmenu_input.value;
+
+        if (input.length == 0) {
+            program_f_count = 0;
+            programs_f = ProgramFilter.GetPrograms();
+            return;
+        }
+
+        programs_f = SequentialSearch(input, ProgramFilter.GetPrograms());
+        program_f_count = programs_f.length;
+    }
 
     onMount(() => {
-        var startmenu_input: HTMLElement = document.getElementById('startmenu_input');
-        var startmenu_main_content: HTMLElement = document.getElementById('startmenu_main_content');
-        var startmenu_side_content: HTMLElement = document.getElementById('startmenu_side_content');
-        var avatar: HTMLElement = document.getElementById('avatar_builder');
-        var startmenu_all_programs: HTMLElement = document.getElementById('all_programs');
-
         function ResizeStartMenuOnInput() {
             startmenu_input.addEventListener('input', (e) => {
                 var input_length = startmenu_input.value.length;
@@ -35,27 +59,79 @@
                 }
             });
         }
-
         ResizeStartMenuOnInput();
     });
 </script>
 
 <div id="win7_startmenu" class="win7-startmenu win7--aero win7-startmenu--aero--additives">
-    <div id="startmenu_main_content" class="win7-startmenu__content win7-startmenu__content--with-design">
+    <div
+        bind:this={startmenu_main_content}
+        id="startmenu_main_content"
+        class="win7-startmenu__content win7-startmenu__content--with-design"
+    >
         <div
             class="win7-startmenu__group win7-startmenu__group--default-design justify-left win7-startmenu__group--column y-inherit"
         >
-            <!-- Startmenu items here. -->
-            {#each ProgramFilter.GetPrograms() as program}
+            <div class="display:flex;flex-direction:column;">
+                {#if program_f_count != 0}
+                    <div style="display: flex;align-items:center;gap: 12px;padding-top: 5px;">
+                        <span>&nbsp;Programs&nbsp;({program_f_count})</span>
+                        <div class="win7-startmenu__group--divider" style="width: 100%;" />
+                    </div>
+                    <div style="padding-top: 6px;">
+                        {#each programs_f as program}
+                            <!-- svelte-ignore a11y-click-events-have-key-events -->
+                            {#if program.GetId() == 'cmd'}
+                                <!--SMALL DETAIL-->
+                                <!-- svelte-ignore a11y-click-events-have-key-events -->
+                                <!-- svelte-ignore a11y-no-static-element-interactions -->
+                                <div
+                                    class="win7-startmenu__group__item"
+                                    style="display: flex;font-size:0.8rem;gap:2px;padding-top: 2px;padding: 2px;padding-left:15px;"
+                                    on:click={() => TaskManager.AddProcess(program)}
+                                >
+                                    <div
+                                        class="win7-startmenu__group__item--icon x-xxsmall {program.GetIcon().string()}"
+                                    />
+                                    <div>{program.GetId()}</div>
+                                </div>
+                            {:else}
+                                <!-- svelte-ignore a11y-no-static-element-interactions -->
+                                <div
+                                    style="display: flex;font-size:0.8rem;gap:2px;padding-left:12;padding-top: 2px;padding-left:15px;"
+                                    on:click={() => TaskManager.AddProcess(program)}
+                                >
+                                    <div
+                                        class="win7-startmenu__group__item--icon x-xxsmall {program.GetIcon().string()}"
+                                    />
+                                    <div>{program.GetName()}</div>
+                                </div>
+                            {/if}
+                        {/each}
+                    </div>
+                {:else}
+                    {#each programs_f as program}
+                        {#if program.GetId() == 'ie9'}
+                            <div class="win7-startmenu__group__item">
+                                <div class="win7-startmenu__group__item--icon {program.GetIcon().string()}" />
+                                &nbsp;&nbsp;{program.GetName()}
+                            </div>
+                        {/if}
+                    {/each}
+                {/if}
+            </div>
+            <!-- Startmenu items here. 
+            {#each programs_f as program}
                 <div class="win7-startmenu__group__item">
                     <div class="win7-startmenu__group__item--icon {program.GetIcon().string()}" />
-                    {program.GetName()}
+                    &nbsp;&nbsp;{program.GetName()}
                 </div>
             {/each}
+            -->
         </div>
 
         <div
-            id="all_programs"
+            bind:this={startmenu_all_programs}
             class="win7-startmenu__group win7-startmenu__group--default-design align-center justify-left x-semi-large y-small font-small"
             style="border-radius: 0;"
         >
@@ -68,6 +144,8 @@
         >
             <div class="aero-input default" style="margin: 5px;">
                 <input
+                    bind:this={startmenu_input}
+                    on:input={FilterOnInput}
                     id="startmenu_input"
                     class="icon-format font-xxs font-italic xsmall"
                     placeholder="Search programs and files"
@@ -76,8 +154,12 @@
             </div>
         </div>
     </div>
-    <div id="startmenu_side_content" class="win7-startmenu__content win7-startmenu__group--column">
-        <div id="avatar_builder" class="win7-avatar-builder" style="top:-50px;left:-7px;">
+    <div
+        bind:this={startmenu_side_content}
+        id="startmenu_side_content"
+        class="win7-startmenu__content win7-startmenu__group--column"
+    >
+        <div bind:this={avatar} class="win7-avatar-builder" style="top:-50px;left:-7px;">
             <img class="win7-avatar" src="https://d2hqjspxd4b0fs.cloudfront.net/win7/profile/avatar.png" alt="avatar" />
             <img class="win7-frame" src="https://d2hqjspxd4b0fs.cloudfront.net/win7/profile/frame.png" alt="frame" />
         </div>

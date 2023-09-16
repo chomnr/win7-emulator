@@ -58,11 +58,14 @@
         setInterval(() => {
             let random = Math.random();
             let random_network = Math.floor(Math.random() * (5 - 1 + 1) + 1);
-            let array = Array.from(network.classList);
 
-            if (random < 0.4) {
-                network.classList.remove(array[3]);
-                network.classList.add('win7-taskbar__program--connection-' + random_network);
+            if (network != null) {
+                let array = Array.from(network.classList);
+
+                if (random < 0.4) {
+                    network.classList.remove(array[3]);
+                    network.classList.add('win7-taskbar__program--connection-' + random_network);
+                }
             }
         }, 4000);
         setupClickListeners();
@@ -173,7 +176,7 @@
             />
             <div
                 bind:this={network}
-                class="win7-taskbar__program win7-taskbar__program--with-border win7-taskbar__program--hover win7-taskbar__program--connection-1"
+                class="win7-taskbar__program win7-taskbar__program--with-border win7-taskbar__program--hover win7-taskbar__program--connection-3"
             />
             <div
                 class="win7-taskbar__program win7-taskbar__program--with-border win7-taskbar__program--hover win7-taskbar__program--network-audio-3"

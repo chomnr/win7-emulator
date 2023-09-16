@@ -320,9 +320,29 @@
     content: url("https://d2hqjspxd4b0fs.cloudfront.net/win7/audio/68.ico") !important;
 }
 
-.win7-taskbar__program--connection {
+.win7-taskbar__program--connection-1 {
     /* Set the icon image to wireless Connection using the 'content' property */
-    content: url("https://d2hqjspxd4b0fs.cloudfront.net/win7/network/358.ico") !important;
+    content: url("https://d2hqjspxd4b0fs.cloudfront.net/win7/network/wifi_1.ico") !important;
+}
+
+.win7-taskbar__program--connection-2 {
+    /* Set the icon image to wireless Connection using the 'content' property */
+    content: url("https://d2hqjspxd4b0fs.cloudfront.net/win7/network/wifi_2.ico") !important;
+}
+
+.win7-taskbar__program--connection-3 {
+    /* Set the icon image to wireless Connection using the 'content' property */
+    content: url("https://d2hqjspxd4b0fs.cloudfront.net/win7/network/wifi_3.ico") !important;
+}
+
+.win7-taskbar__program--connection-4 {
+    /* Set the icon image to wireless Connection using the 'content' property */
+    content: url("https://d2hqjspxd4b0fs.cloudfront.net/win7/network/wifi_4.ico") !important;
+}
+
+.win7-taskbar__program--connection-5 {
+    /* Set the icon image to wireless Connection using the 'content' property */
+    content: url("https://d2hqjspxd4b0fs.cloudfront.net/win7/network/wifi_5.ico") !important;
 }
 
 .win7-taskbar__program--battery {

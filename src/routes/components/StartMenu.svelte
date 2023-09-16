@@ -33,7 +33,11 @@
         programs_f = SequentialSearch(input, ProgramFilter.GetPrograms());
         program_category = SmartCategorize(programs_f);
 
-        program_f_count = programs_f.length;
+        if (programs_f.length == 0) {
+            program_f_count = 0;
+        } else {
+            program_f_count = programs_f.length;
+        }
     }
 
     function SmartCategorize(array: ComputerProgram[]): string {

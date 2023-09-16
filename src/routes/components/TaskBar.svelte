@@ -18,6 +18,8 @@
     let ie9 = ProgramFilter.FindById('ie9');
     let cmd = ProgramFilter.FindById('cmd');
 
+    let network: HTMLElement;
+
     function toggleStartMenu() {
         if ($TogglableStartMenu == false) {
             TogglableStartMenu.set(true);
@@ -53,6 +55,16 @@
     });
 
     onMount(() => {
+        setInterval(() => {
+            let random = Math.random();
+            let random_network = Math.floor(Math.random() * (5 - 1 + 1) + 1);
+            let array = Array.from(network.classList);
+
+            if (random < 0.4) {
+                network.classList.remove(array[3]);
+                network.classList.add('win7-taskbar__program--connection-' + random_network);
+            }
+        }, 4000);
         setupClickListeners();
     });
 </script>
@@ -160,7 +172,8 @@
                 class="win7-taskbar__program win7-taskbar__program--with-border win7-taskbar__program--hover win7-taskbar__program--battery"
             />
             <div
-                class="win7-taskbar__program win7-taskbar__program--with-border win7-taskbar__program--hover win7-taskbar__program--connection"
+                bind:this={network}
+                class="win7-taskbar__program win7-taskbar__program--with-border win7-taskbar__program--hover win7-taskbar__program--connection-1"
             />
             <div
                 class="win7-taskbar__program win7-taskbar__program--with-border win7-taskbar__program--hover win7-taskbar__program--network-audio-3"

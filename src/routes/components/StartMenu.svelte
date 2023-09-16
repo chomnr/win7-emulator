@@ -32,10 +32,14 @@
 
         programs_f = SequentialSearch(input, ProgramFilter.GetPrograms());
         program_category = SmartCategorize(programs_f);
+
         program_f_count = programs_f.length;
     }
 
     function SmartCategorize(array: ComputerProgram[]): string {
+        if (array.length == 0) {
+            return ComputerCategories.ALL;
+        }
         if (array.length > 1) {
             for (let i = 0; i < array.length; i++) {
                 if (array[0].GetCategory() != array[i].GetCategory()) {
@@ -133,8 +137,10 @@
                     </div>
                 {:else}
                     {#each programs_f as program}
+                        <!-- svelte-ignore a11y-no-static-element-interactions -->
                         {#if program.GetId() == 'ie9'}
-                            <div class="win7-startmenu__group__item">
+                            <!-- svelte-ignore a11y-click-events-have-key-events -->
+                            <div class="win7-startmenu__group__item" on:click={() => TaskManager.AddProcess(program)}>
                                 <div class="win7-startmenu__group__item--icon {program.GetIcon().string()}" />
                                 &nbsp;&nbsp;{program.GetName()}
                             </div>

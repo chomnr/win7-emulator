@@ -98,6 +98,7 @@
                             {:else}
                                 <!-- svelte-ignore a11y-no-static-element-interactions -->
                                 <div
+                                    class="win7-startmenu__group__item"
                                     style="display: flex;font-size:0.8rem;gap:2px;padding-left:12;padding-top: 2px;padding-left:15px;"
                                     on:click={() => TaskManager.AddProcess(program)}
                                 >

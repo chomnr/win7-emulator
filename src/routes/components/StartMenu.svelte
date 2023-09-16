@@ -53,23 +53,30 @@
                 if (input_length > 0) {
                     startmenu_all_programs.style.display = 'none';
                     startmenu_side_content.style.display = 'none';
-
-                    /*startmenu_main_content.style.opacity = "0.4"
-                startmenu_side_content.style.opacity = "0"*/
+                    // startmenu_main_content.style.transition = 'width 0.1s';
+                    //startmenu_main_content.style.transition = 'opacity 1s';
 
                     startmenu_main_content.style.width = '100%';
+
                     setTimeout(() => {
+                        //startmenu_all_programs.style.display = 'none';
+                        //startmenu_side_content.style.display = 'none';
+                        //startmenu_main_content.style.opacity = '1';
+                        //startmenu_main_content.style.opacity = '1';
+                        // startmenu_main_content.style.opacity = '1';
                         /*startmenu_side_content.style.position = "absolute";*/
-                        //*startmenu_main_content.style.opacity = "1";*/
                         //startmenu_main_content.style.opacity = "1";
                         //startmenu_main_content.style.width = "100%";
-                    }, 200);
+                    }, 150);
                 } else {
                     // detransition
                     startmenu_all_programs.style.display = 'flex';
                     startmenu_all_programs.style.width = 'var(--startmenu-content-width)';
                     startmenu_main_content.style.width = 'var(--startmenu-content-width)';
                     startmenu_side_content.style.display = 'flex';
+
+                    startmenu_side_content.style.opacity = '1';
+                    startmenu_side_content.style.transition = 'opacity 1s';
                 }
             });
         }
@@ -88,7 +95,7 @@
         >
             <div class="display:flex;flex-direction:column;">
                 {#if program_f_count != 0}
-                    <div style="display: flex;align-items:center;gap: 12px;padding-top: 5px;">
+                    <div style="display: flex;align-items:center;gap: 12px;padding-top: 13px;">
                         <span>&nbsp;{program_category}&nbsp;({program_f_count})</span>
                         <div class="win7-startmenu__group--divider" style="width: 100%;" />
                     </div>

@@ -8,6 +8,7 @@
 export enum ComputerCategories {
     PROGRAMS = 'Programs',
     FILES = 'Files',
+    ALL = 'All', // do not use as a category for a program
 }
 
 // Object for ComputerProgram; builder-like pattern that adds
@@ -281,7 +282,7 @@ export const search_controls_suffix = '-search_controls';
 const programs: ComputerProgram[] = [
     new ComputerProgram('ie9', 'Internet Explorer'),
     new ComputerProgram('cmd', 'Command Prompt'),
-    new ComputerProgram('resume', 'Resume'),
+    new ComputerProgram('resume', 'Resume', ComputerCategories.FILES),
     new ComputerProgram('hangman', 'Hangman'),
     new ComputerProgram('bruteexpose', 'Brute Expose'),
 ];

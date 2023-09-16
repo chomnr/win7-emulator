@@ -1,6 +1,6 @@
 <script lang="ts">
     import { onMount } from 'svelte';
-    import { ComputerProgram, ProgramFilter, program_prefix } from '../../programs';
+    import { ComputerCategories, ComputerProgram, ProgramFilter, program_prefix } from '../../programs';
     import { SequentialSearch } from '../../helper';
     import { TaskManager } from '../stores';
 
@@ -18,6 +18,7 @@
 
     let programs_f = ProgramFilter.GetPrograms();
     let program_f_count: number = 0;
+    let program_category: string;
 
     function FilterOnInput() {
         let input = startmenu_input.value;
@@ -25,11 +26,24 @@
         if (input.length == 0) {
             program_f_count = 0;
             programs_f = ProgramFilter.GetPrograms();
+            program_category = '';
             return;
         }
 
         programs_f = SequentialSearch(input, ProgramFilter.GetPrograms());
+        program_category = SmartCategorize(programs_f);
         program_f_count = programs_f.length;
+    }
+
+    function SmartCategorize(array: ComputerProgram[]): string {
+        if (array.length > 1) {
+            for (let i = 0; i < array.length; i++) {
+                if (array[0].GetCategory() != array[i].GetCategory()) {
+                    return ComputerCategories.ALL;
+                }
+            }
+        }
+        return array[0].GetCategory();
     }
 
     onMount(() => {
@@ -75,7 +89,7 @@
             <div class="display:flex;flex-direction:column;">
                 {#if program_f_count != 0}
                     <div style="display: flex;align-items:center;gap: 12px;padding-top: 5px;">
-                        <span>&nbsp;Programs&nbsp;({program_f_count})</span>
+                        <span>&nbsp;{program_category}&nbsp;({program_f_count})</span>
                         <div class="win7-startmenu__group--divider" style="width: 100%;" />
                     </div>
                     <div style="padding-top: 6px;">

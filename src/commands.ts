@@ -72,7 +72,6 @@ export class CommandEvent {
      */
     Append(appendWhat: string) {
         if (this.result != null) {
-            console.log(appendWhat);
             this.result.innerHTML += appendWhat;
         } else {
             console.log('element does not exist.');

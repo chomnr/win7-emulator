@@ -58,13 +58,18 @@ class ConsoleCommandFilter {
 }
 
 export class CommandEvent {
+    private input: HTMLElement | null;
     private result: HTMLElement | null;
 
     constructor() {
+        this.input = document.getElementById('cmd_input_' + (get(CmdContentTracker) - 1));
         this.result = document.getElementById('cmd_results_' + (get(CmdContentTracker) - 1));
-        console.log(this.result);
     }
 
+    /**
+     * Display a message on the result.
+     * @param appendWhat the text you want to add to the cmd_results
+     */
     Append(appendWhat: string) {
         if (this.result != null) {
             console.log(appendWhat);
@@ -72,6 +77,15 @@ export class CommandEvent {
         } else {
             console.log('element does not exist.');
         }
+    }
+
+    /**
+     * Called after everything is done. (creates a new input)
+     */
+    Finished() {
+        this.input.disabled = true;
+        CmdContentTracker.set(get(CmdContentTracker) + 1);
+        this.input.focus();
     }
 }
 
@@ -95,6 +109,15 @@ export class ConsoleCommandHelper {
     }
 
     /**
+     * Restart the input. does not clear. BUT RESTART.
+     */
+    private static RestartInput() {
+        let input = document.getElementById('cmd_input_' + (get(CmdContentTracker) - 1));
+        CmdContentTracker.set(get(CmdContentTracker) + 1);
+        input.focus();
+    }
+
+    /**
      * Forces an output to the cmd.
      * @param string
      * @param message
@@ -102,6 +125,7 @@ export class ConsoleCommandHelper {
     private static ForceOutput(message: string) {
         var results = document.getElementById('cmd_results_' + (get(CmdContentTracker) - 1));
         results.innerHTML += message;
+        this.RestartInput();
     }
 }
 
@@ -109,10 +133,16 @@ export class ConsoleCommandHelper {
 export const commands: ConsoleCommand[] = [
     new ConsoleCommand('ping', (e) => {
         e.Append('hellot here!<br>');
+        e.Finished();
         return CommandStatus.PENDING;
     }),
     new ConsoleCommand('foolme', (e) => {
-        e.Append('FOOL DUDE!<br>');
+        e.Append('WAITING!<br>');
+
+        setTimeout(() => {
+            e.Append('FOOL DUDE!<br>');
+            e.Finished();
+        }, 5000);
         return CommandStatus.PENDING;
     }),
 ];

@@ -35,6 +35,9 @@
     <meta name="description" content="Svelte demo app" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="preload" as="image" href="https://d2hqjspxd4b0fs.cloudfront.net/win7/orb-pressed.png" />
+    <link rel="preload" as="image" href="https://d2hqjspxd4b0fs.cloudfront.net/win7/orb-default.png" />
+    <link rel="preload" as="image" href="https://d2hqjspxd4b0fs.cloudfront.net/win7/desktop.jpg" />
 </svelte:head>
 
 <DesktopGrid />

@@ -23,6 +23,8 @@
     export let width = 1200;
     export let height = 700;
 
+    export let openOnVisit = false;
+
     const c_width = width;
     const c_height = height;
 
@@ -40,6 +42,12 @@
     // responsive mode or not.
     let isInResponsiveMode = false;
 
+    // If openOnVist is true then open it and automatically add it
+    // to the process list.
+    if (browser && openOnVisit) {
+        TaskManager.AddProcess(program);
+    }
+
     /**
      * Automatically adjust the dimensions of the program when
      * the user visits the website.
@@ -49,6 +57,9 @@
 
         if (window.innerWidth < 1203 && isWindowOpen && isWebSite) {
             // do adjustments
+            if (isMaximized) {
+                MaximizeWindow(); // if true automatically sets it to false.
+            }
             isInResponsiveMode = true;
             width = window.innerWidth - 100;
         } else {
@@ -83,7 +94,7 @@
     function MaximizeWindow() {
         let p_window = program.GetWindow().html();
         if (isWebSite && !isMaximized) {
-            p_window.style.top = '0';
+            p_window.style.top = '-37px';
             p_window.style.width = '100vw';
             p_window.style.height = '96vh';
             isMaximized = true;
@@ -137,6 +148,7 @@
                 }, 10);
             }
         }
+
         if (event.processes.includes(program) && !isWindowOpen) {
             isWindowOpen = true;
             if (browser) {

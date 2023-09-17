@@ -4,10 +4,10 @@
     import WebPagePortfolio from '../components/WebPagePortfolio.svelte';
 
     //
-    // BruteExpose
+    // Resume
     //
 
-    var program: ComputerProgram = ProgramFilter.Find('resume')!;
+    let program: ComputerProgram = ProgramFilter.Find('resume')!;
 
     class ResumeTab {
         id: number;

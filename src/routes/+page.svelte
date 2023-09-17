@@ -1,5 +1,12 @@
 <script lang="ts">
-    import { TogglableStartMenu, CurrentTime, CurrentDate, TaskManager } from './stores';
+    import {
+        TogglableStartMenu,
+        CurrentTime,
+        CurrentDate,
+        TaskManager,
+        type IProgramManager,
+        CommandManager,
+    } from './stores';
     import DesktopGrid from './components/DesktopGrid.svelte';
     import StartMenu from './components/StartMenu.svelte';
     import TaskBar from './components/TaskBar.svelte';
@@ -9,9 +16,16 @@
     import Resume from './programs/Resume.svelte';
     import BruteExpose from './programs/BruteExpose.svelte';
     import Hangman from './programs/Hangman.svelte';
+    import { commands } from '../commands';
 
     onMount(() => {
-        // Manage the
+        // Register all commands
+        for (let i = 0; i < commands.length; i++) {
+            CommandManager.RegisterCommand(commands[i]);
+            console.log("[CommandManager] Registered '" + commands[i].GetCommand() + "' command.");
+        }
+
+        // Time tracker
         const timeUpdater = setInterval(() => {
             var date = new Date();
             CurrentTime.set(

@@ -43,10 +43,10 @@
 
     function onMouseUp(e: MouseEvent) {
         moving = false;
-        if (e.target != null) {
-            //var targetProgram: ComputerProgram | undefined = ProgramFilter.Find(e.target.id);
-            //CurrentWindow.set(targetProgram);
-        }
+        //if (e.target != null) {
+        //var targetProgram: ComputerProgram | undefined = ProgramFilter.Find(e.target.id);
+        //CurrentWindow.set(targetProgram);
+        //}
     }
 </script>
 

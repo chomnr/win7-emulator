@@ -2,7 +2,7 @@
 @import url('https://fonts.cdnfonts.com/css/droid-sans-mono-2');
 
 :root {
-    --portfolio-background: rgba(4, 5, 19, 255);
+    --portfolio-background: rgba(18, 18, 18, 255);
 
     /* Branding */
     --portfolio-branding-text-color: rgba(250, 249, 246, 1);
@@ -25,6 +25,14 @@
     color: white;
     font-size: 16px;
     gap: var(--portfolio-branding-gap);
+}
+
+/* =====================================
+   Modifiers
+   ===================================== */
+.webpage.center {
+    justify-content: center;
+    align-items: center;
 }
 
 /* =====================================
@@ -135,6 +143,53 @@
     height: 100%;
 }
 
+.webpage .group {
+    display: flex;
+    flex-direction: column;
+}
+
+.webpage .group.center {
+    justify-content: center;
+    align-items: center;
+}
+
+/* =====================================
+   Command Injection Display
+   ===================================== */
+
+.webpage .command-injection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid gray;
+    font-family: monospace;
+    padding: 3px;
+}
+
+
+.webpage .command-injection.use-hover:hover {
+    background-color: red;
+    cursor: pointer;
+}
+
+.webpage .command-injection .title {
+    font-family: monospace;
+    padding: 3px;
+}
+
+.webpage .command-injection .command {
+    font-size: 0.8rem;
+}
+
+.webpage .command-injection .command .emphasis {
+    font-size: 0.8rem;
+}
+
+.webpage .command-injection .command .emphasis:hover {
+    color: limegreen;
+    cursor: pointer;
+}
+
 /* =====================================
    Social Icons
    ===================================== */
@@ -187,4 +242,23 @@
    ===================================== */
 .code-font {
     font-family: monospace;
+}
+
+
+/* =====================================
+   Positioning
+   ===================================== */
+.text-center {
+    text-align: center;
+}
+
+/* =====================================
+   SIZING
+   ===================================== */
+.full-width {
+    width: 100%;
+}
+
+.full-height {
+    height: 100%;
 }

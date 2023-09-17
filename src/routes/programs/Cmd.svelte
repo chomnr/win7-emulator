@@ -1,106 +1,33 @@
 <script lang="ts">
-    import { ProgramFilter, type ComputerProgram } from '../../programs';
+    import { ProgramFilter, ComputerProgram } from '../../programs';
     import WindowBase from '../components/WindowBase.svelte';
     import WebPagePortfolio from '../components/WebPagePortfolio.svelte';
-    import { CmdContentTracker } from '../stores';
+    import { CmdContentTracker, CommandManager } from '../stores';
     import { afterUpdate, onDestroy, onMount } from 'svelte';
     import { browser } from '$app/environment';
+    import { CommandStatus, ConsoleCommand, ConsoleCommandHelper } from '../../commands';
 
     //
-    // BruteExpose
+    // Command Prompt
     //
 
-    var program: ComputerProgram = ProgramFilter.Find('cmd')!;
+    let program: ComputerProgram = ProgramFilter.Find('cmd')!;
 
-    class ConsoleCommand {
-        command: string;
-        result: string;
+    //CommandManager.subscribe((e) => {
+    //  console.log(e);
+    //});
+    // Load Commands
+    onMount(() => {});
 
-        constructor(command: string, result: string) {
-            this.command = command;
-            this.result = result;
-        }
-
-        /**
-         * Return the name of the command.
-         *
-         * @returns {string}
-         */
-        GetCommand(): string {
-            return this.command;
-        }
-
-        /**
-         * Return the result of the command.
-         *
-         * @returns {string}
-         */
-        GetResult(): string {
-            return this.result;
-        }
-    }
-
-    class ConsoleCommandFilter {
-        /**
-         * Check if a command exists or not.
-         * @param command the desired command to check for
-         */
-        static Exist(command: string): Boolean {
-            return commands.some((x) => x.GetCommand() == command);
-        }
-
-        /**
-         * Finds a command if found returns ConsoleCommand
-         * @param command the command you want to find.
-         */
-        static Find(command: string): ConsoleCommand | undefined {
-            return commands.find((x) => x.GetCommand().toLowerCase() == command.toLowerCase());
-        }
-    }
-
-    class ConsoleCommandHelper {
-        /**
-         * Run a command and return its result.
-         * @param command the command you want to run
-         */
-        static RunCommand(command: string): string {
-            if (ConsoleCommandFilter.Exist(command)) {
-                return ConsoleCommandFilter.Find(command)?.GetResult()!;
-            }
-            return (
-                "'" +
-                command +
-                "' is not recognized as an internal or external command, operable program or batch file."
-            );
-        }
-    }
-
-    var commands: ConsoleCommand[] = [
-        new ConsoleCommand('ping', '<br>pong'),
-        new ConsoleCommand(
-            'help',
-            'Basic set of commands to help you get to know me.<br>' +
-                'ABOUT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Displays some basic information about me.<br>' +
-                'CRACK&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Crack a specific software...<br>',
-        ),
-    ];
-
-    // CMD Content Tracker
-    /**
-     * Manage the enter of command
-     * @param event
-     */
     function OnCommandEnter(event: KeyboardEvent) {
         var desiredKey = 'Enter';
         var cmd_input = document.getElementById('cmd_input_' + ($CmdContentTracker - 1));
-        var cmd_results = document.getElementById('cmd_results_' + ($CmdContentTracker - 1));
 
         if (event.key == desiredKey) {
             cmd_input.disabled = true;
+            ConsoleCommandHelper.RunCommand(cmd_input.value);
             CmdContentTracker.set($CmdContentTracker + 1);
             cmd_input.focus();
-            var result = ConsoleCommandHelper.RunCommand(cmd_input.value);
-            cmd_results.innerHTML += result;
         }
     }
 </script>
@@ -127,6 +54,39 @@
         </div>
     </div>
 </WindowBase>
+
+<!--
+/*
+new ConsoleCommand('ping', 'pong'),
+   new ConsoleCommand(
+       'help',
+       'Basic set of commands to help you get to know me.<br>' +
+           'ABOUT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Displays some basic information about me.<br>' +
+           'CRACK&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Crack a specific software...<br>',
+   ),
+   new ConsoleCommand('ovrs authenticate', 'Successfully authenticated system'),
+   */
+
+// CMD Content Tracker
+/**
+* Manage the enter of command
+* @param event
+*/
+/*
+function OnCommandEnter(event: KeyboardEvent) {
+   var desiredKey = 'Enter';
+   var cmd_input = document.getElementById('cmd_input_' + ($CmdContentTracker - 1));
+   var cmd_results = document.getElementById('cmd_results_' + ($CmdContentTracker - 1));
+
+   if (event.key == desiredKey) {
+       cmd_input.disabled = true;
+       CmdContentTracker.set($CmdContentTracker + 1);
+       cmd_input.focus();
+       var result = ConsoleCommandHelper.RunCommand(cmd_input.value);
+       cmd_results.innerHTML += result;
+   }
+}
+*/-->
 
 <style>
     :root {

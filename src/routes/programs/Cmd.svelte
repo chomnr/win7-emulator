@@ -25,7 +25,7 @@
 
         if (event.key == desiredKey) {
             //cmd_input.disabled = true;
-            ConsoleCommandHelper.RunCommand(cmd_input.value);
+            ConsoleCommandHelper.RunCommand(cmd_input?.value?.toLowerCase());
             //CmdContentTracker.set($CmdContentTracker + 1);
             //cmd_input.focus();
         }

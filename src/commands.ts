@@ -6,8 +6,7 @@ import { get } from 'svelte/store';
 
 export enum CommandStatus {
     PENDING,
-    FAILED,
-    ACCEPTED,
+    FINISHED,
 }
 
 export class ConsoleCommand {
@@ -78,6 +77,7 @@ export class CommandEvent {
         }
     }
 
+    Pending() {}
     /**
      * Called after everything is done. (creates a new input)
      */
@@ -112,6 +112,7 @@ export class ConsoleCommandHelper {
      */
     private static RestartInput() {
         let input = document.getElementById('cmd_input_' + (get(CmdContentTracker) - 1));
+        input.disabled = true;
         CmdContentTracker.set(get(CmdContentTracker) + 1);
         input.focus();
     }

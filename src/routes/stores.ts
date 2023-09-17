@@ -60,6 +60,7 @@ const ProgramStore = () => {
 // CommandStore (manages commands from the cmd)
 
 export interface ICommandExecution {
+    id: number;
     command: ComputerProgram;
     status: CommandStatus;
 }
@@ -89,7 +90,7 @@ const CommandStore = () => {
             }),
         AddExecution: (execution: ICommandExecution) =>
             update(({ executions, ...updater }) => {
-                return { ...updater, executions: [...executions, execution] };
+                return { ...updater, executions: [...executions, execution], id: executions.length + 1 };
             }),
     };
 };

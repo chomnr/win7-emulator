@@ -1,11 +1,18 @@
 <script lang="ts">
     import { onMount } from 'svelte';
     import type { ComputerProgram } from '../../programs';
-    import { TaskManager, type IProgramManager, CmdContentTracker, IsConnectedToBruteExpose } from '../stores';
+    import {
+        TaskManager,
+        type IProgramManager,
+        CmdContentTracker,
+        IsConnectedToBruteExpose,
+        CommandManager,
+    } from '../stores';
     import Draggable from './Draggable.svelte';
     import { browser } from '$app/environment';
     import TaskBar from './TaskBar.svelte';
     import { ToggleMinimization } from '../../helper';
+    import { CommandStatus } from '../../commands';
 
     export let program: ComputerProgram;
     export let showTitle: Boolean = true;
@@ -41,6 +48,9 @@
     // check if application should be in
     // responsive mode or not.
     let isInResponsiveMode = false;
+
+    // only for command prompt
+    let IsCommandCurrentlyPending = false;
 
     // If openOnVist is true then open it and automatically add it
     // to the process list.
@@ -80,6 +90,10 @@
         TaskManager.SetUsing(undefined);
         if (program.GetId() == 'cmd') {
             CmdContentTracker.set(1);
+
+            if ($CommandManager.execution != undefined && $CommandManager.execution?.status == CommandStatus.PENDING) {
+                CommandManager.UpdateExecutionStatus(CommandStatus.FAILED);
+            }
         }
 
         if (program.GetId() == 'bruteexpose') {

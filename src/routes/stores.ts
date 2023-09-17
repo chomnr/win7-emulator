@@ -1,6 +1,6 @@
 import { writable, type Writable } from 'svelte/store';
 import type { ComputerProgram } from '../programs';
-import type { CommandStatus, ConsoleCommand } from '../commands';
+import { CommandStatus, type ConsoleCommand } from '../commands';
 
 export const TogglableStartMenu = writable(false);
 
@@ -60,24 +60,22 @@ const ProgramStore = () => {
 // CommandStore (manages commands from the cmd)
 
 export interface ICommandExecution {
-    id: number;
-    command: ComputerProgram;
+    command: ConsoleCommand;
     status: CommandStatus;
 }
 
 export interface ICommandManager {
-    executions: ICommandExecution[];
+    execution: ICommandExecution | undefined;
     commands: ConsoleCommand[];
 }
 
 const CommandStore = () => {
     const CommandManager: ICommandManager = {
-        executions: [],
+        execution: undefined,
         commands: [],
     };
 
-    const { subscribe, update } = writable(CommandManager);
-
+    const { subscribe, set, update } = writable(CommandManager);
     return {
         subscribe,
         RegisterCommand: (program: ConsoleCommand) =>
@@ -88,9 +86,36 @@ const CommandStore = () => {
                     return { ...updater, commands: [...commands, program] };
                 }
             }),
-        AddExecution: (execution: ICommandExecution) =>
-            update(({ executions, ...updater }) => {
-                return { ...updater, executions: [...executions, execution], id: executions.length + 1 };
+        SetExecution: (
+            command: ConsoleCommand,
+            status: CommandStatus, // could change to set.
+        ) =>
+            update(({ execution, ...updater }) => {
+                return {
+                    ...updater,
+                    execution: { command: command, status: status },
+                };
+            }),
+        UpdateExecutionStatus: (
+            status: CommandStatus, // could change to set.
+        ) =>
+            update(({ execution, ...updater }) => {
+                if (execution?.status == CommandStatus.FAILED && status == CommandStatus.FINISHED) {
+                    return {
+                        ...updater,
+                        execution: {
+                            command: execution.command,
+                            status: CommandStatus.FAILED,
+                        },
+                    };
+                }
+                return {
+                    ...updater,
+                    execution: {
+                        command: execution.command,
+                        status: status,
+                    },
+                };
             }),
     };
 };

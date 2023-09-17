@@ -1,11 +1,12 @@
 // Handles commands that are executed inside the cmd.
 
 import { ProgramFilter } from './programs';
-import { CmdContentTracker, CommandManager } from './routes/stores';
+import { CmdContentTracker, CommandManager, TaskManager } from './routes/stores';
 import { get } from 'svelte/store';
 
 export enum CommandStatus {
     PENDING,
+    FAILED,
     FINISHED,
 }
 
@@ -31,7 +32,7 @@ export class ConsoleCommand {
      * Get the callback from the command.
      */
     GetCallBack() {
-        this.callback(new CommandEvent());
+        this.callback(new CommandEvent(this));
     }
 }
 
@@ -59,8 +60,10 @@ class ConsoleCommandFilter {
 export class CommandEvent {
     private input: HTMLElement | null;
     private result: HTMLElement | null;
+    private command: ConsoleCommand;
 
-    constructor() {
+    constructor(command: ConsoleCommand) {
+        this.command = command;
         this.input = document.getElementById('cmd_input_' + (get(CmdContentTracker) - 1));
         this.result = document.getElementById('cmd_results_' + (get(CmdContentTracker) - 1));
     }
@@ -77,14 +80,24 @@ export class CommandEvent {
         }
     }
 
-    Pending() {}
+    /**
+     *
+     */
+    Pending() {
+        CommandManager.SetExecution(this.command, CommandStatus.PENDING);
+    }
+
     /**
      * Called after everything is done. (creates a new input)
      */
     Finished() {
-        this.input.disabled = true;
-        CmdContentTracker.set(get(CmdContentTracker) + 1);
-        this.input.focus();
+        let status: CommandStatus = get(CommandManager).execution.status;
+        if (status != CommandStatus.FAILED) {
+            CommandManager.UpdateExecutionStatus(CommandStatus.FINISHED);
+            this.input.disabled = true;
+            CmdContentTracker.set(get(CmdContentTracker) + 1);
+            this.input.focus();
+        }
     }
 }
 
@@ -132,11 +145,13 @@ export class ConsoleCommandHelper {
 // all the commands.
 export const commands: ConsoleCommand[] = [
     new ConsoleCommand('ping', (e) => {
+        e.Pending();
         e.Append('hellot here!<br>');
         e.Finished();
         return CommandStatus.PENDING;
     }),
     new ConsoleCommand('foolme', (e) => {
+        e.Pending();
         e.Append('WAITING!<br>');
 
         setTimeout(() => {

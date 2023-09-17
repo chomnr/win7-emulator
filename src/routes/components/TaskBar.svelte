@@ -85,6 +85,7 @@
                     id="button_startmenu"
                     class="win7-taskbar__program win7-taskbar__program--startmenu"
                     src="https://d2hqjspxd4b0fs.cloudfront.net/win7/orb-pressed.png"
+                    style="margin-right: 7px;"
                 />
             {:else}
                 <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
@@ -95,6 +96,7 @@
                     on:click={toggleStartMenu}
                     id="button_startmenu"
                     class="win7-taskbar__program win7-taskbar__program--startmenu"
+                    style="margin-right: 7px;"
                     src="https://d2hqjspxd4b0fs.cloudfront.net/win7/orb-default.png"
                 />
             {/if}

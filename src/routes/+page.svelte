@@ -18,9 +18,6 @@
     import Hangman from './programs/Hangman.svelte';
     import { commands } from '../commands';
 
-    CommandManager.subscribe((e) => {
-        console.log(e.execution);
-    });
     onMount(() => {
         // Register all commands
         for (let i = 0; i < commands.length; i++) {

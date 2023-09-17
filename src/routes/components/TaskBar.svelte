@@ -77,22 +77,27 @@
         <div class="win7-taskbar__group win7-taskbar__group--use-remaining-space taskbar__group--horizontal-padding">
             <!-- svelte-ignore a11y-click-events-have-key-events -->
             {#if $TogglableStartMenu}
-                <div
+                <!-- svelte-ignore a11y-no-noninteractive-element-to-interactive-role -->
+                <img
                     role="button"
                     tabindex="0"
                     on:click={toggleStartMenu}
                     id="button_startmenu"
-                    class="win7-taskbar__program win7-taskbar__program--startmenu--glow"
-                    style="margin-right: 10px;"
+                    alt="startmenu"
+                    class="win7-taskbar__program win7-taskbar__program--startmenu"
+                    src="http://d2hqjspxd4b0fs.cloudfront.net/win7/orb-pressed.png"
                 />
             {:else}
-                <div
+                <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+                <!-- svelte-ignore a11y-no-noninteractive-element-to-interactive-role -->
+                <img
                     role="button"
                     tabindex="0"
                     on:click={toggleStartMenu}
                     id="button_startmenu"
+                    alt="startmenu"
                     class="win7-taskbar__program win7-taskbar__program--startmenu"
-                    style="margin-right: 10px;"
+                    src="http://d2hqjspxd4b0fs.cloudfront.net/win7/orb-default.png"
                 />
             {/if}
 
@@ -100,25 +105,13 @@
                 <!-- svelte-ignore a11y-click-events-have-key-events -->
                 <!-- svelte-ignore a11y-no-static-element-interactions -->
                 <div class="win7-taskbar__program--additional-item" on:click={() => TaskManager.AddProcess(ie9)}>
-                    <div
-                        role="button"
-                        tabindex="0"
-                        id="button_startmenu"
-                        style="width: 32px;height:32px;"
-                        class={ie9?.GetIcon().string()}
-                    />
+                    <div role="button" tabindex="0" style="width: 32px;height:32px;" class={ie9?.GetIcon().string()} />
                 </div>
             {:else}
                 <!-- svelte-ignore a11y-click-events-have-key-events -->
                 <!-- svelte-ignore a11y-no-static-element-interactions -->
                 <div class="win7-taskbar__program--additional-item active" on:click={() => ToggleMinimization(ie9)}>
-                    <div
-                        role="button"
-                        tabindex="0"
-                        id="button_startmenu"
-                        style="width: 32px;height:32px;"
-                        class={ie9?.GetIcon().string()}
-                    />
+                    <div role="button" tabindex="0" style="width: 32px;height:32px;" class={ie9?.GetIcon().string()} />
                 </div>
             {/if}
 
@@ -126,25 +119,13 @@
                 <!-- svelte-ignore a11y-click-events-have-key-events -->
                 <!-- svelte-ignore a11y-no-static-element-interactions -->
                 <div class="win7-taskbar__program--additional-item" on:click={() => TaskManager.AddProcess(cmd)}>
-                    <div
-                        role="button"
-                        tabindex="0"
-                        id="button_startmenu"
-                        style="width: 32px;height:32px;"
-                        class={cmd?.GetIcon().string()}
-                    />
+                    <div role="button" tabindex="0" style="width: 32px;height:32px;" class={cmd?.GetIcon().string()} />
                 </div>
             {:else}
                 <!-- svelte-ignore a11y-click-events-have-key-events -->
                 <!-- svelte-ignore a11y-no-static-element-interactions -->
                 <div class="win7-taskbar__program--additional-item active" on:click={() => ToggleMinimization(cmd)}>
-                    <div
-                        role="button"
-                        tabindex="0"
-                        id="button_startmenu"
-                        style="width: 32px;height:32px;"
-                        class={cmd?.GetIcon().string()}
-                    />
+                    <div role="button" tabindex="0" style="width: 32px;height:32px;" class={cmd?.GetIcon().string()} />
                 </div>
             {/if}
 
@@ -159,7 +140,6 @@
                         <div
                             role="button"
                             tabindex="0"
-                            id="button_startmenu"
                             style="width: 32px;height:32px;"
                             class={program.GetIcon().string()}
                         />

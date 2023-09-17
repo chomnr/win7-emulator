@@ -222,8 +222,8 @@
 }
 
 .win7-taskbar__program--startmenu {
-    /* Set the icon image to Windows 7 Start Menu using the 'content' property */
-    content: url("http://d2hqjspxd4b0fs.cloudfront.net/win7/orb-default.png");
+    /* Set the icon image to Windows 7 Start Menu using the 'content' property 
+    content: url("http://d2hqjspxd4b0fs.cloudfront.net/win7/orb-default.png");*/
 
     /* Inherit the width from the parent element */
     width: 39px;
@@ -231,19 +231,6 @@
     /* Inherit the height from the parent element */
     height: 39px;
 }
-
-.win7-taskbar__program--startmenu--glow {
-    /* Change the icon image on hover */
-    content: url("http://d2hqjspxd4b0fs.cloudfront.net/win7/orb-pressed.png");
-    /* Change the icon image on hover */
-
-    /* Inherit the width from the parent element */
-    width: 39px;
-
-    /* Inherit the height from the parent element */
-    height: 39px;
-}
-
 
 .win7-taskbar__program--startmenu:hover {
     /* Change the icon image on hover */

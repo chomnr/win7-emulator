@@ -14,7 +14,7 @@ export class ConsoleCommand {
     private command: string;
     private callback: (event: CommandEvent) => {};
 
-    constructor(command: string, callback: (event: CommandEvent) => {}) {
+    constructor(command: string, callback: (event: CommandEvent) => void) {
         this.command = command;
         this.callback = callback;
     }
@@ -74,17 +74,18 @@ export class CommandEvent {
      */
     Append(appendWhat: string) {
         if (this.result != null) {
-            this.result.innerHTML += appendWhat;
+            this.result.innerHTML += appendWhat + '<br>';
         } else {
             console.log('element does not exist.');
         }
     }
 
     /**
-     *
+     * Set command execution state to pending.
      */
     Pending() {
         CommandManager.SetExecution(this.command, CommandStatus.PENDING);
+        this.input.disabled = true;
     }
 
     /**
@@ -94,7 +95,6 @@ export class CommandEvent {
         let status: CommandStatus = get(CommandManager).execution.status;
         if (status != CommandStatus.FAILED) {
             CommandManager.UpdateExecutionStatus(CommandStatus.FINISHED);
-            this.input.disabled = true;
             CmdContentTracker.set(get(CmdContentTracker) + 1);
             this.input.focus();
         }
@@ -146,18 +146,55 @@ export class ConsoleCommandHelper {
 export const commands: ConsoleCommand[] = [
     new ConsoleCommand('ping', (e) => {
         e.Pending();
-        e.Append('hellot here!<br>');
+        e.Append('pong!');
         e.Finished();
-        return CommandStatus.PENDING;
     }),
-    new ConsoleCommand('foolme', (e) => {
-        e.Pending();
-        e.Append('WAITING!<br>');
+
+    new ConsoleCommand('ovrs authenticate', (e) => {
+        let infoTag = "<span style='color: #0099cc'>[INFO]</span>";
+        let successTag = "<span style='color: #00cc66'>[SUCCESS]</span>";
+
+        e.Pending(true);
+        e.Append('<br>' + infoTag + ' Welcome to Overseer GuardianX');
+        e.Append('' + infoTag + ' Please enter your access key to proceed:');
+        e.Append('<br>> Enter Access Key: **********');
 
         setTimeout(() => {
-            e.Append('FOOL DUDE!<br>');
+            e.Append('<br>' + infoTag + ' Validating Access Key...');
+            e.Append('' + successTag + ' Access key verified. Initiating GuardianX.');
+        }, 800);
+
+        setTimeout(() => {
+            e.Append('<br>-- Initiate Access Request --<br>');
+            e.Append('' + infoTag + ' To proceed, please provide the website address you want to access:');
+            e.Append('> Enter Website Address: https://zeljko.me/<br>');
+            e.Append('' + infoTag + ' Analyzing the target website...');
+        }, 1600);
+
+        setTimeout(() => {
+            e.Append('<br>-- Requesting Overseer Authorization --<br>');
+            e.Append('' + infoTag + ' Connecting to Overseer Security Servers...');
+            e.Append('' + successTag + ' Connection established.<br>');
+            e.Append('' + infoTag + ' Requesting authorized access to https://zeljko.me/...');
+        }, 2000);
+
+        setTimeout(() => {
+            e.Append('<br>-- Requesting Overseer Authorization --<br>');
+            e.Append('' + infoTag + ' Connecting to Overseer Security Servers...<br>');
+            e.Append('' + successTag + ' Authorization granted by Overseer.');
+        }, 2500);
+
+        setTimeout(() => {
+            e.Append('<br>-- Overseer Verification --<br>');
+            e.Append('' + infoTag + ' Waiting for Overseer system response...<br>');
+            e.Append('' + successTag + ' Authorization granted by Overseer.');
+        }, 3500);
+
+        setTimeout(() => {
+            e.Append('<br>-- Accessing the Website --<br>');
+            e.Append('' + infoTag + ' Initiating access to https://zeljko.me/...<br>');
+            e.Append('' + successTag + ' Website access granted.<br>');
             e.Finished();
-        }, 5000);
-        return CommandStatus.PENDING;
+        }, 4000);
     }),
 ];

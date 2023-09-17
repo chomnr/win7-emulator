@@ -83,9 +83,8 @@
                     tabindex="0"
                     on:click={toggleStartMenu}
                     id="button_startmenu"
-                    alt="startmenu"
                     class="win7-taskbar__program win7-taskbar__program--startmenu"
-                    src="https://d2hqjspxd4b0fs.cloudfront.net/win7/orb-pressed.png/"
+                    src="https://d2hqjspxd4b0fs.cloudfront.net/win7/orb-pressed.png"
                 />
             {:else}
                 <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
@@ -95,9 +94,8 @@
                     tabindex="0"
                     on:click={toggleStartMenu}
                     id="button_startmenu"
-                    alt="startmenu"
                     class="win7-taskbar__program win7-taskbar__program--startmenu"
-                    src="https://d2hqjspxd4b0fs.cloudfront.net/win7/orb-default.png/"
+                    src="https://d2hqjspxd4b0fs.cloudfront.net/win7/orb-default.png"
                 />
             {/if}
 

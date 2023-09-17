@@ -83,7 +83,6 @@
     function MaximizeWindow() {
         let p_window = program.GetWindow().html();
         if (isWebSite && !isMaximized) {
-            p_window.style.position = 'absolute';
             p_window.style.top = '0';
             p_window.style.width = '100vw';
             p_window.style.height = '96vh';

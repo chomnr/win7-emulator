@@ -7,6 +7,7 @@
         CmdContentTracker,
         IsConnectedToBruteExpose,
         CommandManager,
+        WebsiteStage,
     } from '../stores';
     import Draggable from './Draggable.svelte';
     import { browser } from '$app/environment';
@@ -98,6 +99,10 @@
 
         if (program.GetId() == 'bruteexpose') {
             $IsConnectedToBruteExpose = false;
+        }
+
+        if (program.GetId() == 'ie9' && $WebsiteStage == 2) {
+            WebsiteStage.set(0);
         }
     }
 

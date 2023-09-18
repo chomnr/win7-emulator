@@ -2,7 +2,7 @@
 
 import { delay } from './helper';
 import { ProgramFilter } from './programs';
-import { CmdContentTracker, CommandManager, TaskManager } from './routes/stores';
+import { CmdContentTracker, CommandManager, TaskManager, WebsiteStage } from './routes/stores';
 import { get } from 'svelte/store';
 
 export enum CommandStatus {
@@ -96,6 +96,7 @@ export class CommandEvent {
         CommandManager.SetExecution(this.command, CommandStatus.FAILED);
         CmdContentTracker.set(get(CmdContentTracker) + 1);
         this.input.focus();
+        this.input.disabled = true;
     }
 
     /**
@@ -108,6 +109,7 @@ export class CommandEvent {
             CmdContentTracker.set(get(CmdContentTracker) + 1);
             this.input.focus();
         }
+        this.input.disabled = true;
     }
 }
 
@@ -161,14 +163,22 @@ export const commands: ConsoleCommand[] = [
     }),
 
     new ConsoleCommand('ovrs authenticate', async (e) => {
-        let processes = get(TaskManager).processes;
-        let ie9 = ProgramFilter.Find('ie9');
-
         let infoTag = "<span style='color: #0099cc'>[INFO]</span>";
         let successTag = "<span style='color: #00cc66'>[SUCCESS]</span>";
         let failedTag = "<span style='color: #cc0000'>[FAILED]</span>";
 
+        if (get(WebsiteStage) == 3) {
+            e.Append('<br>' + infoTag + ' Access has already been granted.');
+            e.Finished();
+            return;
+        }
+
+        let processes = get(TaskManager).processes;
+        let ie9 = ProgramFilter.Find('ie9');
+        let cmd = ProgramFilter.Find('cmd');
+
         e.Pending();
+        WebsiteStage.set(1);
         e.Append('<br>' + infoTag + ' Welcome to Overseer GuardianX');
         e.Append('' + infoTag + ' Please enter your access key to proceed:');
         e.Append('<br>> Enter Access Key: **********');
@@ -189,6 +199,7 @@ export const commands: ConsoleCommand[] = [
         if (!processes.includes(ie9)) {
             e.Append('' + failedTag + ' failed to analyze target website.<br>');
             e.Failed();
+            WebsiteStage.set(0);
             return;
         }
 
@@ -218,9 +229,16 @@ export const commands: ConsoleCommand[] = [
         if (processes.includes(ie9)) {
             e.Append('' + successTag + ' Website access granted.<br>');
             e.Finished();
+            if (!processes.includes(cmd)) {
+                WebsiteStage.set(2);
+                e.Failed();
+            } else {
+                WebsiteStage.set(3);
+            }
         } else {
             e.Append('' + failedTag + ' Website access was not granted.<br>');
             e.Failed();
+            WebsiteStage.set(0);
         }
     }),
 ];

@@ -6,7 +6,7 @@
     import '../webpage.css';
     import { onMount } from 'svelte';
     import { LEET } from '../../effects';
-    import { TaskManager, type IProgramManager, CommandManager } from '../stores';
+    import { TaskManager, type IProgramManager, CommandManager, WebsiteStage } from '../stores';
     import { CommandStatus } from '../../commands';
     //
     // Internet Explorer
@@ -14,8 +14,7 @@
 
     let program: ComputerProgram = ProgramFilter.Find('ie9')!;
 
-    let stage = 0;
-
+    /*
     CommandManager.subscribe((e) => {
         if (e.execution != undefined) {
             let command = e.execution.command;
@@ -24,6 +23,7 @@
                 let status: CommandStatus = e.execution.status;
                 if (status == CommandStatus.PENDING) {
                     stage = 1;
+                    WebsiteStage.set(0);
                 }
 
                 if (status == CommandStatus.FAILED) {
@@ -37,6 +37,7 @@
             }
         }
     });
+    */
 
     //var div_command: HTMLElement | null;
     //var div_command_input: HTMLElement | null;
@@ -94,7 +95,7 @@
 <WindowBase {program} isWebSite={true} showTitle={false} openOnVisit={true}>
     <div id={program.GetWebPage().string()} class="win7-program__explorer__webpage">
         <div class="webpage">
-            {#if stage == 3}
+            {#if $WebsiteStage == 3}
                 <div class="branding">
                     <div class="group column">
                         <div id="branding_title" class="title">ZELJKO VRANJES</div>
@@ -119,20 +120,20 @@
             <div class="group center full-width full-height">
                 <!-- Require Command Injection -->
 
-                {#if stage != 3}
+                {#if $WebsiteStage != 3}
                     <div class="command-injection">
-                        {#if stage == 0}
+                        {#if $WebsiteStage == 0}
                             <div class="command">
                                 Unlock the website by running '<span class="emphasis">ovrs authenticate</span>' in the
                                 cmd.
                             </div>
                         {/if}
 
-                        {#if stage == 1}
+                        {#if $WebsiteStage == 1}
                             <div class="command">Recieving request loading..</div>
                         {/if}
 
-                        {#if stage == 2}
+                        {#if $WebsiteStage == 2}
                             <div class="command">something went wrong rerun the command.</div>
                         {/if}
                     </div>

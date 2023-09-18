@@ -13,6 +13,9 @@ export const CmdContentTracker = writable(1);
 // Keep track of websocket connection for BruteExpoe Application
 export const IsConnectedToBruteExpose = writable(false);
 
+// Internet Explorer Website Stage
+export const WebsiteStage = writable(0);
+
 export interface IProgramManager {
     processes: ComputerProgram[];
     using: ComputerProgram | undefined;

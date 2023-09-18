@@ -6,6 +6,7 @@
         TaskManager,
         type IProgramManager,
         CommandManager,
+        WebsiteStage,
     } from './stores';
     import DesktopGrid from './components/DesktopGrid.svelte';
     import StartMenu from './components/StartMenu.svelte';
@@ -16,7 +17,9 @@
     import Resume from './programs/Resume.svelte';
     import BruteExpose from './programs/BruteExpose.svelte';
     import Hangman from './programs/Hangman.svelte';
-    import { commands } from '../commands';
+    import { CommandStatus, commands } from '../commands';
+    import { browser } from '$app/environment';
+    import { ProgramFilter } from '../programs';
 
     onMount(() => {
         // Register all commands

@@ -52,9 +52,6 @@
     // responsive mode or not.
     let isInResponsiveMode = false;
 
-    // only for command prompt
-    let IsCommandCurrentlyPending = false;
-
     // If openOnVist is true then open it and automatically add it
     // to the process list.
     if (browser && openOnVisit) {
@@ -114,10 +111,10 @@
      */
     function MaximizeWindow() {
         let p_window = program.GetWindow().html();
+        /*
         if (isWebSite && !isMaximized) {
-            p_window.style.top = '-37px';
-            p_window.style.width = '100vw';
-            p_window.style.height = '96vh';
+            p_window.style.width = '100%';
+            p_window.style.height = '95.5vh';
             isMaximized = true;
         } else {
             p_window.style.top = '10%';
@@ -125,6 +122,7 @@
             p_window.style.height = height + 'px';
             isMaximized = false;
         }
+        */
     }
 
     function ResetZIndex(processes: ComputerProgram[], exclude: ComputerProgram) {
@@ -287,7 +285,7 @@
                     class="win7-program__explorer__group win7-program__explorer__group--fill"
                     style="border:1px solid white;border-radius:5px;background: {backgroundColor};"
                 >
-                    <div style="overflow-y: auto;height: {height - 80}px;border-radius:5px;">
+                    <div style="overflow-y: auto;height: {height - 80}px;width:100%;border-radius:5px;">
                         <slot />
                     </div>
                 </div>

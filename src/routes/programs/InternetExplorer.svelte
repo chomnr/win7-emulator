@@ -95,6 +95,28 @@
 <WindowBase {program} isWebSite={true} showTitle={false} openOnVisit={true}>
     <div id={program.GetWebPage().string()} class="win7-program__explorer__webpage">
         <div class="webpage">
+            <div class="branding">
+                <div class="group column">
+                    <div id="branding_title" class="title">ZELJKO VRANJES</div>
+                    <div id="branding_position" class="position">FULL STACK ENGINEER</div>
+                </div>
+                <div class="group float-right flex-1">
+                    <div style="margin-left: auto;" />
+                </div>
+            </div>
+            <div class="socials">
+                <i class="icon github animate" />
+                <i class="icon x animate" style="animation-duration: 2s" />
+                <i class="icon ycombinator animate" style="animation-duration: 3s" />
+            </div>
+
+            <div class="body" style="color:red;">
+                sadsddsaasdadsdsadsasadsdadsaadsdsadsdsadsasaddsasddsadsddsaasdadsdsadsasadsdadsaadsdsadsdsadsasaddsasddsadsddsaasdadsdsadsasadsdadsaadsdsadsdsadsasaddsasddsadsddsaasdadsdsadsasadsdadsaadsdsadsdsadsasaddsasddsadsddsaasdadsdsadsasadsdadsaadsdsadsdsadsasaddsasddsadsddsaasdadsdsadsasadsdadsaadsdsadsdsadsasaddsasdd
+            </div>
+        </div>
+
+        <!--
+        <div class="webpage">
             {#if $WebsiteStage == 3}
                 <div class="branding">
                     <div class="group column">
@@ -103,7 +125,6 @@
                     </div>
                     <div class="group float-right flex-1">
                         <div style="margin-left: auto;">
-                            <!--right side-->
                         </div>
                     </div>
                 </div>
@@ -112,13 +133,10 @@
                     <i class="icon x animate" style="animation-duration: 2s" />
                     <i class="icon ycombinator animate" style="animation-duration: 3s" />
                 </div>
-
-                <div class="begin-screen" />
                 <div class="body">asddsa</div>
             {/if}
 
             <div class="group center full-width full-height">
-                <!-- Require Command Injection -->
 
                 {#if $WebsiteStage != 3}
                     <div class="command-injection">
@@ -139,9 +157,13 @@
                     </div>
                 {/if}
             </div>
-            <div style="font-size:0.7rem;" class="text-center code-font">this website is protected by Overseer.NET</div>
+            <div style="font-size:0.7rem;" class="text-center code-font">this website is protected by GuardianX</div>
         </div>
-        <!--
+    -->
+    </div></WindowBase
+>
+
+<!--
         <div class="webpage">
             <div class="branding">
                 <div class="group column">
@@ -172,5 +194,3 @@
         </div>
     </div>
     -->
-    </div></WindowBase
->

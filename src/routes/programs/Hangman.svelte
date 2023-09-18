@@ -87,8 +87,6 @@
                         return;
                     }
                 } else {
-                    console.log(this.game.GetAnswer());
-                    console.log(this.GetCorrectChoices().join(''));
                     if (
                         this.game.GetAnswer().length == this.GetCorrectChoices().join('').length &&
                         this.currentAttempts != this.game.GetMaxTries()

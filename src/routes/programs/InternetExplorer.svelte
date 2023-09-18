@@ -7,6 +7,7 @@
     import { onMount } from 'svelte';
     import { LEET } from '../../effects';
     import { TaskManager, type IProgramManager, CommandManager, WebsiteStage } from '../stores';
+
     import { CommandStatus } from '../../commands';
     //
     // Internet Explorer
@@ -16,14 +17,7 @@
     let height = 700;
 
     let program: ComputerProgram = ProgramFilter.Find('ie9')!;
-    onMount(() => {
-        // let leet_title: LEET = new LEET('about-me-title', 50, 50); // 50,50 perfect sync with 100,30
-        // let leet_body: LEET = new LEET('about-me-content', 10, 10); // 50,50 perfect sync with 100,30
-        // leet_title.ApplyEffect();
-        // leet_body.ApplyEffect();
-        //leet_title.ApplyEffect();
-        //leet_body.ApplyEffect();
-    });
+    onMount(() => {});
 </script>
 
 <WindowBase {program} isWebSite={true} showTitle={false} openOnVisit={true} {width} {height}>

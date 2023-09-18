@@ -12,19 +12,10 @@
     let initial = true;
 
     function onMouseDown(e: MouseEvent) {
-        // null check
         if (e.target != null) {
-            // get id of mousedown component
             var id = e.target.id;
-            // check if it is a handle.
             var isHandle = id == program.GetHandle().string();
-            // ensures that only one window has an active class.
-            //if ($CurrentWindow != program) {
-            //  $CurrentWindow.GetControls().html().classList.remove("active");
-            //}
-
             program.GetControls().html().classList.add('active');
-            // if it is a handle make it move and adjust the priority.
             TaskManager.SetUsing(program);
             if (isHandle) {
                 moving = true;
@@ -43,10 +34,6 @@
 
     function onMouseUp(e: MouseEvent) {
         moving = false;
-        //if (e.target != null) {
-        //var targetProgram: ComputerProgram | undefined = ProgramFilter.Find(e.target.id);
-        //CurrentWindow.set(targetProgram);
-        //}
     }
 </script>
 

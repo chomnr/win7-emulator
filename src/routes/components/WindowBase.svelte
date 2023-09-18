@@ -18,6 +18,8 @@
     export let program: ComputerProgram;
     export let showTitle: Boolean = true;
     export let isWebSite = false;
+    //web page only
+    export let backgroundColor = '#121212';
 
     export let responsive = true;
 
@@ -283,9 +285,11 @@
                 {/if}
                 <div
                     class="win7-program__explorer__group win7-program__explorer__group--fill"
-                    style="overflow-y: auto;"
+                    style="border:1px solid white;border-radius:5px;background: {backgroundColor};"
                 >
-                    <slot />
+                    <div style="overflow-y: auto;height: {height - 80}px;border-radius:5px;">
+                        <slot />
+                    </div>
                 </div>
             </div>
         {:else}

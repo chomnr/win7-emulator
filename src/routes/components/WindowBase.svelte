@@ -156,7 +156,6 @@
             }
         }
         if (program == event.using) {
-            pos_y = (window.innerHeight / 1.1) * -1;
             if (browser) {
                 setTimeout(() => {
                     ResetZIndex(event.processes, event.using!);
@@ -169,6 +168,7 @@
         }
 
         if (event.processes.includes(program) && !isWindowOpen) {
+            pos_y = (window.innerHeight / 1.1) * -1;
             isWindowOpen = true;
             if (browser) {
                 if (responsive) {

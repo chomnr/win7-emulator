@@ -6,12 +6,37 @@
     import '../webpage.css';
     import { onMount } from 'svelte';
     import { LEET } from '../../effects';
-    import { TaskManager, type IProgramManager } from '../stores';
+    import { TaskManager, type IProgramManager, CommandManager } from '../stores';
+    import { CommandStatus } from '../../commands';
     //
     // Internet Explorer
     //
 
-    var program: ComputerProgram = ProgramFilter.Find('ie9')!;
+    let program: ComputerProgram = ProgramFilter.Find('ie9')!;
+
+    let stage = 0;
+
+    CommandManager.subscribe((e) => {
+        if (e.execution != undefined) {
+            let command = e.execution.command;
+
+            if (command.GetCommand() == 'ovrs authenticate') {
+                let status: CommandStatus = e.execution.status;
+                if (status == CommandStatus.PENDING) {
+                    stage = 1;
+                }
+
+                if (status == CommandStatus.FAILED) {
+                    stage = 2;
+                }
+
+                if (status == CommandStatus.FINISHED) {
+                    stage = 3;
+                }
+                console.log(stage);
+            }
+        }
+    });
 
     //var div_command: HTMLElement | null;
     //var div_command_input: HTMLElement | null;
@@ -69,13 +94,49 @@
 <WindowBase {program} isWebSite={true} showTitle={false} openOnVisit={true}>
     <div id={program.GetWebPage().string()} class="win7-program__explorer__webpage">
         <div class="webpage">
-            <div class="group center full-width full-height">
-                <!-- Require Command Injection -->
-                <div class="command-injection">
-                    <div class="command">
-                        Unlock the website by running '<span class="emphasis">ovrs authenticate</span>' in the cmd.
+            {#if stage == 3}
+                <div class="branding">
+                    <div class="group column">
+                        <div id="branding_title" class="title">ZELJKO VRANJES</div>
+                        <div id="branding_position" class="position">FULL STACK ENGINEER</div>
+                    </div>
+                    <div class="group float-right flex-1">
+                        <div style="margin-left: auto;">
+                            <!--right side-->
+                        </div>
                     </div>
                 </div>
+                <div class="socials">
+                    <i class="icon github animate" />
+                    <i class="icon x animate" style="animation-duration: 2s" />
+                    <i class="icon ycombinator animate" style="animation-duration: 3s" />
+                </div>
+
+                <div class="begin-screen" />
+                <div class="body">asddsa</div>
+            {/if}
+
+            <div class="group center full-width full-height">
+                <!-- Require Command Injection -->
+
+                {#if stage != 3}
+                    <div class="command-injection">
+                        {#if stage == 0}
+                            <div class="command">
+                                Unlock the website by running '<span class="emphasis">ovrs authenticate</span>' in the
+                                cmd.
+                            </div>
+                        {/if}
+
+                        {#if stage == 1}
+                            <div class="command">Recieving request loading..</div>
+                        {/if}
+
+                        {#if stage == 2}
+                            <div class="command">something went wrong rerun the command.</div>
+                        {/if}
+                    </div>
+                {/if}
             </div>
             <div style="font-size:0.7rem;" class="text-center code-font">this website is protected by Overseer.NET</div>
         </div>

@@ -1,5 +1,6 @@
 // Handles commands that are executed inside the cmd.
 
+import { delay } from './helper';
 import { ProgramFilter } from './programs';
 import { CmdContentTracker, CommandManager, TaskManager } from './routes/stores';
 import { get } from 'svelte/store';
@@ -89,6 +90,15 @@ export class CommandEvent {
     }
 
     /**
+     * Set command execution state to failed.
+     */
+    Failed() {
+        CommandManager.SetExecution(this.command, CommandStatus.FAILED);
+        CmdContentTracker.set(get(CmdContentTracker) + 1);
+        this.input.focus();
+    }
+
+    /**
      * Called after everything is done. (creates a new input)
      */
     Finished() {
@@ -150,51 +160,67 @@ export const commands: ConsoleCommand[] = [
         e.Finished();
     }),
 
-    new ConsoleCommand('ovrs authenticate', (e) => {
+    new ConsoleCommand('ovrs authenticate', async (e) => {
+        let processes = get(TaskManager).processes;
+        let ie9 = ProgramFilter.Find('ie9');
+
         let infoTag = "<span style='color: #0099cc'>[INFO]</span>";
         let successTag = "<span style='color: #00cc66'>[SUCCESS]</span>";
+        let failedTag = "<span style='color: #cc0000'>[FAILED]</span>";
 
-        e.Pending(true);
+        e.Pending();
         e.Append('<br>' + infoTag + ' Welcome to Overseer GuardianX');
         e.Append('' + infoTag + ' Please enter your access key to proceed:');
         e.Append('<br>> Enter Access Key: **********');
 
-        setTimeout(() => {
-            e.Append('<br>' + infoTag + ' Validating Access Key...');
-            e.Append('' + successTag + ' Access key verified. Initiating GuardianX.');
-        }, 800);
+        await delay(800);
 
-        setTimeout(() => {
-            e.Append('<br>-- Initiate Access Request --<br>');
-            e.Append('' + infoTag + ' To proceed, please provide the website address you want to access:');
-            e.Append('> Enter Website Address: https://zeljko.me/<br>');
-            e.Append('' + infoTag + ' Analyzing the target website...');
-        }, 1600);
+        e.Append('<br>' + infoTag + ' Validating Access Key...');
+        e.Append('' + successTag + ' Access key verified. Initiating GuardianX.');
 
-        setTimeout(() => {
-            e.Append('<br>-- Requesting Overseer Authorization --<br>');
-            e.Append('' + infoTag + ' Connecting to Overseer Security Servers...');
-            e.Append('' + successTag + ' Connection established.<br>');
-            e.Append('' + infoTag + ' Requesting authorized access to https://zeljko.me/...');
-        }, 2000);
+        e.Append('<br>-- Initiate Access Request --<br>');
+        e.Append('' + infoTag + ' To proceed, please provide the website address you want to access:');
+        e.Append('> Enter Website Address: https://zeljko.me/<br>');
+        e.Append('' + infoTag + ' Analyzing the target website...');
+        await delay(1600);
 
-        setTimeout(() => {
-            e.Append('<br>-- Requesting Overseer Authorization --<br>');
-            e.Append('' + infoTag + ' Connecting to Overseer Security Servers...<br>');
-            e.Append('' + successTag + ' Authorization granted by Overseer.');
-        }, 2500);
+        processes = get(TaskManager).processes;
 
-        setTimeout(() => {
-            e.Append('<br>-- Overseer Verification --<br>');
-            e.Append('' + infoTag + ' Waiting for Overseer system response...<br>');
-            e.Append('' + successTag + ' Authorization granted by Overseer.');
-        }, 3500);
+        if (!processes.includes(ie9)) {
+            e.Append('' + failedTag + ' failed to analyze target website.<br>');
+            e.Failed();
+            return;
+        }
 
-        setTimeout(() => {
-            e.Append('<br>-- Accessing the Website --<br>');
-            e.Append('' + infoTag + ' Initiating access to https://zeljko.me/...<br>');
+        e.Append('<br>-- Requesting Overseer Authorization --<br>');
+        e.Append('' + infoTag + ' Connecting to Overseer Security Servers...');
+        e.Append('' + successTag + ' Connection established.<br>');
+        e.Append('' + infoTag + ' Requesting authorized access to https://zeljko.me/...');
+
+        await delay(2000);
+
+        e.Append('<br>-- Requesting Overseer Authorization --<br>');
+        e.Append('' + infoTag + ' Connecting to Overseer Security Servers...<br>');
+        e.Append('' + successTag + ' Authorization granted by Overseer.');
+        await delay(2000);
+
+        e.Append('<br>-- Overseer Verification --<br>');
+        e.Append('' + infoTag + ' Waiting for Overseer system response...<br>');
+        e.Append('' + successTag + ' Authorization granted by Overseer.');
+        await delay(1500);
+
+        e.Append('<br>-- Accessing the Website --<br>');
+        e.Append('' + infoTag + ' Initiating access to https://zeljko.me/...<br>');
+
+        await delay(3000);
+
+        processes = get(TaskManager).processes;
+        if (processes.includes(ie9)) {
             e.Append('' + successTag + ' Website access granted.<br>');
             e.Finished();
-        }, 4000);
+        } else {
+            e.Append('' + failedTag + ' Website access was not granted.<br>');
+            e.Failed();
+        }
     }),
 ];

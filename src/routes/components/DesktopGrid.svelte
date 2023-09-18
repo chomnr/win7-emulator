@@ -89,6 +89,9 @@
     function InvalidClickDetection(me: MouseEvent) {
         if (me.target != null) {
             let id: string = me.target.id;
+            if (id == 'desktop_grid' && $TaskManager.using != undefined) {
+                TaskManager.SetUsing(undefined);
+            }
             // check if it contains either a icon_suffix or title_suffix
             let x1: Boolean = ProgramFilter.IsTypeOf(icon_suffix, id)!;
             let x2: Boolean = ProgramFilter.IsTypeOf(title_suffix, id)!;

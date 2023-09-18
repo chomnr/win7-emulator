@@ -162,6 +162,24 @@ export const commands: ConsoleCommand[] = [
         e.Finished();
     }),
 
+    new ConsoleCommand('help', (e) => {
+        e.Pending();
+        e.Append('INTERFACE &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Display a specific interface of a webpage.');
+        e.Finished();
+    }),
+
+    new ConsoleCommand('help interface', (e) => {
+        e.Pending();
+        e.Append(
+            'Tells cmd.exe what interface the webpage should display. Internet Explorer must be opened and unlocked in order to execute<br>',
+        );
+        e.Append('\n INTERFACE [ABOUT | TEST | TEST2]');
+        e.Append('');
+        e.Append('\n INTERFACE must have a parameter specified in order to work.\n');
+        e.Append('');
+        e.Finished();
+    }),
+
     new ConsoleCommand('ovrs authenticate', async (e) => {
         let infoTag = "<span style='color: #0099cc'>[INFO]</span>";
         let successTag = "<span style='color: #00cc66'>[SUCCESS]</span>";

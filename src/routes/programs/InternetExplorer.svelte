@@ -93,7 +93,7 @@
 </script>
 
 <WindowBase {program} isWebSite={true} showTitle={false} openOnVisit={true}>
-    <div id={program.GetWebPage().string()} class="win7-program__explorer__webpage">
+    <div id={program.GetWebPage().string()} class="win7-program__explorer__webpage" style="background-color: #121212;">
         <div class="webpage">
             <div class="branding">
                 <div class="group column">
@@ -105,15 +105,26 @@
                 </div>
             </div>
             <div class="socials">
-                <i class="icon github animate" />
-                <i class="icon x animate" style="animation-duration: 2s" />
-                <i class="icon ycombinator animate" style="animation-duration: 3s" />
+                <a href="https://github.com/chomnr"><i class="icon github animate" /></a>
+                <a href="https://twitter.com/resilientchomnr"
+                    ><i class="icon x animate" style="animation-duration: 2s" /></a
+                >
+                <a href="https://news.ycombinator.com/user?id=chomnr"
+                    ><i class="icon ycombinator animate" style="animation-duration: 3s" /></a
+                >
             </div>
 
-            <div class="body" style="color:red;">
-                sadsddsaasdadsdsadsasadsdadsaadsdsadsdsadsasaddsasddsadsddsaasdadsdsadsasadsdadsaadsdsadsdsadsasaddsasddsadsddsaasdadsdsadsasadsdadsaadsdsadsdsadsasaddsasddsadsddsaasdadsdsadsasadsdadsaadsdsadsdsadsasaddsasddsadsddsaasdadsdsadsasadsdadsaadsdsadsdsadsasaddsasddsadsddsaasdadsdsadsasadsdadsaadsdsadsdsadsasaddsasdd
+            <br />
+            <div class="body code-font">
+                <div />
             </div>
         </div>
+
+        <!--
+        <div style="font-size:0.7rem;position:fixed;" class="text-center code-font">
+            this website is protected by GuardianX
+        </div>
+    -->
 
         <!--
         <div class="webpage">

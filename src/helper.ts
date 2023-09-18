@@ -1,4 +1,5 @@
 import type { ComputerProgram } from './programs';
+import { TaskManager } from './routes/stores';
 
 /**
  * Remove a single rule from a HTMLElement classList
@@ -60,10 +61,13 @@ export function AddAndRemoveRule(target: HTMLElement, removal: HTMLElement, rule
  * (Minimize the program)
  * @param program
  */
-export function ToggleMinimization(program: ComputerProgram) {
+export function ToggleMinimization(program: ComputerProgram, adjustPriority: boolean = true) {
     let wind = program.GetWindow().html();
     if (wind.style.display == 'none') {
         wind.style.display = 'flex';
+        if (adjustPriority) {
+            TaskManager.SetUsing(program);
+        }
     } else {
         wind.style.display = 'none';
     }

@@ -13,7 +13,7 @@ export enum CommandStatus {
 
 export class ConsoleCommand {
     private command: string;
-    private callback: (event: CommandEvent) => {};
+    private callback: (event: CommandEvent) => void;
 
     constructor(command: string, callback: (event: CommandEvent) => void) {
         this.command = command;
@@ -169,6 +169,7 @@ export const commands: ConsoleCommand[] = [
     }),
 
     new ConsoleCommand('help interface', (e) => {
+        //injectx ie9 interface <-- good command name
         e.Pending();
         e.Append(
             'Tells cmd.exe what interface the webpage should display. Internet Explorer must be opened and unlocked in order to execute<br>',

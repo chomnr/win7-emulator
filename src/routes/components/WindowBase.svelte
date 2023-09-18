@@ -281,8 +281,10 @@
                         </div>
                     </div>
                 {/if}
-
-                <div class="win7-program__explorer__group win7-program__explorer__group--fill">
+                <div
+                    class="win7-program__explorer__group win7-program__explorer__group--fill"
+                    style="overflow-y: auto;"
+                >
                     <slot />
                 </div>
             </div>

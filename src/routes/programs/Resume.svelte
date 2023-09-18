@@ -109,6 +109,8 @@
         >
             <!-- Spigot Experience -->
             <div class="item">
+                <b>Not Applicable</b>
+                <!--
                 <div style="width:100%;">SpigotMC<span style="float:right">2016-2018</span></div>
                 <div><b>Freelance Programmer</b> (Java)</div>
                 <ul>
@@ -121,6 +123,8 @@
                         Independently authored three plugins, which collectively have garnered over 1,000 downloads.
                     </li>
                 </ul>
+            </div>
+        -->
             </div>
         </article>
         <!-- svelte-ignore a11y-no-noninteractive-element-to-interactive-role -->

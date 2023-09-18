@@ -14,6 +14,19 @@
 
 }
 
+h1 {
+    font-size: 3rem;
+}
+
+h2 {
+    font-size: 2rem;
+    padding: 0;
+}
+
+h3 {
+    font-size: 1rem;
+}
+
 .webpage {
     display: flex;
     flex-direction: column;
@@ -21,14 +34,12 @@
     height: 100%;
     padding: 30px;
     padding-left: 60px;
+    padding-bottom: 0;
     font-family: 'Open Sans', sans-serif;
     color: white;
+    height: 100%;
     font-size: 16px;
     gap: var(--portfolio-branding-gap);
-    height: 700px;
-
-    word-wrap: break-word;
-    overflow-y: auto;
 }
 
 /* =====================================
@@ -81,6 +92,12 @@
     font-weight: bold;
 }
 
+.webpage .socials {
+    position: relative;
+    top: 5px;
+}
+
+
 /* =====================================
    Code Executor (Visual)
    ===================================== */
@@ -93,31 +110,27 @@
    Navigation
    ===================================== */
 
+/*
 .webpage .navigation {
-    /* Put items into a flex */
     display: flex;
 
-    /* Have the items go in column format */
     flex-direction: column;
 
-    /* Align them in the center of the navigation bar */
     justify-content: center;
 
     gap: var(--portfolio-navigation-gap);
 
-    /* Make sure height is 100% of the parent height */
     height: 100%;
 
     width: fit-content;
 
-    /* The width of the navigation bar */
 }
 
 .webpage .navigation .socials {
-    /* Display icons in a row */
     display: flex;
     gap: 3px;
 }
+*/
 
 /* =====================================
    Begin Process
@@ -133,7 +146,8 @@
    Content
    ===================================== */
 .webpage .body {
-    
+    position: relative;
+    height: 100%;
 }
 
 /*

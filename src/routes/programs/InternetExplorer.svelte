@@ -52,18 +52,6 @@
             {/if}
         </div>
 
-        <!--
-            <div class="group center" style="height:100%;">
-                <div class="command-injection" style="width: fit-content;position:relative;bottom:55px;">
-                    <div class="command">
-                        Inject an interface through the cmd with '<span class="emphasis"
-                            >injectx [ABOUT | PROJECTS | STUFF]</span
-                        >'
-                    </div>
-                </div>
-            </div>
-        </div>-->
-
         {#if $WebsiteStage == 3}
             <div class="branding">
                 <div class="group column">
@@ -145,103 +133,8 @@
                     much into this but I assure you this will benefit humanity and ensure that humans have a prosperious
                     future for generations to come.
                 </p>
-
-                <!--
-                <div class="group center" style="height:100%;">
-                    <div class="command-injection" style="width: fit-content;position:relative;bottom:55px;">
-                        <div class="command">
-                            Inject an interface through the cmd with '<span class="emphasis"
-                                >injectx [ABOUT | PROJECTS | STUFF]</span
-                            >'
-                        </div>
-                    </div>
-                </div>
-            </div>-->
                 <br />
             </div>
         {/if}
     </div></WindowBase
 >
-
-<!--
-        <div style="font-size:0.7rem;position:fixed;" class="text-center code-font">
-            this website is protected by GuardianX
-        </div>
-    -->
-
-<!--
-        <div class="webpage">
-            {#if $WebsiteStage == 3}
-                <div class="branding">
-                    <div class="group column">
-                        <div id="branding_title" class="title">ZELJKO VRANJES</div>
-                        <div id="branding_position" class="position">FULL STACK ENGINEER</div>
-                    </div>
-                    <div class="group float-right flex-1">
-                        <div style="margin-left: auto;">
-                        </div>
-                    </div>
-                </div>
-                <div class="socials">
-                    <i class="icon github animate" />
-                    <i class="icon x animate" style="animation-duration: 2s" />
-                    <i class="icon ycombinator animate" style="animation-duration: 3s" />
-                </div>
-                <div class="body">asddsa</div>
-            {/if}
-
-            <div class="group center full-width full-height">
-                {#if $WebsiteStage != 3}
-                    <div class="command-injection">
-                        {#if $WebsiteStage == 0}
-                            <div class="command">
-                                Unlock the website by running '<span class="emphasis">ovrs authenticate</span>' in the
-                                cmd.
-                            </div>
-                        {/if}
-
-                        {#if $WebsiteStage == 1}
-                            <div class="command">Recieving request loading..</div>
-                        {/if}
-
-                        {#if $WebsiteStage == 2}
-                            <div class="command">something went wrong rerun the command.</div>
-                        {/if}
-                    </div>
-                {/if}
-            </div>
-            <div style="font-size:0.7rem;" class="text-center code-font">this website is protected by GuardianX</div>
-        </div>
-    -->
-
-<!--
-        <div class="webpage">
-            <div class="branding">
-                <div class="group column">
-                    <div id="branding_title" class="title">ZELJKO VRANJES</div>
-                    <div id="branding_position" class="position">FULL STACK ENGINEER</div>
-                </div>
-                <div class="group float-right flex-1">
-                    <div style="margin-left: auto;">
-                        <div class="code-font" style="display:flex;">
-                            <div id="div_command">execute_program</div>
-                            (<span style="color: #00FF00;">'</span><span id="div_command_input" style="color: #00FF00;"
-                                >bruteforce.exe</span
-                            ><span style="color: #00FF00;">'</span>)
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {#if leet_is_solved}
-                <div class="socials">
-                    <i class="icon github animate" />
-                    <i class="icon x animate" style="animation-duration: 2s" />
-                    <i class="icon ycombinator animate" style="animation-duration: 3s" />
-                </div>
-            {/if}
-
-            <div class="begin-screen" />
-            <div class="body">asddsa</div>
-        </div>
-    </div>
-    -->

@@ -13,10 +13,6 @@
 
     let program: ComputerProgram = ProgramFilter.Find('cmd')!;
 
-    //CommandManager.subscribe((e) => {
-    //  console.log(e);
-    //});
-    // Load Commands
     onMount(() => {});
 
     function OnCommandEnter(event: KeyboardEvent) {
@@ -51,39 +47,6 @@
         </div>
     </div>
 </WindowBase>
-
-<!--
-/*
-new ConsoleCommand('ping', 'pong'),
-   new ConsoleCommand(
-       'help',
-       'Basic set of commands to help you get to know me.<br>' +
-           'ABOUT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Displays some basic information about me.<br>' +
-           'CRACK&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Crack a specific software...<br>',
-   ),
-   new ConsoleCommand('ovrs authenticate', 'Successfully authenticated system'),
-   */
-
-// CMD Content Tracker
-/**
-* Manage the enter of command
-* @param event
-*/
-/*
-function OnCommandEnter(event: KeyboardEvent) {
-   var desiredKey = 'Enter';
-   var cmd_input = document.getElementById('cmd_input_' + ($CmdContentTracker - 1));
-   var cmd_results = document.getElementById('cmd_results_' + ($CmdContentTracker - 1));
-
-   if (event.key == desiredKey) {
-       cmd_input.disabled = true;
-       CmdContentTracker.set($CmdContentTracker + 1);
-       cmd_input.focus();
-       var result = ConsoleCommandHelper.RunCommand(cmd_input.value);
-       cmd_results.innerHTML += result;
-   }
-}
-*/-->
 
 <style>
     :root {

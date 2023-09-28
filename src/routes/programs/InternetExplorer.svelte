@@ -26,9 +26,9 @@
         class="webpage"
         style={$WebsiteStage != 3 ? 'height:100%;' : 'height:fit-content;'}
     >
-        <div class="group center full-width full-height">
+        <div class="group center full-height full-width">
             {#if $WebsiteStage != 3}
-                <div class="command-injection">
+                <div class="command-injection" style="text-align: center;position:relative;right:13px">
                     {#if $WebsiteStage == 0}
                         <div class="command">
                             Unlock the website by running '<span class="emphasis">ovrs authenticate</span>' in the cmd.

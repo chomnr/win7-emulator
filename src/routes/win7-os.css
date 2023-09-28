@@ -59,7 +59,6 @@
 
     --aero-ie9-program-border-color: rgba(17, 53, 126, 1);
 
-
     /* Aero Input Designer */
     --aero-input-default-bg: rgba(255, 255, 255, 1);
     --aero-input-default-border: rgba(196, 198, 201, 1);
@@ -67,7 +66,6 @@
     --aero-input-disabled-border-color: rgba(149, 170, 186);
 
     --aero-ie9-disabled-cursor: normal;
-
 }
 
 .win7-emulator {
@@ -114,7 +112,7 @@
 
 .win7-desktop__content--with-bg {
     /* Set background image */
-    background: url("https://d2hqjspxd4b0fs.cloudfront.net/win7/desktop.jpg");
+    background: url('https://d2hqjspxd4b0fs.cloudfront.net/win7/desktop.jpg');
 
     /* Center the background image */
     background-position: center;
@@ -234,7 +232,7 @@
 
 .win7-taskbar__program--startmenu:hover {
     /* Change the icon image on hover */
-    content: url("http://d2hqjspxd4b0fs.cloudfront.net/win7/orb-hover.png");
+    content: url('https://d2hqjspxd4b0fs.cloudfront.net/win7/orb-hover.png');
     /* Change the icon image on hover */
 
     /* Change cursor to pointer on hover */
@@ -266,7 +264,6 @@
     border: 1px solid var(--aero-border-top-bottom-color);
     border-top: transparent;
     border-radius: 5px;
-
 }
 
 .win7-taskbar__program--additional-item.active:hover {
@@ -304,37 +301,37 @@
 
 .win7-taskbar__program--network-audio-3 {
     /* Set the icon image to Audio-03 using the 'content' property */
-    content: url("https://d2hqjspxd4b0fs.cloudfront.net/win7/audio/68.ico") !important;
+    content: url('https://d2hqjspxd4b0fs.cloudfront.net/win7/audio/68.ico') !important;
 }
 
 .win7-taskbar__program--connection-1 {
     /* Set the icon image to wireless Connection using the 'content' property */
-    content: url("https://d2hqjspxd4b0fs.cloudfront.net/win7/network/wifi_1.ico") !important;
+    content: url('https://d2hqjspxd4b0fs.cloudfront.net/win7/network/wifi_1.ico') !important;
 }
 
 .win7-taskbar__program--connection-2 {
     /* Set the icon image to wireless Connection using the 'content' property */
-    content: url("https://d2hqjspxd4b0fs.cloudfront.net/win7/network/wifi_2.ico") !important;
+    content: url('https://d2hqjspxd4b0fs.cloudfront.net/win7/network/wifi_2.ico') !important;
 }
 
 .win7-taskbar__program--connection-3 {
     /* Set the icon image to wireless Connection using the 'content' property */
-    content: url("https://d2hqjspxd4b0fs.cloudfront.net/win7/network/wifi_3.ico") !important;
+    content: url('https://d2hqjspxd4b0fs.cloudfront.net/win7/network/wifi_3.ico') !important;
 }
 
 .win7-taskbar__program--connection-4 {
     /* Set the icon image to wireless Connection using the 'content' property */
-    content: url("https://d2hqjspxd4b0fs.cloudfront.net/win7/network/wifi_4.ico") !important;
+    content: url('https://d2hqjspxd4b0fs.cloudfront.net/win7/network/wifi_4.ico') !important;
 }
 
 .win7-taskbar__program--connection-5 {
     /* Set the icon image to wireless Connection using the 'content' property */
-    content: url("https://d2hqjspxd4b0fs.cloudfront.net/win7/network/wifi_5.ico") !important;
+    content: url('https://d2hqjspxd4b0fs.cloudfront.net/win7/network/wifi_5.ico') !important;
 }
 
 .win7-taskbar__program--battery {
     /* Set the icon image to wireless Connection using the 'content' property */
-    content: url("https://d2hqjspxd4b0fs.cloudfront.net/win7/network/battery.png") !important;
+    content: url('https://d2hqjspxd4b0fs.cloudfront.net/win7/network/battery.png') !important;
 }
 
 .win7-taskbar__program--list-programs::before {
@@ -466,7 +463,7 @@
 
 .win7-startmenu__group--divider {
     /* Set size of startmenu group */
-    content: "";
+    content: '';
     border-top: 2px solid rgba(47, 47, 47, 0.1);
     box-shadow: inset 0px 7px 1px -6px var(--aero-border-top-bottom-color);
     width: 142px;
@@ -486,7 +483,6 @@
     background-color: var(--aero-sm-group-color);
 }
 
-
 .win7-startmenu__group__item {
     display: flex;
     align-items: center;
@@ -505,13 +501,11 @@
     width: 40px;
 }
 
-
 /* Transitions */
 #startmenu_main_content,
 #startmenu_side_content,
 #all_programs {
     transition: opacity 0.1s ease-in;
-
 }
 
 /* =====================================
@@ -626,7 +620,6 @@
     box-shadow: inset 0 0.3px 1px var(--aero-dg-program-active-shadow);
 }
 
-
 .win7-desktop-grid__program--icon {
     /* Width of icon in program */
     width: 48px;
@@ -667,25 +660,23 @@
     /* Hide overflow content */
     overflow: hidden;
 
-
     /* When title exceeds change to ellipisis */
     text-overflow: ellipsis;
-
 }
 
 .program_ie9-icon {
     /* Desktop Explorer Icon */
-    content: url("https://d2hqjspxd4b0fs.cloudfront.net/win7/internet-explorer.svg")
+    content: url('https://d2hqjspxd4b0fs.cloudfront.net/win7/internet-explorer.svg');
 }
 
 .program_resume-icon {
     /* Resume Icon */
-    content: url("https://d2hqjspxd4b0fs.cloudfront.net/win7/program_icons/resume-icon.svg");
+    content: url('https://d2hqjspxd4b0fs.cloudfront.net/win7/program_icons/resume-icon.svg');
 }
 
 .program_cmd-icon {
     /* Cmd Icon */
-    content: url("https://d2hqjspxd4b0fs.cloudfront.net/win7/program_icons/cmd-icon.svg");
+    content: url('https://d2hqjspxd4b0fs.cloudfront.net/win7/program_icons/cmd-icon.svg');
 }
 
 .program_hangman-icon {
@@ -782,8 +773,8 @@
 
 .win7-program__explorer::before {
     /* Apply a background image to the pseudo-element */
-    content: "";
-    background: url("../lib/images/windows/textures/aero_glass_texture.jpg");
+    content: '';
+    background: url('../lib/images/windows/textures/aero_glass_texture.jpg');
     background-size: cover;
 
     /* Set a lower z-index for layering */
@@ -814,7 +805,7 @@
     flex-direction: row-reverse;
 
     /* Inherit width from parent */
-    width: 100%
+    width: 100%;
 }
 
 .win7-program__explorer__tabgroup {
@@ -828,7 +819,6 @@
 
     /* Mimicks IE9 tab */
     height: 30px;
-
 }
 
 .win7-program__explorer__tabgroup__tab {
@@ -899,7 +889,6 @@
     border: 1px solid black;
 }
 
-
 /* =====================================
    Aero Circular Button Customizer
    ===================================== */
@@ -907,8 +896,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background:
-        linear-gradient(to left top, rgba(0, 255, 255, 0.3) 0%, rgba(0, 158, 210, 0.3) 50%, rgba(0, 162, 212, 0.3) 100%),
+    background: linear-gradient(
+            to left top,
+            rgba(0, 255, 255, 0.3) 0%,
+            rgba(0, 158, 210, 0.3) 50%,
+            rgba(0, 162, 212, 0.3) 100%
+        ),
         linear-gradient(rgba(0, 162, 212, 0.5), rgba(0, 162, 212, 0.5));
     border-radius: 50%;
     border: 1px solid rgba(152, 159, 166, 0.4);
@@ -929,18 +922,17 @@
 }
 
 .aero-button__circular--left-icon {
-    content: url("../lib/arrow-right.svg");
+    content: url('../lib/arrow-right.svg');
     transform: scaleX(-1);
     width: 30px;
     height: 30px;
 }
 
 .aero-button__circular--right-icon {
-    content: url("../lib/arrow-right.svg");
+    content: url('../lib/arrow-right.svg');
     width: 20px;
     height: 20px;
 }
-
 
 /*
 
@@ -1028,7 +1020,6 @@
     height: 17px;
 }
 
-
 /*
 .aero-input .icon.magnify {
     content: url("https://d2hqjspxd4b0fs.cloudfront.net/magnifying_glass.svg");
@@ -1076,7 +1067,7 @@
 
 /* Images */
 .favicon-portfolio {
-    content: url("../lib/images/windows/favicon-stroke-and-fill.svg");
+    content: url('../lib/images/windows/favicon-stroke-and-fill.svg');
 }
 
 /* =====================================
@@ -1089,7 +1080,7 @@
     height: 15px;
 }
 .addy-icon.wizard {
-    content: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDI0IDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGZpbGw9IiM2MzY2ZjEiIGQ9Ik0yMSAyMkgzdi0yaDE4djJtLTItM0g1bDYuMS0xNi40Yy4yLS40LjUtLjYuOS0uNmw2IDNoLTQuMUwxOSAxOU0xMCA3LjVsMS4wNC40N0wxMS41IDlsLjQ3LTEuMDNMMTMgNy41bC0xLjAzLS40N0wxMS41IDZsLS40NiAxLjAzTDEwIDcuNW0zIDcuNWwtMi4wNi0uOTNMMTAgMTJsLS45MyAyLjA3TDcgMTVsMi4wNy45M0wxMCAxOGwuOTQtMi4wN0wxMyAxNW0uOTctMy4wM0wxNSAxMS41bC0xLjAzLS40N0wxMy41IDEwbC0uNDYgMS4wM2wtMS4wNC40N2wxLjA0LjQ3bC40NiAxLjAzbC40Ny0xLjAzbTIgNEwxNyAxNS41bC0xLjAzLS40N0wxNS41IDE0bC0uNDYgMS4wM2wtMS4wNC40N2wxLjA0LjQ3bC40NiAxLjAzbC40Ny0xLjAzWiIvPjwvc3ZnPg==)
+    content: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDI0IDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGZpbGw9IiM2MzY2ZjEiIGQ9Ik0yMSAyMkgzdi0yaDE4djJtLTItM0g1bDYuMS0xNi40Yy4yLS40LjUtLjYuOS0uNmw2IDNoLTQuMUwxOSAxOU0xMCA3LjVsMS4wNC40N0wxMS41IDlsLjQ3LTEuMDNMMTMgNy41bC0xLjAzLS40N0wxMS41IDZsLS40NiAxLjAzTDEwIDcuNW0zIDcuNWwtMi4wNi0uOTNMMTAgMTJsLS45MyAyLjA3TDcgMTVsMi4wNy45M0wxMCAxOGwuOTQtMi4wN0wxMyAxNW0uOTctMy4wM0wxNSAxMS41bC0xLjAzLS40N0wxMy41IDEwbC0uNDYgMS4wM2wtMS4wNC40N2wxLjA0LjQ3bC40NiAxLjAzbC40Ny0xLjAzbTIgNEwxNyAxNS41bC0xLjAzLS40N0wxNS41IDE0bC0uNDYgMS4wM2wtMS4wNC40N2wxLjA0LjQ3bC40NiAxLjAzbC40Ny0xLjAzWiIvPjwvc3ZnPg==);
 }
 
 /* SIZING  */
@@ -1136,7 +1127,6 @@
 .x-semi-large {
     width: 240px;
 }
-
 
 /* FlexBox */
 .justify-left {

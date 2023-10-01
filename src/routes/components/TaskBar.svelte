@@ -4,6 +4,9 @@
     import { ProgramFilter, type ComputerProgram } from '../../programs';
     import { ToggleMinimization } from '../../helper';
 
+    import pressedIcon from '$lib/images/windows/orb-pressed.png';
+    import defaultIcon from '$lib/images/windows/orb-default.png';
+
     let whitelist: string[] = [
         'win7-startmenu__content',
         'win7-startmenu__group',
@@ -79,25 +82,27 @@
             {#if $TogglableStartMenu}
                 <!-- svelte-ignore a11y-no-noninteractive-element-to-interactive-role -->
                 <img
+                    alt="buttonpressed"
                     role="button"
                     tabindex="0"
                     on:click={toggleStartMenu}
                     id="button_startmenu"
                     class="win7-taskbar__program win7-taskbar__program--startmenu"
-                    src="https://d2hqjspxd4b0fs.cloudfront.net/win7/orb-pressed.png"
+                    src={pressedIcon}
                     style="margin-right: 7px;"
                 />
             {:else}
                 <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
                 <!-- svelte-ignore a11y-no-noninteractive-element-to-interactive-role -->
                 <img
+                    alt="buttondefault"
                     role="button"
                     tabindex="0"
                     on:click={toggleStartMenu}
                     id="button_startmenu"
                     class="win7-taskbar__program win7-taskbar__program--startmenu"
                     style="margin-right: 7px;"
-                    src="https://d2hqjspxd4b0fs.cloudfront.net/win7/orb-default.png"
+                    src={defaultIcon}
                 />
             {/if}
 

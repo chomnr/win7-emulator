@@ -80,9 +80,9 @@
             </div>
             <br />
             {#if $IsConnectedToBruteExpose}
-                <div>&nbsp;&nbsp;&nbsp;WEBSOCKET: <a style="color: limegreen;">CONNECTED</a></div>
+                <div>&nbsp;&nbsp;&nbsp;WEBSOCKET: <span style="color: limegreen;">CONNECTED</span></div>
             {:else}
-                <div>&nbsp;&nbsp;&nbsp;WEBSOCKET: <a style="color: red;">FAILED</a></div>
+                <div>&nbsp;&nbsp;&nbsp;WEBSOCKET: <span style="color: red;">FAILED</span></div>
             {/if}
             <br />
             <div id="bruteexpose_data" />
@@ -114,26 +114,6 @@
     }
 
     .program_bruteexpose *::selection {
-        background: rgba(211, 211, 211, 0.5);
-    }
-
-    .program_cmd__input__box {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-
-    .program_cmd__input {
-        background: transparent;
-        position: relative;
-        right: 7px;
-        border: none;
-        outline: none;
-        width: 78%;
-        color: var(---win7-cmd-color);
-    }
-
-    .program_cmd__input::selection {
         background: rgba(211, 211, 211, 0.5);
     }
 </style>

@@ -4,6 +4,9 @@
     import { SequentialSearch } from '../../helper';
     import { TaskManager } from '../stores';
 
+    import avatarPicture from '$lib/images/windows/profile/avatar.png';
+    import avatarFrame from '$lib/images/windows/profile/frame.png';
+
     // Elements
     let startmenu_input: HTMLElement;
 
@@ -192,8 +195,8 @@
         class="win7-startmenu__content win7-startmenu__group--column"
     >
         <div bind:this={avatar} class="win7-avatar-builder" style="top:-50px;left:-7px;">
-            <img class="win7-avatar" src="https://d2hqjspxd4b0fs.cloudfront.net/win7/profile/avatar.png" alt="avatar" />
-            <img class="win7-frame" src="https://d2hqjspxd4b0fs.cloudfront.net/win7/profile/frame.png" alt="frame" />
+            <img class="win7-avatar" src={avatarPicture} alt="avatar" />
+            <img class="win7-frame" src={avatarFrame} alt="frame" />
         </div>
         <div
             class="win7-startmenu__group win7-startmenu__group--column justify-left x-fit y-fit font-small"

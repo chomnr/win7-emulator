@@ -112,7 +112,7 @@
 
 .win7-desktop__content--with-bg {
     /* Set background image */
-    background: url('https://d2hqjspxd4b0fs.cloudfront.net/win7/desktop.jpg');
+    background: url('../lib/images/windows/desktop.jpg');
 
     /* Center the background image */
     background-position: center;
@@ -232,7 +232,7 @@
 
 .win7-taskbar__program--startmenu:hover {
     /* Change the icon image on hover */
-    content: url('https://d2hqjspxd4b0fs.cloudfront.net/win7/orb-hover.png');
+    content: url('../lib/images/windows/orb-hover.png');
     /* Change the icon image on hover */
 
     /* Change cursor to pointer on hover */
@@ -301,37 +301,37 @@
 
 .win7-taskbar__program--network-audio-3 {
     /* Set the icon image to Audio-03 using the 'content' property */
-    content: url('https://d2hqjspxd4b0fs.cloudfront.net/win7/audio/68.ico') !important;
+    content: url('../lib/images/windows/audio/68.ico') !important;
 }
 
 .win7-taskbar__program--connection-1 {
     /* Set the icon image to wireless Connection using the 'content' property */
-    content: url('https://d2hqjspxd4b0fs.cloudfront.net/win7/network/wifi_1.ico') !important;
+    content: url('../lib/images/windows/network/wifi_1.ico') !important;
 }
 
 .win7-taskbar__program--connection-2 {
     /* Set the icon image to wireless Connection using the 'content' property */
-    content: url('https://d2hqjspxd4b0fs.cloudfront.net/win7/network/wifi_2.ico') !important;
+    content: url('../lib/images/windows/network/wifi_2.ico') !important;
 }
 
 .win7-taskbar__program--connection-3 {
     /* Set the icon image to wireless Connection using the 'content' property */
-    content: url('https://d2hqjspxd4b0fs.cloudfront.net/win7/network/wifi_3.ico') !important;
+    content: url('../lib/images/windows/network/wifi_3.ico') !important;
 }
 
 .win7-taskbar__program--connection-4 {
     /* Set the icon image to wireless Connection using the 'content' property */
-    content: url('https://d2hqjspxd4b0fs.cloudfront.net/win7/network/wifi_4.ico') !important;
+    content: url('../lib/images/windows/network/wifi_4.ico') !important;
 }
 
 .win7-taskbar__program--connection-5 {
     /* Set the icon image to wireless Connection using the 'content' property */
-    content: url('https://d2hqjspxd4b0fs.cloudfront.net/win7/network/wifi_5.ico') !important;
+    content: url('../lib/images/windows/network/wifi_5.ico') !important;
 }
 
 .win7-taskbar__program--battery {
     /* Set the icon image to wireless Connection using the 'content' property */
-    content: url('https://d2hqjspxd4b0fs.cloudfront.net/win7/network/battery.png') !important;
+    content: url('../lib/images/windows/battery.png') !important;
 }
 
 .win7-taskbar__program--list-programs::before {
@@ -666,17 +666,17 @@
 
 .program_ie9-icon {
     /* Desktop Explorer Icon */
-    content: url('https://d2hqjspxd4b0fs.cloudfront.net/win7/internet-explorer.svg');
+    content: url('../lib/images/windows/internet-explorer.svg');
 }
 
 .program_resume-icon {
     /* Resume Icon */
-    content: url('https://d2hqjspxd4b0fs.cloudfront.net/win7/program_icons/resume-icon.svg');
+    content: url('../lib/images/windows/program_icons/resume-icon.svg');
 }
 
 .program_cmd-icon {
     /* Cmd Icon */
-    content: url('https://d2hqjspxd4b0fs.cloudfront.net/win7/program_icons/cmd-icon.svg');
+    content: url('../lib/images/windows/program_icons/cmd-icon.svg');
 }
 
 .program_hangman-icon {

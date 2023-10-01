@@ -1,22 +1,21 @@
 <script>
-	/*import Header from './Header.svelte';*/
-	import "7.css/dist/7.scoped.css"
-	import './styles.css';
-	import './win7-os.css'
-	import '../../node_modules/modern-normalize/modern-normalize.css';
+    /*import Header from './Header.svelte';*/
+    import '7.css/dist/7.scoped.css';
+    import './styles.css';
+    import './win7-os.css';
+    //import '../../node_modules/modern-normalize/modern-normalize.css';
 
-	/*
+    /*
 	import '../../node_modules/7.css/dist/7.css'
 	*/
-	
 </script>
 
 <div class="win7-emulator">
-	<main class="win7-desktop">
-		<div class="win7-desktop__content win7-desktop__content--with-bg win7-taskbar__program--with-startmenu">
-			<slot />
-		</div>
-	</main>
+    <main class="win7-desktop">
+        <div class="win7-desktop__content win7-desktop__content--with-bg win7-taskbar__program--with-startmenu">
+            <slot />
+        </div>
+    </main>
 </div>
 
 <!--
@@ -50,7 +49,7 @@
 	}
 -->
 
-	<!--<Header />
+<!--<Header />
 
 	<main>
 		<slot />

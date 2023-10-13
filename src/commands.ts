@@ -156,18 +156,6 @@ export class ConsoleCommandHelper {
 
 // all the commands.
 export const commands: ConsoleCommand[] = [
-    new ConsoleCommand('ping', (e) => {
-        e.Pending();
-        e.Append('pong!');
-        e.Finished();
-    }),
-
-    new ConsoleCommand('help', (e) => {
-        e.Pending();
-        e.Append('INTERFACE &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Display a specific interface of a webpage.');
-        e.Finished();
-    }),
-
     new ConsoleCommand('help interface', (e) => {
         //injectx ie9 interface <-- good command name
         e.Pending();
